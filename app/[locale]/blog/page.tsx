@@ -21,6 +21,10 @@ export async function generateMetadata({
     page: "Blog",
     title: t("title"),
     description: t("description"),
+    keywords: [
+      "the forge codes blog", "the forge roblox blog", "roblox the forge news",
+      "the forge codes updates", "the forge tips and guides",
+    ],
     locale: locale as Locale,
     path: `/blog`,
     canonicalUrl: `/blog`,

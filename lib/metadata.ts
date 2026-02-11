@@ -8,6 +8,7 @@ type MetadataProps = {
   title?: string
   description?: string
   images?: string[]
+  keywords?: string[]
   noIndex?: boolean
   locale: Locale
   path?: string
@@ -19,6 +20,7 @@ export async function constructMetadata({
   title,
   description,
   images = [],
+  keywords = [],
   noIndex = false,
   locale,
   path,
@@ -64,7 +66,10 @@ export async function constructMetadata({
   return {
     title: finalTitle,
     description: pageDescription,
-    keywords: [],
+    keywords: keywords.length > 0 ? keywords : [
+      'the forge codes', 'the forge roblox codes', 'roblox the forge codes',
+      'the forge codes 2026', 'codes for the forge',
+    ],
     authors: siteConfig.authors,
     creator: siteConfig.creator,
     metadataBase: new URL(siteConfig.url),

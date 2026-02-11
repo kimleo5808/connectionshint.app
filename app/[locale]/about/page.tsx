@@ -1,5 +1,7 @@
 import MDXComponents from "@/components/mdx/MDXComponents";
+import { BASE_URL } from "@/config/site";
 import { Locale, LOCALES } from "@/i18n/routing";
+import { breadcrumbSchema, JsonLd } from "@/lib/jsonld";
 import { constructMetadata } from "@/lib/metadata";
 import fs from "fs/promises";
 import { Metadata } from "next";
@@ -50,6 +52,10 @@ export async function generateMetadata({
     page: "About",
     title: t("title"),
     description: t("description"),
+    keywords: [
+      "about theforgecodes", "the forge codes website", "the forge roblox codes tracker",
+      "theforgecodes about", "the forge codes verification",
+    ],
     locale: locale as Locale,
     path: `/about`,
     canonicalUrl: `/about`,
@@ -62,6 +68,12 @@ export default async function AboutPage({ params }: { params: Params }) {
 
   return (
     <div className="mx-auto w-full max-w-4xl space-y-6 px-4 py-10 sm:px-6 lg:px-8">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: BASE_URL },
+          { name: "About", url: `${BASE_URL}/about` },
+        ])}
+      />
       <header className="relative overflow-hidden rounded-2xl border border-indigo-200/70 bg-gradient-to-br from-indigo-50 via-violet-50 to-purple-50 p-6 dark:border-indigo-900/40 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950">
         <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-indigo-200/30 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-12 -left-12 h-36 w-36 rounded-full bg-violet-200/30 blur-3xl" />

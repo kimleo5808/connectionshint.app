@@ -1,8 +1,10 @@
 import HistoryMonthGroup, {
   SnapshotCard,
 } from "@/components/forge/HistoryMonthGroup";
+import { BASE_URL } from "@/config/site";
 import { forgeDailySnapshots } from "@/lib/forge-data";
 import { Locale } from "@/i18n/routing";
+import { breadcrumbSchema, JsonLd } from "@/lib/jsonld";
 import { constructMetadata } from "@/lib/metadata";
 import { CalendarClock, Database, Flame } from "lucide-react";
 import { Metadata } from "next";
@@ -22,6 +24,10 @@ export async function generateMetadata({
     title: "The Forge Codes History: Daily Snapshot Archive and Code Timeline",
     description:
       "Browse every daily snapshot of the forge codes organized by month. Track when codes were added, expired, and compare changes across days.",
+    keywords: [
+      "the forge codes history", "the forge codes archive", "the forge codes daily snapshot",
+      "the forge roblox codes history", "the forge past codes", "the forge expired codes list",
+    ],
     locale: locale as Locale,
     path: "/the-forge-codes-history",
     canonicalUrl: "/the-forge-codes-history",
@@ -66,6 +72,12 @@ export default function ForgeHistoryPage() {
 
   return (
     <div className="mx-auto w-full max-w-6xl space-y-6 px-4 py-10 sm:px-6 lg:px-8">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: BASE_URL },
+          { name: "The Forge Codes History", url: `${BASE_URL}/the-forge-codes-history` },
+        ])}
+      />
       {/* Hero */}
       <header className="relative overflow-hidden rounded-2xl border border-indigo-200/70 bg-gradient-to-br from-indigo-50 via-violet-50 to-purple-50 p-6 dark:border-indigo-900/40 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950 sm:p-8">
         <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-indigo-200/30 blur-3xl" />

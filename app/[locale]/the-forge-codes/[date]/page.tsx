@@ -1,4 +1,5 @@
 import { ForgeDailySnapshotArchive } from "@/components/forge/ForgeSections";
+import { BASE_URL } from "@/config/site";
 import { Locale, LOCALES } from "@/i18n/routing";
 import {
   ForgeCode,
@@ -6,6 +7,7 @@ import {
   forgeDailySnapshots,
   getForgeSnapshotByDate,
 } from "@/lib/forge-data";
+import { breadcrumbSchema, JsonLd } from "@/lib/jsonld";
 import { constructMetadata } from "@/lib/metadata";
 import { CheckCircle2, ChevronDown, CircleX } from "lucide-react";
 import { Metadata } from "next";
@@ -164,6 +166,10 @@ export async function generateMetadata({
     title: `The Forge Codes (${formattedDate}): Daily Auto-Collected Snapshot`,
     description:
       "Daily snapshot page for the forge codes with auto-collected active and expired lists, redeem guidance, and source coverage.",
+    keywords: [
+      `the forge codes ${formattedDate}`, "the forge codes today", "the forge roblox codes daily",
+      "the forge codes active", "the forge codes expired", "the forge daily snapshot",
+    ],
     locale: locale as Locale,
     path: `/the-forge-codes/${date}`,
     canonicalUrl: `/the-forge-codes/${date}`,
@@ -208,6 +214,13 @@ export default async function DailyForgeCodesPage({
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: BASE_URL },
+          { name: "The Forge Codes", url: `${BASE_URL}/the-forge-codes` },
+          { name: formattedDate, url: `${BASE_URL}/the-forge-codes/${snapshot.date}` },
+        ])}
+      />
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
         <div className="space-y-6">
           {/* Hero header */}

@@ -1,7 +1,9 @@
 import { Callout } from "@/components/mdx/Callout";
 import MDXComponents from "@/components/mdx/MDXComponents";
+import { BASE_URL } from "@/config/site";
 import { Locale, LOCALES } from "@/i18n/routing";
 import { getPosts } from "@/lib/getBlogs";
+import { articleSchema, breadcrumbSchema, JsonLd } from "@/lib/jsonld";
 import { constructMetadata } from "@/lib/metadata";
 import { BlogPost } from "@/types/blog";
 import { Metadata } from "next";
@@ -63,8 +65,26 @@ export default async function BlogPage({ params }: { params: Params }) {
     return notFound();
   }
 
+  const slugClean = post.slug.replace(/^\//, "");
+
   return (
     <div className="w-full md:w-3/5 px-2 md:px-12">
+      <JsonLd
+        data={articleSchema({
+          title: post.title,
+          description: post.description || "",
+          url: `${BASE_URL}/blog/${slugClean}`,
+          datePublished: post.date instanceof Date ? post.date.toISOString() : String(post.date),
+          image: post.image,
+        })}
+      />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: BASE_URL },
+          { name: "Blog", url: `${BASE_URL}/blog` },
+          { name: post.title, url: `${BASE_URL}/blog/${slugClean}` },
+        ])}
+      />
       <h1 className="break-words text-4xl font-bold mt-6 mb-4">{post.title}</h1>
       {post.image && (
         <img src={post.image} alt={post.title} className="rounded-sm" />

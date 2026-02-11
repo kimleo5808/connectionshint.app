@@ -1,5 +1,7 @@
 import MDXComponents from "@/components/mdx/MDXComponents";
+import { BASE_URL } from "@/config/site";
 import { Locale, LOCALES } from "@/i18n/routing";
+import { breadcrumbSchema, howToSchema, JsonLd } from "@/lib/jsonld";
 import { constructMetadata } from "@/lib/metadata";
 import fs from "fs/promises";
 import { Metadata } from "next";
@@ -45,6 +47,11 @@ export async function generateMetadata({
     title: "How to Redeem Codes in The Forge (2026 Guide)",
     description:
       "Step-by-step guide for how to redeem codes in the forge and where to put codes in the forge across Roblox devices.",
+    keywords: [
+      "how to redeem codes in the forge", "where to put codes in the forge",
+      "how to enter codes in the forge", "the forge codes redeem",
+      "how to use codes in the forge", "the forge roblox redeem guide",
+    ],
     locale: locale as Locale,
     path: "/how-to-redeem-the-forge-codes",
     canonicalUrl: "/how-to-redeem-the-forge-codes",
@@ -61,6 +68,24 @@ export default async function RedeemGuidePage({
 
   return (
     <div className="mx-auto w-full max-w-4xl space-y-6 px-4 py-10 sm:px-6 lg:px-8">
+      <JsonLd
+        data={howToSchema(
+          "How to Redeem Codes in The Forge",
+          "Step-by-step guide for redeeming codes in The Forge on Roblox across all devices.",
+          [
+            { name: "Launch The Forge", text: "Open Roblox and search for The Forge. Click Play and wait until your character fully loads into the game world." },
+            { name: "Find the codes panel", text: "Look at the left side of your screen for a gift box or Twitter/X icon. Tap or click this icon to open the code redemption panel." },
+            { name: "Enter the code exactly", text: "Type or paste the code into the text input field. Codes are case-sensitive — copy-paste to avoid typos." },
+            { name: "Confirm the reward", text: "Tap Redeem and check your inventory for the reward. Common rewards include rerolls, luck totems, gems, and boosts." },
+          ]
+        )}
+      />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: BASE_URL },
+          { name: "How to Redeem The Forge Codes", url: `${BASE_URL}/how-to-redeem-the-forge-codes` },
+        ])}
+      />
       {/* Hero */}
       <header className="relative overflow-hidden rounded-2xl border border-indigo-200/70 bg-gradient-to-br from-indigo-50 via-violet-50 to-purple-50 p-6 dark:border-indigo-900/40 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950">
         <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-indigo-200/30 blur-3xl" />

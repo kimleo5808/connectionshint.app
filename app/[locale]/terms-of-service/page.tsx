@@ -50,6 +50,9 @@ export async function generateMetadata({
     page: "TermsOfService",
     title: t("title"),
     description: t("description"),
+    keywords: [
+      "theforgecodes terms of service", "the forge codes terms", "theforgecodes usage rules",
+    ],
     locale: locale as Locale,
     path: `/terms-of-service`,
     canonicalUrl: `/terms-of-service`,

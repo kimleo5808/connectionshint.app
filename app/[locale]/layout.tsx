@@ -9,6 +9,7 @@ import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { siteConfig } from "@/config/site";
 import { DEFAULT_LOCALE, Locale, routing } from "@/i18n/routing";
 import { constructMetadata } from "@/lib/metadata";
+import { JsonLd, websiteSchema } from "@/lib/jsonld";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import "@/styles/loading.css";
@@ -84,7 +85,9 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale || DEFAULT_LOCALE} suppressHydrationWarning>
-      <head />
+      <head>
+        <JsonLd data={websiteSchema()} />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background flex flex-col antialiased",

@@ -17,6 +17,10 @@ export async function generateMetadata({
     title: "The Forge Codes: Latest Active & Expired Auto-Collected List",
     description:
       "Get the latest the forge codes with auto-collected active and expired status, timestamps, redeem steps, and daily archive links.",
+    keywords: [
+      "the forge codes", "the forge codes today", "the forge roblox codes",
+      "codes for the forge roblox", "the forge codes list", "the forge active codes",
+    ],
     locale: locale as Locale,
     path: "/the-forge-codes",
     canonicalUrl: "/the-forge-codes",

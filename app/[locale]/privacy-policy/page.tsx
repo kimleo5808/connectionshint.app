@@ -50,6 +50,9 @@ export async function generateMetadata({
     page: "PrivacyPolicy",
     title: t("title"),
     description: t("description"),
+    keywords: [
+      "theforgecodes privacy policy", "the forge codes privacy", "theforgecodes data collection",
+    ],
     locale: locale as Locale,
     path: `/privacy-policy`,
     canonicalUrl: `/privacy-policy`,

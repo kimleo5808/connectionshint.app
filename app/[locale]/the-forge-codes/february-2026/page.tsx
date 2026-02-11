@@ -4,7 +4,9 @@ import {
   forgeLatestSnapshot,
   getForgeMonthSnapshots,
 } from "@/lib/forge-data";
+import { BASE_URL } from "@/config/site";
 import { Locale } from "@/i18n/routing";
+import { breadcrumbSchema, JsonLd } from "@/lib/jsonld";
 import { constructMetadata } from "@/lib/metadata";
 import { Metadata } from "next";
 
@@ -79,6 +81,10 @@ export async function generateMetadata({
     title: "The Forge Codes February 2026: Monthly Trend, Active Flow, and Archive",
     description:
       "Monthly report for The Forge codes in February 2026 with trend analysis, active and expired patterns, redeem usage guidance, and daily archive links.",
+    keywords: [
+      "the forge codes february 2026", "the forge codes feb 2026", "the forge roblox codes february",
+      "the forge codes monthly report", "the forge codes 2026 archive",
+    ],
     locale: locale as Locale,
     path: "/the-forge-codes/february-2026",
     canonicalUrl: "/the-forge-codes/february-2026",
@@ -172,6 +178,13 @@ export default function February2026Page() {
 
   return (
     <div className="mx-auto w-full max-w-6xl space-y-6 px-4 py-10 sm:px-6 lg:px-8">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: BASE_URL },
+          { name: "The Forge Codes", url: `${BASE_URL}/the-forge-codes` },
+          { name: "February 2026", url: `${BASE_URL}/the-forge-codes/february-2026` },
+        ])}
+      />
       {/* Hero header */}
       <header className="relative overflow-hidden rounded-2xl border border-indigo-200/60 bg-gradient-to-br from-indigo-50 via-white to-violet-50 p-6 dark:border-indigo-900/40 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950">
         <div className="pointer-events-none absolute -left-20 -top-20 h-48 w-48 rounded-full bg-indigo-200/30 blur-3xl dark:bg-indigo-800/20" />
