@@ -37,7 +37,7 @@ export async function constructMetadata({
 
   const imageUrls = images.length > 0
     ? images.map(img => ({
-      url: img.startsWith('http') ? img : `${siteConfig.url}/${img}`,
+      url: img.startsWith('http') ? img : `${siteConfig.url}${img.startsWith('/') ? img : `/${img}`}`,
       alt: pageTitle,
     }))
     : [{

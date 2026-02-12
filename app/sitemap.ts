@@ -1,4 +1,5 @@
 import { siteConfig } from '@/config/site'
+import { GUIDES } from '@/data/guides'
 import { getAllPuzzles } from '@/lib/connections-data'
 import { getPosts } from '@/lib/getBlogs'
 import { MetadataRoute } from 'next'
@@ -15,6 +16,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/connections-hint-faq',
     '/connections-hint',
     '/about',
+    '/contact',
+    '/share',
     '/privacy-policy',
     '/terms-of-service',
   ]
@@ -24,6 +27,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(),
     changeFrequency: (page === '' || page === '/connections-hint-today' ? 'daily' : 'weekly') as ChangeFrequency,
     priority: page === '' ? 1.0 : page === '/connections-hint-today' ? 0.95 : 0.8,
+  }))
+
+  // Letter pages (4-11 letters)
+  const letterPages = [4, 5, 6, 7, 8, 9, 10, 11].map(n => ({
+    url: `${siteUrl}/${n}-letters`,
+    lastModified: new Date(),
+    changeFrequency: 'daily' as ChangeFrequency,
+    priority: 0.6,
+  }))
+
+  // Guide pages
+  const guidesIndex = {
+    url: `${siteUrl}/guides`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as ChangeFrequency,
+    priority: 0.7,
+  }
+
+  const guidePages = GUIDES.map(guide => ({
+    url: `${siteUrl}/guides/${guide.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as ChangeFrequency,
+    priority: 0.7,
   }))
 
   // Puzzle pages
@@ -63,6 +89,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...pages,
+    ...letterPages,
+    guidesIndex,
+    ...guidePages,
     ...puzzlePages,
     blogIndex,
     ...postPages,
