@@ -2,44 +2,25 @@ import type {
   ConnectionsDataFile,
   ConnectionsPuzzle,
 } from "@/types/connections";
-import fs from "fs/promises";
-import path from "path";
+import puzzlesData from "@/data/connections/puzzles.json";
 
-const DATA_PATH = path.join(
-  process.cwd(),
-  "data",
-  "connections",
-  "puzzles.json"
-);
-
-let cachedData: ConnectionsDataFile | null = null;
-
-async function loadData(): Promise<ConnectionsDataFile> {
-  if (cachedData) return cachedData;
-  const raw = await fs.readFile(DATA_PATH, "utf-8");
-  cachedData = JSON.parse(raw) as ConnectionsDataFile;
-  return cachedData;
-}
+const data = puzzlesData as ConnectionsDataFile;
 
 /** Get a puzzle by its date string (YYYY-MM-DD) */
 export async function getPuzzleByDate(
   date: string
 ): Promise<ConnectionsPuzzle | undefined> {
-  const data = await loadData();
   return data.puzzles.find((p) => p.date === date);
 }
 
 /** Get the latest/today's puzzle */
 export async function getLatestPuzzle(): Promise<ConnectionsPuzzle | undefined> {
-  const data = await loadData();
   if (data.puzzles.length === 0) return undefined;
-  // Puzzles are sorted oldest-first; latest is last
   return data.puzzles[data.puzzles.length - 1];
 }
 
 /** Get all puzzles, newest first */
 export async function getAllPuzzles(): Promise<ConnectionsPuzzle[]> {
-  const data = await loadData();
   return [...data.puzzles].reverse();
 }
 
@@ -47,7 +28,6 @@ export async function getAllPuzzles(): Promise<ConnectionsPuzzle[]> {
 export async function getRecentPuzzles(
   count: number = 7
 ): Promise<ConnectionsPuzzle[]> {
-  const data = await loadData();
   return [...data.puzzles].reverse().slice(0, count);
 }
 
@@ -55,7 +35,6 @@ export async function getRecentPuzzles(
 export async function getPuzzlesByMonth(
   yearMonth: string
 ): Promise<ConnectionsPuzzle[]> {
-  const data = await loadData();
   return data.puzzles
     .filter((p) => p.date.startsWith(yearMonth))
     .reverse();
@@ -63,19 +42,16 @@ export async function getPuzzlesByMonth(
 
 /** Get all unique year-month strings available */
 export async function getAvailableMonths(): Promise<string[]> {
-  const data = await loadData();
   const months = new Set(data.puzzles.map((p) => p.date.slice(0, 7)));
   return Array.from(months).sort().reverse();
 }
 
 /** Get total puzzle count */
 export async function getPuzzleCount(): Promise<number> {
-  const data = await loadData();
   return data.puzzles.length;
 }
 
 /** Get the last updated timestamp */
 export async function getLastUpdated(): Promise<string> {
-  const data = await loadData();
   return data.lastUpdated;
 }
