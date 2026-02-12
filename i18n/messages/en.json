@@ -2,6 +2,10 @@
   "Header": {
     "links": [
       {
+        "name": "Connections Hint",
+        "href": "/connections-hint"
+      },
+      {
         "name": "Today's Hints",
         "href": "/connections-hint-today"
       },
