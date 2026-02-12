@@ -75,6 +75,10 @@
           "title": "Word Games",
           "links": [
             {
+              "href": "/4-letters",
+              "name": "4 Letter Wordle"
+            },
+            {
               "href": "/5-letters",
               "name": "5 Letter Wordle"
             },
@@ -85,6 +89,22 @@
             {
               "href": "/7-letters",
               "name": "7 Letter Wordle"
+            },
+            {
+              "href": "/8-letters",
+              "name": "8 Letter Wordle"
+            },
+            {
+              "href": "/9-letters",
+              "name": "9 Letter Wordle"
+            },
+            {
+              "href": "/10-letters",
+              "name": "10 Letter Wordle"
+            },
+            {
+              "href": "/11-letters",
+              "name": "11 Letter Wordle"
             }
           ]
         },

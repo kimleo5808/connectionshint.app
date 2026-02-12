@@ -4,9 +4,10 @@ import { Locale, LOCALES } from "@/i18n/routing";
 import { Link as I18nLink } from "@/i18n/routing";
 import { breadcrumbSchema, JsonLd } from "@/lib/jsonld";
 import { constructMetadata } from "@/lib/metadata";
-import { Gamepad2, Lightbulb, Target, Zap } from "lucide-react";
+import { Gamepad2 } from "lucide-react";
 import { Metadata } from "next";
 import WordleGameLoader from "@/components/wordle/WordleGameLoader";
+import SeoContent from "@/components/wordle/SeoContent";
 
 const WORD_LENGTH = 11;
 
@@ -69,53 +70,8 @@ export default async function LetterGamePage({ params }: { params: Params }) {
         <WordleGameLoader wordLength={WORD_LENGTH} />
       </section>
 
-      {/* Strategies */}
-      <section className="mt-10">
-        <h2 className="font-heading text-2xl font-bold text-foreground">
-          <Target className="mr-2 inline h-5 w-5 text-blue-500" />
-          Strategies for {WORD_LENGTH}-Letter Words
-        </h2>
-        <div className="mt-4 grid gap-3 sm:grid-cols-3">
-          {game.strategies.map((s, i) => (
-            <div
-              key={i}
-              className="rounded-xl border border-blue-100 bg-card p-4 dark:border-blue-900/40"
-            >
-              <h3 className="font-heading text-sm font-bold text-foreground">
-                {s.title}
-              </h3>
-              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-                {s.content}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* About */}
-      <section className="mt-10">
-        <h2 className="font-heading text-2xl font-bold text-foreground">
-          <Lightbulb className="mr-2 inline h-5 w-5 text-blue-500" />
-          About {game.title}
-        </h2>
-        <p className="mt-3 leading-relaxed text-muted-foreground">
-          {game.intro}
-        </p>
-        <h3 className="mt-6 font-heading text-lg font-semibold text-foreground">
-          Benefits of Playing
-        </h3>
-        <ul className="mt-3 space-y-2">
-          {game.benefits.map((b, i) => (
-            <li
-              key={i}
-              className="flex items-start gap-2 text-sm text-muted-foreground"
-            >
-              <Zap className="mt-0.5 h-4 w-4 shrink-0 text-blue-500" />
-              <span>{b}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
+      {/* SEO Content */}
+      <SeoContent wordLength={WORD_LENGTH} />
 
       {/* Other Games */}
       <section className="mt-10 border-t border-blue-100 pt-8 dark:border-blue-900/40">
