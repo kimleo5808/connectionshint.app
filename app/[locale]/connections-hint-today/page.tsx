@@ -1,4 +1,5 @@
 import { AnswerReveal } from "@/components/connections/AnswerReveal";
+import ConnectionsGame from "@/components/connections/ConnectionsGame";
 import { HintCardList } from "@/components/connections/HintCard";
 import { BASE_URL } from "@/config/site";
 import { GUIDES } from "@/data/guides";
@@ -138,11 +139,6 @@ export default async function ConnectionsHintTodayPage({
   const formattedDate = dayjs(puzzle.date).format("MMMM D, YYYY");
   const dayOfWeek = dayjs(puzzle.date).format("dddd");
 
-  // All words scrambled
-  const allWords = [...puzzle.answers.flatMap((g) => g.members)].sort(
-    () => 0.5 - Math.random()
-  );
-
   const guides = GUIDES.slice(0, 6);
 
   return (
@@ -177,21 +173,15 @@ export default async function ConnectionsHintTodayPage({
         </p>
       </header>
 
-      {/* Blue banner with word chips */}
-      <section className="rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 p-6 sm:p-8 mb-8">
-        <h2 className="text-center font-heading text-lg font-bold text-white mb-4">
-          Today&apos;s 16 Words
+      {/* Playable Connections Game */}
+      <section className="rounded-2xl border border-border bg-card p-5 sm:p-8 mb-8 shadow-sm">
+        <h2 className="text-center font-heading text-lg font-bold text-foreground mb-1">
+          Play Today&apos;s Puzzle
         </h2>
-        <div className="flex flex-wrap justify-center gap-2">
-          {allWords.map((word) => (
-            <span
-              key={word}
-              className="rounded-lg bg-blue-600/20 border border-blue-500/30 px-4 py-2 text-sm font-mono font-bold text-blue-200 uppercase tracking-wide"
-            >
-              {word}
-            </span>
-          ))}
-        </div>
+        <p className="text-center text-xs text-muted-foreground mb-5">
+          Group the 16 words into 4 categories of 4
+        </p>
+        <ConnectionsGame groups={puzzle.answers} />
       </section>
 
       <div className="flex flex-col gap-8 lg:flex-row">
