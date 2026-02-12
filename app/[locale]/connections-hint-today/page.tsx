@@ -212,12 +212,12 @@ export default async function ConnectionsHintTodayPage({
         <aside className="w-full lg:w-72 shrink-0">
           <div className="rounded-2xl border border-border bg-card p-4 shadow-sm sticky top-24">
             <h3 className="font-heading text-sm font-bold text-foreground mb-3">
-              Recent Puzzles
+              More Connections Hints
             </h3>
-            <div className="space-y-2">
+            <div className="space-y-1">
               {recentPuzzles
                 .filter((p) => p.date !== puzzle.date)
-                .slice(0, 6)
+                .slice(0, 8)
                 .map((p) => (
                   <Link
                     key={p.date}
@@ -225,11 +225,19 @@ export default async function ConnectionsHintTodayPage({
                     className="flex items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors hover:bg-blue-50 dark:hover:bg-blue-950/20"
                   >
                     <span className="font-medium text-foreground">
-                      #{p.id} — {dayjs(p.date).format("MMM D")}
+                      Connections Hints #{p.id}
                     </span>
                     <ArrowRight className="h-3 w-3 text-muted-foreground" />
                   </Link>
                 ))}
+            </div>
+            <div className="mt-3 pt-3 border-t border-border">
+              <Link
+                href="/connections-hint"
+                className="block text-center text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 transition-colors"
+              >
+                View All Hints →
+              </Link>
             </div>
           </div>
         </aside>
