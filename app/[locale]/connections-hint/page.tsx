@@ -23,7 +23,6 @@ const TAG_LINKS = [
   { label: "Common Patterns", href: "/blog/common-connections-patterns" },
   { label: "Beginner Guide", href: "/blog/beginners-guide-connections" },
   { label: "FAQ", href: "/connections-hint-faq" },
-  { label: "Full Archive", href: "/connections-hint-archive" },
 ];
 
 export async function generateMetadata({

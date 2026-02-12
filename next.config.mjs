@@ -50,6 +50,11 @@ const nextConfig = {
         destination: "/connections-hint/2025-08-20",
         permanent: true,
       },
+      {
+        source: "/connections-hint-archive",
+        destination: "/connections-hint",
+        permanent: true,
+      },
     ];
   },
 };

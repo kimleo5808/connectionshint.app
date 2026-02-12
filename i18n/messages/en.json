@@ -17,11 +17,7 @@
         "name": "FAQ",
         "href": "/connections-hint-faq"
       },
-      {
-        "name": "Archive",
-        "href": "/connections-hint-archive"
-      },
-      {
+{
         "name": "Guides",
         "href": "/guides"
       }
@@ -43,10 +39,6 @@
             {
               "href": "/connections-hint-today",
               "name": "Today's Hints"
-            },
-            {
-              "href": "/connections-hint-archive",
-              "name": "Puzzle Archive"
             }
           ]
         },
@@ -164,10 +156,6 @@
   "FAQ": {
     "title": "Connections Hint FAQ — Common Questions Answered",
     "description": "Frequently asked questions about NYT Connections, puzzle strategies, and how our hint system works."
-  },
-  "Archive": {
-    "title": "Connections Hint Archive — Past Puzzle Answers & History",
-    "description": "Browse every past NYT Connections puzzle organized by date. Find answers, themes, and difficulty ratings for any day."
   },
   "HowToPlay": {
     "title": "How to Play NYT Connections — Complete Guide",

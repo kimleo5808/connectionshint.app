@@ -259,7 +259,7 @@ export default async function HowToPlayPage({ params }: { params: Params }) {
               Today&apos;s Hints
             </Link>
             <Link
-              href="/connections-hint-archive"
+              href="/connections-hint"
               className="rounded-xl border-2 border-white/30 px-6 py-2.5 text-sm font-bold text-white transition-all hover:bg-white/10"
             >
               Browse Archive

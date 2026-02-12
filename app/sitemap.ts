@@ -13,7 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/connections-hint-today',
     '/how-to-play-connections',
     '/connections-hint-faq',
-    '/connections-hint-archive',
+    '/connections-hint',
     '/about',
     '/privacy-policy',
     '/terms-of-service',

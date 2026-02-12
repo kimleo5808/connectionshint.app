@@ -69,7 +69,7 @@ export default async function HomeComponent() {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
-              href="/connections-hint-archive"
+              href="/connections-hint"
               className="inline-flex items-center gap-2 rounded-xl border-2 border-slate-600 px-6 py-3.5 text-sm font-semibold text-slate-200 transition-all hover:border-slate-500 hover:bg-slate-800"
             >
               {t("hero.ctaArchive")}
@@ -142,7 +142,7 @@ export default async function HomeComponent() {
               Recent Connections Answers
             </h2>
             <Link
-              href="/connections-hint-archive"
+              href="/connections-hint"
               className="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors dark:text-blue-400"
             >
               {t("recentPuzzles.viewAll")}
