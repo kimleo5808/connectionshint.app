@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-13T17:12:52.552Z",
+  "lastUpdated": "2026-02-14T03:11:03.521Z",
   "puzzles": [
     {
       "id": 1,
@@ -44893,6 +44893,52 @@
             "RESEED",
             "SYNC",
             "WAYNE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1033,
+      "date": "2026-02-14",
+      "answers": [
+        {
+          "level": 0,
+          "group": "UPTICK",
+          "members": [
+            "HIKE",
+            "JUMP",
+            "RISE",
+            "SPIKE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "PROTUBERANCE",
+          "members": [
+            "BUMP",
+            "HUMP",
+            "LUMP",
+            "MOUND"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "TOM HANKS ROLES",
+          "members": [
+            "GUMP",
+            "PHILLIPS",
+            "SULLY",
+            "WOODY"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "WORDS BEFORE \"MINT\"",
+          "members": [
+            "BREATH",
+            "JUNIOR",
+            "PEPPER",
+            "SPEAR"
           ]
         }
       ]
