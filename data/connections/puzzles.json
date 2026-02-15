@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-14T16:55:50.768Z",
+  "lastUpdated": "2026-02-15T03:25:33.442Z",
   "puzzles": [
     {
       "id": 1,
@@ -44939,6 +44939,52 @@
             "JUNIOR",
             "PEPPER",
             "SPEAR"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1025,
+      "date": "2026-02-15",
+      "answers": [
+        {
+          "level": 0,
+          "group": "REFERENCE BOOKS",
+          "members": [
+            "ATLAS",
+            "DICTIONARY",
+            "ENCYCLOPEDIA",
+            "THESAURUS"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "SOMETHING THAT BRINGS BACK MEMORIES",
+          "members": [
+            "ECHO",
+            "REMINDER",
+            "TRACE",
+            "VESTIGE"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "KINDS OF COMPLEXES",
+          "members": [
+            "ELECTRA",
+            "INFERIORITY",
+            "OEDIPUS",
+            "SUPERIORITY"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "STARTING WITH WAYS TO REACH SOMEONE VIA PHONE",
+          "members": [
+            "BUZZARD",
+            "CALLIOPE",
+            "DIALECT",
+            "RINGMASTER"
           ]
         }
       ]
