@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-15T16:55:56.114Z",
+  "lastUpdated": "2026-02-16T03:23:21.195Z",
   "puzzles": [
     {
       "id": 1,
@@ -44985,6 +44985,52 @@
             "CALLIOPE",
             "DIALECT",
             "RINGMASTER"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1039,
+      "date": "2026-02-16",
+      "answers": [
+        {
+          "level": 0,
+          "group": "KNEE SLAPPER",
+          "members": [
+            "HOOT",
+            "LAUGH",
+            "RIOT",
+            "SCREAM"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "HOMOPHONES",
+          "members": [
+            "DO",
+            "DOE",
+            "DOH",
+            "DOUGH"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "SOUNDS A CHICKEN MAKES",
+          "members": [
+            "BUCK",
+            "CACKLE",
+            "CLUCK",
+            "SQUAWK"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "STRESS RESPONSES",
+          "members": [
+            "FAWN",
+            "FIGHT",
+            "FLIGHT",
+            "FREEZE"
           ]
         }
       ]
