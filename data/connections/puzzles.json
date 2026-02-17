@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-16T17:09:56.095Z",
+  "lastUpdated": "2026-02-17T03:17:50.535Z",
   "puzzles": [
     {
       "id": 1,
@@ -45031,6 +45031,52 @@
             "FIGHT",
             "FLIGHT",
             "FREEZE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1065,
+      "date": "2026-02-17",
+      "answers": [
+        {
+          "level": 0,
+          "group": "ZOOM",
+          "members": [
+            "DART",
+            "FLASH",
+            "SPEED",
+            "ZIP"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "SAUCES IN CHINESE CUISINE",
+          "members": [
+            "HOISIN",
+            "OYSTER",
+            "PLUM",
+            "SOY"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "RIFFLE (THROUGH)",
+          "members": [
+            "FLIP",
+            "LEAF",
+            "SKIM",
+            "THUMB"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "STARTING WITH SYNONYMS FOR \"DUD\"",
+          "members": [
+            "BOMBAY",
+            "BUSTLE",
+            "FLOPPY",
+            "MISSUS"
           ]
         }
       ]
