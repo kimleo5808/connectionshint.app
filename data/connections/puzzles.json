@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-20T17:06:09.174Z",
+  "lastUpdated": "2026-02-21T03:06:11.484Z",
   "puzzles": [
     {
       "id": 1,
@@ -45215,6 +45215,52 @@
             "DONKEY",
             "PLAYING CARD",
             "SOCKET"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1067,
+      "date": "2026-02-21",
+      "answers": [
+        {
+          "level": 0,
+          "group": "EXPERIENCE",
+          "members": [
+            "BACKGROUND",
+            "HISTORY",
+            "LIFE",
+            "PAST"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "ATTENDANCE STATUS",
+          "members": [
+            "ABSENT",
+            "EXCUSED",
+            "LATE",
+            "PRESENT"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "COMMENTARY ABOUT YOUR CONNECTIONS RESULTS",
+          "members": [
+            "GREAT",
+            "PERFECT",
+            "PHEW",
+            "SOLID"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "CAR BRANDS PLUS TWO LETTERS",
+          "members": [
+            "AUDITS",
+            "DODGERS",
+            "INFINITIVE",
+            "MINION"
           ]
         }
       ]
