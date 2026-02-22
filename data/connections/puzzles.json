@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-21T16:54:29.933Z",
+  "lastUpdated": "2026-02-22T03:19:30.599Z",
   "puzzles": [
     {
       "id": 1,
@@ -45261,6 +45261,52 @@
             "DODGERS",
             "INFINITIVE",
             "MINION"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1070,
+      "date": "2026-02-22",
+      "answers": [
+        {
+          "level": 0,
+          "group": "ONE WHO DOESN'T FIT IN",
+          "members": [
+            "BLACK SHEEP",
+            "MISFIT",
+            "OUTCAST",
+            "REJECT"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "DESCRIPTORS FOR GRAYING HAIR",
+          "members": [
+            "DISTINGUISHED",
+            "FLECKED",
+            "SALT-AND-PEPPER",
+            "SILVER"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "CLASSIC COMIC STRIPS",
+          "members": [
+            "BLONDIE",
+            "BLOOM COUNTY",
+            "PEANUTS",
+            "THE FAR SIDE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "ASSOCIATED WITH THEODORE ROOSEVELT",
+          "members": [
+            "BIG STICK",
+            "BULL MOOSE",
+            "ROUGH RIDERS",
+            "TEDDY BEAR"
           ]
         }
       ]
