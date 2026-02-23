@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-22T16:55:28.049Z",
+  "lastUpdated": "2026-02-23T03:23:23.752Z",
   "puzzles": [
     {
       "id": 1,
@@ -45307,6 +45307,52 @@
             "BULL MOOSE",
             "ROUGH RIDERS",
             "TEDDY BEAR"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1068,
+      "date": "2026-02-23",
+      "answers": [
+        {
+          "level": 0,
+          "group": "EAT VORACIOUSLY",
+          "members": [
+            "BOLT",
+            "GORGE",
+            "INHALE",
+            "SCARF"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "CONICAL THINGS",
+          "members": [
+            "CHRISTMAS TREE",
+            "CONE",
+            "PARTY HAT",
+            "VOLCANO"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "POSE",
+          "members": [
+            "BLUFF",
+            "FRONT",
+            "MASQUERADE",
+            "POSTURE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "SETTINGS FOR A KISS",
+          "members": [
+            "BLARNEY STONE",
+            "MISTLETOE",
+            "NEW YEAR'S EVE",
+            "WEDDING"
           ]
         }
       ]
