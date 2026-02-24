@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-23T17:36:35.533Z",
+  "lastUpdated": "2026-02-24T03:18:36.895Z",
   "puzzles": [
     {
       "id": 1,
@@ -45353,6 +45353,52 @@
             "MISTLETOE",
             "NEW YEAR'S EVE",
             "WEDDING"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1066,
+      "date": "2026-02-24",
+      "answers": [
+        {
+          "level": 0,
+          "group": "CALCIUM-BASED STRUCTURES",
+          "members": [
+            "BONES",
+            "CORAL",
+            "SHELLS",
+            "TEETH"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "SYMBOLS OF SCOTLAND",
+          "members": [
+            "BAGPIPES",
+            "SCOTTIE",
+            "TARTAN",
+            "THISTLE"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "FAMOUS PLAYWRIGHTS",
+          "members": [
+            "CHEKHOV",
+            "COWARD",
+            "MILLER",
+            "SHAW"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "___ BEAM",
+          "members": [
+            "BALANCE",
+            "JIM",
+            "LASER",
+            "TRACTOR"
           ]
         }
       ]
