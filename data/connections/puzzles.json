@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-28T16:48:38.821Z",
+  "lastUpdated": "2026-03-01T03:26:01.812Z",
   "puzzles": [
     {
       "id": 1,
@@ -45583,6 +45583,52 @@
             "NOVAK",
             "START",
             "SUNG"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1075,
+      "date": "2026-03-01",
+      "answers": [
+        {
+          "level": 0,
+          "group": "LITTLE BITE",
+          "members": [
+            "CANAPÉ",
+            "FINGER FOOD",
+            "HORS D'OEUVRE",
+            "TAPA"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "CONSTRUCTION EQUIPMENT",
+          "members": [
+            "HARD HAT",
+            "LADDER",
+            "NAIL GUN",
+            "TOOL BELT"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "VACATION EMOJI",
+          "members": [
+            "AIRPLANE",
+            "LUGGAGE",
+            "PALM TREE",
+            "SMILING FACE WITH SUNGLASSES"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "THINGS YOU DON'T EAT THAT END IN FOODS",
+          "members": [
+            "COPYPASTA",
+            "JOHANNESBURGER",
+            "KNUCKLE SANDWICH",
+            "LICORICE PIZZA"
           ]
         }
       ]
