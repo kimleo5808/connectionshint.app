@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-01T16:50:43.498Z",
+  "lastUpdated": "2026-03-02T03:14:05.527Z",
   "puzzles": [
     {
       "id": 1,
@@ -45629,6 +45629,52 @@
             "JOHANNESBURGER",
             "KNUCKLE SANDWICH",
             "LICORICE PIZZA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1071,
+      "date": "2026-03-02",
+      "answers": [
+        {
+          "level": 0,
+          "group": "GYMNASTICS APPARATUS",
+          "members": [
+            "BEAM",
+            "HORSE",
+            "RINGS",
+            "VAULT"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "STATUS",
+          "members": [
+            "POSITION",
+            "RANK",
+            "STANDING",
+            "STATION"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "BASEBALL CALLS",
+          "members": [
+            "BALL",
+            "FOUL",
+            "SAFE",
+            "STRIKE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "___ CHICKEN",
+          "members": [
+            "FUNKY",
+            "POPCORN",
+            "RUBBER",
+            "SPRING"
           ]
         }
       ]
