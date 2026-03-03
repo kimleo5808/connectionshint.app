@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-02T17:11:03.832Z",
+  "lastUpdated": "2026-03-03T03:17:55.398Z",
   "puzzles": [
     {
       "id": 1,
@@ -45675,6 +45675,52 @@
             "POPCORN",
             "RUBBER",
             "SPRING"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1072,
+      "date": "2026-03-03",
+      "answers": [
+        {
+          "level": 0,
+          "group": "\"BIG\" THINGS",
+          "members": [
+            "APPLE",
+            "BROTHER",
+            "DIPPER",
+            "MAC"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "BE ADJACENT TO",
+          "members": [
+            "ABUT",
+            "FLANK",
+            "NEIGHBOR",
+            "TOUCH"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "SEEN IN A CLOSET",
+          "members": [
+            "HANGER",
+            "HOOK",
+            "ROD",
+            "SHELF"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "STARTING WITH SYNONYMS FOR \"SPEEDY\"",
+          "members": [
+            "BRISKET",
+            "FASTIDIOUS",
+            "FLEETWOOD",
+            "QUICKSAND"
           ]
         }
       ]
