@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-06T17:05:16.867Z",
+  "lastUpdated": "2026-03-07T03:01:16.107Z",
   "puzzles": [
     {
       "id": 1,
@@ -45859,6 +45859,52 @@
             "MARBLE",
             "SENSE",
             "WIT"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1028,
+      "date": "2026-03-07",
+      "answers": [
+        {
+          "level": 0,
+          "group": "$1",
+          "members": [
+            "BUCK",
+            "DOLLAR",
+            "ONE",
+            "SINGLE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "\"WHEREFORE ART THOU ROMEO?\"",
+          "members": [
+            "ART",
+            "ROMEO",
+            "THOU",
+            "WHEREFORE"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "WORDS BEFORE \"CASTLE\"",
+          "members": [
+            "BOUNCY",
+            "NEW",
+            "SAND",
+            "WHITE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "WHERE YOU MIGHT MAKE A CONNECTION",
+          "members": [
+            "UNDEFINED",
+            "AIRPORT",
+            "DATING APP",
+            "INTERNET CAFE"
           ]
         }
       ]
