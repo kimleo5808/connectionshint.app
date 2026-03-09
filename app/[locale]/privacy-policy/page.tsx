@@ -1,36 +1,9 @@
-import MDXComponents from "@/components/mdx/MDXComponents";
+import MarkdownContent from "@/components/content/MarkdownContent";
+import { STATIC_PAGE_CONTENT } from "@/data/static-content";
 import { Locale, LOCALES } from "@/i18n/routing";
 import { constructMetadata } from "@/lib/metadata";
-import fs from "fs/promises";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { MDXRemote } from "next-mdx-remote-client/rsc";
-import path from "path";
-import remarkGfm from "remark-gfm";
-
-const options = {
-  parseFrontmatter: true,
-  mdxOptions: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [],
-  },
-};
-
-async function getMDXContent(locale: string) {
-  const filePath = path.join(
-    process.cwd(),
-    "content",
-    "privacy-policy",
-    `${locale}.mdx`
-  );
-  try {
-    const content = await fs.readFile(filePath, "utf-8");
-    return content;
-  } catch (error) {
-    console.error(`Error reading MDX file: ${error}`);
-    return "";
-  }
-}
 
 type Params = Promise<{
   locale: string;
@@ -64,8 +37,8 @@ export default async function PrivacyPolicyPage({
 }: {
   params: Params;
 }) {
-  const { locale } = await params;
-  const content = await getMDXContent(locale);
+  await params;
+  const content = STATIC_PAGE_CONTENT["privacy-policy"].body;
 
   return (
     <div className="mx-auto w-full max-w-4xl space-y-6 px-4 py-10 sm:px-6 lg:px-8">
@@ -82,11 +55,7 @@ export default async function PrivacyPolicyPage({
       </header>
 
       <article className="rounded-2xl border border-blue-100 bg-card p-6 dark:border-blue-900/40 sm:p-8">
-        <MDXRemote
-          source={content}
-          components={MDXComponents}
-          options={options}
-        />
+        <MarkdownContent markdown={content} />
       </article>
     </div>
   );

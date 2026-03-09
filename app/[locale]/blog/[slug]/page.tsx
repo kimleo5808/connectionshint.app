@@ -1,5 +1,5 @@
 import { Callout } from "@/components/mdx/Callout";
-import MDXComponents from "@/components/mdx/MDXComponents";
+import MarkdownContent from "@/components/content/MarkdownContent";
 import { BASE_URL } from "@/config/site";
 import { Locale, LOCALES } from "@/i18n/routing";
 import { getPosts } from "@/lib/getBlogs";
@@ -7,15 +7,7 @@ import { articleSchema, breadcrumbSchema, JsonLd } from "@/lib/jsonld";
 import { constructMetadata } from "@/lib/metadata";
 import { BlogPost } from "@/types/blog";
 import { Metadata } from "next";
-import { MDXRemote } from "next-mdx-remote-client/rsc";
 import { notFound } from "next/navigation";
-import remarkGfm from "remark-gfm";
-
-const mdxOptions = {
-  mdxOptions: {
-    remarkPlugins: [remarkGfm],
-  },
-};
 
 type Params = Promise<{
   locale: string;
@@ -106,11 +98,7 @@ export default async function BlogPage({ params }: { params: Params }) {
         <></>
       )}
       {post.description && <Callout>{post.description}</Callout>}
-      <MDXRemote
-        source={post?.content || ""}
-        components={MDXComponents}
-        options={mdxOptions}
-      />
+      <MarkdownContent markdown={post.content || ""} />
     </div>
   );
 }
