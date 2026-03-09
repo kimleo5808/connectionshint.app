@@ -79,20 +79,6 @@ const nextConfig = {
       },
     ];
   },
-  async rewrites() {
-    return {
-      beforeFiles: [
-        {
-          source: "/",
-          destination: "/en",
-        },
-        {
-          source: "/:path((?!en(?:/|$)|api|_next|_vercel|.*\\..*).*)",
-          destination: "/en/:path",
-        },
-      ],
-    };
-  },
 };
 
 export default withNextIntl(nextConfig);
