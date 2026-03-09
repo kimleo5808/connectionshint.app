@@ -15,7 +15,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-type Params = Promise<{ locale: string; year: string; month: string }>;
+type Params = Promise<{ locale: string; date: string; month: string }>;
 
 function getMonthKey(year: string, month: string) {
   return `${year}-${month}`;
@@ -30,7 +30,7 @@ export async function generateMetadata({
 }: {
   params: Params;
 }): Promise<Metadata> {
-  const { locale, year, month } = await params;
+  const { locale, date: year, month } = await params;
   const yearMonth = getMonthKey(year, month);
   const puzzles = await getPuzzlesByMonth(yearMonth);
 
@@ -61,7 +61,7 @@ export default async function ConnectionsMonthArchivePage({
 }: {
   params: Params;
 }) {
-  const { year, month } = await params;
+  const { date: year, month } = await params;
   const yearMonth = getMonthKey(year, month);
   const availableMonths = await getAvailableMonths();
 
@@ -318,13 +318,13 @@ export default async function ConnectionsMonthArchivePage({
 
 export async function generateStaticParams() {
   const months = await getAvailableMonths();
-  const params: { locale: string; year: string; month: string }[] = [];
+  const params: { locale: string; date: string; month: string }[] = [];
 
   for (const locale of LOCALES) {
     for (const yearMonth of months) {
       params.push({
         locale,
-        year: yearMonth.slice(0, 4),
+        date: yearMonth.slice(0, 4),
         month: yearMonth.slice(5, 7),
       });
     }
