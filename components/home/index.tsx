@@ -1,4 +1,4 @@
-import { ClickToReveal } from "@/components/connections/ClickToReveal";
+﻿import { ClickToReveal } from "@/components/connections/ClickToReveal";
 import { CountdownTimer } from "@/components/connections/CountdownTimer";
 import { GUIDES } from "@/data/guides";
 import { LETTER_GAMES } from "@/data/letter-games";
@@ -23,7 +23,13 @@ import { getTranslations } from "next-intl/server";
 
 const FEATURE_ICONS = [Lightbulb, Grid3X3, Clock, Puzzle, Shield, Sparkles];
 
-function FaqAccordionItem({ question, answer }: { question: string; answer: string }) {
+function FaqAccordionItem({
+  question,
+  answer,
+}: {
+  question: string;
+  answer: string;
+}) {
   return (
     <details className="group rounded-xl border border-border bg-card transition-colors open:bg-blue-50/30 dark:open:bg-blue-950/10">
       <summary className="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left font-semibold text-foreground transition-colors hover:text-blue-600 dark:hover:text-blue-400 [&::-webkit-details-marker]:hidden">
@@ -48,21 +54,23 @@ export default async function HomeComponent() {
     ? dayjs(latestPuzzle.date).format("MMMM D, YYYY")
     : "";
 
-  // Scramble words for display
   const allWords = latestPuzzle
-    ? [...latestPuzzle.answers.flatMap((g) => g.members)].sort(() => 0.5 - Math.random())
+    ? [...latestPuzzle.answers.flatMap((g) => g.members)].sort(
+        () => 0.5 - Math.random()
+      )
     : [];
 
   return (
     <div className="w-full grid-bg">
-      {/* Hero Section - Dark blue */}
       <section className="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 py-16 sm:py-20">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <h1 className="font-heading text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
             {t("hero.title")}
           </h1>
           <p className="mt-4 text-lg text-slate-300 sm:text-xl">
-            {t("hero.subtitle")}
+            Use progressive clues for today&apos;s board, then move into the
+            archive and guides when you want to review patterns instead of
+            spoiling the solve too early.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link
@@ -83,7 +91,6 @@ export default async function HomeComponent() {
         </div>
       </section>
 
-      {/* Today's Clues Section */}
       {latestPuzzle && (
         <section className="bg-slate-800 py-12">
           <div className="mx-auto max-w-4xl px-4 sm:px-6">
@@ -92,42 +99,38 @@ export default async function HomeComponent() {
                 Today&apos;s Connections Words
               </h2>
               <p className="mt-2 text-sm text-slate-400">
-                Puzzle #{latestPuzzle.id} — {todayDate}
+                Puzzle #{latestPuzzle.id} - {todayDate}
               </p>
             </div>
 
-            {/* Word chips */}
             <div className="mt-6 flex flex-wrap justify-center gap-2">
               {allWords.map((word) => (
                 <span
                   key={word}
-                  className="rounded-lg bg-blue-600/20 border border-blue-500/30 px-4 py-2 text-sm font-mono font-bold text-blue-200 uppercase tracking-wide"
+                  className="rounded-lg border border-blue-500/30 bg-blue-600/20 px-4 py-2 text-sm font-mono font-bold uppercase tracking-wide text-blue-200"
                 >
                   {word}
                 </span>
               ))}
             </div>
 
-            {/* Click to reveal */}
             <div className="mt-8 flex justify-center">
               <ClickToReveal puzzle={latestPuzzle} />
             </div>
 
-            {/* Link to full hints */}
             <div className="mt-4 text-center">
               <Link
                 href="/connections-hint-today"
-                className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
+                className="text-sm text-blue-400 transition-colors hover:text-blue-300"
               >
-                Need progressive hints? Click here for step-by-step clues →
+                Need progressive hints? Click here for step-by-step clues {"->"}
               </Link>
             </div>
           </div>
         </section>
       )}
 
-      {/* Countdown Timer */}
-      <section className="py-12 bg-background">
+      <section className="bg-background py-12">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <h2 className="font-heading text-lg font-bold text-foreground">
             {t("hero.countdown")}
@@ -138,16 +141,15 @@ export default async function HomeComponent() {
         </div>
       </section>
 
-      {/* Recent Puzzles Grid */}
-      <section className="py-12 bg-background">
+      <section className="bg-background py-12">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-8">
+          <div className="mb-8 flex items-center justify-between">
             <h2 className="font-heading text-2xl font-bold text-foreground">
               Recent Connections Answers
             </h2>
             <Link
               href="/connections-hint"
-              className="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors dark:text-blue-400"
+              className="text-sm font-medium text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400"
             >
               {t("recentPuzzles.viewAll")}
             </Link>
@@ -155,7 +157,10 @@ export default async function HomeComponent() {
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {recentPuzzles.map((puzzle) => {
-              const sorted = [...puzzle.answers].sort((a, b) => a.level - b.level);
+              const sorted = [...puzzle.answers].sort(
+                (a, b) => a.level - b.level
+              );
+
               return (
                 <Link
                   key={puzzle.date}
@@ -171,11 +176,14 @@ export default async function HomeComponent() {
                     </span>
                   </div>
                   <h3 className="mt-3 text-sm font-bold text-foreground">
-                    Connections #{puzzle.id} Answer & Hints
+                    Connections #{puzzle.id} Answer &amp; Hints
                   </h3>
                   <div className="mt-2 space-y-1">
                     {sorted.slice(0, 2).map((g) => (
-                      <p key={g.level} className="truncate text-xs text-muted-foreground">
+                      <p
+                        key={g.level}
+                        className="truncate text-xs text-muted-foreground"
+                      >
                         {g.members.join(", ")}
                       </p>
                     ))}
@@ -191,14 +199,16 @@ export default async function HomeComponent() {
         </div>
       </section>
 
-      {/* What is NYT Connections? */}
-      <section className="py-12 bg-muted/30">
+      <section className="bg-muted/30 py-12">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <h2 className="font-heading text-2xl font-bold text-foreground sm:text-3xl">
             What is NYT Connections?
           </h2>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            NYT Connections is a daily word puzzle by The New York Times where you sort 16 words into four groups of four, each sharing a hidden connection. Groups are color-coded by difficulty: yellow (easiest), green, blue, and purple (hardest).
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+            NYT Connections is a daily word puzzle by The New York Times where
+            you sort 16 words into four groups of four, each sharing a hidden
+            connection. Groups are color-coded by difficulty: yellow
+            (easiest), green, blue, and purple (hardest).
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
@@ -206,7 +216,9 @@ export default async function HomeComponent() {
               <div className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
                 <Grid3X3 className="h-7 w-7" />
               </div>
-              <h3 className="mt-3 text-sm font-bold text-foreground">16 Words</h3>
+              <h3 className="mt-3 text-sm font-bold text-foreground">
+                16 Words
+              </h3>
               <p className="mt-1 text-sm text-muted-foreground">
                 Sort them into four groups of four connected words.
               </p>
@@ -215,7 +227,9 @@ export default async function HomeComponent() {
               <div className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
                 <Puzzle className="h-7 w-7" />
               </div>
-              <h3 className="mt-3 text-sm font-bold text-foreground">4 Groups</h3>
+              <h3 className="mt-3 text-sm font-bold text-foreground">
+                4 Groups
+              </h3>
               <p className="mt-1 text-sm text-muted-foreground">
                 Each group shares a hidden connection or theme.
               </p>
@@ -224,7 +238,9 @@ export default async function HomeComponent() {
               <div className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
                 <BookOpen className="h-7 w-7" />
               </div>
-              <h3 className="mt-3 text-sm font-bold text-foreground">Daily Puzzle</h3>
+              <h3 className="mt-3 text-sm font-bold text-foreground">
+                Daily Puzzle
+              </h3>
               <p className="mt-1 text-sm text-muted-foreground">
                 A new puzzle is released every day at midnight ET.
               </p>
@@ -233,8 +249,7 @@ export default async function HomeComponent() {
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="py-12 bg-background">
+      <section className="bg-background py-12">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-center font-heading text-2xl font-bold text-foreground sm:text-3xl">
             Why Use ConnectionsHint?
@@ -242,6 +257,7 @@ export default async function HomeComponent() {
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[0, 1, 2, 3, 4, 5].map((index) => {
               const Icon = FEATURE_ICONS[index];
+
               return (
                 <div
                   key={index}
@@ -263,10 +279,9 @@ export default async function HomeComponent() {
         </div>
       </section>
 
-      {/* FAQ - 2 column */}
-      <section className="py-12 bg-muted/30">
+      <section className="bg-muted/30 py-12">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="font-heading text-2xl font-bold text-foreground text-center">
+          <h2 className="text-center font-heading text-2xl font-bold text-foreground">
             {t("faq.title")}
           </h2>
           <p className="mt-2 text-center text-muted-foreground">
@@ -284,8 +299,7 @@ export default async function HomeComponent() {
         </div>
       </section>
 
-      {/* Word Games Grid */}
-      <section className="py-12 bg-background">
+      <section className="bg-background py-12">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-1.5 text-sm font-medium text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
@@ -293,7 +307,7 @@ export default async function HomeComponent() {
               Word Games
             </div>
             <h2 className="mt-4 font-heading text-2xl font-bold text-foreground sm:text-3xl">
-              Play Wordle — Choose Your Word Length
+              Play Wordle - Choose Your Word Length
             </h2>
             <p className="mt-2 text-muted-foreground">
               Challenge yourself with word puzzles from 4 to 11 letters
@@ -324,16 +338,14 @@ export default async function HomeComponent() {
                         : "Ultimate difficulty"}
                 </p>
                 <div className="mt-2 text-xs font-medium text-blue-600 opacity-0 transition-opacity group-hover:opacity-100 dark:text-blue-400">
-                  Play Now →
-                </div>
+                  Play Now {"->"}</div>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Guides Promotion */}
-      <section className="py-12 bg-muted/30">
+      <section className="bg-muted/30 py-12">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-1.5 text-sm font-medium text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
@@ -349,35 +361,41 @@ export default async function HomeComponent() {
           </div>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {GUIDES.map((guide) => (
-                <Link
-                  key={guide.slug}
-                  href={`/guides/${guide.slug}`}
-                  className="group rounded-xl border border-border bg-card p-5 transition-all hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md dark:hover:border-blue-700"
-                >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-lg transition-transform group-hover:scale-110 dark:bg-blue-900/30">
-                    {guide.icon}
-                  </div>
-                  <h3 className="mt-3 text-sm font-bold text-foreground">
-                    {guide.title}
-                  </h3>
-                  <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-                    {guide.description}
-                  </p>
-                  <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-blue-600 group-hover:text-blue-700 dark:text-blue-400">
-                    Read Guide
-                    <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </Link>
+              <Link
+                key={guide.slug}
+                href={`/guides/${guide.slug}`}
+                className="group rounded-xl border border-border bg-card p-5 transition-all hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md dark:hover:border-blue-700"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-lg transition-transform group-hover:scale-110 dark:bg-blue-900/30">
+                  {guide.icon}
+                </div>
+                <h3 className="mt-3 text-sm font-bold text-foreground">
+                  {guide.title}
+                </h3>
+                <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                  {guide.description}
+                </p>
+                <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-blue-600 group-hover:text-blue-700 dark:text-blue-400">
+                  Read Guide
+                  <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </Link>
             ))}
           </div>
           <div className="mt-6 rounded-xl border border-blue-200/60 bg-blue-50/50 p-4 text-center text-sm text-muted-foreground dark:border-blue-900/30 dark:bg-blue-950/10">
             <strong className="text-foreground">Pro Tip:</strong>{" "}
             Start with the{" "}
-            <Link href="/guides/beginner-guide" className="font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400">
+            <Link
+              href="/guides/beginner-guide"
+              className="font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400"
+            >
               Beginner&apos;s Guide
             </Link>{" "}
             if you&apos;re new, or jump to{" "}
-            <Link href="/guides/strategy-tips" className="font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400">
+            <Link
+              href="/guides/strategy-tips"
+              className="font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400"
+            >
               Strategy Tips
             </Link>{" "}
             to improve your current approach!
@@ -385,171 +403,120 @@ export default async function HomeComponent() {
         </div>
       </section>
 
-      {/* Long-form SEO Article */}
       <section className="py-12 bg-background">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <h2 className="font-heading text-2xl font-bold text-foreground sm:text-3xl">
-            Your Ultimate Guide to Connections Hint and Wordle Solutions
+            How ConnectionsHint Helps You Solve Better
           </h2>
           <p className="mt-4 leading-relaxed text-muted-foreground">
-            Welcome to the premier destination for <strong className="text-foreground">connections hint</strong> enthusiasts and Wordle players! Whether you&apos;re seeking today&apos;s puzzle solutions or looking to sharpen your word-guessing skills, you&apos;ve found the perfect resource.
+            ConnectionsHint works best as a puzzle companion, not a shortcut to
+            the finished grid. The homepage is meant to point you to the right
+            kind of help for the moment you are in: a gentle nudge for today, a
+            review path through older boards, or a guide when you want to get
+            better at the game itself.
           </p>
 
           <h3 className="mt-8 font-heading text-lg font-semibold text-foreground">
-            What is Connections Hint?
+            The Daily Page Is Built For Three Moments
           </h3>
           <p className="mt-3 leading-relaxed text-muted-foreground">
-            A <strong className="text-foreground">connections hint today</strong> refers to the subtle clues and strategies that help players identify patterns and relationships between words in puzzle games. The New York Times Connections game has revolutionized how we think about word associations, making <strong className="text-foreground">NYT connections hints</strong> an essential tool for puzzle enthusiasts worldwide.
-          </p>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            Our platform combines the classic Wordle experience with comprehensive guidance for various word puzzles. By understanding the connections between letters, words, and meanings, players can significantly improve their puzzle-solving abilities.
-          </p>
-
-          <h3 className="mt-8 font-heading text-lg font-semibold text-foreground">
-            Mastering Wordle with Strategic Hints
-          </h3>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            Every <strong className="text-foreground">wordle hint</strong> serves a specific purpose in guiding players toward the solution. The five-letter word format of Wordle creates unique opportunities for strategic thinking. Here&apos;s how to leverage hints effectively:
+            A good hint page should be useful before the solve, during the solve,
+            and after the solve. That is why each daily page combines the word
+            list, progressive hints, answer reveal controls, and links to nearby
+            puzzle dates in one place.
           </p>
           <ul className="mt-3 space-y-2">
             {[
-              ["Letter frequency analysis:", "Focus on common letters like E, A, R, I, O, T, N, and S in your initial guesses"],
-              ["Vowel placement:", "Identify vowel positions early to narrow down possibilities"],
-              ["Consonant patterns:", "Recognize common consonant combinations and endings"],
-              ["Word structure:", "Consider prefixes, suffixes, and root words"],
+              [
+                "Before the solve:",
+                "Use the word list and first hint layer to test your own theory without exposing the full board.",
+              ],
+              [
+                "During the solve:",
+                "Open stronger hints only when you need a push, not when you just want confirmation.",
+              ],
+              [
+                "After the solve:",
+                "Review the finished groups and compare them with the way you approached the puzzle.",
+              ],
             ].map(([title, desc]) => (
               <li key={title} className="flex items-start gap-2 text-sm text-muted-foreground">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500" />
-                <span><strong className="text-foreground">{title}</strong> {desc}</span>
+                <span>
+                  <strong className="text-foreground">{title}</strong> {desc}
+                </span>
               </li>
             ))}
           </ul>
 
           <h3 className="mt-8 font-heading text-lg font-semibold text-foreground">
-            NYT Connections Hints: Advanced Strategies
+            Why The Archive Matters
           </h3>
           <p className="mt-3 leading-relaxed text-muted-foreground">
-            The <strong className="text-foreground">NYT connections hints</strong> system relies on understanding thematic relationships between seemingly unrelated words. Successful players develop pattern recognition skills that extend far beyond simple word knowledge.
+            Most improvement in Connections does not come from one puzzle. It
+            comes from seeing category styles repeat across many puzzles:
+            fill-in-the-blank themes, proper-noun clusters, misleading synonyms,
+            and purple groups that depend on structure instead of meaning.
           </p>
           <p className="mt-3 leading-relaxed text-muted-foreground">
-            Categories in Connections often include:
-          </p>
-          <ul className="mt-3 space-y-2">
-            {[
-              ["Synonyms and related concepts:", "Words sharing similar meanings or contexts"],
-              ["Compound word components:", "Words that can combine with a common term"],
-              ["Pop culture references:", "Entertainment, sports, or historical connections"],
-              ["Wordplay categories:", "Puns, rhymes, or linguistic tricks"],
-            ].map(([title, desc]) => (
-              <li key={title} className="flex items-start gap-2 text-sm text-muted-foreground">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500" />
-                <span><strong className="text-foreground">{title}</strong> {desc}</span>
-              </li>
-            ))}
-          </ul>
-
-          <h3 className="mt-8 font-heading text-lg font-semibold text-foreground">
-            Daily Puzzle Strategy and Connections Hint Today
-          </h3>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            Finding the right <strong className="text-foreground">connections hint today</strong> requires a systematic approach. Start by scanning for obvious connections — often the easiest category reveals itself first. Look for proper nouns, specific terminology, or words that immediately suggest a theme.
-          </p>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            Advanced players recommend the &quot;process of elimination&quot; strategy: identify the most challenging category first, then work backwards. This approach prevents accidental groupings that might use up your limited mistakes.
+            The archive helps with that kind of learning. Instead of treating old
+            pages as disposable answers, you can use them to notice what kinds
+            of traps keep showing up and where your own guesses usually go wrong.
           </p>
 
           <h3 className="mt-8 font-heading text-lg font-semibold text-foreground">
-            Building Your Puzzle-Solving Toolkit
+            A Practical Way To Use Hints
           </h3>
           <p className="mt-3 leading-relaxed text-muted-foreground">
-            Successful puzzle solvers combine multiple skills and resources. A comprehensive <strong className="text-foreground">wordle hint</strong> strategy involves:
+            Hints are most useful when you already have a partial idea of the
+            board. If you reveal too much too early, the puzzle stops teaching
+            you anything. If you wait until you are frustrated, you usually stop
+            noticing the pattern altogether.
           </p>
           <ol className="mt-3 list-decimal space-y-2 pl-5">
             {[
-              ["Vocabulary expansion:", "Regularly learn new words and their meanings"],
-              ["Pattern recognition:", "Study common letter combinations and word structures"],
-              ["Cultural awareness:", "Stay informed about current events and popular culture"],
-              ["Practice consistency:", "Daily engagement improves intuitive pattern recognition"],
-            ].map(([title, desc]) => (
-              <li key={title} className="text-sm leading-relaxed text-muted-foreground">
-                <strong className="text-foreground">{title}</strong> {desc}
+              "Read all 16 words and make at least one tentative grouping on your own.",
+              "Open the first hint level only when you need direction, not certainty.",
+              "Use the full answer as a review tool after the solve, not as your first move.",
+              "Look at one or two recent boards if you notice a pattern you keep missing.",
+            ].map((item) => (
+              <li key={item} className="text-sm leading-relaxed text-muted-foreground">
+                {item}
               </li>
             ))}
           </ol>
 
           <h3 className="mt-8 font-heading text-lg font-semibold text-foreground">
-            The Psychology Behind Puzzle Hints
+            How Word Games Fit Into The Same Habit
           </h3>
           <p className="mt-3 leading-relaxed text-muted-foreground">
-            Understanding why certain <strong className="text-foreground">connections hint</strong> strategies work reveals the cognitive processes underlying puzzle-solving success. The brain naturally seeks patterns and relationships, making connections between disparate pieces of information.
-          </p>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            Effective hint systems leverage this natural tendency by providing just enough information to guide thinking without revealing solutions outright. The best <strong className="text-foreground">NYT connections hints</strong> activate existing knowledge while encouraging creative thinking.
+            The Wordle-style pages on this site work on a different skill set,
+            but they still complement the broader puzzle habit. Word guessing
+            strengthens vocabulary range, endings, and letter placement. Connections
+            leans more on category logic, alternate meanings, and elimination.
+            Both reward careful observation.
           </p>
 
           <h3 className="mt-8 font-heading text-lg font-semibold text-foreground">
-            Community and Competition
+            What Makes A Good Review Page
           </h3>
           <p className="mt-3 leading-relaxed text-muted-foreground">
-            The puzzle-solving community thrives on shared strategies and collective problem-solving. Social media platforms buzz daily with discussions about the latest <strong className="text-foreground">connections hint today</strong>, creating a global network of enthusiasts who support each other&apos;s puzzle journey.
-          </p>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            This collaborative approach extends to Wordle, where sharing results has become a cultural phenomenon. The color-coded grid system allows players to communicate their solving experience without spoiling the answer for others.
-          </p>
-
-          <h3 className="mt-8 font-heading text-lg font-semibold text-foreground">
-            Technology and Puzzle Evolution
-          </h3>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            Modern puzzle platforms have transformed how we interact with word games. Digital formats allow for immediate feedback, statistical tracking, and adaptive difficulty levels. Today&apos;s <strong className="text-foreground">wordle hint</strong> systems can analyze player performance and provide personalized guidance.
-          </p>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            The integration of AI and machine learning in puzzle design creates more sophisticated hint systems. These technologies can generate <strong className="text-foreground">connections hint</strong> suggestions that adapt to individual playing styles and skill levels.
-          </p>
-
-          <h3 className="mt-8 font-heading text-lg font-semibold text-foreground">
-            Educational Benefits of Puzzle Solving
-          </h3>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            Regular engagement with word puzzles provides significant cognitive benefits. Studies suggest that consistent puzzle-solving activity can improve vocabulary, enhance pattern recognition, and strengthen analytical thinking skills.
-          </p>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            The strategic thinking required for effective use of <strong className="text-foreground">NYT connections hints</strong> translates to improved problem-solving abilities in other contexts. Players develop patience, methodical thinking, and the ability to consider multiple perspectives simultaneously.
-          </p>
-
-          <h3 className="mt-8 font-heading text-lg font-semibold text-foreground">
-            Future of Word Puzzles
-          </h3>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            As word puzzles continue to evolve, the role of hints and guidance will become increasingly sophisticated. Future platforms may incorporate personalized learning algorithms, adaptive difficulty systems, and collaborative solving features.
-          </p>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            The enduring popularity of games requiring <strong className="text-foreground">connections hint today</strong> strategies demonstrates the fundamental human love for intellectual challenges. These puzzles satisfy our desire for accomplishment while providing daily mental exercise in an increasingly digital world.
-          </p>
-
-          <h3 className="mt-8 font-heading text-lg font-semibold text-foreground">
-            Getting Started: Your First Steps
-          </h3>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            Begin your puzzle-solving journey with our integrated Wordle game above. Practice identifying letter patterns and word structures while building your confidence. Remember, every expert puzzle solver started with simple <strong className="text-foreground">wordle hint</strong> strategies before developing advanced techniques.
-          </p>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            Join our community of puzzle enthusiasts and share your progress. Whether you&apos;re seeking today&apos;s <strong className="text-foreground">connections hint</strong> or celebrating a perfect Wordle solve, you&apos;ll find support and encouragement here.
-          </p>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            Ready to challenge yourself? Start with today&apos;s puzzle and discover how strategic thinking and the right hints can transform your solving experience. Welcome to the world of connections, patterns, and the satisfaction of puzzle mastery!
+            A useful puzzle page should do more than answer a search query. It
+            should help a player understand what happened on the board, move to
+            related puzzles, and come away with one idea that improves the next
+            solve. That is the standard this project is aiming for.
           </p>
         </div>
       </section>
 
-      {/* CTA Banner */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-700">
+      <section className="bg-gradient-to-r from-blue-600 to-blue-700 py-16">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl">
             Ready to Solve Today&apos;s Puzzle?
           </h2>
           <p className="mt-3 text-blue-100">
-            Get progressive hints without spoiling the fun. Start with a gentle nudge and reveal more only when you need it.
+            Get progressive hints without spoiling the fun. Start with a gentle
+            nudge and reveal more only when you need it.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link
@@ -571,3 +538,6 @@ export default async function HomeComponent() {
     </div>
   );
 }
+
+
+

@@ -1,4 +1,4 @@
-import { AnswerReveal } from "@/components/connections/AnswerReveal";
+﻿import { AnswerReveal } from "@/components/connections/AnswerReveal";
 import ConnectionsGame from "@/components/connections/ConnectionsGame";
 import { HintCardList } from "@/components/connections/HintCard";
 import { BASE_URL } from "@/config/site";
@@ -32,25 +32,25 @@ const STRATEGY_TIPS = [
   {
     title: "Start with Obvious Groups",
     description:
-      "Begin by identifying the most apparent connections — usually the Yellow category contains the most straightforward relationships.",
+      "Start with the cleanest category you can defend. Yellow groups are usually the best place to begin because they clear space without forcing risky guesses.",
     icon: Target,
   },
   {
     title: "Look for Wordplay",
     description:
-      "Purple categories often involve clever wordplay, compound words, or words that can be prefixed/suffixed with the same term.",
+      "Save room for the purple set. Harder boards often hide a group in phrasing, word structure, or a less literal reading of familiar words.",
     icon: Zap,
   },
   {
     title: "Process of Elimination",
     description:
-      "Once you've identified 2–3 groups, the remaining words often become clearer by elimination.",
+      "Once two categories are confidently solved, stop and reevaluate the remaining words together. The last overlap usually becomes clearer when the board is smaller.",
     icon: ChevronRight,
   },
   {
     title: "Consider Multiple Meanings",
     description:
-      "Many words have double meanings. A \"bark\" could be a dog's sound or tree covering — context matters!",
+      "Do not lock onto the first definition you see. Connections regularly uses alternate meanings, so a word that feels wrong literally may still fit the category.",
     icon: BookOpen,
   },
 ];
@@ -59,27 +59,27 @@ const FAQ_ITEMS = [
   {
     question: "When does the new Connections puzzle come out?",
     answer:
-      "The new NYT Connections puzzle is released every day at 12:00 AM ET (midnight Eastern Time). We update our hints page within minutes of the new puzzle going live, ensuring you have access to fresh hints and strategies as soon as possible!",
+      "A new NYT Connections puzzle is released every day at 12:00 AM ET. This page is updated shortly after the board goes live so the hints and answer reveal match the current puzzle.",
   },
   {
     question: "Should I use hints or try without help?",
     answer:
-      "This is completely personal preference! Our progressive hint system is designed to give you just enough help without spoiling the entire puzzle. We recommend trying to solve on your own first, then using gentle hints if you get stuck, and only viewing full answers if you're completely stumped or have used all four mistakes. The goal is to maintain the fun and satisfaction of solving!",
+      "Try the board on your own first, then open the first hint layer only when you need direction. The answer reveal works best as a final check after you have either solved the puzzle or reached a dead end.",
   },
   {
     question: "What's the best strategy for solving quickly?",
     answer:
-      "Start with the yellow category — it's designed to be most obvious. Look for clear groupings of four words that share an unmistakable connection. Avoid guessing on purple early; instead, solve the other three categories first and let the final four words reveal themselves through elimination. Always consider multiple meanings of words, and don't rush your guesses. Remember: you only get four mistakes!",
+      "Start with the most literal category on the board, usually yellow. Avoid forcing a purple-style guess early; clearing the direct sets first makes the final overlap much easier to read.",
   },
   {
     question: "Why do I keep getting \"one away\" messages?",
     answer:
-      "The \"one away\" message means three of your words are correct, but one belongs to a different category. This often happens with red herring words that could plausibly fit multiple groups. When you see this message, carefully reconsider each word — think about alternate meanings and whether any word might better fit elsewhere. Don't just swap one word and resubmit; take time to reassess the entire group.",
+      "A \"one away\" message means three words belong together and one does not. That usually points to a red herring, so reassess the whole set instead of swapping a single word at random.",
   },
   {
     question: "How are the difficulty colors determined?",
     answer:
-      "The four colors indicate increasing difficulty: Yellow is the easiest with obvious, straightforward connections. Green is medium difficulty with moderately clear relationships. Blue is hard with less apparent connections or subtle wordplay. Purple is the trickiest with abstract, creative connections that often involve clever wordplay or unexpected relationships. The puzzle creators intentionally design purple categories to make you say \"I never would have thought of that!\"",
+      "The colors move from easiest to hardest: yellow, green, blue, then purple. Yellow categories tend to be the most direct, while purple groups usually rely on less literal associations or wordplay.",
   },
 ];
 
@@ -100,7 +100,7 @@ export async function generateMetadata({
 
   return constructMetadata({
     page: "ConnectionsHintToday",
-    title: `${t("title")} — ${dateStr}`,
+    title: `${t("title")} - ${dateStr}`,
     description: t("description"),
     keywords: [
       "connections hint today",
@@ -168,8 +168,9 @@ export default async function ConnectionsHintTodayPage({
           Connections Hint Today
         </h1>
         <p className="mt-2 text-muted-foreground">
-          Progressive hints for today&apos;s NYT Connections puzzle. Reveal one
-          hint at a time to keep the challenge!
+          Start with light clues, reveal more only when needed, and use the full
+          answer as a review tool after you have taken your own shot at the
+          board.
         </p>
       </header>
 
@@ -179,7 +180,7 @@ export default async function ConnectionsHintTodayPage({
           Play Today&apos;s Puzzle
         </h2>
         <p className="text-center text-xs text-muted-foreground mb-5">
-          Group the 16 words into 4 categories of 4
+          Sort the 16 words into four groups before you check the hints below
         </p>
         <ConnectionsGame groups={puzzle.answers} />
       </section>
@@ -236,14 +237,14 @@ export default async function ConnectionsHintTodayPage({
                 href="/connections-hint"
                 className="block text-center text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 transition-colors"
               >
-                View All Hints →
+                View All Hint Pages {"->"}
               </Link>
             </div>
           </div>
         </aside>
       </div>
 
-      {/* ─── SEO Content Sections ─── */}
+      {/* 鈹€鈹€鈹€ SEO Content Sections 鈹€鈹€鈹€ */}
 
       {/* Strategy Tips */}
       <section className="mt-12">
@@ -251,7 +252,8 @@ export default async function ConnectionsHintTodayPage({
           Today&apos;s Strategy Tips
         </h2>
         <p className="mt-2 text-muted-foreground">
-          Master today&apos;s Connections puzzle with these expert strategies:
+          Use these habits to stay in the solve longer and avoid giving away the
+          board too early.
         </p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           {STRATEGY_TIPS.map((tip) => (
@@ -295,47 +297,42 @@ export default async function ConnectionsHintTodayPage({
         </div>
       </section>
 
-      {/* Difficulty Analysis */}
+      {/* Hint usage guide */}
       <section className="mt-10">
         <h2 className="font-heading text-2xl font-bold text-foreground">
-          Today&apos;s Puzzle Difficulty Analysis
+          How to Use Today&apos;s Hints
         </h2>
         <p className="mt-2 text-muted-foreground">
-          Understanding why today&apos;s puzzle was challenging helps you improve
-          for tomorrow. Here&apos;s our expert analysis:
+          Use the sections above in order so you can stay in the solve and only
+          reveal as much help as you need.
         </p>
         <div className="mt-6 space-y-4">
           <div className="rounded-xl border-l-4 border-l-blue-500 border border-border bg-card p-5">
             <h3 className="font-heading text-sm font-bold text-foreground mb-2">
-              Overall Difficulty Rating
+              Start with progressive hints
             </h3>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              This puzzle is rated as medium difficulty based on the complexity
-              of category relationships and the presence of red herrings. The
-              purple category was particularly tricky today!
+              Open the gentle clues first. They are designed to point you toward
+              a category without giving away the board too quickly.
             </p>
           </div>
           <div className="rounded-xl border-l-4 border-l-amber-500 border border-border bg-card p-5">
             <h3 className="font-heading text-sm font-bold text-foreground mb-2">
-              What Made It Challenging?
+              Use the full answer as a check
             </h3>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              Key challenge factors include: multiple words with double meanings,
-              a clever fill-in-the-blank category that requires lateral thinking,
-              and strategic red herrings designed to mislead solvers. The purple
-              category involves wordplay that only becomes obvious in retrospect.
+              If you have already played the puzzle, the answer reveal works
+              best as a verification step and a way to study missed groups.
             </p>
           </div>
           <div className="rounded-xl border-l-4 border-l-emerald-500 border border-border bg-card p-5">
             <h3 className="font-heading text-sm font-bold text-foreground mb-2">
-              Recommended Solving Approach
+              Review old boards to improve
             </h3>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              Start by identifying the yellow category, which should be the most
-              straightforward. Avoid rushing into purple — instead, solve green
-              and blue first to narrow down your options through elimination.
-              Watch out for words that could fit multiple categories, and always
-              consider alternate meanings before committing to a guess.
+              The archive and guides are where longer-term improvement happens.
+              Looking at repeated category styles is often more useful than
+              reading a generic difficulty label.
             </p>
           </div>
         </div>
@@ -347,7 +344,8 @@ export default async function ConnectionsHintTodayPage({
           Strategy Guides
         </h2>
         <p className="mt-2 text-muted-foreground">
-          Deep-dive into proven strategies and expert techniques:
+          Go deeper if you want to study repeated trap types, board structure,
+          and better guessing discipline.
         </p>
         <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {guides.map((guide) => (
@@ -376,9 +374,9 @@ export default async function ConnectionsHintTodayPage({
             Struggling with Today&apos;s Puzzle?
           </h3>
           <p className="mt-2 text-sm text-blue-100">
-            Don&apos;t worry! Even experts get stuck. Check out our proven
-            strategies or learn about common mistakes that might be holding you
-            back.
+            If this board still feels noisy, switch from hints to review mode.
+            The guides below focus on category habits, common traps, and how to
+            clean up late-board guesses.
           </p>
           <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
             <I18nLink
@@ -428,26 +426,22 @@ export default async function ConnectionsHintTodayPage({
         </h2>
         <div className="space-y-4 text-sm leading-relaxed text-muted-foreground">
           <p>
-            Today&apos;s NYT Connections puzzle continues the tradition of
-            challenging word association gameplay that has made this one of the
-            most popular daily puzzles. Each puzzle is carefully crafted by Wyna
-            Liu, the associate puzzle editor at The New York Times, to provide a
-            perfect balance of solvable challenge and satisfying &ldquo;aha!&rdquo;
-            moments.
+            Each daily Connections board asks for the same core skill: reading
+            16 words, spotting one reliable category, and resisting the urge to
+            force the rest too early. The boards change every day, but the
+            solving rhythm stays consistent.
           </p>
           <p>
-            The beauty of Connections lies in its accessibility — anyone can
-            start playing immediately — combined with surprising depth that keeps
-            expert solvers engaged. Whether you&apos;re solving during your
-            morning coffee or taking an evening puzzle break, today&apos;s puzzle
-            offers four distinct categories that will test your vocabulary,
-            lateral thinking, and pattern recognition skills.
+            What makes the puzzle interesting is the overlap. Several words on
+            the board often look like they belong in more than one group, so the
+            challenge is not just finding a connection but proving that a set of
+            four is cleaner than the alternatives.
           </p>
           <p>
-            Remember: every puzzle is solvable with careful thought and strategy.
-            If you&apos;re stuck, our progressive hint system above will guide
-            you toward the solution without completely spoiling the satisfaction
-            of solving. Come back tomorrow for a fresh puzzle and new hints!
+            That is why this page is structured in layers. Try the board first,
+            use progressive hints when you need direction, and save the answer
+            reveal for verification or post-game review. Then use the archive to
+            compare today&apos;s category styles with older boards.
           </p>
         </div>
       </section>
@@ -458,3 +452,5 @@ export default async function ConnectionsHintTodayPage({
 export async function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
 }
+
+

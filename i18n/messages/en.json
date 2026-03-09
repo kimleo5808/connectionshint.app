@@ -17,14 +17,14 @@
         "name": "FAQ",
         "href": "/connections-hint-faq"
       },
-{
+      {
         "name": "Guides",
         "href": "/guides"
       }
     ]
   },
   "Footer": {
-    "Copyright": "Copyright © {year} {name}. All rights reserved.",
+    "Copyright": "Copyright {year} {name}. All rights reserved.",
     "PrivacyPolicy": "Privacy Policy",
     "TermsOfService": "Terms of Service",
     "Links": {
@@ -130,40 +130,40 @@
   },
   "Home": {
     "title": "Connections Hint",
-    "tagLine": "Daily hints and answers for NYT Connections puzzle",
-    "description": "Get today's NYT Connections hints with progressive clues for all four groups. Daily puzzle tracking, answers archive, and strategy tips."
+    "tagLine": "Daily hints, archive pages, and guides for NYT Connections",
+    "description": "Use progressive hints for today's NYT Connections board, browse past puzzles by date, and study recurring category patterns without jumping straight to spoilers."
   },
   "Blog": {
     "title": "Tips & Guides",
-    "description": "Strategies, tips, and insights for solving NYT Connections puzzles"
+    "description": "Read strategy notes, pattern breakdowns, and practical solving advice for NYT Connections."
   },
   "About": {
     "title": "About ConnectionsHint",
-    "description": "How we provide daily Connections hints and maintain our puzzle archive"
+    "description": "Learn how ConnectionsHint publishes daily clue pages, maintains the archive, and approaches puzzle review content."
   },
   "TermsOfService": {
     "title": "Terms of Service",
-    "description": "Terms of service for connectionshint.app — usage rules, disclaimers, and acceptable use."
+    "description": "Read the usage rules, disclaimers, and acceptable-use terms for connectionshint.app."
   },
   "PrivacyPolicy": {
     "title": "Privacy Policy",
-    "description": "Privacy policy for connectionshint.app — what data we collect, how we use analytics, and your privacy rights."
+    "description": "Read what data connectionshint.app collects, how analytics are used, and what privacy choices are available to you."
   },
   "ConnectionsHintToday": {
-    "title": "Connections Hint Today — NYT Puzzle Hints & Answers",
-    "description": "Get progressive hints and answers for today's NYT Connections puzzle. Clues for all four color groups without spoiling the fun."
+    "title": "Connections Hint Today",
+    "description": "Open today's Connections board with progressive hints, answer reveal controls, and short solving notes for each group."
   },
   "FAQ": {
-    "title": "Connections Hint FAQ — Common Questions Answered",
-    "description": "Frequently asked questions about NYT Connections, puzzle strategies, and how our hint system works."
+    "title": "Connections Hint FAQ",
+    "description": "Find quick answers about NYT Connections, our hint format, daily updates, and common solving questions."
   },
   "HowToPlay": {
-    "title": "How to Play NYT Connections — Complete Guide",
-    "description": "Learn how to play the NYT Connections word puzzle. Rules, strategies, tips for finding groups, and common mistakes to avoid."
+    "title": "How to Play NYT Connections",
+    "description": "Learn the rules of NYT Connections, how the four difficulty colors work, and which solving habits help most."
   },
   "Daily": {
-    "title": "Connections Hint ({date}) — Puzzle #{id} Hints & Answer",
-    "description": "Hints and answers for NYT Connections Puzzle #{id} on {date}. Progressive clues for all four groups."
+    "title": "Connections #{id} for {date}",
+    "description": "Review Connections #{id} for {date} with progressive hints, full answers, and notes on how the groups fit together."
   },
   "HomePage": {
     "hero": {
@@ -227,12 +227,12 @@
       },
       {
         "question": "What is the best strategy for solving Connections?",
-        "answer": "Start by looking for the easiest group (yellow). Scan all 16 words for obvious themes first. Beware of words that could fit multiple groups — the purple group often uses tricky wordplay or less obvious connections."
+        "answer": "Start by looking for the easiest group (yellow). Scan all 16 words for obvious themes first. Beware of words that could fit multiple groups; the purple group often uses tricky wordplay or less obvious connections."
       }
     ],
     "recentPuzzles": {
       "title": "Recent Puzzles",
-      "viewAll": "View All Puzzles →"
+      "viewAll": "View All Puzzles ->"
     }
   }
 }

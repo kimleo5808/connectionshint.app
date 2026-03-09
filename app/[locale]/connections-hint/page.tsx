@@ -35,8 +35,8 @@ export async function generateMetadata({
 
   return constructMetadata({
     page: "Archive",
-    title: `All NYT Connections Hints & Answers (Updated Daily)`,
-    description: `Browse all ${count} NYT Connections puzzle hints and answers, updated daily. Find progressive hints, group themes, and solutions organized by date.`,
+    title: `Connections Hint Archive and Daily Puzzle Reviews`,
+    description: `Browse all ${count} Connections boards by date, review category breakdowns, and use the archive to study recurring puzzle patterns instead of jumping straight to answers.`,
     keywords: [
       "connections hint",
       "nyt connections hint",
@@ -89,13 +89,14 @@ export default async function ConnectionsHintPage({
         {/* Header */}
         <header className="text-center py-6">
           <h1 className="font-heading text-3xl font-bold text-foreground sm:text-4xl">
-            All NYT Connections Hints (Updated Daily)
+            Connections Hint Archive
           </h1>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Welcome to ConnectionsHint! Here you can find hints and answers for
-            all {totalCount} NYT Connections puzzles, updated daily. This archive
-            helps you review past puzzles, check today&apos;s challenge, and
-            improve your puzzle-solving skills.
+            Browse all {totalCount} published boards by date, revisit category
+            breakdowns, and compare how puzzle styles change over time. This
+            archive is built for review as much as lookup, so it works best when
+            you use it to study recurring traps, not just to confirm a finished
+            answer.
           </p>
 
           <div className="mx-auto mt-6 max-w-3xl border-t border-border" />
@@ -104,7 +105,7 @@ export default async function ConnectionsHintPage({
         {/* Tag cloud */}
         <nav className="py-6">
           <p className="text-center text-sm text-muted-foreground mb-3">
-            Discover more
+            Start from the page that fits what you need
           </p>
           <div className="flex flex-wrap justify-center gap-2">
             {TAG_LINKS.map((tag) => (
@@ -137,13 +138,13 @@ export default async function ConnectionsHintPage({
         {/* Bottom CTA */}
         <div className="mt-16 text-center py-8 border-t border-border">
           <p className="text-muted-foreground">
-            Looking for today&apos;s Connections hint?
+            Only need the current board?
           </p>
           <Link
             href="/connections-hint-today"
             className="mt-4 inline-flex items-center gap-2 rounded-xl bg-blue-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg transition-all hover:bg-blue-700"
           >
-            View Today&apos;s Connections Hint
+            Open Today&apos;s Hint Page
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

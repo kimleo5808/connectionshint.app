@@ -38,19 +38,22 @@ const CONTACT_METHODS = [
     icon: Mail,
     title: "Email Support",
     description: "For general inquiries, technical support, or feedback:",
-    email: "support@connectionshint.com",
+    email: "hello@connectionshint.app",
+    subject: "ConnectionsHint Support",
   },
   {
     icon: Lightbulb,
     title: "Feature Requests",
     description: "Have an idea for a new game mode or feature?",
-    email: "feedback@connectionshint.com",
+    email: "hello@connectionshint.app",
+    subject: "ConnectionsHint Feature Request",
   },
   {
     icon: Bug,
     title: "Bug Reports",
     description: "Found a bug or technical issue?",
-    email: "bugs@connectionshint.com",
+    email: "hello@connectionshint.app",
+    subject: "ConnectionsHint Bug Report",
   },
 ];
 
@@ -101,7 +104,7 @@ export default async function ContactPage({ params }: { params: Params }) {
               {method.description}
             </p>
             <a
-              href={`mailto:${method.email}`}
+              href={`mailto:${method.email}?subject=${encodeURIComponent(method.subject)}`}
               className="mt-3 inline-block text-sm font-medium text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
             >
               {method.email}
@@ -110,92 +113,34 @@ export default async function ContactPage({ params }: { params: Params }) {
         ))}
       </div>
 
-      {/* Contact Form */}
+      {/* Direct contact */}
       <div className="mt-8 rounded-xl border border-blue-100 bg-card p-6 dark:border-blue-900/40">
         <h2 className="font-heading text-xl font-bold text-foreground">
-          Send Us a Message
+          Send Us an Email
         </h2>
         <p className="mt-1 text-sm text-muted-foreground">
-          You can also reach out to us directly using the form below:
+          We currently handle support directly by email so every request lands
+          in one place and can be tracked properly.
         </p>
-        <form className="mt-5 space-y-4" action="#" method="POST">
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <label
-                htmlFor="name"
-                className="mb-1.5 block text-sm font-medium text-foreground"
-              >
-                Name *
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                className="w-full rounded-lg border border-blue-200 bg-background px-4 py-2.5 text-sm text-foreground outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-blue-900/60"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="email"
-                className="mb-1.5 block text-sm font-medium text-foreground"
-              >
-                Email *
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                className="w-full rounded-lg border border-blue-200 bg-background px-4 py-2.5 text-sm text-foreground outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-blue-900/60"
-              />
-            </div>
-          </div>
-          <div>
-            <label
-              htmlFor="subject"
-              className="mb-1.5 block text-sm font-medium text-foreground"
+        <div className="mt-5 rounded-xl border border-blue-100 bg-blue-50/60 p-5 dark:border-blue-900/30 dark:bg-blue-950/10">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            Email{" "}
+            <a
+              href="mailto:hello@connectionshint.app"
+              className="font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
             >
-              Subject *
-            </label>
-            <select
-              id="subject"
-              name="subject"
-              required
-              className="w-full rounded-lg border border-blue-200 bg-background px-4 py-2.5 text-sm text-foreground outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-blue-900/60"
-            >
-              <option value="">Select a topic</option>
-              <option value="general">General Inquiry</option>
-              <option value="technical">Technical Support</option>
-              <option value="feature">Feature Request</option>
-              <option value="bug">Bug Report</option>
-              <option value="feedback">Feedback</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div>
-            <label
-              htmlFor="message"
-              className="mb-1.5 block text-sm font-medium text-foreground"
-            >
-              Message *
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={6}
-              required
-              placeholder="Please describe your inquiry in detail..."
-              className="w-full rounded-lg border border-blue-200 bg-background px-4 py-2.5 text-sm text-foreground outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-blue-900/60"
-            />
-          </div>
-          <button
-            type="submit"
-            className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+              hello@connectionshint.app
+            </a>{" "}
+            with a short subject line and any relevant puzzle date, browser, or
+            screenshot details.
+          </p>
+          <a
+            href="mailto:hello@connectionshint.app?subject=ConnectionsHint%20Support"
+            className="mt-4 inline-flex rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
           >
-            Send Message
-          </button>
-        </form>
+            Email Support
+          </a>
+        </div>
       </div>
 
       {/* Quick Help */}

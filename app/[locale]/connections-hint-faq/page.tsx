@@ -38,52 +38,52 @@ const FAQ_ITEMS = [
   {
     question: "What is NYT Connections?",
     answer:
-      "NYT Connections is a daily word puzzle by The New York Times. You're given 16 words and must find four groups of four words that share a common connection. The groups range from Yellow (easiest) to Purple (hardest).",
+      "NYT Connections is a daily word puzzle from The New York Times. You are given 16 words and must separate them into four groups of four based on a shared connection.",
   },
   {
     question: "When does the new Connections puzzle come out?",
     answer:
-      "A new Connections puzzle is released every day at midnight Eastern Time (ET). That's 9 PM Pacific, 5 AM GMT, and 1 PM JST. The same puzzle is available worldwide.",
+      "A new puzzle is released every day at midnight Eastern Time. The board is the same for everyone, no matter where they are playing from.",
   },
   {
     question: "How many guesses do I get in Connections?",
     answer:
-      "You get 4 mistakes before the game ends. Each time you select 4 words that don't form a valid group, you lose one life. If you use all 4 mistakes, the remaining answers are revealed automatically.",
+      "You can make four mistakes before the game ends. Every incorrect four-word submission uses one life, so careful checking matters more than speed.",
   },
   {
     question: "What do the colors mean in Connections?",
     answer:
-      "Yellow is the easiest category (most straightforward connection), Green is moderate, Blue is tricky, and Purple is the hardest (often involving wordplay, puns, or abstract connections).",
+      "Yellow is the easiest group, followed by green, blue, and purple. Purple is usually the least literal category and is often the one built around wordplay or phrasing.",
   },
   {
     question: "How does ConnectionsHint work?",
     answer:
-      "We provide progressive hints for each day's puzzle. You can reveal hints one at a time — from vague thematic clues to near-giveaway hints — so you can get just the right amount of help without fully spoiling the puzzle.",
+      "ConnectionsHint is built around progressive help. You can reveal lighter clues first, then stronger hints, and finally the full answer only if you want a final check.",
   },
   {
     question: "Is ConnectionsHint affiliated with The New York Times?",
     answer:
-      "No, ConnectionsHint is an independent fan site. We are not affiliated with, endorsed by, or connected to The New York Times in any way. NYT Connections is a trademark of The New York Times Company.",
+      "No. ConnectionsHint is an independent site and is not affiliated with or endorsed by The New York Times. NYT Connections is a trademark of The New York Times Company.",
   },
   {
     question: "Can I play past Connections puzzles?",
     answer:
-      "The official NYT site only offers the current day's puzzle. However, our archive contains hints and answers for every past puzzle since Connections launched in June 2023, so you can review or study older puzzles.",
+      "The official puzzle is only available for the current day. This site focuses on archive pages, hints, and answer breakdowns for older boards so you can review past categories by date.",
   },
   {
     question: "What's the best strategy for solving Connections?",
     answer:
-      "Start by scanning all 16 words for an obvious Yellow group. Watch out for red herrings — words that seem to fit multiple categories. Save the Purple group for last, as it's often the trickiest and can be solved through elimination.",
+      "Start with the most defensible category on the board, usually yellow. Avoid forcing a purple-style guess too early, and use the remaining words to confirm harder groups by elimination.",
   },
   {
     question: "Why do some words seem to fit multiple groups?",
     answer:
-      "This is intentional! The puzzle designers include 'red herring' words that appear to belong in one category but actually belong in another. Words with multiple meanings are commonly used to create these traps.",
+      "That overlap is intentional. Connections often places red herring words next to the real set so that you have to prove a full group of four instead of relying on a loose association.",
   },
   {
     question: "How are the hints generated?",
     answer:
-      "Our hints are generated based on the puzzle data. We provide three levels of hints for each group: a vague thematic hint, the category name, and partial member reveals. This lets you choose how much help you want.",
+      "The site builds layered hints from the puzzle data so you can choose how much help to reveal. The goal is to preserve the solve where possible and use the full answer as a review step instead of a first move.",
   },
 ];
 
@@ -107,7 +107,6 @@ export default async function FAQPage({ params }: { params: Params }) {
         )}
       />
 
-      {/* Header */}
       <header className="relative overflow-hidden rounded-2xl border border-blue-200/70 bg-gradient-to-br from-blue-50 via-white to-blue-50 p-6 sm:p-8 dark:border-blue-900/40 dark:from-zinc-900 dark:via-zinc-900 dark:to-blue-950/30">
         <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-blue-200/30 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-12 -left-12 h-36 w-36 rounded-full bg-blue-200/20 blur-3xl" />
@@ -122,13 +121,12 @@ export default async function FAQPage({ params }: { params: Params }) {
             Frequently Asked Questions
           </h1>
           <p className="mt-2 text-muted-foreground">
-            Everything you need to know about NYT Connections and
-            ConnectionsHint.
+            Quick answers about the puzzle itself, how this site structures its
+            hints, and what to do when a board feels full of overlap.
           </p>
         </div>
       </header>
 
-      {/* FAQ Items */}
       <div className="mt-8 space-y-3">
         {FAQ_ITEMS.map((item, index) => (
           <details
@@ -148,13 +146,11 @@ export default async function FAQPage({ params }: { params: Params }) {
         ))}
       </div>
 
-      {/* CTA */}
       <div className="mt-8 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 p-6 text-center text-white">
-        <h2 className="font-heading text-xl font-bold">
-          Still have questions?
-        </h2>
+        <h2 className="font-heading text-xl font-bold">Still have questions?</h2>
         <p className="mt-1 text-sm text-blue-100">
-          Check out our detailed guide or jump straight to today&apos;s puzzle.
+          Read the full how-to-play guide or jump straight to today&apos;s board
+          if you want to put the ideas into practice.
         </p>
         <div className="mt-4 flex flex-wrap justify-center gap-3">
           <Link

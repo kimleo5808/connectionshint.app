@@ -70,6 +70,48 @@ export default async function LetterGamePage({ params }: { params: Params }) {
         <WordleGameLoader wordLength={WORD_LENGTH} />
       </section>
 
+      <section className="mt-10 rounded-2xl border border-blue-100 bg-card p-6 dark:border-blue-900/40 sm:p-8">
+        <h2 className="font-heading text-2xl font-bold text-foreground">
+          What to Focus On in {game.title}
+        </h2>
+        <p className="mt-3 leading-relaxed text-muted-foreground">
+          {game.intro}
+        </p>
+
+        <div className="mt-6 grid gap-4 sm:grid-cols-3">
+          {game.strategies.map((strategy) => (
+            <div
+              key={strategy.title}
+              className="rounded-xl border border-blue-100 bg-blue-50/40 p-4 dark:border-blue-900/30 dark:bg-blue-950/10"
+            >
+              <h3 className="font-heading text-sm font-bold text-foreground">
+                {strategy.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {strategy.content}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-6">
+          <h3 className="font-heading text-lg font-bold text-foreground">
+            Why practice this length?
+          </h3>
+          <ul className="mt-3 space-y-2">
+            {game.benefits.map((benefit) => (
+              <li
+                key={benefit}
+                className="flex items-start gap-2 text-sm text-muted-foreground"
+              >
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500" />
+                <span>{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* SEO Content */}
       <SeoContent wordLength={WORD_LENGTH} />
 
