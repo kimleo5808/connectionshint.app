@@ -5,7 +5,11 @@ import { BASE_URL } from "@/config/site";
 import { GUIDES } from "@/data/guides";
 import { Locale, LOCALES } from "@/i18n/routing";
 import { Link as I18nLink } from "@/i18n/routing";
-import { getLatestPuzzle, getRecentPuzzles } from "@/lib/connections-data";
+import {
+  getLatestPuzzle,
+  getRecentPuzzles,
+  getYesterdayPuzzle,
+} from "@/lib/connections-data";
 import {
   breadcrumbSchema,
   faqPageSchema,
@@ -123,6 +127,7 @@ export default async function ConnectionsHintTodayPage({
 }) {
   await params;
   const puzzle = await getLatestPuzzle();
+  const yesterdayPuzzle = await getYesterdayPuzzle();
   const recentPuzzles = await getRecentPuzzles(7);
 
   if (!puzzle) {
@@ -138,6 +143,7 @@ export default async function ConnectionsHintTodayPage({
 
   const formattedDate = dayjs(puzzle.date).format("MMMM D, YYYY");
   const dayOfWeek = dayjs(puzzle.date).format("dddd");
+  const currentMonthPath = `/connections-hint/${puzzle.date.slice(0, 4)}/${puzzle.date.slice(5, 7)}`;
 
   const guides = GUIDES.slice(0, 6);
 
@@ -172,6 +178,34 @@ export default async function ConnectionsHintTodayPage({
           answer as a review tool after you have taken your own shot at the
           board.
         </p>
+        <div className="mt-5 flex flex-wrap justify-center gap-2">
+          {yesterdayPuzzle ? (
+            <Link
+              href="/connections-hint-yesterday"
+              className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-blue-300 hover:text-blue-600 dark:hover:border-blue-700 dark:hover:text-blue-400"
+            >
+              Review Yesterday
+            </Link>
+          ) : null}
+          <Link
+            href={`/connections-number/${puzzle.id}`}
+            className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-blue-300 hover:text-blue-600 dark:hover:border-blue-700 dark:hover:text-blue-400"
+          >
+            Puzzle #{puzzle.id} Lookup
+          </Link>
+          <Link
+            href={currentMonthPath}
+            className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-blue-300 hover:text-blue-600 dark:hover:border-blue-700 dark:hover:text-blue-400"
+          >
+            Browse {dayjs(puzzle.date).format("MMMM YYYY")}
+          </Link>
+          <Link
+            href="/connections-patterns"
+            className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-blue-300 hover:text-blue-600 dark:hover:border-blue-700 dark:hover:text-blue-400"
+          >
+            Study Patterns
+          </Link>
+        </div>
       </header>
 
       {/* Playable Connections Game */}

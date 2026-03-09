@@ -18,6 +18,9 @@ type Params = Promise<{ locale: string }>;
 
 const TAG_LINKS = [
   { label: "Today's Hint", href: "/connections-hint-today" },
+  { label: "Yesterday", href: "/connections-hint-yesterday" },
+  { label: "Difficulty Guide", href: "/connections-difficulty" },
+  { label: "Pattern Library", href: "/connections-patterns" },
   { label: "How to Play", href: "/how-to-play-connections" },
   { label: "Puzzle Strategies", href: "/blog/connections-strategies-guide" },
   { label: "Common Patterns", href: "/blog/common-connections-patterns" },

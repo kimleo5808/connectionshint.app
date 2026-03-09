@@ -14,11 +14,26 @@ export const getPuzzleByDate = cache(
   }
 );
 
+/** Get a puzzle by its numeric id */
+export const getPuzzleById = cache(
+  async (id: number): Promise<ConnectionsPuzzle | undefined> => {
+    return data.puzzles.find((p) => p.id === id);
+  }
+);
+
 /** Get the latest/today's puzzle */
 export const getLatestPuzzle = cache(
   async (): Promise<ConnectionsPuzzle | undefined> => {
     if (data.puzzles.length === 0) return undefined;
     return data.puzzles[data.puzzles.length - 1];
+  }
+);
+
+/** Get the puzzle immediately before the latest board */
+export const getYesterdayPuzzle = cache(
+  async (): Promise<ConnectionsPuzzle | undefined> => {
+    if (data.puzzles.length < 2) return undefined;
+    return data.puzzles[data.puzzles.length - 2];
   }
 );
 
@@ -64,5 +79,37 @@ export const getPuzzleCount = cache(
 export const getLastUpdated = cache(
   async (): Promise<string> => {
     return data.lastUpdated;
+  }
+);
+
+/** Get the previous chronologically older puzzle for a date */
+export const getPreviousPuzzleByDate = cache(
+  async (date: string): Promise<ConnectionsPuzzle | undefined> => {
+    const index = data.puzzles.findIndex((p) => p.date === date);
+    if (index <= 0) return undefined;
+    return data.puzzles[index - 1];
+  }
+);
+
+/** Get the next chronologically newer puzzle for a date */
+export const getNextPuzzleByDate = cache(
+  async (date: string): Promise<ConnectionsPuzzle | undefined> => {
+    const index = data.puzzles.findIndex((p) => p.date === date);
+    if (index === -1 || index >= data.puzzles.length - 1) return undefined;
+    return data.puzzles[index + 1];
+  }
+);
+
+/** Get the previous puzzle by numeric id */
+export const getPreviousPuzzleById = cache(
+  async (id: number): Promise<ConnectionsPuzzle | undefined> => {
+    return data.puzzles.find((p) => p.id === id - 1);
+  }
+);
+
+/** Get the next puzzle by numeric id */
+export const getNextPuzzleById = cache(
+  async (id: number): Promise<ConnectionsPuzzle | undefined> => {
+    return data.puzzles.find((p) => p.id === id + 1);
   }
 );

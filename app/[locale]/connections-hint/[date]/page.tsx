@@ -396,6 +396,7 @@ export default async function DailyPuzzlePage({
 
   const formattedDate = dayjs(puzzle.date).format("MMMM D, YYYY");
   const dayOfWeek = dayjs(puzzle.date).format("dddd");
+  const monthPath = `/connections-hint/${puzzle.date.slice(0, 4)}/${puzzle.date.slice(5, 7)}`;
 
   const sorted = [...puzzle.answers].sort((a, b) => a.level - b.level);
   const allWords = [...puzzle.answers.flatMap((g) => g.members)].sort(
@@ -504,6 +505,32 @@ export default async function DailyPuzzlePage({
           ? Find progressive hints and the complete answer for Connections #
           {puzzle.id} below.
         </p>
+        <div className="mt-5 flex flex-wrap justify-center gap-2">
+          <Link
+            href={`/connections-number/${puzzle.id}`}
+            className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-blue-300 hover:text-blue-600 dark:hover:border-blue-700 dark:hover:text-blue-400"
+          >
+            Puzzle #{puzzle.id} Lookup
+          </Link>
+          <Link
+            href={monthPath}
+            className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-blue-300 hover:text-blue-600 dark:hover:border-blue-700 dark:hover:text-blue-400"
+          >
+            Browse {dayjs(puzzle.date).format("MMMM YYYY")}
+          </Link>
+          <Link
+            href="/connections-hint-yesterday"
+            className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-blue-300 hover:text-blue-600 dark:hover:border-blue-700 dark:hover:text-blue-400"
+          >
+            Review Yesterday
+          </Link>
+          <Link
+            href="/connections-difficulty"
+            className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-blue-300 hover:text-blue-600 dark:hover:border-blue-700 dark:hover:text-blue-400"
+          >
+            Difficulty Guide
+          </Link>
+        </div>
       </header>
 
       {/* 鈹€鈹€ 3-column highlight cards 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */}

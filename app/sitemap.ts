@@ -1,6 +1,7 @@
 import { siteConfig } from '@/config/site'
 import { GUIDES } from '@/data/guides'
-import { getAllPuzzles } from '@/lib/connections-data'
+import { PATTERN_PAGE_CONFIGS } from '@/data/pattern-pages'
+import { getAllPuzzles, getAvailableMonths } from '@/lib/connections-data'
 import { getPosts } from '@/lib/getBlogs'
 import { MetadataRoute } from 'next'
 
@@ -12,6 +13,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages = [
     '',
     '/connections-hint-today',
+    '/connections-hint-yesterday',
+    '/connections-difficulty',
+    '/connections-patterns',
     '/how-to-play-connections',
     '/connections-hint-faq',
     '/connections-hint',
@@ -61,6 +65,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }))
 
+  const puzzleNumberPages = allPuzzles.map(puzzle => ({
+    url: `${siteUrl}/connections-number/${puzzle.id}`,
+    lastModified: new Date(puzzle.date),
+    changeFrequency: 'monthly' as ChangeFrequency,
+    priority: 0.55,
+  }))
+
+  const months = await getAvailableMonths()
+  const monthPages = months.map(yearMonth => ({
+    url: `${siteUrl}/connections-hint/${yearMonth.slice(0, 4)}/${yearMonth.slice(5, 7)}`,
+    lastModified: new Date(`${yearMonth}-01`),
+    changeFrequency: 'monthly' as ChangeFrequency,
+    priority: 0.65,
+  }))
+
+  const patternPages = PATTERN_PAGE_CONFIGS.map(page => ({
+    url: `${siteUrl}/connections-patterns/${page.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as ChangeFrequency,
+    priority: 0.7,
+  }))
+
   // Blog pages
   const { posts } = await getPosts('en')
 
@@ -93,6 +119,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     guidesIndex,
     ...guidePages,
     ...puzzlePages,
+    ...puzzleNumberPages,
+    ...monthPages,
+    ...patternPages,
     blogIndex,
     ...postPages,
   ]

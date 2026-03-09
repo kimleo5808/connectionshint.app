@@ -15,6 +15,7 @@ interface MonthSectionProps {
 export function MonthSection({ month, puzzles, latestId }: MonthSectionProps) {
   const [showAll, setShowAll] = useState(false);
   const monthLabel = dayjs(`${month}-01`).format("MMMM YYYY");
+  const monthPath = `/connections-hint/${month.slice(0, 4)}/${month.slice(5, 7)}`;
   const firstId = puzzles[puzzles.length - 1]?.id;
   const lastId = puzzles[0]?.id;
 
@@ -23,9 +24,18 @@ export function MonthSection({ month, puzzles, latestId }: MonthSectionProps) {
 
   return (
     <section>
-      <h2 className="mb-6 text-center font-heading text-xl font-bold text-foreground sm:text-2xl">
-        Connections #{firstId}-{lastId} Hints ({monthLabel})
-      </h2>
+      <div className="mb-6 text-center">
+        <h2 className="font-heading text-xl font-bold text-foreground sm:text-2xl">
+          Connections #{firstId}-{lastId} Hints ({monthLabel})
+        </h2>
+        <Link
+          href={monthPath}
+          className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+        >
+          Open Month Review
+          <ArrowRight className="h-3 w-3" />
+        </Link>
+      </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {displayed.map((puzzle) => {
