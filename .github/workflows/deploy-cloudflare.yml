@@ -33,20 +33,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm install
 
       - name: Update Connections puzzle data
-        run: pnpm run update:connections
+        run: npm run update:connections
 
       - name: Commit data updates
         if: github.event_name == 'schedule'
@@ -62,4 +58,4 @@ jobs:
           fi
 
       - name: Build and deploy with OpenNext
-        run: pnpm run deploy
+        run: npm run deploy
