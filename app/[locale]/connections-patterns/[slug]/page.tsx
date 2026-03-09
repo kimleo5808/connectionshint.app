@@ -70,6 +70,40 @@ function getStudySummary(slug: PatternPageSlug) {
   return "Trap-heavy boards are the best examples of why vague category matching is not enough. You need precise group logic, especially after a one-away message.";
 }
 
+function getPatternExampleReason(slug: PatternPageSlug, puzzle: Awaited<ReturnType<typeof getAllPuzzles>>[number]) {
+  if (slug === "fill-in-the-blank") {
+    const group = puzzle.answers.find((item) =>
+      item.group.toUpperCase().includes("___") || item.group.includes("...")
+    );
+    return group
+      ? `Watch the group "${group.group}" and notice how the members only click after a shared phrase appears.`
+      : "Use this board to practice spotting hidden phrase logic after the most literal category is cleared.";
+  }
+
+  if (slug === "wordplay") {
+    const group = puzzle.answers.find((item) => {
+      const label = item.group.toUpperCase();
+      return [
+        "PALINDROME",
+        "ANAGRAM",
+        "HOMOPHONE",
+        "RHYME",
+        "PREFIX",
+        "SUFFIX",
+        "STARTS WITH",
+        "ENDS WITH",
+        "HIDDEN",
+        "LETTER",
+      ].some((token) => label.includes(token));
+    });
+    return group
+      ? `Study "${group.group}" to see how the board stops rewarding plain topic matching and starts rewarding language structure.`
+      : "This board is useful when you want to practice the shift from semantic grouping to wordplay-based grouping.";
+  }
+
+  return `This board earns a high difficulty score (${getPuzzleDifficultyScore(puzzle)}) and is useful for studying overlap, red herrings, and one-away pressure.`;
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -268,6 +302,9 @@ export default async function ConnectionsPatternDetailPage({
                   </p>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                     {getPuzzleDifficultyNote(puzzle)}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {getPatternExampleReason(page.slug, puzzle)}
                   </p>
                 </Link>
               ))}

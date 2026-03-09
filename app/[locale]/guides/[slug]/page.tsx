@@ -10,6 +10,66 @@ import { notFound } from "next/navigation";
 
 type Params = Promise<{ locale: string; slug: string }>;
 
+function getStudySurfaces(slug: string) {
+  if (slug === "common-mistakes") {
+    return [
+      {
+        href: "/connections-patterns/common-traps",
+        title: "Common Traps",
+        description: "See how one-away boards create believable fake groups.",
+      },
+      {
+        href: "/connections-difficulty",
+        title: "Difficulty Guide",
+        description: "Understand why some boards stay sticky even with good habits.",
+      },
+      {
+        href: "/connections-hint",
+        title: "Archive Review",
+        description: "Practice on real historical puzzles after reading the guide.",
+      },
+    ];
+  }
+
+  if (slug === "why-so-hard" || slug === "advanced-techniques") {
+    return [
+      {
+        href: "/connections-difficulty",
+        title: "Difficulty Guide",
+        description: "Study the site's difficulty framework and hardest recent boards.",
+      },
+      {
+        href: "/connections-patterns/wordplay",
+        title: "Wordplay Pattern Page",
+        description: "Focus on boards that stop behaving like normal topic matches.",
+      },
+      {
+        href: "/connections-patterns/fill-in-the-blank",
+        title: "Fill-in-the-Blank Pattern Page",
+        description: "Train phrase recognition on boards where the wording stays hidden.",
+      },
+    ];
+  }
+
+  return [
+    {
+      href: "/connections-patterns",
+      title: "Pattern Library",
+      description: "Learn the main category styles that repeat across the archive.",
+    },
+    {
+      href: "/connections-difficulty",
+      title: "Difficulty Guide",
+      description: "See what actually makes a board hard once the obvious group is gone.",
+    },
+    {
+      href: "/connections-hint",
+      title: "Archive Review",
+      description: "Use real past puzzles to practice the ideas from this guide.",
+    },
+  ];
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -36,6 +96,7 @@ export default async function GuidePage({ params }: { params: Params }) {
   if (!guide) notFound();
 
   const relatedGuides = GUIDES.filter((g) => g.slug !== slug).slice(0, 3);
+  const studySurfaces = getStudySurfaces(slug);
 
   return (
     <div className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
@@ -190,6 +251,33 @@ export default async function GuidePage({ params }: { params: Params }) {
       </div>
 
       {/* Related Guides */}
+      <div className="mt-12 rounded-2xl border border-blue-100 bg-card p-6 dark:border-blue-900/40">
+        <h2 className="font-heading text-xl font-bold text-foreground">
+          Study This Next
+        </h2>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          Use this guide as the concept layer, then jump into the archive and
+          pattern pages to practice on real boards.
+        </p>
+        <div className="mt-4 grid gap-3 sm:grid-cols-3">
+          {studySurfaces.map((item) => (
+            <I18nLink
+              key={item.href}
+              href={item.href}
+              prefetch={false}
+              className="group rounded-xl border border-blue-100 bg-card p-4 transition-all hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md dark:border-blue-900/40 dark:hover:border-blue-700/60"
+            >
+              <h3 className="font-heading text-sm font-bold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                {item.description}
+              </p>
+            </I18nLink>
+          ))}
+        </div>
+      </div>
+
       <div className="mt-12 border-t border-blue-100 pt-8 dark:border-blue-900/40">
         <h2 className="font-heading text-xl font-bold text-foreground">
           Related Guides

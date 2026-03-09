@@ -217,6 +217,32 @@ export default async function ConnectionsDifficultyPage({
           remaining words, and whether the hardest group depends on a phrase or
           language pattern instead of a direct topic label.
         </p>
+        <div className="mt-5 grid gap-3 sm:grid-cols-3">
+          <div className="rounded-xl border border-border bg-muted/20 p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              1. Clean Start
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              If one group is obvious early, the board gets materially easier.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-muted/20 p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              2. Overlap Pressure
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              If multiple words can plausibly live in two groups, error risk rises fast.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-muted/20 p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              3. Pattern Shift
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Boards get hardest when they switch from topic matching to phrasing or wordplay.
+            </p>
+          </div>
+        </div>
       </section>
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
@@ -254,6 +280,20 @@ export default async function ConnectionsDifficultyPage({
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                     {item.note}
                   </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <Link
+                      href={
+                        item.patternLabel === "Fill in the Blank"
+                          ? "/connections-patterns/fill-in-the-blank"
+                          : item.patternLabel === "Wordplay"
+                            ? "/connections-patterns/wordplay"
+                            : "/connections-patterns/common-traps"
+                      }
+                      className="rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-blue-300 hover:text-blue-600 dark:hover:border-blue-700 dark:hover:text-blue-400"
+                    >
+                      Study related pattern
+                    </Link>
+                  </div>
                 </Link>
               ))}
             </div>

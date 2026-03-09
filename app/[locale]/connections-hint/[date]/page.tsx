@@ -7,6 +7,7 @@ import {
   getPuzzleByDate,
   getRecentPuzzles,
 } from "@/lib/connections-data";
+import { getSuggestedStudyLinks } from "@/lib/connections-insights";
 import { articleSchema, breadcrumbSchema, faqPageSchema, JsonLd } from "@/lib/jsonld";
 import { constructMetadata } from "@/lib/metadata";
 import { ConnectionsGroup } from "@/types/connections";
@@ -405,6 +406,7 @@ export default async function DailyPuzzlePage({
 
   const faqItems = generateFAQ(puzzle.id, puzzle.date, puzzle.answers);
   const strategyTips = generateEditorialStrategyTips(puzzle.answers);
+  const studyLinks = getSuggestedStudyLinks(puzzle.answers);
   const overview = generateEditorialOverview(
     puzzle.id,
     puzzle.date,
@@ -657,6 +659,16 @@ export default async function DailyPuzzlePage({
                     <p className="text-sm leading-relaxed text-muted-foreground">
                       {generateEditorialGroupAnalysis(group)}
                     </p>
+                    {(getGroupPattern(group) === "fill-in-the-blank" ||
+                      getGroupPattern(group) === "wordplay") && (
+                      <Link
+                        href={`/connections-patterns/${getGroupPattern(group) === "fill-in-the-blank" ? "fill-in-the-blank" : "wordplay"}`}
+                        className="inline-flex items-center gap-1 text-xs font-medium text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                      >
+                        Study this {getGroupPattern(group) === "fill-in-the-blank" ? "phrase pattern" : "wordplay pattern"}
+                        <ArrowRight className="h-3 w-3" />
+                      </Link>
+                    )}
                   </div>
                 </div>
               ))}
@@ -727,6 +739,27 @@ export default async function DailyPuzzlePage({
                 </li>
               ))}
             </ul>
+
+            <div className="mb-8 rounded-xl border border-border bg-muted/20 p-4">
+              <h4 className="font-heading text-sm font-bold text-foreground">
+                Study the Pattern Behind This Board
+              </h4>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                If this puzzle felt sticky, jump straight to the pattern page
+                that matches the board instead of only rereading the answer.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {studyLinks.map((link) => (
+                  <Link
+                    key={link.slug}
+                    href={`/connections-patterns/${link.slug}`}
+                    className="rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-blue-300 hover:text-blue-600 dark:hover:border-blue-700 dark:hover:text-blue-400"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
 
             {/* FAQ */}
             <h3 className="font-heading text-lg font-bold text-foreground mb-4">

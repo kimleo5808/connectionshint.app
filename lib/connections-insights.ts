@@ -6,6 +6,11 @@ export type PuzzlePattern =
   | "structured-set"
   | "category";
 
+export type StudyPatternSlug =
+  | "fill-in-the-blank"
+  | "wordplay"
+  | "common-traps";
+
 const WORDPLAY_TOKENS = [
   "PALINDROME",
   "ANAGRAM",
@@ -77,6 +82,36 @@ export function formatPatternLabel(pattern: PuzzlePattern): string {
     default:
       return "Category Match";
   }
+}
+
+export function getPatternStudyLink(pattern: PuzzlePattern): {
+  slug: StudyPatternSlug;
+  label: string;
+} | null {
+  if (pattern === "fill-in-the-blank") {
+    return { slug: "fill-in-the-blank", label: "Fill-in-the-Blank" };
+  }
+
+  if (pattern === "wordplay") {
+    return { slug: "wordplay", label: "Wordplay" };
+  }
+
+  return null;
+}
+
+export function getSuggestedStudyLinks(
+  puzzleOrGroups: ConnectionsPuzzle | ConnectionsGroup[]
+) {
+  const patterns = getPuzzlePatterns(puzzleOrGroups);
+  const links = patterns
+    .map(getPatternStudyLink)
+    .filter(Boolean) as { slug: StudyPatternSlug; label: string }[];
+
+  if (!links.some((link) => link.slug === "common-traps")) {
+    links.push({ slug: "common-traps", label: "Common Traps" });
+  }
+
+  return links.slice(0, 3);
 }
 
 export function getPrimaryPuzzlePattern(
