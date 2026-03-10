@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-09T17:26:05.754Z",
+  "lastUpdated": "2026-03-10T03:10:32.672Z",
   "puzzles": [
     {
       "id": 1,
@@ -45997,6 +45997,52 @@
             "E STREET BAND",
             "MAFIA",
             "VIDEO GAME"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1082,
+      "date": "2026-03-10",
+      "answers": [
+        {
+          "level": 0,
+          "group": "COOK WITH DRY HEAT",
+          "members": [
+            "BROWN",
+            "ROAST",
+            "SEAR",
+            "TOAST"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "FAMILIAL NICKNAMES",
+          "members": [
+            "CUZ",
+            "GRAM",
+            "POP",
+            "UNC"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "U.S. STATE ABBREVIATIONS",
+          "members": [
+            "MASS",
+            "MISS",
+            "PENN",
+            "WASH"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "PUNCH",
+          "members": [
+            "BOX",
+            "DUKE",
+            "SLUG",
+            "SOCK"
           ]
         }
       ]
