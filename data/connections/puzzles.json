@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-10T17:14:15.850Z",
+  "lastUpdated": "2026-03-11T03:09:50.102Z",
   "puzzles": [
     {
       "id": 1,
@@ -46043,6 +46043,52 @@
             "DUKE",
             "SLUG",
             "SOCK"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1084,
+      "date": "2026-03-11",
+      "answers": [
+        {
+          "level": 0,
+          "group": "STEAL",
+          "members": [
+            "LIFT",
+            "PALM",
+            "PINCH",
+            "POCKET"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "MAKE NICER, WITH \"UP\"",
+          "members": [
+            "DRESS",
+            "JAZZ",
+            "SPIFF",
+            "SPRUCE"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "KINDS OF CONES",
+          "members": [
+            "ICE CREAM",
+            "PINE",
+            "SNOW",
+            "TRAFFIC"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "PRONOUN HOMOPHONES",
+          "members": [
+            "HEE",
+            "MI",
+            "OUI",
+            "YEW"
           ]
         }
       ]
