@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-11T17:27:13.183Z",
+  "lastUpdated": "2026-03-12T03:16:07.785Z",
   "puzzles": [
     {
       "id": 1,
@@ -46089,6 +46089,52 @@
             "MI",
             "OUI",
             "YEW"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1086,
+      "date": "2026-03-12",
+      "answers": [
+        {
+          "level": 0,
+          "group": "PLACES TO FIND SAND",
+          "members": [
+            "BUNKER",
+            "DESERT",
+            "HOURGLASS",
+            "SANDBOX"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "THINGS THAT MOVE BACK AND FORTH",
+          "members": [
+            "METRONOME",
+            "PENDULUM",
+            "SWING",
+            "WINDSHIELD WIPER"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "APPARATUS-BASED EXERCISE CLASSES",
+          "members": [
+            "BARRE",
+            "REFORMER",
+            "SPIN",
+            "STEP"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "FEATURING BIRDS",
+          "members": [
+            "CUCKOO CLOCK",
+            "FROOT LOOPS",
+            "MEXICAN FLAG",
+            "WEATHER VANE"
           ]
         }
       ]
