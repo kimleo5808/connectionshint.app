@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-13T17:06:24.736Z",
+  "lastUpdated": "2026-03-14T03:10:48.431Z",
   "puzzles": [
     {
       "id": 1,
@@ -46181,6 +46181,52 @@
             "NUN",
             "PHEW",
             "SUM"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1079,
+      "date": "2026-03-14",
+      "answers": [
+        {
+          "level": 0,
+          "group": "HYPNOTIC STATE",
+          "members": [
+            "DREAM",
+            "HAZE",
+            "SPELL",
+            "TRANCE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "STARTING WITH PREFIXES MEANING \"TWO\"",
+          "members": [
+            "BINARY",
+            "DIOXIDE",
+            "DUOLINGO",
+            "TWILIGHT"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "FICTIONAL INSPECTORS",
+          "members": [
+            "CLOUSEAU",
+            "GADGET",
+            "JAVERT",
+            "MORSE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "ENDING IN FEMALE ANIMALS",
+          "members": [
+            "HOOTENANNY",
+            "LICHEN",
+            "MOSCOW",
+            "NIGHTMARE"
           ]
         }
       ]
