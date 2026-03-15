@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-14T16:57:01.279Z",
+  "lastUpdated": "2026-03-15T03:39:12.116Z",
   "puzzles": [
     {
       "id": 1,
@@ -46227,6 +46227,52 @@
             "LICHEN",
             "MOSCOW",
             "NIGHTMARE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1089,
+      "date": "2026-03-15",
+      "answers": [
+        {
+          "level": 0,
+          "group": "GREEDILY CONTROL",
+          "members": [
+            "BOGART",
+            "CORNER",
+            "HOG",
+            "MONOPOLIZE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "TOOTHED WHEELS",
+          "members": [
+            "COG",
+            "GEAR",
+            "PINION",
+            "SPROCKET"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "PORTMANTEAUX",
+          "members": [
+            "BLOG",
+            "MOTEL",
+            "SMOG",
+            "SPORK"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "BULL___",
+          "members": [
+            "DOG",
+            "DOZE",
+            "FROG",
+            "HORN"
           ]
         }
       ]
