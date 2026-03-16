@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-15T16:57:33.658Z",
+  "lastUpdated": "2026-03-16T03:42:25.694Z",
   "puzzles": [
     {
       "id": 1,
@@ -46273,6 +46273,52 @@
             "DOZE",
             "FROG",
             "HORN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1095,
+      "date": "2026-03-16",
+      "answers": [
+        {
+          "level": 0,
+          "group": "ANIMAL GROUP NAMES",
+          "members": [
+            "GAGGLE",
+            "PACK",
+            "POD",
+            "PRIDE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "THINGS ASSOCIATED WITH BEING SLOW",
+          "members": [
+            "GLACIER",
+            "MOLASSES",
+            "SLOTH",
+            "TRAFFIC"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "SILENT \"W\"",
+          "members": [
+            "CARTWRIGHT",
+            "TWO",
+            "WRATH",
+            "WRESTLE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "WORDS THAT SOUND LIKE STATE ABBREVIATIONS",
+          "members": [
+            "ANY",
+            "EMMY",
+            "ENVY",
+            "OKAY"
           ]
         }
       ]
