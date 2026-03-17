@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-16T17:35:12.107Z",
+  "lastUpdated": "2026-03-17T03:18:00.010Z",
   "puzzles": [
     {
       "id": 1,
@@ -46319,6 +46319,52 @@
             "EMMY",
             "ENVY",
             "OKAY"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1094,
+      "date": "2026-03-17",
+      "answers": [
+        {
+          "level": 0,
+          "group": "METAPHORS FOR TROUBLE",
+          "members": [
+            "BIND",
+            "HOT WATER",
+            "JAM",
+            "PICKLE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "MUSIC THEORY CONCEPTS",
+          "members": [
+            "KEY",
+            "PITCH",
+            "SCALE",
+            "TONE"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "THINGS WITH STRINGS",
+          "members": [
+            "BALLOON",
+            "KITE",
+            "TEA BAG",
+            "YO-YO"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "METAPHORS FOR QUICKNESS",
+          "members": [
+            "ARROW",
+            "LIGHTNING",
+            "ROCKET",
+            "WIND"
           ]
         }
       ]
