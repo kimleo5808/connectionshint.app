@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-17T17:35:55.961Z",
+  "lastUpdated": "2026-03-18T03:24:46.173Z",
   "puzzles": [
     {
       "id": 1,
@@ -46365,6 +46365,52 @@
             "LIGHTNING",
             "ROCKET",
             "WIND"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1093,
+      "date": "2026-03-18",
+      "answers": [
+        {
+          "level": 0,
+          "group": "INTERVAL",
+          "members": [
+            "PATCH",
+            "PERIOD",
+            "SPELL",
+            "STRETCH"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "REACT TO A STUBBED TOE",
+          "members": [
+            "CURSE",
+            "HOP",
+            "WINCE",
+            "YELL"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "GUITAR EFFECTS PEDALS",
+          "members": [
+            "DELAY",
+            "REVERB",
+            "WAH",
+            "WHAMMY"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "___ CHECK",
+          "members": [
+            "BLANK",
+            "COAT",
+            "RAIN",
+            "REALITY"
           ]
         }
       ]
