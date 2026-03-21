@@ -6,6 +6,7 @@ import {
   getLatestPuzzle,
   getPuzzlesByMonth,
 } from "@/lib/connections-data";
+import { getStaticAvailableMonths } from "@/lib/connections-static";
 import { getMonthSummary } from "@/lib/connections-insights";
 import { breadcrumbSchema, JsonLd } from "@/lib/jsonld";
 import { constructMetadata } from "@/lib/metadata";
@@ -317,7 +318,7 @@ export default async function ConnectionsMonthArchivePage({
 }
 
 export async function generateStaticParams() {
-  const months = await getAvailableMonths();
+  const months = getStaticAvailableMonths();
   const params: { locale: string; date: string; month: string }[] = [];
 
   for (const locale of LOCALES) {

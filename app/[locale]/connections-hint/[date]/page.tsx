@@ -3,10 +3,12 @@ import { HintCardList } from "@/components/connections/HintCard";
 import { BASE_URL } from "@/config/site";
 import { Locale, LOCALES } from "@/i18n/routing";
 import {
-  getAllPuzzles,
+  getNextPuzzleByDate,
+  getPreviousPuzzleByDate,
   getPuzzleByDate,
   getRecentPuzzles,
 } from "@/lib/connections-data";
+import { getStaticPuzzles } from "@/lib/connections-static";
 import { getSuggestedStudyLinks } from "@/lib/connections-insights";
 import { articleSchema, breadcrumbSchema, faqPageSchema, JsonLd } from "@/lib/jsonld";
 import { constructMetadata } from "@/lib/metadata";
@@ -387,13 +389,11 @@ export default async function DailyPuzzlePage({
     notFound();
   }
 
-  const allPuzzles = await getAllPuzzles();
-  const currentIndex = allPuzzles.findIndex((p) => p.date === date);
-  const prevPuzzle =
-    currentIndex < allPuzzles.length - 1 ? allPuzzles[currentIndex + 1] : null;
-  const nextPuzzle =
-    currentIndex > 0 ? allPuzzles[currentIndex - 1] : null;
-  const recentPuzzles = await getRecentPuzzles(10);
+  const [prevPuzzle, nextPuzzle, recentPuzzles] = await Promise.all([
+    getPreviousPuzzleByDate(date),
+    getNextPuzzleByDate(date),
+    getRecentPuzzles(10),
+  ]);
 
   const formattedDate = dayjs(puzzle.date).format("MMMM D, YYYY");
   const dayOfWeek = dayjs(puzzle.date).format("dddd");
@@ -895,7 +895,7 @@ export default async function DailyPuzzlePage({
 }
 
 export async function generateStaticParams() {
-  const allPuzzles = await getAllPuzzles();
+  const allPuzzles = getStaticPuzzles();
   const params: { locale: string; date: string }[] = [];
 
   for (const locale of LOCALES) {

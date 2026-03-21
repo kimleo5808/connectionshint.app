@@ -1,7 +1,7 @@
 import { siteConfig } from '@/config/site'
 import { GUIDES } from '@/data/guides'
 import { PATTERN_PAGE_CONFIGS } from '@/data/pattern-pages'
-import { getAllPuzzles, getAvailableMonths } from '@/lib/connections-data'
+import { getStaticPuzzles, getStaticAvailableMonths } from '@/lib/connections-static'
 import { getPosts } from '@/lib/getBlogs'
 import { MetadataRoute } from 'next'
 
@@ -57,7 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
 
   // Puzzle pages
-  const allPuzzles = await getAllPuzzles()
+  const allPuzzles = getStaticPuzzles()
   const puzzlePages = allPuzzles.map(puzzle => ({
     url: `${siteUrl}/connections-hint/${puzzle.date}`,
     lastModified: new Date(puzzle.date),
@@ -72,7 +72,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.55,
   }))
 
-  const months = await getAvailableMonths()
+  const months = getStaticAvailableMonths()
   const monthPages = months.map(yearMonth => ({
     url: `${siteUrl}/connections-hint/${yearMonth.slice(0, 4)}/${yearMonth.slice(5, 7)}`,
     lastModified: new Date(`${yearMonth}-01`),

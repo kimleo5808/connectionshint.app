@@ -3,11 +3,11 @@ import { HintCardList } from "@/components/connections/HintCard";
 import { BASE_URL } from "@/config/site";
 import { Locale, LOCALES } from "@/i18n/routing";
 import {
-  getAllPuzzles,
   getNextPuzzleById,
   getPreviousPuzzleById,
   getPuzzleById,
 } from "@/lib/connections-data";
+import { getStaticPuzzles } from "@/lib/connections-static";
 import {
   formatPatternLabel,
   getPrimaryPuzzlePattern,
@@ -280,7 +280,7 @@ export default async function ConnectionsNumberPage({
 }
 
 export async function generateStaticParams() {
-  const puzzles = await getAllPuzzles();
+  const puzzles = getStaticPuzzles();
   const params: { locale: string; id: string }[] = [];
 
   for (const locale of LOCALES) {

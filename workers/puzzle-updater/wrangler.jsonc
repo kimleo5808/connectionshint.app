@@ -1,0 +1,16 @@
+{
+	"$schema": "../../node_modules/wrangler/config-schema.json",
+	"name": "connectionshint-puzzle-updater",
+	"main": "index.ts",
+	"compatibility_date": "2026-02-10",
+	"compatibility_flags": ["nodejs_compat"],
+	"kv_namespaces": [
+		{
+			"binding": "PUZZLES_KV",
+			"id": "489eb2b783064bfba7b4fae18309fc9d"
+		}
+	],
+	"triggers": {
+		"crons": ["0 1 * * *"]
+	}
+}

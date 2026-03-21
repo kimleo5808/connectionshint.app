@@ -16,6 +16,12 @@
 			"service": "connectionshint-app"
 		}
 	],
+	"kv_namespaces": [
+		{
+			"binding": "PUZZLES_KV",
+			"id": "489eb2b783064bfba7b4fae18309fc9d"
+		}
+	],
 	"r2_buckets": [
 		// Use R2 incremental cache
 		// See https://opennext.js.org/cloudflare/caching
