@@ -39,6 +39,38 @@
             {
               "href": "/connections-hint-today",
               "name": "Today's Hints"
+            },
+            {
+              "href": "/connections-practice",
+              "name": "Practice Mode"
+            },
+            {
+              "href": "/connections-categories",
+              "name": "Category Explorer"
+            },
+            {
+              "href": "/connections-stats",
+              "name": "Puzzle Statistics"
+            },
+            {
+              "href": "/connections-streak",
+              "name": "Streak Tracker"
+            },
+            {
+              "href": "/connections-printable",
+              "name": "Printable Puzzles"
+            },
+            {
+              "href": "/connections-vs-wordle",
+              "name": "Connections vs Wordle"
+            },
+            {
+              "href": "/connections-solver",
+              "name": "Puzzle Solver"
+            },
+            {
+              "href": "/connections-sports-edition",
+              "name": "Sports Edition"
             }
           ]
         },

@@ -1,4 +1,5 @@
 import { siteConfig } from '@/config/site'
+import { CATEGORY_THEMES } from '@/data/categories'
 import { GUIDES } from '@/data/guides'
 import { PATTERN_PAGE_CONFIGS } from '@/data/pattern-pages'
 import { getStaticPuzzles, getStaticAvailableMonths } from '@/lib/connections-static'
@@ -19,6 +20,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/how-to-play-connections',
     '/connections-hint-faq',
     '/connections-hint',
+    '/connections-practice',
+    '/connections-categories',
+    '/connections-stats',
+    '/connections-streak',
+    '/connections-vs-wordle',
+    '/connections-printable',
+    '/connections-solver',
+    '/connections-sports-edition',
     '/about',
     '/contact',
     '/share',
@@ -80,6 +89,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.65,
   }))
 
+  // Category theme pages
+  const categoryPages = CATEGORY_THEMES.map(theme => ({
+    url: `${siteUrl}/connections-categories/${theme.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as ChangeFrequency,
+    priority: 0.7,
+  }))
+
   const patternPages = PATTERN_PAGE_CONFIGS.map(page => ({
     url: `${siteUrl}/connections-patterns/${page.slug}`,
     lastModified: new Date(),
@@ -122,6 +139,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...puzzleNumberPages,
     ...monthPages,
     ...patternPages,
+    ...categoryPages,
     blogIndex,
     ...postPages,
   ]

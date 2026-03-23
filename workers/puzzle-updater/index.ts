@@ -13,6 +13,9 @@ const COMMUNITY_SOURCE =
 // NYT official API
 const NYT_API_BASE = "https://www.nytimes.com/svc/connections/v2";
 
+// NYT Sports Edition API
+const NYT_SPORTS_API_BASE = "https://www.nytimes.com/svc/connections/v2";
+
 interface Env {
   PUZZLES_KV: KVNamespace;
 }
@@ -198,5 +201,97 @@ export default {
     await kv.put("meta:all-puzzles", JSON.stringify(allPuzzles));
 
     console.log(`✅ Update complete. Total: ${allPuzzles.length} puzzles (${newPuzzles.length} new)`);
+
+    // ── Sports Edition Update ──────────────────────────────────────────
+
+    await updateSportsEdition(kv, today);
   },
 };
+
+/* ------------------------------------------------------------------ */
+/*  Sports Edition fetcher                                             */
+/* ------------------------------------------------------------------ */
+
+interface SportsIndex {
+  lastUpdated: string;
+  count: number;
+  latestDate: string;
+  dates: string[];
+}
+
+async function fetchSportsFromNYT(dateStr: string): Promise<ConnectionsPuzzle | null> {
+  // NYT Sports Connections uses the same API with a "sports-" prefix
+  const data = await fetchJSON(`${NYT_SPORTS_API_BASE}/sports-${dateStr}.json`, 2);
+  if (!data || typeof data !== "object") return null;
+
+  try {
+    const d = data as Record<string, unknown>;
+    if (d.categories && Array.isArray(d.categories)) {
+      const puzzle: ConnectionsPuzzle = {
+        id: (d.id as number) || 0,
+        date: (d.print_date as string) || dateStr,
+        answers: (d.categories as Array<Record<string, unknown>>).map((cat, idx) => ({
+          level: idx,
+          group: cat.title as string,
+          members: (cat.cards as Array<{ content: string }>).map((c) => c.content),
+        })),
+      };
+      if (isValidPuzzle(puzzle)) return normalizePuzzle(puzzle);
+    } else if (isValidPuzzle(data)) {
+      return normalizePuzzle(data as ConnectionsPuzzle);
+    }
+  } catch (err) {
+    console.error(`Sports API parse error: ${err}`);
+  }
+  return null;
+}
+
+async function updateSportsEdition(kv: KVNamespace, today: string): Promise<void> {
+  console.log("🏀 Checking Sports Edition...");
+
+  const currentIndex = await kv.get<SportsIndex>("sports:index", "json");
+  const existingDates = new Set(currentIndex?.dates ?? []);
+
+  // Try fetching today's sports puzzle
+  if (existingDates.has(today)) {
+    console.log("Sports edition already up to date");
+    return;
+  }
+
+  const sportsPuzzle = await fetchSportsFromNYT(today);
+  if (!sportsPuzzle) {
+    console.log("No sports puzzle available for today");
+    return;
+  }
+
+  console.log(`Got sports puzzle for ${today}`);
+  existingDates.add(today);
+
+  // Write to KV with sports: prefix
+  await Promise.all([
+    kv.put(`sports:puzzle:date:${sportsPuzzle.date}`, JSON.stringify(sportsPuzzle)),
+    kv.put(`sports:puzzle:id:${sportsPuzzle.id}`, JSON.stringify(sportsPuzzle)),
+  ]);
+
+  // Update sports index
+  const allDates = Array.from(existingDates).sort().reverse();
+  await kv.put(
+    "sports:index",
+    JSON.stringify({
+      lastUpdated: new Date().toISOString(),
+      count: allDates.length,
+      latestDate: allDates[0],
+      dates: allDates,
+    } satisfies SportsIndex)
+  );
+
+  // Update all-puzzles blob
+  const existingPuzzles =
+    (await kv.get<ConnectionsPuzzle[]>("sports:all-puzzles", "json")) ?? [];
+  const allPuzzles = [...existingPuzzles, sportsPuzzle].sort((a, b) =>
+    a.date.localeCompare(b.date)
+  );
+  await kv.put("sports:all-puzzles", JSON.stringify(allPuzzles));
+
+  console.log(`🏀 Sports update complete. Total: ${allPuzzles.length}`);
+}
