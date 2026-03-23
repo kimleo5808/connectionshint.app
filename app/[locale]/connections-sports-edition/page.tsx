@@ -1,4 +1,4 @@
-import ConnectionsGame from "@/components/connections/ConnectionsGame";
+import SportsConnectionsGame from "@/components/connections/SportsConnectionsGame";
 import { BASE_URL } from "@/config/site";
 import { Locale, LOCALES } from "@/i18n/routing";
 import { getLatestPuzzle } from "@/lib/connections-data";
@@ -161,9 +161,9 @@ export default async function ConnectionsSportsEditionPage({
   const recentSports = await getRecentSportsPuzzles(8);
   const sportsCount = await getSportsPuzzleCount();
 
-  // Fallback to regular puzzle for game demo if no sports data yet
+  // Use regular puzzle as playable demo when no sports data is available
   const regularPuzzle = await getLatestPuzzle();
-  const displayPuzzle = sportsPuzzle || null;
+  const displayPuzzle = sportsPuzzle || regularPuzzle || null;
 
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8 grid-bg">
@@ -222,34 +222,39 @@ export default async function ConnectionsSportsEditionPage({
         </div>
       </header>
 
-      {/* Game Area */}
+      {/* Game Area — dark themed like NYT Athletic */}
       {displayPuzzle ? (
-        <section className="rounded-2xl border border-border bg-card p-5 sm:p-8 mb-8 shadow-sm">
-          <h2 className="text-center font-heading text-lg font-bold text-foreground mb-1">
-            Play Today&apos;s Sports Edition
+        <section className="rounded-2xl border border-slate-700 bg-slate-900 p-5 sm:p-8 mb-8 shadow-sm">
+          <h2 className="text-center font-heading text-lg font-bold text-white mb-1">
+            {sportsPuzzle
+              ? "Play Today's Sports Edition"
+              : "Try the Sports Edition Format"}
           </h2>
-          <p className="text-center text-xs text-muted-foreground mb-5">
-            Puzzle #{displayPuzzle.id} —{" "}
-            {dayjs(displayPuzzle.date).format("MMMM D, YYYY")}
+          <p className="text-center text-xs text-slate-400 mb-1">
+            Create four groups of four!
           </p>
-          <ConnectionsGame groups={displayPuzzle.answers} />
+          <p className="text-center text-[10px] text-slate-500 mb-5">
+            {sportsPuzzle
+              ? `Sports Edition Puzzle #${displayPuzzle.id} — ${dayjs(displayPuzzle.date).format("MMMM D, YYYY")}`
+              : `Demo using Puzzle #${displayPuzzle.id} — Sports data loading daily`}
+          </p>
+          <SportsConnectionsGame groups={displayPuzzle.answers} />
         </section>
       ) : (
-        <section className="rounded-2xl border border-border bg-card p-8 mb-8 shadow-sm text-center">
+        <section className="rounded-2xl border border-slate-700 bg-slate-900 p-8 mb-8 shadow-sm text-center">
           <span className="text-4xl mb-4 block">🏟️</span>
-          <h2 className="font-heading text-lg font-bold text-foreground mb-2">
-            Sports Edition Coming Soon
+          <h2 className="font-heading text-lg font-bold text-white mb-2">
+            Sports Edition Loading
           </h2>
-          <p className="text-sm text-muted-foreground max-w-md mx-auto">
-            Our Sports Edition data pipeline is being set up. Once active,
-            today&apos;s sports puzzle will appear here automatically with
-            progressive hints and a playable game.
+          <p className="text-sm text-slate-400 max-w-md mx-auto">
+            Today&apos;s Sports Edition puzzle will appear here when available.
+            In the meantime, try the classic version.
           </p>
           <Link
             href="/connections-hint-today"
             className="mt-4 inline-block rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
           >
-            Play Classic Connections Instead →
+            Play Classic Connections →
           </Link>
         </section>
       )}

@@ -1,4 +1,5 @@
 import type { ConnectionsPuzzle } from "@/types/connections";
+import { getKV } from "@/lib/kv";
 import { cache } from "react";
 
 /**
@@ -10,31 +11,6 @@ interface PuzzleIndex {
   latestDate: string;
   dates: string[]; // newest-first
   months: string[]; // newest-first
-}
-
-/**
- * At build time (SSG/prerender), getCloudflareContext is not available.
- * We detect this and fall back to the static JSON file.
- * At runtime (Cloudflare Worker), we use KV.
- */
-let _kvCache: KVNamespace | null = null;
-let _buildMode: boolean | null = null;
-
-async function getKV(): Promise<KVNamespace | null> {
-  if (_buildMode === true) return null;
-
-  if (_kvCache) return _kvCache;
-
-  try {
-    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
-    const { env } = await getCloudflareContext();
-    _kvCache = (env as CloudflareEnv).PUZZLES_KV;
-    return _kvCache;
-  } catch {
-    // Build time — no Worker runtime available
-    _buildMode = true;
-    return null;
-  }
 }
 
 // ── Static JSON fallback for build time ──────────────────────────────

@@ -1,10 +1,10 @@
 import type { ConnectionsPuzzle } from "@/types/connections";
+import { getKV } from "@/lib/kv";
 import { cache } from "react";
 
 /**
  * Sports Edition data access layer.
- * Uses the same KV namespace as regular puzzles but with "sports:" prefix.
- * Falls back to empty arrays when no sports data is available.
+ * Uses the shared KV namespace with "sports:" prefix keys.
  */
 
 interface SportsIndex {
@@ -12,24 +12,6 @@ interface SportsIndex {
   count: number;
   latestDate: string;
   dates: string[]; // newest-first
-}
-
-let _kvCache: KVNamespace | null = null;
-let _buildMode: boolean | null = null;
-
-async function getKV(): Promise<KVNamespace | null> {
-  if (_buildMode === true) return null;
-  if (_kvCache) return _kvCache;
-
-  try {
-    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
-    const { env } = await getCloudflareContext();
-    _kvCache = (env as CloudflareEnv).PUZZLES_KV;
-    return _kvCache;
-  } catch {
-    _buildMode = true;
-    return null;
-  }
 }
 
 /** Fetch sports index */
