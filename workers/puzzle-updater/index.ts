@@ -13,8 +13,15 @@ const COMMUNITY_SOURCE =
 // NYT official API
 const NYT_API_BASE = "https://www.nytimes.com/svc/connections/v2";
 
-// NYT Sports Edition API
-const NYT_SPORTS_API_BASE = "https://www.nytimes.com/svc/connections/v2";
+// The Athletic GraphQL API for Sports Edition
+const SPORTS_GRAPHQL_URL = "https://api-prd-nyt.theathletic.com/graphql";
+const SPORTS_QUERY = `query GetPuzzleById($puzzleId: String!) {
+  getPuzzleById(puzzleId: $puzzleId) {
+    categories { title cards { content } }
+    printDate: print_date
+    id
+  }
+}`;
 
 interface Env {
   PUZZLES_KV: KVNamespace;
@@ -219,31 +226,57 @@ interface SportsIndex {
   dates: string[];
 }
 
-async function fetchSportsFromNYT(dateStr: string): Promise<ConnectionsPuzzle | null> {
-  // NYT Sports Connections uses the same API with a "sports-" prefix
-  const data = await fetchJSON(`${NYT_SPORTS_API_BASE}/sports-${dateStr}.json`, 2);
-  if (!data || typeof data !== "object") return null;
-
+async function fetchSportsFromGraphQL(dateStr: string): Promise<ConnectionsPuzzle | null> {
   try {
-    const d = data as Record<string, unknown>;
-    if (d.categories && Array.isArray(d.categories)) {
-      const puzzle: ConnectionsPuzzle = {
-        id: (d.id as number) || 0,
-        date: (d.print_date as string) || dateStr,
-        answers: (d.categories as Array<Record<string, unknown>>).map((cat, idx) => ({
-          level: idx,
-          group: cat.title as string,
-          members: (cat.cards as Array<{ content: string }>).map((c) => c.content),
-        })),
-      };
-      if (isValidPuzzle(puzzle)) return normalizePuzzle(puzzle);
-    } else if (isValidPuzzle(data)) {
-      return normalizePuzzle(data as ConnectionsPuzzle);
+    const res = await fetch(SPORTS_GRAPHQL_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "User-Agent": "Mozilla/5.0 (compatible; ConnectionsHint/1.0; +https://connectionshint.app)",
+      },
+      body: JSON.stringify({
+        query: SPORTS_QUERY,
+        variables: { puzzleId: dateStr },
+      }),
+    });
+
+    if (!res.ok) {
+      console.error(`Sports GraphQL HTTP ${res.status}`);
+      return null;
     }
+
+    const json = (await res.json()) as {
+      data?: {
+        getPuzzleById?: {
+          id: string | number;
+          printDate: string;
+          categories: Array<{
+            title: string;
+            cards: Array<{ content: string }>;
+          }>;
+        };
+      };
+    };
+
+    const data = json?.data?.getPuzzleById;
+    if (!data || !data.categories || data.categories.length !== 4) return null;
+
+    const puzzle: ConnectionsPuzzle = {
+      id: Number(data.id),
+      date: data.printDate || dateStr,
+      answers: data.categories.map((cat, idx) => ({
+        level: idx,
+        group: cat.title,
+        members: cat.cards.map((c) => String(c.content).toUpperCase()),
+      })),
+    };
+
+    if (isValidPuzzle(puzzle)) return normalizePuzzle(puzzle);
+    return null;
   } catch (err) {
-    console.error(`Sports API parse error: ${err}`);
+    console.error(`Sports GraphQL error: ${err}`);
+    return null;
   }
-  return null;
 }
 
 async function updateSportsEdition(kv: KVNamespace, today: string): Promise<void> {
@@ -258,7 +291,7 @@ async function updateSportsEdition(kv: KVNamespace, today: string): Promise<void
     return;
   }
 
-  const sportsPuzzle = await fetchSportsFromNYT(today);
+  const sportsPuzzle = await fetchSportsFromGraphQL(today);
   if (!sportsPuzzle) {
     console.log("No sports puzzle available for today");
     return;
