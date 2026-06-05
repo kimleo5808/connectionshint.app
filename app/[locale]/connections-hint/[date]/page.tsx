@@ -9,7 +9,11 @@ import {
   getRecentPuzzles,
 } from "@/lib/connections-data";
 import { getStaticPuzzles } from "@/lib/connections-static";
-import { getSuggestedStudyLinks } from "@/lib/connections-insights";
+import {
+  getPuzzleDifficultyTier,
+  getRedHerrings,
+  getSuggestedStudyLinks,
+} from "@/lib/connections-insights";
 import { articleSchema, breadcrumbSchema, faqPageSchema, JsonLd } from "@/lib/jsonld";
 import { constructMetadata } from "@/lib/metadata";
 import { ConnectionsGroup } from "@/types/connections";
@@ -32,34 +36,34 @@ type Params = Promise<{ locale: string; date: string }>;
 
 /* 鈹€鈹€ colour helpers 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
 const GROUP_DOT: Record<number, string> = {
-  0: "Yellow",
-  1: "Green",
-  2: "Blue",
-  3: "Purple",
+  0: "bg-yellow-400",
+  1: "bg-emerald-500",
+  2: "bg-blue-500",
+  3: "bg-purple-500",
 };
 const GROUP_BG: Record<number, string> = {
-  0: "Yellow",
-  1: "Green",
-  2: "Blue",
-  3: "Purple",
+  0: "bg-yellow-400 dark:bg-yellow-500",
+  1: "bg-emerald-500 dark:bg-emerald-600",
+  2: "bg-blue-500 dark:bg-blue-600",
+  3: "bg-purple-500 dark:bg-purple-600",
 };
 const GROUP_TEXT: Record<number, string> = {
-  0: "Yellow",
-  1: "Green",
-  2: "Blue",
-  3: "Purple",
+  0: "text-yellow-950",
+  1: "text-white",
+  2: "text-white",
+  3: "text-white",
 };
 const GROUP_BORDER: Record<number, string> = {
-  0: "Yellow",
-  1: "Green",
-  2: "Blue",
-  3: "Purple",
+  0: "border-yellow-300 dark:border-yellow-700/50",
+  1: "border-emerald-300 dark:border-emerald-700/50",
+  2: "border-blue-300 dark:border-blue-700/50",
+  3: "border-purple-300 dark:border-purple-700/50",
 };
 const LEVEL_EMOJI: Record<number, string> = {
-  0: "Yellow",
-  1: "Green",
-  2: "Blue",
-  3: "Purple",
+  0: "🟡",
+  1: "🟢",
+  2: "🔵",
+  3: "🟣",
 };
 const LEVEL_NAME: Record<number, string> = {
   0: "Yellow",
@@ -407,6 +411,14 @@ export default async function DailyPuzzlePage({
   const faqItems = generateFAQ(puzzle.id, puzzle.date, puzzle.answers);
   const strategyTips = generateEditorialStrategyTips(puzzle.answers);
   const studyLinks = getSuggestedStudyLinks(puzzle.answers);
+  const difficulty = getPuzzleDifficultyTier(puzzle);
+  const redHerrings = getRedHerrings(puzzle);
+
+  const DIFFICULTY_STYLES: Record<string, string> = {
+    Easy: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
+    Medium: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+    Hard: "bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400",
+  };
   const overview = generateEditorialOverview(
     puzzle.id,
     puzzle.date,
@@ -486,11 +498,13 @@ export default async function DailyPuzzlePage({
 
       {/* 鈹€鈹€ Title 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */}
       <header className="text-center mb-8">
-        <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-2">
+        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm text-muted-foreground mb-2">
           <Calendar className="h-4 w-4" />
           <span>
             {dayOfWeek}, {formattedDate}
           </span>
+          <span className="mx-1">&middot;</span>
+          <span>Puzzle #{puzzle.id}</span>
         </div>
         <h1 className="font-heading text-3xl font-bold text-foreground sm:text-4xl">
           Connections #{puzzle.id} Answer &amp; Analysis
@@ -507,6 +521,17 @@ export default async function DailyPuzzlePage({
           ? Find progressive hints and the complete answer for Connections #
           {puzzle.id} below.
         </p>
+        <div className="mt-4 flex flex-col items-center gap-2">
+          <span
+            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold ${DIFFICULTY_STYLES[difficulty.tier]}`}
+          >
+            <Target className="h-3.5 w-3.5" />
+            Difficulty: {difficulty.tier}
+          </span>
+          <p className="max-w-xl text-xs leading-relaxed text-muted-foreground">
+            {difficulty.reason}
+          </p>
+        </div>
         <div className="mt-5 flex flex-wrap justify-center gap-2">
           <Link
             href={`/connections-number/${puzzle.id}`}
@@ -587,11 +612,6 @@ export default async function DailyPuzzlePage({
       <div className="flex flex-col gap-8 lg:flex-row">
         {/* Main content */}
         <div className="flex-1 space-y-6 min-w-0">
-          {/* Spoiler / answer reveal */}
-          <section className="rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-sm">
-            <AnswerReveal puzzle={puzzle} />
-          </section>
-
           {/* Progressive hints */}
           <section className="rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-sm">
             <div className="flex items-center gap-2 mb-5">
@@ -600,7 +620,16 @@ export default async function DailyPuzzlePage({
                 Progressive Hints
               </h2>
             </div>
+            <p className="mb-5 text-sm text-muted-foreground">
+              Reveal clues one layer at a time. Start with a nudge toward the
+              theme and only open the full answer if you are truly stuck.
+            </p>
             <HintCardList groups={puzzle.answers} />
+          </section>
+
+          {/* Spoiler / answer reveal */}
+          <section className="rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-sm">
+            <AnswerReveal puzzle={puzzle} />
           </section>
 
           {/* 鈹€鈹€ Answer & Full Analysis 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */}
@@ -673,6 +702,19 @@ export default async function DailyPuzzlePage({
                 </div>
               ))}
             </div>
+
+            {/* Red herrings / today's trap */}
+            {redHerrings && (
+              <div className="mb-8 rounded-xl border border-rose-200 bg-rose-50/40 p-5 dark:border-rose-900/40 dark:bg-rose-950/10">
+                <h3 className="mb-2 flex items-center gap-2 font-heading text-lg font-bold text-foreground">
+                  <span className="text-xl">&#9888;&#65039;</span>
+                  Watch Out: Today&apos;s Red Herrings
+                </h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {redHerrings.note}
+                </p>
+              </div>
+            )}
 
             {/* Word reference table */}
             <h3 className="font-heading text-lg font-bold text-foreground mb-4">

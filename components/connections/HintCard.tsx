@@ -35,14 +35,40 @@ const COLOR_STYLES: Record<
   },
 };
 
-/** Generate progressive hints for a group based on its data */
+/** Difficulty-based framing that nudges toward the theme without naming it */
+const LEVEL_DIRECTION: Record<number, string> = {
+  0: "the most direct group on the board, with a clear and literal theme",
+  1: "a fairly direct group, though a word or two may look like it belongs elsewhere",
+  2: "a trickier group where the real link is easy to confuse with a decoy",
+  3: "the hardest group, so expect a less literal or more lateral connection",
+};
+
+/**
+ * Generate progressive hints that reveal in true layers:
+ *  1. Direction only — frame the theme without naming it or any word
+ *  2. The category name
+ *  3. A single example word
+ * The full answer is revealed separately after these three layers.
+ */
 function generateHints(group: ConnectionsGroup): string[] {
   const { members, group: categoryName } = group;
+  const label = categoryName.toUpperCase();
 
-  const firstLetters = [...new Set(members.map((m) => m[0]))].join(", ");
-  const hint1 = `Think about what ${members.length} words could share in common. Starting letters include: ${firstLetters}.`;
-  const hint2 = `The connection is: "${categoryName}". Now figure out which 4 words fit this category.`;
-  const hint3 = `Two of the words in this group are "${members[0]}" and "${members[2]}". Can you find the other two?`;
+  const isBlank = label.includes("___") || label.includes("...");
+  const isWordplay =
+    /PALINDROME|ANAGRAM|HOMOPHONE|RHYME|PREFIX|SUFFIX|STARTS WITH|ENDS WITH|BEGINNING WITH|ENDING WITH|HIDDEN|SPELL|LETTER|INITIAL|ABBREVIATION/.test(
+      label
+    );
+
+  const direction = LEVEL_DIRECTION[group.level] ?? LEVEL_DIRECTION[0];
+  const hint1 = isBlank
+    ? `These four words all complete the same common phrase. This is ${direction}.`
+    : isWordplay
+      ? `Focus on how these words are built or spelled, not just what they mean. This is ${direction}.`
+      : `This is ${direction}. Try to name the theme yourself before revealing it.`;
+
+  const hint2 = `The connection is "${categoryName}". Now work out which four words fit.`;
+  const hint3 = `One of the words in this group is "${members[0]}". Can you find the other three?`;
 
   return [hint1, hint2, hint3];
 }

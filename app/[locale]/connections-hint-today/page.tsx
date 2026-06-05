@@ -1,6 +1,8 @@
 ﻿import { AnswerReveal } from "@/components/connections/AnswerReveal";
 import ConnectionsGame from "@/components/connections/ConnectionsGame";
+import { CountdownTimer } from "@/components/connections/CountdownTimer";
 import { HintCardList } from "@/components/connections/HintCard";
+import { ShareResult } from "@/components/connections/ShareResult";
 import { BASE_URL } from "@/config/site";
 import { GUIDES } from "@/data/guides";
 import { Locale, LOCALES } from "@/i18n/routing";
@@ -10,6 +12,10 @@ import {
   getRecentPuzzles,
   getYesterdayPuzzle,
 } from "@/lib/connections-data";
+import {
+  getPuzzleDifficultyTier,
+  getRedHerrings,
+} from "@/lib/connections-insights";
 import {
   breadcrumbSchema,
   faqPageSchema,
@@ -146,6 +152,18 @@ export default async function ConnectionsHintTodayPage({
   const currentMonthPath = `/connections-hint/${puzzle.date.slice(0, 4)}/${puzzle.date.slice(5, 7)}`;
 
   const guides = GUIDES.slice(0, 6);
+  const difficulty = getPuzzleDifficultyTier(puzzle);
+  const redHerrings = getRedHerrings(puzzle);
+  const allWords = [...puzzle.answers.flatMap((g) => g.members)].sort(
+    () => 0.5 - Math.random()
+  );
+  const shareUrl = `${BASE_URL}/connections-hint-today`;
+
+  const DIFFICULTY_STYLES: Record<string, string> = {
+    Easy: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
+    Medium: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+    Hard: "bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400",
+  };
 
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8 grid-bg">
@@ -162,13 +180,17 @@ export default async function ConnectionsHintTodayPage({
 
       {/* Title */}
       <header className="text-center mb-8">
-        <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-2">
+        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm text-muted-foreground mb-2">
           <Calendar className="h-4 w-4" />
           <span>
             {dayOfWeek}, {formattedDate}
           </span>
           <span className="mx-1">&middot;</span>
           <span>Puzzle #{puzzle.id}</span>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-semibold text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 motion-safe:animate-pulse" />
+            Updated {formattedDate}
+          </span>
         </div>
         <h1 className="font-heading text-3xl font-bold text-foreground sm:text-4xl">
           Connections Hint Today
@@ -178,6 +200,17 @@ export default async function ConnectionsHintTodayPage({
           answer as a review tool after you have taken your own shot at the
           board.
         </p>
+        <div className="mt-4 flex flex-col items-center gap-2">
+          <span
+            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold ${DIFFICULTY_STYLES[difficulty.tier]}`}
+          >
+            <Target className="h-3.5 w-3.5" />
+            Today&apos;s Difficulty: {difficulty.tier}
+          </span>
+          <p className="max-w-xl text-xs leading-relaxed text-muted-foreground">
+            {difficulty.reason}
+          </p>
+        </div>
         <div className="mt-5 flex flex-wrap justify-center gap-2">
           {yesterdayPuzzle ? (
             <Link
@@ -207,6 +240,34 @@ export default async function ConnectionsHintTodayPage({
           </Link>
         </div>
       </header>
+
+      {/* Today's words preview + countdown */}
+      <section className="rounded-2xl border border-border bg-card p-5 sm:p-6 mb-8 shadow-sm">
+        <div className="text-center">
+          <h2 className="font-heading text-lg font-bold text-foreground">
+            Today&apos;s 16 Connections Words
+          </h2>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Puzzle #{puzzle.id} &middot; {formattedDate}
+          </p>
+        </div>
+        <div className="mt-4 flex flex-wrap justify-center gap-2">
+          {allWords.map((word) => (
+            <span
+              key={word}
+              className="rounded-lg border border-blue-500/30 bg-blue-600/10 px-3 py-1.5 text-xs font-mono font-bold uppercase tracking-wide text-blue-700 dark:bg-blue-600/20 dark:text-blue-200"
+            >
+              {word}
+            </span>
+          ))}
+        </div>
+        <div className="mt-6 border-t border-border pt-5 text-center">
+          <p className="mb-3 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+            Next puzzle drops in
+          </p>
+          <CountdownTimer />
+        </div>
+      </section>
 
       {/* Playable Connections Game */}
       <section className="rounded-2xl border border-border bg-card p-5 sm:p-8 mb-8 shadow-sm">
@@ -241,6 +302,14 @@ export default async function ConnectionsHintTodayPage({
           <section className="rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-sm">
             <AnswerReveal puzzle={puzzle} />
           </section>
+
+          {/* Share (no-spoiler) */}
+          <ShareResult
+            puzzleId={puzzle.id}
+            dateLabel={formattedDate}
+            difficulty={difficulty.tier}
+            url={shareUrl}
+          />
         </div>
 
         {/* Sidebar */}
@@ -279,6 +348,27 @@ export default async function ConnectionsHintTodayPage({
       </div>
 
       {/* 鈹€鈹€鈹€ SEO Content Sections 鈹€鈹€鈹€ */}
+
+      {/* Today's Trap / Red Herrings */}
+      {redHerrings && (
+        <section className="mt-12">
+          <details className="group rounded-2xl border border-rose-200 bg-rose-50/40 p-5 dark:border-rose-900/40 dark:bg-rose-950/10">
+            <summary className="flex cursor-pointer items-center justify-between gap-3 font-heading text-lg font-bold text-foreground [&::-webkit-details-marker]:hidden">
+              <span className="flex items-center gap-2">
+                <span className="text-xl">&#9888;&#65039;</span>
+                Today&apos;s Trickiest Trap
+                <span className="text-xs font-normal text-muted-foreground">
+                  (tap to reveal &mdash; spoiler)
+                </span>
+              </span>
+              <ChevronRight className="h-5 w-5 shrink-0 text-rose-400 transition-transform group-open:rotate-90" />
+            </summary>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              {redHerrings.note}
+            </p>
+          </details>
+        </section>
+      )}
 
       {/* Strategy Tips */}
       <section className="mt-12">
