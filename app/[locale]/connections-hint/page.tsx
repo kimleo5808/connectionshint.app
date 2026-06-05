@@ -16,6 +16,13 @@ import Link from "next/link";
 
 type Params = Promise<{ locale: string }>;
 
+// Revalidate periodically so the archive picks up new puzzles from KV. A pure
+// static build would freeze the list at the build-time JSON fallback, which
+// lags behind the cron worker that writes new puzzles to KV. ISR (not
+// force-dynamic) keeps this large list cached instead of re-rendering every
+// request.
+export const revalidate = 3600;
+
 const TAG_LINKS = [
   { label: "Today's Hint", href: "/connections-hint-today" },
   { label: "Yesterday", href: "/connections-hint-yesterday" },

@@ -23,6 +23,11 @@ import { notFound } from "next/navigation";
 
 type Params = Promise<{ locale: string }>;
 
+// Render at request time so this page always reflects the latest puzzles in KV
+// rather than the build-time static JSON fallback, which lags behind the cron
+// worker that writes new puzzles to KV.
+export const dynamic = "force-dynamic";
+
 function getMonthPath(date: string) {
   const [year, month] = date.split("-");
   return `/connections-hint/${year}/${month}`;

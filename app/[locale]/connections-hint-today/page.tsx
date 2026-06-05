@@ -38,6 +38,11 @@ import Link from "next/link";
 
 type Params = Promise<{ locale: string }>;
 
+// Render at request time so this page always reflects the latest puzzle in KV.
+// The static JSON fallback is frozen at build time and lags behind the cron
+// worker that writes new puzzles to KV.
+export const dynamic = "force-dynamic";
+
 const STRATEGY_TIPS = [
   {
     title: "Start with Obvious Groups",
