@@ -280,7 +280,12 @@ export default async function ConnectionsNumberPage({
 }
 
 export async function generateStaticParams() {
-  const puzzles = getStaticPuzzles();
+  // Pre-render only the ~60 most recent puzzles. Older ids are generated on
+  // demand at runtime (dynamicParams defaults to true), which keeps the
+  // OpenNext incremental-cache file count low enough to avoid R2 429 errors
+  // during deploy. Every /connections-number/[id] URL stays valid and
+  // indexable — uncached ones are just rendered on first request.
+  const puzzles = getStaticPuzzles().slice(0, 60);
   const params: { locale: string; id: string }[] = [];
 
   for (const locale of LOCALES) {
