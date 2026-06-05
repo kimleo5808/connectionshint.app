@@ -8,10 +8,11 @@ import { MetadataRoute } from 'next'
 
 const siteUrl = siteConfig.url
 
-// Regenerate periodically so newly published puzzles (written to KV by the cron
-// worker) appear in the sitemap. A static build would otherwise freeze the
-// puzzle list at the stale build-time JSON fallback.
-export const revalidate = 3600
+// Render at request time so the sitemap always lists every puzzle currently in
+// KV. With a static build (or even ISR), the sitemap is frozen at the stale
+// build-time JSON fallback and omits ~80 days of newer puzzle URLs, so search
+// engines never discover them.
+export const dynamic = 'force-dynamic'
 
 type ChangeFrequency = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never' | undefined
 
