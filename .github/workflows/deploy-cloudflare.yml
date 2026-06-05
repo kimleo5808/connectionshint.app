@@ -36,8 +36,20 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build and deploy site
-        run: npm run deploy
+      - name: Build site
+        run: npx opennextjs-cloudflare build
+
+      - name: Deploy site (retry on transient R2 errors)
+        run: |
+          n=0
+          until [ "$n" -ge 3 ]; do
+            npx opennextjs-cloudflare deploy && exit 0
+            n=$((n + 1))
+            echo "::warning::Deploy attempt $n failed (likely a transient R2 429/500). Retrying in 30s..."
+            sleep 30
+          done
+          echo "::error::Deploy failed after 3 attempts."
+          exit 1
 
       - name: Deploy puzzle updater cron worker
         run: cd workers/puzzle-updater && npx wrangler deploy

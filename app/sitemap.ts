@@ -2,11 +2,16 @@ import { siteConfig } from '@/config/site'
 import { CATEGORY_THEMES } from '@/data/categories'
 import { GUIDES } from '@/data/guides'
 import { PATTERN_PAGE_CONFIGS } from '@/data/pattern-pages'
-import { getStaticPuzzles, getStaticAvailableMonths } from '@/lib/connections-static'
+import { getAllPuzzles, getAvailableMonths } from '@/lib/connections-data'
 import { getPosts } from '@/lib/getBlogs'
 import { MetadataRoute } from 'next'
 
 const siteUrl = siteConfig.url
+
+// Regenerate periodically so newly published puzzles (written to KV by the cron
+// worker) appear in the sitemap. A static build would otherwise freeze the
+// puzzle list at the stale build-time JSON fallback.
+export const revalidate = 3600
 
 type ChangeFrequency = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never' | undefined
 
@@ -66,7 +71,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
 
   // Puzzle pages
-  const allPuzzles = getStaticPuzzles()
+  const allPuzzles = await getAllPuzzles()
   const puzzlePages = allPuzzles.map(puzzle => ({
     url: `${siteUrl}/connections-hint/${puzzle.date}`,
     lastModified: new Date(puzzle.date),
@@ -81,7 +86,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.55,
   }))
 
-  const months = getStaticAvailableMonths()
+  const months = await getAvailableMonths()
   const monthPages = months.map(yearMonth => ({
     url: `${siteUrl}/connections-hint/${yearMonth.slice(0, 4)}/${yearMonth.slice(5, 7)}`,
     lastModified: new Date(`${yearMonth}-01`),
