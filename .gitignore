@@ -134,3 +134,13 @@ dist
 # OpenNext
 .open-next
 .dev.vars
+
+# Wrangler local state
+.wrangler/
+**/.wrangler/
+
+# Local reference screenshots & page snapshots (analysis artifacts)
+ref-*.png
+ref-*.txt
+our-*.png
+screenshot-*.png
