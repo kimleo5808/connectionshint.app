@@ -136,6 +136,13 @@
               "useA": true,
               "target": "_blank",
               "rel": "noopener"
+            },
+            {
+              "href": "https://strandshint.app/",
+              "name": "Strands Hint",
+              "useA": true,
+              "target": "_blank",
+              "rel": "noopener"
             }
           ]
         },
