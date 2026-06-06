@@ -18,7 +18,8 @@
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "deploy:cron": "cd workers/puzzle-updater && wrangler deploy",
-    "migrate:kv": "node scripts/migrate-to-kv.mjs"
+    "migrate:kv": "node scripts/migrate-to-kv.mjs",
+    "sync:kv": "node scripts/sync-kv-to-json.mjs"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^16.1.5",
