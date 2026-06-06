@@ -447,6 +447,19 @@ export default async function ConnectionsVsWordlePage({
             </div>
           ))}
         </div>
+        <p className="mt-6 border-t border-border pt-5 text-sm leading-relaxed text-muted-foreground">
+          Want a head start on the Wordle half of your routine? Our sister site{" "}
+          <a
+            href="https://wordlehint.info/"
+            target="_blank"
+            rel="noopener"
+            className="font-medium text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+          >
+            WordleHint
+          </a>{" "}
+          publishes daily Wordle hints and answers to help you keep the streak
+          alive.
+        </p>
       </section>
 
       {/* FAQ */}

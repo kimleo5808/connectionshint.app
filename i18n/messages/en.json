@@ -129,6 +129,13 @@
             {
               "href": "/11-letters",
               "name": "11 Letter Wordle"
+            },
+            {
+              "href": "https://wordlehint.info/",
+              "name": "Wordle Hint",
+              "useA": true,
+              "target": "_blank",
+              "rel": "noopener"
             }
           ]
         },
