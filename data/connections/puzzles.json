@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-06T08:22:28.507Z",
+  "lastUpdated": "2026-06-07T08:43:18.092Z",
   "puzzles": [
     {
       "id": 1,
@@ -50091,6 +50091,52 @@
             "DRAFTING",
             "ROUND",
             "TIMES"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1171,
+      "date": "2026-06-07",
+      "answers": [
+        {
+          "level": 0,
+          "group": "TRANSLUCENT, AS FABRIC",
+          "members": [
+            "GAUZY",
+            "GOSSAMER",
+            "SHEER",
+            "THIN"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "SPEAK",
+          "members": [
+            "EXPRESS",
+            "STATE",
+            "UTTER",
+            "VOICE"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "DEMOLISH",
+          "members": [
+            "GUT",
+            "LEVEL",
+            "TOTAL",
+            "TRASH"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "MUSIC GENRE SUFFIXES",
+          "members": [
+            "CORE",
+            "POP",
+            "STEP",
+            "WAVE"
           ]
         }
       ]
