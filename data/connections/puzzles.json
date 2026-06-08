@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-07T08:43:18.092Z",
+  "lastUpdated": "2026-06-08T10:14:41.993Z",
   "puzzles": [
     {
       "id": 1,
@@ -50137,6 +50137,52 @@
             "POP",
             "STEP",
             "WAVE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1174,
+      "date": "2026-06-08",
+      "answers": [
+        {
+          "level": 0,
+          "group": "LANDFORMS BY WATER",
+          "members": [
+            "DELTA",
+            "ISLAND",
+            "ISTHMUS",
+            "PENINSULA"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "SLANG FOR HEAD",
+          "members": [
+            "COCONUT",
+            "DOME",
+            "MELON",
+            "PATE"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "THINGS THAT CAN BE SPIKED",
+          "members": [
+            "MOHAWK",
+            "PUNCH",
+            "SEA URCHIN",
+            "VOLLEYBALL"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "\"THE ___ MAN\" MOVIES",
+          "members": [
+            "ELEPHANT",
+            "INVISIBLE",
+            "OMEGA",
+            "RUNNING"
           ]
         }
       ]
