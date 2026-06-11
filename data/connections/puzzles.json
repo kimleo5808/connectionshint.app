@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-10T09:38:26.114Z",
+  "lastUpdated": "2026-06-11T10:02:41.993Z",
   "puzzles": [
     {
       "id": 1,
@@ -50275,6 +50275,52 @@
             "LINE",
             "PAGE",
             "WORD"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1180,
+      "date": "2026-06-11",
+      "answers": [
+        {
+          "level": 0,
+          "group": "PARTS OF A WORKOUT ROUTINE",
+          "members": [
+            "BALANCE",
+            "CARDIO",
+            "STRETCHING",
+            "WEIGHTS"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "THINGS WITH HORNS",
+          "members": [
+            "BRASS BAND",
+            "DEVIL",
+            "RHINO",
+            "VIKING HELMET"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "HOMOPHONES OF SUVS",
+          "members": [
+            "BRONCHO",
+            "FORERUNNER",
+            "TROUPER",
+            "UCONN"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "PAYMENT APPS MINUS A LETTER",
+          "members": [
+            "ELLE",
+            "PAPAL",
+            "STRIP",
+            "VENO"
           ]
         }
       ]
