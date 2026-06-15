@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-14T09:00:14.854Z",
+  "lastUpdated": "2026-06-15T11:42:17.779Z",
   "puzzles": [
     {
       "id": 1,
@@ -50459,6 +50459,52 @@
             "MASTER OF ARTS",
             "MILLIAMPERE",
             "MOTHER"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1184,
+      "date": "2026-06-15",
+      "answers": [
+        {
+          "level": 0,
+          "group": "STAYING POWER",
+          "members": [
+            "LEGS",
+            "MOMENTUM",
+            "STAMINA",
+            "TRACTION"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "GET READY FOR A NIGHT OUT",
+          "members": [
+            "ACCESSORIZE",
+            "CHANGE",
+            "PRIMP",
+            "SHOWER"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "CHINESE ZODIAC ANIMALS",
+          "members": [
+            "DOG",
+            "DRAGON",
+            "HORSE",
+            "SNAKE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "FLOWERS",
+          "members": [
+            "ANEMONE",
+            "LARKSPUR",
+            "MONKSHOOD",
+            "PHLOX"
           ]
         }
       ]
