@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-15T11:42:17.779Z",
+  "lastUpdated": "2026-06-16T10:51:32.692Z",
   "puzzles": [
     {
       "id": 1,
@@ -50505,6 +50505,52 @@
             "LARKSPUR",
             "MONKSHOOD",
             "PHLOX"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1185,
+      "date": "2026-06-16",
+      "answers": [
+        {
+          "level": 0,
+          "group": "CREAMY SALAD DRESSINGS",
+          "members": [
+            "BLUE CHEESE",
+            "CAESAR",
+            "GREEN GODDESS",
+            "RANCH"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "ATTENDANTS",
+          "members": [
+            "COURT",
+            "ENTOURAGE",
+            "RETINUE",
+            "SUITE"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "RARE THINGS, IDIOMATICALLY",
+          "members": [
+            "BLACK SWAN",
+            "BLUE MOON",
+            "PERFECT STORM",
+            "UNICORN"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "WHAT \"HOOPS\" MIGHT REFER TO",
+          "members": [
+            "BASKETBALL",
+            "EARRINGS",
+            "RED TAPE",
+            "RHYTHMIC GYMNASTICS GEAR"
           ]
         }
       ]
