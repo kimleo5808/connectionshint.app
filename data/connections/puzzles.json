@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-17T10:23:49.483Z",
+  "lastUpdated": "2026-06-18T10:03:31.513Z",
   "puzzles": [
     {
       "id": 1,
@@ -50597,6 +50597,52 @@
             "KINDLE",
             "SORTIE",
             "TYPEFACE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1189,
+      "date": "2026-06-18",
+      "answers": [
+        {
+          "level": 0,
+          "group": "FITNESS CLASS TYPES",
+          "members": [
+            "AEROBICS",
+            "BARRE",
+            "BOOTCAMP",
+            "PILATES"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "DEMEANOR",
+          "members": [
+            "ATTITUDE",
+            "BEARING",
+            "CARRIAGE",
+            "PRESENCE"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "PEACE ACTIVISTS",
+          "members": [
+            "GANDHI",
+            "KING",
+            "MANDELA",
+            "TUTU"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "TOOLS MINUS LAST TWO LETTERS",
+          "members": [
+            "HAMM",
+            "JIGS",
+            "PLIE",
+            "WREN"
           ]
         }
       ]
