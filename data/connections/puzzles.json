@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-18T10:03:31.513Z",
+  "lastUpdated": "2026-06-19T10:10:14.824Z",
   "puzzles": [
     {
       "id": 1,
@@ -50643,6 +50643,52 @@
             "JIGS",
             "PLIE",
             "WREN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1188,
+      "date": "2026-06-19",
+      "answers": [
+        {
+          "level": 0,
+          "group": "UMAMI-RICH FOODS",
+          "members": [
+            "MISO PASTE",
+            "PARMESAN",
+            "SOY SAUCE",
+            "VEGEMITE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "THINGS A BEGINNER MIGHT LEARN ON THE PIANO",
+          "members": [
+            "CHOPSTICKS",
+            "FÜR ELISE",
+            "HEART AND SOUL",
+            "THE ENTERTAINER"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "STARTING WITH MAGAZINES",
+          "members": [
+            "FORTUNE COOKIE",
+            "PEOPLE PERSON",
+            "SPINDERELLA",
+            "TIME MACHINE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "ENDING IN SYNONYMS FOR \"AGGREGATE\"",
+          "members": [
+            "COINCIDENTALLY",
+            "DIM SUM",
+            "TEETOTAL",
+            "VISCOUNT"
           ]
         }
       ]
