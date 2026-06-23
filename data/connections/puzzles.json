@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-22T11:31:07.301Z",
+  "lastUpdated": "2026-06-23T08:56:01.378Z",
   "puzzles": [
     {
       "id": 1,
@@ -50827,6 +50827,52 @@
             "BOOMER",
             "POPSICLE",
             "POWDER"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1194,
+      "date": "2026-06-23",
+      "answers": [
+        {
+          "level": 0,
+          "group": "DANCE STYLES",
+          "members": [
+            "FOXTROT",
+            "MODERN",
+            "SWING",
+            "TAP"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "IN A MONOPOLY BOX",
+          "members": [
+            "DEED",
+            "HOTEL",
+            "MONEY",
+            "TOKEN"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "CONTENT SORTING OPTIONS ONLINE",
+          "members": [
+            "FEATURED",
+            "POPULAR",
+            "RECENT",
+            "TRENDING"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "THINGS WITH MANTLES/MANTELS",
+          "members": [
+            "EARTH",
+            "EMPEROR",
+            "FIREPLACE",
+            "YANKEES"
           ]
         }
       ]
