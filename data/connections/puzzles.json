@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-24T08:51:31.107Z",
+  "lastUpdated": "2026-06-25T08:45:22.390Z",
   "puzzles": [
     {
       "id": 1,
@@ -50919,6 +50919,52 @@
             "HELTER SKELTER",
             "HUMPTY DUMPTY",
             "MUMBO JUMBO"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1183,
+      "date": "2026-06-25",
+      "answers": [
+        {
+          "level": 0,
+          "group": "COMPUTER PERIPHERALS",
+          "members": [
+            "MICROPHONE",
+            "MONITOR",
+            "PRINTER",
+            "TRACKPAD"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "TIGHTLY PACKED",
+          "members": [
+            "COMPACT",
+            "COMPRESSED",
+            "DENSE",
+            "SQUASHED"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "HAZARDOUS ELEMENTAL METALS",
+          "members": [
+            "FRANCIUM",
+            "LEAD",
+            "MERCURY",
+            "POLONIUM"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "STARTING WITH BIRD HOMOPHONES",
+          "members": [
+            "CRANIUM",
+            "CROQUETTE",
+            "DUCTILE",
+            "HOCKEY"
           ]
         }
       ]
