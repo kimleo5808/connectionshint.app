@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-25T08:45:22.390Z",
+  "lastUpdated": "2026-06-26T08:48:04.456Z",
   "puzzles": [
     {
       "id": 1,
@@ -50965,6 +50965,52 @@
             "CROQUETTE",
             "DUCTILE",
             "HOCKEY"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1195,
+      "date": "2026-06-26",
+      "answers": [
+        {
+          "level": 0,
+          "group": "CRUNCHY SNACK ITEM",
+          "members": [
+            "CHIP",
+            "CRACKER",
+            "NUT",
+            "PRETZEL"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "VARIOUS AMOUNTS OF WOOD",
+          "members": [
+            "BOARD",
+            "LOG",
+            "SPLINTER",
+            "TREE"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "AREAS OF LOW GROUND",
+          "members": [
+            "DALE",
+            "DELL",
+            "GORGE",
+            "HOLLOW"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "COLORS PLUS A LETTER",
+          "members": [
+            "BRONZER",
+            "PINKY",
+            "REDO",
+            "TANG"
           ]
         }
       ]
