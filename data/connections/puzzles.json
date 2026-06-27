@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-26T08:48:04.456Z",
+  "lastUpdated": "2026-06-27T08:24:48.324Z",
   "puzzles": [
     {
       "id": 1,
@@ -51011,6 +51011,52 @@
             "PINKY",
             "REDO",
             "TANG"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1198,
+      "date": "2026-06-27",
+      "answers": [
+        {
+          "level": 0,
+          "group": "MONOPOLY SQUARES",
+          "members": [
+            "BOARDWALK",
+            "INCOME TAX",
+            "SHORT LINE",
+            "WATER WORKS"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "COMPONENTS OF A FASHION SHOW",
+          "members": [
+            "CATWALK",
+            "COLLECTION",
+            "DESIGNER",
+            "MODEL"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "COMMONLY STRIPED THINGS",
+          "members": [
+            "BARBER POLE",
+            "BILLIARD BALL",
+            "CREDIT CARD",
+            "CROSSWALK"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "ENDING IN HORSE GAITS",
+          "members": [
+            "DECANTER",
+            "ENVELOPE",
+            "FIREWALK",
+            "FOXTROT"
           ]
         }
       ]
