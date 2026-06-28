@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-27T08:24:48.324Z",
+  "lastUpdated": "2026-06-28T08:38:57.834Z",
   "puzzles": [
     {
       "id": 1,
@@ -51057,6 +51057,52 @@
             "ENVELOPE",
             "FIREWALK",
             "FOXTROT"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1200,
+      "date": "2026-06-28",
+      "answers": [
+        {
+          "level": 0,
+          "group": "HIGH-QUALITY",
+          "members": [
+            "CHOICE",
+            "FINE",
+            "PRIME",
+            "SELECT"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "SIGNALS TO COMMENCE",
+          "members": [
+            "BEGIN",
+            "GO",
+            "NOW",
+            "START"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "ACCESSORIES FOR A GUITARIST",
+          "members": [
+            "CAPO",
+            "PICK",
+            "SLIDE",
+            "STRAP"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "THEY HAVE BOARDS",
+          "members": [
+            "CHESS",
+            "CORPORATION",
+            "DARTS",
+            "SURFER"
           ]
         }
       ]
