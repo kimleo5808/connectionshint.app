@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-29T10:18:59.213Z",
+  "lastUpdated": "2026-06-30T08:53:55.839Z",
   "puzzles": [
     {
       "id": 1,
@@ -51149,6 +51149,52 @@
             "GROOT",
             "NUDIBRANCH",
             "STRUNK"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1193,
+      "date": "2026-06-30",
+      "answers": [
+        {
+          "level": 0,
+          "group": "DIVIDING STRUCTURES",
+          "members": [
+            "FENCE",
+            "GATE",
+            "HEDGE",
+            "WALL"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "PARTICIPATE IN SOME WINTER OLYMPICS",
+          "members": [
+            "CURL",
+            "LUGE",
+            "SKATE",
+            "SKI"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "COMMON RECYCLABLES",
+          "members": [
+            "BOTTLE",
+            "BOX",
+            "CAN",
+            "NEWSPAPER"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "WHAT \"DRAFT\" MIGHT REFER TO",
+          "members": [
+            "BREEZE",
+            "ON TAP",
+            "RECRUIT",
+            "SKETCH"
           ]
         }
       ]
