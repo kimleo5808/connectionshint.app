@@ -46,6 +46,21 @@ function renderMarkdownToHtml(markdown: string) {
       continue;
     }
 
+    const imageMatch = line.trim().match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (imageMatch) {
+      const alt = escapeHtml(imageMatch[1].trim());
+      const src = escapeHtml(imageMatch[2].trim());
+      html.push(
+        `<figure class="my-8"><img src="${src}" alt="${alt}" loading="lazy" class="mx-auto w-full rounded-lg border border-indigo-100 dark:border-indigo-900" />${
+          alt
+            ? `<figcaption class="mt-3 text-center text-sm italic text-slate-500 dark:text-slate-400">${alt}</figcaption>`
+            : ""
+        }</figure>`
+      );
+      index += 1;
+      continue;
+    }
+
     const headingMatch = line.match(/^(#{1,6})\s+(.*)$/);
     if (headingMatch) {
       const level = headingMatch[1].length;
