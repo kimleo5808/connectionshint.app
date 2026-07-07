@@ -1,7 +1,8 @@
 import { Callout } from "@/components/mdx/Callout";
 import MarkdownContent from "@/components/content/MarkdownContent";
 import { BASE_URL } from "@/config/site";
-import { Locale, LOCALES } from "@/i18n/routing";
+import { Link as I18nLink, Locale, LOCALES } from "@/i18n/routing";
+import { ArrowLeft } from "lucide-react";
 import { getPosts } from "@/lib/getBlogs";
 import { articleSchema, breadcrumbSchema, JsonLd } from "@/lib/jsonld";
 import { constructMetadata } from "@/lib/metadata";
@@ -77,7 +78,22 @@ export default async function BlogPage({ params }: { params: Params }) {
           { name: post.title, url: `${BASE_URL}/blog/${slugClean}` },
         ])}
       />
-      <h1 className="break-words text-4xl font-bold mt-6 mb-4">{post.title}</h1>
+
+      {/* Breadcrumb */}
+      <nav className="mt-6 mb-4 flex items-center gap-2 text-sm text-muted-foreground">
+        <I18nLink
+          href="/blog"
+          prefetch={false}
+          className="flex items-center gap-1 transition-colors hover:text-blue-500"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" />
+          All Posts
+        </I18nLink>
+        <span>/</span>
+        <span className="line-clamp-1 text-foreground">{post.title}</span>
+      </nav>
+
+      <h1 className="break-words text-4xl font-bold mb-4">{post.title}</h1>
       {post.image && (
         <img src={post.image} alt={`Cover image for ${post.title}`} className="rounded-sm w-full" />
       )}
