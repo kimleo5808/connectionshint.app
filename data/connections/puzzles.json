@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-06T09:52:45.219Z",
+  "lastUpdated": "2026-07-07T01:44:21.122Z",
   "puzzles": [
     {
       "id": 1,
@@ -51471,6 +51471,52 @@
             "GRIND RAIL",
             "MATCHA",
             "TINDERBOX"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1191,
+      "date": "2026-07-07",
+      "answers": [
+        {
+          "level": 0,
+          "group": "ROOMS IN CLUE",
+          "members": [
+            "CONSERVATORY",
+            "HALL",
+            "KITCHEN",
+            "STUDY"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "STUDENT-ATHLETE DESIGNATIONS",
+          "members": [
+            "ALL-AMERICAN",
+            "JOCK",
+            "LETTERMAN",
+            "TEAM CAPTAIN"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "___ TWIST",
+          "members": [
+            "FRENCH",
+            "LEMON",
+            "OLIVER",
+            "PLOT"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "ENDING IN \"SESAME STREET\" CHARACTERS",
+          "members": [
+            "BERNIE",
+            "COLBERT",
+            "DISCOUNT",
+            "SAN ANSELMO"
           ]
         }
       ]
