@@ -173,6 +173,56 @@ Questions about these terms: \`hello@connectionshint.app\``,
 export const STATIC_BLOG_POSTS: BlogPost[] = [
   {
     locale: "en",
+    title: "Playing Connections and Wordle Together: A Daily Word-Game Routine",
+    description:
+      "NYT Connections and Wordle train different skills. Learn how to pair them into one daily routine that sharpens both your vocabulary and your pattern recognition.",
+    image: "/images/connections-and-wordle-cover.svg",
+    slug: "/connections-and-wordle-routine",
+    tags: "connections,nyt connections,wordle,word games,routine,tips,daily puzzle",
+    date: new Date("2026-07-07"),
+    visible: "published",
+    pin: false,
+    content: `## Two Puzzles, Two Different Workouts
+
+Wordle and NYT Connections are the two most popular daily word games, but they exercise very different parts of your brain. Playing both every day is like doing cardio and strength training - each one covers a gap the other leaves open.
+
+Wordle is a game of **deduction and letter probability**: you have six guesses to find a five-letter word, using color feedback to narrow the field. Connections is a game of **lateral thinking and categorization**: you sort 16 words into four hidden groups, resisting the traps designed to mislead you.
+
+![A side-by-side comparison of NYT Connections and Wordle](/images/connections-vs-wordle-compare.svg)
+
+## Why Pair Them?
+
+The two games reinforce each other in ways that make you a better solver overall:
+
+- **Wordle warms up your vocabulary.** Digging for words that fit a letter pattern keeps a broad word bank active in your memory - exactly the bank Connections forces you to search.
+- **Connections trains flexible thinking.** Learning to see that "BASS" could be a fish *or* a sound makes you more alert to the double meanings Wordle answers sometimes exploit.
+- **Both reward routine.** A short daily habit builds pattern recognition faster than occasional marathon sessions.
+
+## A Simple Daily Routine
+
+Here's a five-minute routine that gets the most out of both games:
+
+1. **Start with Wordle** as a warm-up. It's quick and gets your word-retrieval engine running.
+2. **Note any tricky words** you discovered - unusual spellings or double meanings often reappear in Connections.
+3. **Move to Connections** while your brain is already in word mode.
+4. **Scan all 16 words first**, then sort them into four visual buckets before guessing.
+5. **Review both boards** afterward and ask what tripped you up.
+
+## Get Hints Without Spoiling the Fun
+
+Some days a puzzle just won't crack, and that's fine - a nudge is better than a broken streak. For Wordle, [WordleHint](https://wordlehint.info/) offers progressive clues and answers so you can get just enough help without seeing the full solution. For Connections, our own [daily hints](/connections-hint-today) work the same way, revealing categories step by step instead of dumping the answer.
+
+The goal with both is the same: use hints to *learn* the patterns, not to skip them. Over time you'll need fewer nudges as your instincts sharpen.
+
+## Build the Habit
+
+Consistency beats intensity. Even on busy days, running through both puzzles takes only a few minutes and keeps your streaks - and your skills - alive.
+
+Ready to play? Grab [today's Connections hints](/connections-hint-today), then browse our [complete archive](/connections-hint) when you want extra practice.`,
+    metadata: {},
+  },
+  {
+    locale: "en",
     title: "How Visual Aids Help You Master NYT Connections",
     description:
       "Turn the NYT Connections grid into a visual puzzle. Learn how color-coding, simple diagrams, and AI-generated images can help you spot hidden groups faster.",

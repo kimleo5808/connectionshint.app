@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" role="img" aria-label="Comparing NYT Connections and Wordle at a glance">
+  <rect width="960" height="380" rx="18" fill="#f8fafc"/>
+  <text x="40" y="56" font-size="28" font-weight="700" fill="#1e293b" font-family="Arial, sans-serif">Connections vs Wordle at a Glance</text>
+  <g font-family="Arial, sans-serif">
+    <!-- Connections column -->
+    <rect x="40"  y="84" width="420" height="264" rx="14" fill="#ede9fe" stroke="#c4b5fd" stroke-width="2"/>
+    <text x="64"  y="128" font-size="24" font-weight="700" fill="#5b21b6">NYT Connections</text>
+    <text x="64"  y="172" font-size="20" fill="#4c1d95">&#8226; Group 16 words into 4 sets</text>
+    <text x="64"  y="208" font-size="20" fill="#4c1d95">&#8226; 4 mistakes allowed</text>
+    <text x="64"  y="244" font-size="20" fill="#4c1d95">&#8226; Tests pattern &amp; category logic</text>
+    <text x="64"  y="280" font-size="20" fill="#4c1d95">&#8226; Difficulty: yellow &#8594; purple</text>
+    <text x="64"  y="316" font-size="20" fill="#4c1d95">&#8226; Best skill: lateral thinking</text>
+    <!-- Wordle column -->
+    <rect x="500" y="84" width="420" height="264" rx="14" fill="#dcfce7" stroke="#86efac" stroke-width="2"/>
+    <text x="524" y="128" font-size="24" font-weight="700" fill="#166534">Wordle</text>
+    <text x="524" y="172" font-size="20" fill="#14532d">&#8226; Guess a 5-letter word</text>
+    <text x="524" y="208" font-size="20" fill="#14532d">&#8226; 6 guesses allowed</text>
+    <text x="524" y="244" font-size="20" fill="#14532d">&#8226; Tests vocabulary &amp; deduction</text>
+    <text x="524" y="280" font-size="20" fill="#14532d">&#8226; Feedback: green/yellow/gray</text>
+    <text x="524" y="316" font-size="20" fill="#14532d">&#8226; Best skill: letter probability</text>
+  </g>
+</svg>
