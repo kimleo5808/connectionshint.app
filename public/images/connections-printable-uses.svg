@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" width="960" height="320" role="img" aria-label="Great uses for printable Connections puzzles">
+  <rect width="960" height="320" rx="18" fill="#eff6ff"/>
+  <text x="40" y="56" font-size="28" font-weight="700" fill="#1e3a8a" font-family="Arial, sans-serif">Where Printable Packs Shine</text>
+  <g font-family="Arial, sans-serif">
+    <!-- 1 -->
+    <rect x="40"  y="92" width="270" height="180" rx="14" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="64"  y="140" font-size="34">&#127891;</text>
+    <text x="112" y="140" font-size="21" font-weight="700" fill="#1e293b">Classrooms</text>
+    <text x="64"  y="182" font-size="17" fill="#475569">Hand out grids as a</text>
+    <text x="64"  y="204" font-size="17" fill="#475569">vocabulary or logic</text>
+    <text x="64"  y="226" font-size="17" fill="#475569">warm-up activity</text>
+    <!-- 2 -->
+    <rect x="345" y="92" width="270" height="180" rx="14" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="369" y="140" font-size="34">&#9992;</text>
+    <text x="417" y="140" font-size="21" font-weight="700" fill="#1e293b">Travel</text>
+    <text x="369" y="182" font-size="17" fill="#475569">Solve offline on</text>
+    <text x="369" y="204" font-size="17" fill="#475569">planes and road</text>
+    <text x="369" y="226" font-size="17" fill="#475569">trips, no screen</text>
+    <!-- 3 -->
+    <rect x="650" y="92" width="270" height="180" rx="14" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="674" y="140" font-size="34">&#127881;</text>
+    <text x="722" y="140" font-size="21" font-weight="700" fill="#1e293b">Parties</text>
+    <text x="674" y="182" font-size="17" fill="#475569">Print packs for</text>
+    <text x="674" y="204" font-size="17" fill="#475569">team game nights</text>
+    <text x="674" y="226" font-size="17" fill="#475569">and quizzes</text>
+  </g>
+</svg>

@@ -173,6 +173,61 @@ Questions about these terms: \`hello@connectionshint.app\``,
 export const STATIC_BLOG_POSTS: BlogPost[] = [
   {
     locale: "en",
+    title: "Create Printable NYT Connections Puzzle Packs",
+    description:
+      "Print, save, and share NYT Connections puzzles as neat PDF packs for classrooms, travel, and parties. A simple guide to building offline puzzle collections.",
+    image: "/images/connections-printable-pack-cover.svg",
+    slug: "/connections-printable-packs-guide",
+    tags: "connections,nyt connections,printable,pdf,offline,classroom,files,tips",
+    date: new Date("2026-07-07"),
+    visible: "published",
+    pin: false,
+    content: `## Why Go Offline With Connections?
+
+Playing NYT Connections on a screen is convenient, but there are plenty of moments when a printed puzzle is better - a classroom with no devices, a long flight, or a party where passing around phones kills the mood. A printable pack lets everyone play the same board at once, pen in hand.
+
+Turning the daily puzzle into a clean, shareable file takes only a few minutes, and once you've built a small collection you can reuse it for years.
+
+![Great uses for printable Connections puzzles: classrooms, travel, and parties](/images/connections-printable-uses.svg)
+
+## Where Printable Packs Shine
+
+- **Classrooms** - Teachers use Connections grids as vocabulary and critical-thinking warm-ups. A printed sheet works for every student, no logins required.
+- **Travel** - Solve on planes, trains, and road trips without burning battery or needing signal.
+- **Parties** - Print one pack per team for an instant, low-cost group game.
+
+## How to Build a Puzzle Pack
+
+### 1. Choose Your Puzzles
+
+Start with our [printable puzzles page](/connections-printable) and pick a set. Mix easy and hard boards so a pack has a natural difficulty curve.
+
+### 2. Save Them as Files
+
+Print each puzzle to PDF (most browsers offer "Save as PDF" in the print dialog) so you have a permanent, shareable copy. Give each file a clear name like \`connections-2026-07-07.pdf\` so your collection stays organized.
+
+### 3. Organize and Share
+
+Once you have several PDFs, you'll want to combine, compress, or convert them for easy sharing. A file utility like [Filevo](https://filevo.app/) can merge your separate puzzle PDFs into a single pack, shrink the file size for email, or convert between formats - handy when you're sending a semester's worth of warm-ups to other teachers or emailing a game-night pack to friends.
+
+### 4. Print and Play
+
+Print your finished pack, grab some pens, and you're ready. Keep an answer key on a separate page so you can check solutions without spoiling the grid.
+
+## Tips for Better Printouts
+
+1. **Use black-and-white friendly grids** so the puzzle reads clearly without color.
+2. **Add a title and date** to each sheet for easy sorting later.
+3. **Keep the answer key separate** - print it on its own page or hold the digital copy.
+4. **Batch your printing** - build a month of puzzles at once and you'll always have a backup activity ready.
+
+## Start Your Collection
+
+A printable pack turns the daily puzzle into something you can use anywhere. Grab a few boards from our [printable puzzles page](/connections-printable) or browse the [full archive](/connections-hint) to start building your offline Connections library today.`,
+    metadata: {},
+  },
+  {
+    locale: "en",
     title: "How to Host a NYT Connections Game Night",
     description:
       "Turn the daily NYT Connections puzzle into a party. A step-by-step guide to running a group game night, complete with a fun voiced host and scoring.",
