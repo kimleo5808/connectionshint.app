@@ -173,6 +173,60 @@ Questions about these terms: \`hello@connectionshint.app\``,
 export const STATIC_BLOG_POSTS: BlogPost[] = [
   {
     locale: "en",
+    title: "How to Host a NYT Connections Game Night",
+    description:
+      "Turn the daily NYT Connections puzzle into a party. A step-by-step guide to running a group game night, complete with a fun voiced host and scoring.",
+    image: "/images/connections-game-night-cover.svg",
+    slug: "/connections-game-night-guide",
+    tags: "connections,nyt connections,game night,party,group,voice,hosting,tips",
+    date: new Date("2026-07-07"),
+    visible: "published",
+    pin: false,
+    content: `## Connections Is Even Better With Friends
+
+The daily NYT Connections puzzle is a great solo ritual, but it turns into a genuinely fun party game when you play it as a group. Sorting 16 words into four hidden categories sparks exactly the kind of friendly arguments and "aha!" moments that make game nights memorable.
+
+With a little setup, you can run your own Connections night - no special equipment required, just a screen everyone can see and a few puzzles from the archive.
+
+![Four steps to run a Connections game night: pick puzzles, add a host, team up, reveal and score](/images/connections-game-night-setup.svg)
+
+## Run the Night in Four Steps
+
+### 1. Pick Your Puzzles
+
+Choose three to five puzzles ahead of time. Browse our [complete archive](/connections-hint) and mix difficulties so the night ramps up - start with an easier board to warm everyone up, then finish with a brutal purple-heavy one.
+
+### 2. Add a Host
+
+Every good game show has a host. You can play emcee yourself, or add a polished, game-show-style narrator to announce each category reveal. AI voice tools like [AnyVoice](https://www.anyvoice.io/) let you generate a custom host voice from text, so you can pre-record dramatic category reveals ("Your purple group was... HIDDEN BODY PARTS!") and play them for a professional, party-game feel. It's a small touch that makes the night feel like a real event.
+
+### 3. Team Up
+
+Split your guests into two or more teams. Show the grid, start a timer, and let each team quietly write down how they'd sort the 16 words. This avoids one loud player solving everything and keeps everyone engaged.
+
+### 4. Reveal and Score
+
+After each round, reveal the answers and award points:
+
+- **4 points** for a clean sweep (all four groups, no mistakes)
+- **1 point** per correct group
+- **Bonus point** for correctly guessing the tricky purple group
+
+Tally scores across all puzzles and crown a champion at the end.
+
+## Tips to Keep It Fun
+
+- **Keep rounds short.** One puzzle per round keeps the energy up.
+- **Let teams "steal."** If one team misses a group, give the other a chance to claim it.
+- **Talk through the traps.** Half the fun is explaining why everyone fell for the same misdirection.
+
+## Get Started Tonight
+
+You don't need much to throw a great Connections night - just a few puzzles and some competitive friends. Pull up [today's puzzle](/connections-hint-today) to practice your hosting, then raid the [archive](/connections-hint) to build your game-night lineup.`,
+    metadata: {},
+  },
+  {
+    locale: "en",
     title: "Solving NYT Connections by Ear: An Audio Practice Guide",
     description:
       "Reading the grid aloud and using text-to-speech can reveal hidden Connections groups you'd miss on screen. Here's how to practice the puzzle by ear.",

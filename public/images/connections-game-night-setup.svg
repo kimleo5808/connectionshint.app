@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" width="960" height="320" role="img" aria-label="Four steps to run a Connections game night">
+  <rect width="960" height="320" rx="18" fill="#fdf2f8"/>
+  <text x="40" y="56" font-size="28" font-weight="700" fill="#9d174d" font-family="Arial, sans-serif">Run the Night in Four Steps</text>
+  <g font-family="Arial, sans-serif">
+    <!-- 1 -->
+    <rect x="40"  y="92" width="200" height="180" rx="14" fill="#ffffff" stroke="#fbcfe8" stroke-width="2"/>
+    <circle cx="72" cy="126" r="20" fill="#db2777"/>
+    <text x="72" y="133" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+    <text x="60" y="182" font-size="19" font-weight="700" fill="#1e293b">Pick puzzles</text>
+    <text x="60" y="210" font-size="16" fill="#475569">Choose a few from</text>
+    <text x="60" y="230" font-size="16" fill="#475569">the archive by</text>
+    <text x="60" y="250" font-size="16" fill="#475569">difficulty</text>
+    <!-- 2 -->
+    <rect x="256" y="92" width="200" height="180" rx="14" fill="#ffffff" stroke="#fbcfe8" stroke-width="2"/>
+    <circle cx="288" cy="126" r="20" fill="#db2777"/>
+    <text x="288" y="133" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+    <text x="276" y="182" font-size="19" font-weight="700" fill="#1e293b">Add a host</text>
+    <text x="276" y="210" font-size="16" fill="#475569">Narrate categories</text>
+    <text x="276" y="230" font-size="16" fill="#475569">with a fun</text>
+    <text x="276" y="250" font-size="16" fill="#475569">game-show voice</text>
+    <!-- 3 -->
+    <rect x="472" y="92" width="200" height="180" rx="14" fill="#ffffff" stroke="#fbcfe8" stroke-width="2"/>
+    <circle cx="504" cy="126" r="20" fill="#db2777"/>
+    <text x="504" y="133" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+    <text x="492" y="182" font-size="19" font-weight="700" fill="#1e293b">Team up</text>
+    <text x="492" y="210" font-size="16" fill="#475569">Split into groups</text>
+    <text x="492" y="230" font-size="16" fill="#475569">and race to</text>
+    <text x="492" y="250" font-size="16" fill="#475569">sort the grid</text>
+    <!-- 4 -->
+    <rect x="688" y="92" width="200" height="180" rx="14" fill="#ffffff" stroke="#fbcfe8" stroke-width="2"/>
+    <circle cx="720" cy="126" r="20" fill="#db2777"/>
+    <text x="720" y="133" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">4</text>
+    <text x="708" y="182" font-size="19" font-weight="700" fill="#1e293b">Reveal &amp; score</text>
+    <text x="708" y="210" font-size="16" fill="#475569">Announce answers</text>
+    <text x="708" y="230" font-size="16" fill="#475569">and tally points</text>
+    <text x="708" y="250" font-size="16" fill="#475569">each round</text>
+  </g>
+</svg>

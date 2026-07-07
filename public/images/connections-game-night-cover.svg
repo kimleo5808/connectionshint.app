@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Hosting a NYT Connections game night with friends">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9d174d"/>
+      <stop offset="1" stop-color="#4338ca"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg4)"/>
+  <g opacity="0.12" fill="#ffffff">
+    <circle cx="150" cy="480" r="100"/>
+    <circle cx="1060" cy="130" r="120"/>
+  </g>
+  <!-- microphone -->
+  <g transform="translate(120,170)" fill="#ffffff">
+    <rect x="40" y="0" width="60" height="140" rx="30"/>
+    <path d="M18 96 a52 52 0 0 0 104 0" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round"/>
+    <rect x="64" y="150" width="12" height="60" rx="6"/>
+    <rect x="34" y="210" width="72" height="14" rx="7"/>
+  </g>
+  <!-- connections tiles -->
+  <g transform="translate(96,300)">
+    <rect x="0"   y="0" width="70" height="52" rx="10" fill="#f9df6d"/>
+    <rect x="82"  y="0" width="70" height="52" rx="10" fill="#a0c35a"/>
+    <rect x="164" y="0" width="70" height="52" rx="10" fill="#b0c4ef"/>
+    <rect x="246" y="0" width="70" height="52" rx="10" fill="#ba81c5"/>
+  </g>
+  <g fill="#ffffff" font-family="Georgia, 'Times New Roman', serif">
+    <text x="560" y="250" font-size="60" font-weight="700">Host a Connections</text>
+    <text x="560" y="322" font-size="60" font-weight="700">Game Night</text>
+    <text x="560" y="392" font-size="30" fill="#fbcfe8" font-family="Arial, sans-serif">Turn the daily puzzle into a party</text>
+  </g>
+</svg>
