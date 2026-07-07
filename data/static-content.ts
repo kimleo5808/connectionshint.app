@@ -173,6 +173,55 @@ Questions about these terms: \`hello@connectionshint.app\``,
 export const STATIC_BLOG_POSTS: BlogPost[] = [
   {
     locale: "en",
+    title: "Solving NYT Connections by Ear: An Audio Practice Guide",
+    description:
+      "Reading the grid aloud and using text-to-speech can reveal hidden Connections groups you'd miss on screen. Here's how to practice the puzzle by ear.",
+    image: "/images/connections-audio-practice-cover.svg",
+    slug: "/connections-audio-practice-guide",
+    tags: "connections,nyt connections,audio,text to speech,accessibility,practice,tips",
+    date: new Date("2026-07-07"),
+    visible: "published",
+    pin: false,
+    content: `## Your Ears Notice What Your Eyes Miss
+
+Most people play NYT Connections silently, scanning the grid with their eyes. But a lot of the puzzle's cleverness is *sound-based* - rhymes, homophones, and words that share a hidden spoken syllable. When you only read, you can miss these entirely.
+
+Say the 16 words out loud and suddenly "BASS," "BOW," and "LEAD" reveal their double pronunciations. Hearing a category read aloud often makes the connection click in a way that staring at the screen never does.
+
+![Three ways to use audio when practicing Connections: read aloud, listen hands-free, and accessibility](/images/connections-audio-methods.svg)
+
+## Three Ways to Practice by Ear
+
+### 1. Read the Grid Aloud
+
+Before your first guess, simply read all 16 words out loud. This slows you down just enough to catch:
+
+- **Homophones** - words that sound alike but mean different things
+- **Rhyme groups** - a category built on matching sounds
+- **Hidden words** - saying "CARPET" aloud makes the "PET" inside easier to hear
+
+### 2. Listen Hands-Free
+
+If you like solving on a commute or while doing chores, you can turn puzzle hints into audio and listen instead of reading. Text-to-speech tools like [AnySpeech](https://anyspeech.io/) convert written text into natural-sounding voice, so you can play a category clue in your headphones and think through the answer before you ever look at the screen. It's a low-pressure way to keep your pattern-recognition sharp between daily puzzles.
+
+### 3. Make It Accessible
+
+Audio isn't just a training trick - it's essential for players with low vision or those who simply learn better by listening. Reading hints aloud (or generating a voice version of them) keeps the daily puzzle open to everyone, not only people who can comfortably read a dense grid.
+
+## A Quick Audio-First Routine
+
+1. **Open the puzzle** and read all 16 words aloud once, slowly.
+2. **Group by sound** - note any words that rhyme or share a spoken root.
+3. **Listen to category hints** as audio if you're away from the screen.
+4. **Confirm visually**, then lock in your safest group first.
+
+## Try It on Today's Puzzle
+
+Give the audio approach a shot: read the words aloud, trust your ears, and see how many extra connections you catch. Start with [today's Connections hints](/connections-hint-today), or dig into our [complete archive](/connections-hint) for more practice.`,
+    metadata: {},
+  },
+  {
+    locale: "en",
     title: "Playing Connections and Wordle Together: A Daily Word-Game Routine",
     description:
       "NYT Connections and Wordle train different skills. Learn how to pair them into one daily routine that sharpens both your vocabulary and your pattern recognition.",

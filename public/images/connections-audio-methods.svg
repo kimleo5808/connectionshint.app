@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" width="960" height="340" role="img" aria-label="Three ways to use audio when practicing Connections">
+  <rect width="960" height="340" rx="18" fill="#ecfeff"/>
+  <text x="40" y="56" font-size="28" font-weight="700" fill="#155e75" font-family="Arial, sans-serif">Three Ways to Practice by Ear</text>
+  <g font-family="Arial, sans-serif">
+    <!-- card 1 -->
+    <rect x="40"  y="90" width="270" height="210" rx="14" fill="#ffffff" stroke="#a5f3fc" stroke-width="2"/>
+    <circle cx="90" cy="140" r="26" fill="#06b6d4"/>
+    <text x="90" y="149" font-size="26" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+    <text x="60" y="200" font-size="21" font-weight="700" fill="#0f172a">Read aloud</text>
+    <text x="60" y="230" font-size="17" fill="#475569">Say all 16 words</text>
+    <text x="60" y="252" font-size="17" fill="#475569">to hear rhymes</text>
+    <text x="60" y="274" font-size="17" fill="#475569">and double meanings</text>
+    <!-- card 2 -->
+    <rect x="345" y="90" width="270" height="210" rx="14" fill="#ffffff" stroke="#a5f3fc" stroke-width="2"/>
+    <circle cx="395" cy="140" r="26" fill="#06b6d4"/>
+    <text x="395" y="149" font-size="26" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+    <text x="365" y="200" font-size="21" font-weight="700" fill="#0f172a">Listen hands-free</text>
+    <text x="365" y="230" font-size="17" fill="#475569">Convert hints to</text>
+    <text x="365" y="252" font-size="17" fill="#475569">audio and solve</text>
+    <text x="365" y="274" font-size="17" fill="#475569">on the go</text>
+    <!-- card 3 -->
+    <rect x="650" y="90" width="270" height="210" rx="14" fill="#ffffff" stroke="#a5f3fc" stroke-width="2"/>
+    <circle cx="700" cy="140" r="26" fill="#06b6d4"/>
+    <text x="700" y="149" font-size="26" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+    <text x="670" y="200" font-size="21" font-weight="700" fill="#0f172a">Accessibility</text>
+    <text x="670" y="230" font-size="17" fill="#475569">Voice playback for</text>
+    <text x="670" y="252" font-size="17" fill="#475569">low-vision and</text>
+    <text x="670" y="274" font-size="17" fill="#475569">audio learners</text>
+  </g>
+</svg>
