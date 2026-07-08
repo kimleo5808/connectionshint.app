@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-07T09:21:04.269Z",
+  "lastUpdated": "2026-07-08T08:05:58.072Z",
   "puzzles": [
     {
       "id": 1,
@@ -51517,6 +51517,52 @@
             "COLBERT",
             "DISCOUNT",
             "SAN ANSELMO"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1205,
+      "date": "2026-07-08",
+      "answers": [
+        {
+          "level": 0,
+          "group": "CUT INTO THIN PIECES",
+          "members": [
+            "GRATE",
+            "PLANE",
+            "SHAVE",
+            "SLIVER"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "MOTIF",
+          "members": [
+            "DRIFT",
+            "PLOT",
+            "THEME",
+            "THREAD"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "GUITAR-PLAYING TECHNIQUES",
+          "members": [
+            "PICK",
+            "PLUCK",
+            "STRUM",
+            "TAP"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "HOUSE OF ___",
+          "members": [
+            "CARDS",
+            "LORDS",
+            "WAX",
+            "WORSHIP"
           ]
         }
       ]
