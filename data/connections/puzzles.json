@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-08T08:05:58.072Z",
+  "lastUpdated": "2026-07-09T09:18:27.413Z",
   "puzzles": [
     {
       "id": 1,
@@ -51563,6 +51563,52 @@
             "LORDS",
             "WAX",
             "WORSHIP"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1206,
+      "date": "2026-07-09",
+      "answers": [
+        {
+          "level": 0,
+          "group": "NON-ALCOHOLIC DESIGNATORS",
+          "members": [
+            "NA",
+            "SPIRIT-FREE",
+            "VIRGIN",
+            "ZERO-PROOF"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "MUSIC PUBLICATIONS",
+          "members": [
+            "BILLBOARD",
+            "PITCHFORK",
+            "ROLLING STONE",
+            "SPIN"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "KINDS OF RUGS",
+          "members": [
+            "PERSIAN",
+            "PRAYER",
+            "SHAG",
+            "THROW"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "PONTIAC MODELS",
+          "members": [
+            "FIREBIRD",
+            "G6",
+            "GRAND PRIX",
+            "TRANS AM"
           ]
         }
       ]
