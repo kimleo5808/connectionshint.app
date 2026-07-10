@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-09T09:18:27.413Z",
+  "lastUpdated": "2026-07-10T08:58:04.100Z",
   "puzzles": [
     {
       "id": 1,
@@ -51609,6 +51609,52 @@
             "G6",
             "GRAND PRIX",
             "TRANS AM"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1197,
+      "date": "2026-07-10",
+      "answers": [
+        {
+          "level": 0,
+          "group": "SMARTPHONE SETTINGS",
+          "members": [
+            "AIRPLANE MODE",
+            "DO NOT DISTURB",
+            "HOTSPOT",
+            "LOCATION SERVICES"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "DESSERT MENU DESCRIPTORS",
+          "members": [
+            "DECADENT",
+            "FRESH-BAKED",
+            "MOLTEN",
+            "À LA MODE"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "'80S SYNTH-POP BANDS",
+          "members": [
+            "DEPECHE MODE",
+            "ERASURE",
+            "NEW ORDER",
+            "PET SHOP BOYS"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "STARTING WITH BASEBALL CALLS",
+          "members": [
+            "BALL GOWN",
+            "OUTKAST",
+            "SAFE MODE",
+            "STRIKE A POSE"
           ]
         }
       ]
