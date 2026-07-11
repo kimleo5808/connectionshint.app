@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-10T08:58:04.100Z",
+  "lastUpdated": "2026-07-11T07:30:26.927Z",
   "puzzles": [
     {
       "id": 1,
@@ -51655,6 +51655,52 @@
             "OUTKAST",
             "SAFE MODE",
             "STRIKE A POSE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1214,
+      "date": "2026-07-11",
+      "answers": [
+        {
+          "level": 0,
+          "group": "CIRCUS EQUIPMENT",
+          "members": [
+            "CANNON",
+            "STILTS",
+            "TRAPEZE",
+            "UNICYCLE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "UNDISTURBED, AS WATER",
+          "members": [
+            "CALM",
+            "FLAT",
+            "GLASSY",
+            "STILL"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "\"TOY STORY\" CHARACTERS",
+          "members": [
+            "BO PEEP",
+            "JESSIE",
+            "SLINKY",
+            "WOODY"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "DOUBLE LETTERS APPEARING IN THAT LETTER'S ALPHABETICAL POSITION",
+          "members": [
+            "AARDVARK",
+            "BOCCE",
+            "EBBING",
+            "TWIDDLE"
           ]
         }
       ]
