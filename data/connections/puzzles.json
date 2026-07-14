@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-13T08:44:01.107Z",
+  "lastUpdated": "2026-07-14T03:42:40.433Z",
   "puzzles": [
     {
       "id": 1,
@@ -51793,6 +51793,52 @@
             "KISSER",
             "PECKISH",
             "SMACKDOWN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1218,
+      "date": "2026-07-14",
+      "answers": [
+        {
+          "level": 0,
+          "group": "CONTRACT",
+          "members": [
+            "AGREEMENT",
+            "BARGAIN",
+            "DEAL",
+            "UNDERSTANDING"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "EDIT MENU OPTIONS",
+          "members": [
+            "COPY",
+            "CUT",
+            "DELETE",
+            "PASTE"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "KINDS OF BASKETS",
+          "members": [
+            "EASTER",
+            "GROCERY",
+            "LAUNDRY",
+            "PICNIC"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "SYMBOLIZED WITH ARROWS",
+          "members": [
+            "RECYCLING",
+            "SHUFFLE",
+            "THIS SIDE UP",
+            "U-TURN"
           ]
         }
       ]
