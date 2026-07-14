@@ -106,7 +106,9 @@ async function fetchFromNYT(dateStr: string): Promise<ConnectionsPuzzle | null> 
     const d = data as Record<string, unknown>;
     if (d.categories && Array.isArray(d.categories)) {
       const puzzle: ConnectionsPuzzle = {
-        id: (d.id as number) || 0,
+        // NYT API's `id` is an internal identifier, NOT the public puzzle
+        // number. Callers must assign the real number themselves.
+        id: 0,
         date: (d.print_date as string) || dateStr,
         answers: (d.categories as Array<Record<string, unknown>>).map((cat, idx) => ({
           level: idx,
@@ -137,56 +139,109 @@ export default {
     const kv = env.PUZZLES_KV;
     console.log("🔄 Scheduled puzzle data update starting...");
 
-    // 1. Load current index from KV
-    const currentIndex = await kv.get<PuzzleIndex>("meta:index", "json");
-    const existingDates = new Set(currentIndex?.dates ?? []);
-    console.log(`Current data: ${existingDates.size} puzzles`);
+    // 1. Load the full current dataset from KV
+    const existingPuzzles =
+      (await kv.get<ConnectionsPuzzle[]>("meta:all-puzzles", "json")) ?? [];
+    const byDate = new Map(existingPuzzles.map((p) => [p.date, p]));
+    console.log(`Current data: ${byDate.size} puzzles`);
 
-    // 2. Fetch from community source
+    // 2. Reconcile against the community source. The community repo is the
+    //    canonical record for puzzle numbering, so entries whose id or answers
+    //    drifted (e.g. from a bad NYT-API fallback) are overwritten, not skipped.
+    // Free-plan Workers allow 50 subrequests per invocation and each KV op
+    // counts as one; large backlogs are repaired by scripts/reconcile-kv.mjs
+    // in CI, so cap the per-run corrections here and defer the rest.
+    const MAX_CORRECTIONS_PER_RUN = 15;
     const communityData = await fetchJSON(COMMUNITY_SOURCE);
-    const newPuzzles: ConnectionsPuzzle[] = [];
+    const changed: ConnectionsPuzzle[] = [];
+    const staleIds: number[] = [];
+    const prunedDates: string[] = [];
+    let communityDates: Set<string> | null = null;
+    let deferred = 0;
 
     if (communityData && Array.isArray(communityData)) {
       console.log(`Community source: ${(communityData as unknown[]).length} total puzzles`);
-      for (const puzzle of communityData as unknown[]) {
-        if (isValidPuzzle(puzzle) && !existingDates.has(puzzle.date)) {
-          newPuzzles.push(normalizePuzzle(puzzle));
-          existingDates.add(puzzle.date);
+      communityDates = new Set<string>();
+      for (const raw of communityData as unknown[]) {
+        if (!isValidPuzzle(raw)) continue;
+        const puzzle = normalizePuzzle(raw);
+        communityDates.add(puzzle.date);
+        const current = byDate.get(puzzle.date);
+        const needsWrite =
+          !current ||
+          current.id !== puzzle.id ||
+          JSON.stringify(current.answers) !== JSON.stringify(puzzle.answers);
+        if (!needsWrite) continue;
+        if (changed.length >= MAX_CORRECTIONS_PER_RUN) {
+          deferred++;
+          continue;
+        }
+        if (current && current.id !== puzzle.id) staleIds.push(current.id);
+        byDate.set(puzzle.date, puzzle);
+        changed.push(puzzle);
+      }
+      console.log(
+        `Added or corrected from community: ${changed.length}` +
+          (deferred > 0 ? ` (${deferred} deferred to next run / CI reconcile)` : "")
+      );
+
+      // Prune local entries the canonical source never had. Only prune dates
+      // older than 7 days so a fresh NYT-API fallback (community lagging)
+      // is never removed prematurely.
+      const cutoff = new Date(Date.now() - 7 * 86400_000).toISOString().split("T")[0];
+      for (const [date, puzzle] of [...byDate]) {
+        if (!communityDates.has(date) && date < cutoff) {
+          byDate.delete(date);
+          prunedDates.push(date);
+          staleIds.push(puzzle.id);
         }
       }
-      console.log(`New from community: ${newPuzzles.length}`);
+      if (prunedDates.length > 0) {
+        console.log(`Pruned spurious dates: ${prunedDates.join(", ")}`);
+      }
     } else {
-      console.error("Could not fetch community data");
+      console.error("Could not fetch community data; skipping reconciliation");
     }
 
-    // 3. Try NYT API for today
+    // 3. NYT API fallback for today, with a provisional id (next number in
+    //    sequence). Tomorrow's reconciliation corrects it if it was wrong.
     const today = new Date().toISOString().split("T")[0];
-    if (!existingDates.has(today)) {
+    if (!byDate.has(today)) {
       const nytPuzzle = await fetchFromNYT(today);
       if (nytPuzzle) {
-        newPuzzles.push(nytPuzzle);
-        existingDates.add(today);
-        console.log("Got today's puzzle from NYT API");
+        let maxId = 0;
+        for (const p of byDate.values()) maxId = Math.max(maxId, p.id);
+        const provisional = { ...nytPuzzle, id: maxId + 1 };
+        byDate.set(today, provisional);
+        changed.push(provisional);
+        console.log(`Got today's puzzle from NYT API (provisional id ${provisional.id})`);
       }
     }
 
-    // 4. If no new data, done
-    if (newPuzzles.length === 0) {
+    // 4. If nothing changed, done
+    if (changed.length === 0 && prunedDates.length === 0) {
       console.log("No new puzzles. Data is up to date.");
       return;
     }
 
-    // 5. Write new puzzles to KV
-    console.log(`Writing ${newPuzzles.length} new puzzles to KV...`);
-    await Promise.all(
-      newPuzzles.flatMap((p) => [
+    // 5. Write changed puzzles and remove keys that no longer belong to any
+    //    live puzzle (an id key still in use is simply overwritten above).
+    const liveIds = new Set([...byDate.values()].map((p) => p.id));
+    const deletions = [
+      ...[...new Set(staleIds)].filter((id) => !liveIds.has(id)).map((id) => `puzzle:id:${id}`),
+      ...prunedDates.map((d) => `puzzle:date:${d}`),
+    ];
+    console.log(`Writing ${changed.length} puzzles, deleting ${deletions.length} stale keys...`);
+    await Promise.all([
+      ...changed.flatMap((p) => [
         kv.put(`puzzle:date:${p.date}`, JSON.stringify(p)),
         kv.put(`puzzle:id:${p.id}`, JSON.stringify(p)),
-      ])
-    );
+      ]),
+      ...deletions.map((key) => kv.delete(key)),
+    ]);
 
     // 6. Update index
-    const allDates = Array.from(existingDates).sort().reverse();
+    const allDates = [...byDate.keys()].sort().reverse();
     const months = [...new Set(allDates.map((d) => d.slice(0, 7)))].sort().reverse();
     await kv.put(
       "meta:index",
@@ -200,14 +255,12 @@ export default {
     );
 
     // 7. Update the full puzzles blob (used by getAllPuzzles for archive/sitemap)
-    const existingPuzzles =
-      (await kv.get<ConnectionsPuzzle[]>("meta:all-puzzles", "json")) ?? [];
-    const allPuzzles = [...existingPuzzles, ...newPuzzles].sort((a, b) =>
-      a.date.localeCompare(b.date)
-    );
+    const allPuzzles = [...byDate.values()].sort((a, b) => a.date.localeCompare(b.date));
     await kv.put("meta:all-puzzles", JSON.stringify(allPuzzles));
 
-    console.log(`✅ Update complete. Total: ${allPuzzles.length} puzzles (${newPuzzles.length} new)`);
+    console.log(
+      `✅ Update complete. Total: ${allPuzzles.length} puzzles (${changed.length} added/corrected, ${prunedDates.length} pruned)`
+    );
 
     // ── Sports Edition Update ──────────────────────────────────────────
 

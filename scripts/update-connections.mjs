@@ -130,8 +130,10 @@ async function fetchFromNYT(dateStr) {
   try {
     if (data.categories) {
       // V2 format: { id, print_date, categories: [{title, cards: [{content, position}]}] }
+      // NYT's `id` is an internal identifier, NOT the public puzzle number —
+      // the caller assigns a provisional sequential id instead.
       const puzzle = {
-        id: data.id || 0,
+        id: 0,
         date: data.print_date || dateStr,
         answers: data.categories.map((cat, idx) => ({
           level: idx,
@@ -194,7 +196,14 @@ async function main() {
   if (!existingDates.has(today)) {
     const nytPuzzle = await fetchFromNYT(today);
     if (nytPuzzle) {
-      newPuzzles.push(nytPuzzle);
+      // Provisional id: next number in sequence; the community source (and
+      // scripts/reconcile-kv.mjs) corrects it later if it was wrong.
+      const maxId = Math.max(
+        0,
+        ...existing.puzzles.map((p) => p.id),
+        ...newPuzzles.map((p) => p.id)
+      );
+      newPuzzles.push({ ...nytPuzzle, id: maxId + 1 });
       existingDates.add(today);
     }
   } else {

@@ -39,6 +39,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Reconcile puzzle data with community source
+        run: node scripts/reconcile-kv.mjs
+
       - name: Sync puzzle data from KV
         run: node scripts/sync-kv-to-json.mjs
 
