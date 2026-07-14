@@ -11,11 +11,6 @@ export default function robots(): MetadataRoute.Robots {
       disallow: [
         '/api/',
         '/error',
-        '/*/404',
-        '/*/500',
-        '/*/403',
-        '/*/401',
-        '/*/400',
         '/cdn-cgi/',
       ],
     },
