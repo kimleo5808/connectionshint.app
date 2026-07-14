@@ -64,7 +64,7 @@ For corrections, suggestions, or general questions: \`hello@connectionshint.app\
   "privacy-policy": {
     title: "Privacy Policy",
     description: "Privacy policy for connectionshint.app",
-    body: `> Updated on 2026-02-12
+    body: `> Updated on 2026-07-14
 
 # Privacy Policy
 
@@ -85,11 +85,22 @@ We do not collect names, physical addresses, payment information, or any game ac
 - Respond to direct support or correction requests
 - Understand aggregate usage trends (e.g., which pages are most visited)
 
-We never sell, rent, or share personal data with third parties for marketing purposes.
+We do not sell or rent personal data. Advertising and analytics partners described below may process data under their own policies when you use the site.
 
 ## Cookies and analytics
 
-We use analytics tools to understand aggregate traffic patterns and site performance. We may also load advertising services such as Google AdSense when ads are enabled on the site. Those services may use cookies or similar technologies according to their own policies and browser settings.
+We use analytics tools (such as Google Analytics) to understand aggregate traffic patterns and site performance. These tools may set cookies and collect device information and IP addresses to produce aggregate statistics.
+
+## Advertising
+
+We use Google AdSense to serve ads on this site. Because of this:
+
+- **Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this website or other websites.**
+- Google's use of advertising cookies enables it and its partners to serve ads to you based on your visits to this site and/or other sites on the Internet.
+- You may opt out of personalized advertising by visiting [Google Ads Settings](https://adssettings.google.com/). Alternatively, you can opt out of some third-party vendors' use of cookies for personalized advertising at [www.aboutads.info](https://www.aboutads.info/choices/).
+- Third-party ad vendors and networks may also use web beacons, pixels, and similar technologies to measure ad performance.
+
+If you are located in the European Economic Area, the United Kingdom, or Switzerland, we ask for your consent before personalized ads are served, and you can change or withdraw that consent at any time via the consent message on the site.
 
 ## Data retention
 
@@ -210,6 +221,8 @@ Print each puzzle to PDF (most browsers offer "Save as PDF" in the print dialog)
 
 Once you have several PDFs, you'll want to combine, compress, or convert them for easy sharing. A file utility like [Filevo](https://filevo.app/) can merge your separate puzzle PDFs into a single pack, shrink the file size for email, or convert between formats - handy when you're sending a semester's worth of warm-ups to other teachers or emailing a game-night pack to friends.
 
+> **Disclosure:** The Filevo link above is a sponsored partner link.
+
 ### 4. Print and Play
 
 Print your finished pack, grab some pens, and you're ready. Keep an answer key on a separate page so you can check solutions without spoiling the grid.
@@ -254,6 +267,8 @@ Choose three to five puzzles ahead of time. Browse our [complete archive](/conne
 ### 2. Add a Host
 
 Every good game show has a host. You can play emcee yourself, or add a polished, game-show-style narrator to announce each category reveal. AI voice tools like [AnyVoice](https://www.anyvoice.io/) let you generate a custom host voice from text, so you can pre-record dramatic category reveals ("Your purple group was... HIDDEN BODY PARTS!") and play them for a professional, party-game feel. It's a small touch that makes the night feel like a real event.
+
+> **Disclosure:** The AnyVoice link above is a sponsored partner link.
 
 ### 3. Team Up
 
@@ -312,6 +327,8 @@ Before your first guess, simply read all 16 words out loud. This slows you down 
 ### 2. Listen Hands-Free
 
 If you like solving on a commute or while doing chores, you can turn puzzle hints into audio and listen instead of reading. Text-to-speech tools like [AnySpeech](https://anyspeech.io/) convert written text into natural-sounding voice, so you can play a category clue in your headphones and think through the answer before you ever look at the screen. It's a low-pressure way to keep your pattern-recognition sharp between daily puzzles.
+
+> **Disclosure:** The AnySpeech link above is a sponsored partner link.
 
 ### 3. Make It Accessible
 

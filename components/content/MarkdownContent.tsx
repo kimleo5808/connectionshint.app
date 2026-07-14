@@ -5,11 +5,26 @@ function escapeHtml(value: string) {
     .replace(/>/g, "&gt;");
 }
 
+const SPONSORED_HOSTS = ["filevo.app", "anyvoice.io", "anyspeech.io"];
+
+function relForHref(href: string) {
+  if (!/^https?:\/\//.test(href)) {
+    return "";
+  }
+
+  const isSponsored = SPONSORED_HOSTS.some((host) =>
+    new RegExp(`^https?://(www\\.)?${host.replace(".", "\\.")}(/|$)`).test(href)
+  );
+
+  return ` target="_blank" rel="${isSponsored ? "sponsored noopener" : "noopener"}"`;
+}
+
 function renderInlineMarkdown(text: string) {
   return escapeHtml(text)
     .replace(
       /\[([^\]]+)\]\(([^)]+)\)/g,
-      '<a class="text-indigo-600 underline underline-offset-4 transition-colors hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300" href="$2">$1</a>'
+      (_match, label, href) =>
+        `<a class="text-indigo-600 underline underline-offset-4 transition-colors hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300" href="${href}"${relForHref(href)}>${label}</a>`
     )
     .replace(
       /`([^`]+)`/g,
