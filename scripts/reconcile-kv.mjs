@@ -214,6 +214,12 @@ async function main() {
     bail(err.message);
   }
 
+  // KV is eventually consistent (writes can take up to 60s to be visible).
+  // Wait before returning so the subsequent sync-kv-to-json step reads the
+  // repaired data instead of a stale snapshot.
+  console.log("[reconcile-kv] Waiting 60s for KV propagation...");
+  await new Promise((resolve) => setTimeout(resolve, 60_000));
+
   console.log(
     `[reconcile-kv] Repaired ${changed.length} puzzles, pruned ${prunedDates.length} dates, deleted ${deletions.length} stale keys. Total: ${allPuzzles.length}.`
   );
