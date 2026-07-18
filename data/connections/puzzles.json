@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-17T07:50:09.967Z",
+  "lastUpdated": "2026-07-18T07:25:01.770Z",
   "puzzles": [
     {
       "id": 1,
@@ -51839,6 +51839,52 @@
             "ROBIN HOOD",
             "SATIRES",
             "TREE TRUNK"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1128,
+      "date": "2026-07-18",
+      "answers": [
+        {
+          "level": 0,
+          "group": "COMMIT A BASKETBALL VIOLATION",
+          "members": [
+            "CARRY",
+            "DOUBLE DRIBBLE",
+            "GOALTEND",
+            "TRAVEL"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "BELIEF",
+          "members": [
+            "ATTITUDE",
+            "MIND",
+            "OPINION",
+            "VIEW"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "THINGS TRACKED IN VIDEO GAMES",
+          "members": [
+            "HEALTH",
+            "LIVES",
+            "SCORE",
+            "TIME"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "WORDS AFTER \"POP\"",
+          "members": [
+            "CULTURE",
+            "FLY",
+            "QUIZ",
+            "TART"
           ]
         }
       ]
