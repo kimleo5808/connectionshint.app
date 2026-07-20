@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-19T07:56:11.045Z",
+  "lastUpdated": "2026-07-20T08:35:48.388Z",
   "puzzles": [
     {
       "id": 1,
@@ -51931,6 +51931,52 @@
             "LONG",
             "POKER",
             "STRAIGHT"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1130,
+      "date": "2026-07-20",
+      "answers": [
+        {
+          "level": 0,
+          "group": "ANNOUNCE",
+          "members": [
+            "BLARE",
+            "HERALD",
+            "SOUND",
+            "TRUMPET"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "THINGS TO CLICK",
+          "members": [
+            "BUTTON",
+            "ICON",
+            "LINK",
+            "MENU"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "ASSOCIATED WITH PEARLS",
+          "members": [
+            "BUBBLE TEA",
+            "OYSTER",
+            "SWINE",
+            "WISDOM"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "STARTING WITH ALCOHOLIC BEVERAGES",
+          "members": [
+            "ALEXA",
+            "MEADOW",
+            "PORTOBELLO",
+            "SAKES"
           ]
         }
       ]
