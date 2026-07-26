@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-25T07:48:37.550Z",
+  "lastUpdated": "2026-07-26T08:05:01.914Z",
   "puzzles": [
     {
       "id": 1,
@@ -52207,6 +52207,52 @@
             "MALL",
             "POKER",
             "STEAK"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1136,
+      "date": "2026-07-26",
+      "answers": [
+        {
+          "level": 0,
+          "group": "BABY MILESTONES",
+          "members": [
+            "CRAWLING",
+            "FIRST WORDS",
+            "ROLLING OVER",
+            "SOLID FOOD"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "OUTMODED CONSUMER TECH",
+          "members": [
+            "BLACKBERRY",
+            "DISCMAN",
+            "DVD PLAYER",
+            "PLASMA TV"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "EXPRESSIONS FOR RAIN",
+          "members": [
+            "APRIL SHOWERS",
+            "LIQUID SUNSHINE",
+            "SCOTCH MIST",
+            "WET WEATHER"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "WHAT \"SHELL\" MIGHT REFER TO",
+          "members": [
+            "CARAPACE",
+            "GAS STATION",
+            "PASTRY CRUST",
+            "ROWING BOAT"
           ]
         }
       ]
