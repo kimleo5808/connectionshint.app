@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-27T09:24:54.046Z",
+  "lastUpdated": "2026-07-28T08:11:41.234Z",
   "puzzles": [
     {
       "id": 1,
@@ -52299,6 +52299,52 @@
             "CART",
             "HEART",
             "MAGNIFYING GLASS"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1138,
+      "date": "2026-07-28",
+      "answers": [
+        {
+          "level": 0,
+          "group": "COMMAND",
+          "members": [
+            "CAPTAIN",
+            "DIRECT",
+            "HEAD",
+            "LEAD"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "HOW DO YOU LIKE THEM APPLES",
+          "members": [
+            "EMPIRE",
+            "FUJI",
+            "GALA",
+            "HONEYCRISP"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "SHOE BRANDS STARTING WITH \"C\"",
+          "members": [
+            "CAMPER",
+            "CLARKS",
+            "CONVERSE",
+            "CROCS"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "STARTING WITH PALINDROMIC NAMES",
+          "members": [
+            "ANNAPOLIS",
+            "BOBSLED",
+            "EVEREST",
+            "OTTOMAN"
           ]
         }
       ]
