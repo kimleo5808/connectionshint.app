@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-29T08:16:08.350Z",
+  "lastUpdated": "2026-07-30T08:04:36.489Z",
   "puzzles": [
     {
       "id": 1,
@@ -52391,6 +52391,52 @@
             "CHALK",
             "CORK",
             "WHITE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1140,
+      "date": "2026-07-30",
+      "answers": [
+        {
+          "level": 0,
+          "group": "VIRTUOUS",
+          "members": [
+            "FAIR",
+            "GOOD",
+            "JUST",
+            "RIGHT"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "ACTIVITIES WITH MULTIPLE BALLS",
+          "members": [
+            "BEER PONG",
+            "BINGO",
+            "JUGGLING",
+            "POOL"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "CRUISE LINES",
+          "members": [
+            "CARNIVAL",
+            "CELEBRITY",
+            "PRINCESS",
+            "VIKING"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "ON THE ___, TO MEAN \"PRECISE\"",
+          "members": [
+            "DOT",
+            "MARK",
+            "MONEY",
+            "NOSE"
           ]
         }
       ]
