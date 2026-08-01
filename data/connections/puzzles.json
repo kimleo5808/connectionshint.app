@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-31T08:30:30.800Z",
+  "lastUpdated": "2026-08-01T08:00:19.073Z",
   "puzzles": [
     {
       "id": 1,
@@ -52483,6 +52483,52 @@
             "FUNGUS",
             "GLEEK",
             "JOYSTICK"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1142,
+      "date": "2026-08-01",
+      "answers": [
+        {
+          "level": 0,
+          "group": "BEDDING",
+          "members": [
+            "COMFORTER",
+            "SHAM",
+            "SHEET",
+            "THROW"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "OSCAR-WINNING ACTORS SINCE 2010",
+          "members": [
+            "BALE",
+            "JORDAN",
+            "PHOENIX",
+            "WALTZ"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "PERFORM SOME HOLE MACHINING OPERATIONS",
+          "members": [
+            "BORE",
+            "COUNTERSINK",
+            "DRILL",
+            "REAM"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "STARTING WITH BREAD SHAPES",
+          "members": [
+            "BOULEVARD",
+            "BUNDLE",
+            "LOAFER",
+            "ROLLS-ROYCE"
           ]
         }
       ]
