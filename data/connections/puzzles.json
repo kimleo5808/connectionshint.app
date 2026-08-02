@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-01T08:00:19.073Z",
+  "lastUpdated": "2026-08-02T08:02:01.971Z",
   "puzzles": [
     {
       "id": 1,
@@ -52529,6 +52529,52 @@
             "BUNDLE",
             "LOAFER",
             "ROLLS-ROYCE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1143,
+      "date": "2026-08-02",
+      "answers": [
+        {
+          "level": 0,
+          "group": "FILLER WORDS",
+          "members": [
+            "ACTUALLY",
+            "LIKE",
+            "SO",
+            "WELL"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "BY MEANS OF",
+          "members": [
+            "BY",
+            "PER",
+            "THROUGH",
+            "VIA"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "___ MODE",
+          "members": [
+            "AIRPLANE",
+            "BEAST",
+            "DARK",
+            "À LA"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "U.S. AIRPORT CODES PLUS STARTING LETTER",
+          "members": [
+            "ASEA",
+            "FLAX",
+            "LORD",
+            "OLGA"
           ]
         }
       ]
