@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-13T07:09:11.659Z",
+  "lastUpdated": "2026-08-14T07:05:30.929Z",
   "puzzles": [
     {
       "id": 1,
@@ -53081,6 +53081,52 @@
             "FEET",
             "SHOULDER",
             "TURKEY"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1155,
+      "date": "2026-08-14",
+      "answers": [
+        {
+          "level": 0,
+          "group": "BLACK-AND-YELLOW",
+          "members": [
+            "BUMBLEBEE",
+            "CAUTION TAPE",
+            "CHARLIE BROWN",
+            "WOLVERINE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "PLACES WHERE EVERYONE THINKS THE SAME WAYS",
+          "members": [
+            "BUBBLE",
+            "ECHO CHAMBER",
+            "HIVEMIND",
+            "SILO"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "COMIC BOOK ARTIST'S TOOLS",
+          "members": [
+            "BRISTOL BOARD",
+            "DIP PEN",
+            "INDIA INK",
+            "STRAIGHTEDGE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "TRIANGLE LOGOS",
+          "members": [
+            "BASS ALE",
+            "CITGO",
+            "DELTA AIRLINES",
+            "GOOGLE DRIVE"
           ]
         }
       ]
