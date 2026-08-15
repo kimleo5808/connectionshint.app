@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-14T07:05:30.929Z",
+  "lastUpdated": "2026-08-15T06:18:15.123Z",
   "puzzles": [
     {
       "id": 1,
@@ -53127,6 +53127,52 @@
             "CITGO",
             "DELTA AIRLINES",
             "GOOGLE DRIVE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1156,
+      "date": "2026-08-15",
+      "answers": [
+        {
+          "level": 0,
+          "group": "EXHAUSTED",
+          "members": [
+            "BEAT",
+            "FRIED",
+            "SPENT",
+            "WORN OUT"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "SEGMENT",
+          "members": [
+            "LEG",
+            "PHASE",
+            "STAGE",
+            "STRETCH"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "ENDING IN UNITS OF LENGTH",
+          "members": [
+            "CHAMOMILE",
+            "GRINCH",
+            "HOTFOOT",
+            "LANYARD"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "ENDING IN SYNONYMS FOR FOLLOW SECRETLY",
+          "members": [
+            "BEANSTALK",
+            "EYESHADOW",
+            "HIGHTAIL",
+            "SOUNDTRACK"
           ]
         }
       ]
