@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-16T06:20:20.349Z",
+  "lastUpdated": "2026-08-17T06:30:00.111Z",
   "puzzles": [
     {
       "id": 1,
@@ -53219,6 +53219,52 @@
             "HANDY",
             "UPRIGHT",
             "WISE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1158,
+      "date": "2026-08-17",
+      "answers": [
+        {
+          "level": 0,
+          "group": "VIDEO CALL PLATFORMS",
+          "members": [
+            "HUDDLE",
+            "MEET",
+            "TEAMS",
+            "ZOOM"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "SPREADSHEET FEATURES",
+          "members": [
+            "FORMULA",
+            "FUNCTION",
+            "MACRO",
+            "SCRIPT"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "FIRST NAMES OF COUNTRY MUSIC LEGENDS",
+          "members": [
+            "DOLLY",
+            "JOHNNY",
+            "PATSY",
+            "WILLIE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "STARTING WITH PETS",
+          "members": [
+            "BIRDIE",
+            "CATTLE",
+            "DOGIE",
+            "FISHEYE"
           ]
         }
       ]
