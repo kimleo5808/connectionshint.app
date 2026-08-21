@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-20T06:24:39.809Z",
+  "lastUpdated": "2026-08-21T06:24:46.633Z",
   "puzzles": [
     {
       "id": 1,
@@ -53403,6 +53403,52 @@
             "OXFORD",
             "PIGMENT",
             "RATCHET"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1162,
+      "date": "2026-08-21",
+      "answers": [
+        {
+          "level": 0,
+          "group": "THINGS MOST ANIMALS NEED",
+          "members": [
+            "NUTRITION",
+            "OXYGEN",
+            "SLEEP",
+            "WATER"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "CALLS TO BEGIN A PERFORMANCE",
+          "members": [
+            "ACTION",
+            "CURTAIN UP",
+            "PLACES",
+            "SHOWTIME"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "___ KIDS",
+          "members": [
+            "COMEBACK",
+            "KARATE",
+            "SUNDANCE",
+            "WIMPY"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "ONCE IN A ___",
+          "members": [
+            "BLUE MOON",
+            "GENERATION",
+            "LIFETIME",
+            "WHILE"
           ]
         }
       ]
