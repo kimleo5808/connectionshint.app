@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-21T06:24:46.633Z",
+  "lastUpdated": "2026-08-22T06:19:15.934Z",
   "puzzles": [
     {
       "id": 1,
@@ -53449,6 +53449,52 @@
             "GENERATION",
             "LIFETIME",
             "WHILE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1163,
+      "date": "2026-08-22",
+      "answers": [
+        {
+          "level": 0,
+          "group": "CARPENTRY TOOLS",
+          "members": [
+            "CHISEL",
+            "HAMMER",
+            "PLANE",
+            "SAW"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "KINDS OF MELON",
+          "members": [
+            "BITTER",
+            "MUSK",
+            "WATER",
+            "WINTER"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "GARDEN HOSE SETTINGS",
+          "members": [
+            "CONE",
+            "JET",
+            "MIST",
+            "SHOWER"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "___ GIRLS OF POP CULTURE",
+          "members": [
+            "GILMORE",
+            "GOLDEN",
+            "MEAN",
+            "SPICE"
           ]
         }
       ]
