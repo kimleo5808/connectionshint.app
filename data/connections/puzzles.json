@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-22T06:19:15.934Z",
+  "lastUpdated": "2026-08-23T06:21:01.083Z",
   "puzzles": [
     {
       "id": 1,
@@ -53495,6 +53495,52 @@
             "GOLDEN",
             "MEAN",
             "SPICE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1164,
+      "date": "2026-08-23",
+      "answers": [
+        {
+          "level": 0,
+          "group": "POTENTIALLY EXPLOSIVE THINGS",
+          "members": [
+            "POWDER KEG",
+            "TIME BOMB",
+            "TINDERBOX",
+            "VOLCANO"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "DOUBLE VOWELS",
+          "members": [
+            "ANTIFREEZE",
+            "BAZAAR",
+            "SKIING",
+            "VACUUM"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "MADE WITH POTATOES",
+          "members": [
+            "HOME FRIES",
+            "POTATO BATTERY",
+            "VISCHYSSOISE",
+            "VODKA"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "HOUSEHOLD STAIN REMOVERS",
+          "members": [
+            "BAKING SODA",
+            "CLUB SODA",
+            "HYDROGEN PEROXIDE",
+            "VINEGAR"
           ]
         }
       ]
