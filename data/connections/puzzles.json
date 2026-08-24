@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-23T06:21:01.083Z",
+  "lastUpdated": "2026-08-24T06:33:40.051Z",
   "puzzles": [
     {
       "id": 1,
@@ -53541,6 +53541,52 @@
             "CLUB SODA",
             "HYDROGEN PEROXIDE",
             "VINEGAR"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1165,
+      "date": "2026-08-24",
+      "answers": [
+        {
+          "level": 0,
+          "group": "FISH",
+          "members": [
+            "MULLET",
+            "PIKE",
+            "SOLE",
+            "TANG"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "PRINCIPAL",
+          "members": [
+            "ARCH",
+            "CHIEF",
+            "MAIN",
+            "PRIME"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "PRO-WRESTLING LINGO",
+          "members": [
+            "FACE",
+            "HEEL",
+            "JOBBER",
+            "KAYFABE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "LETTER HOMOPHONE PLUS TENNIS TERM",
+          "members": [
+            "BESET",
+            "DESERVE",
+            "EX-LOVE",
+            "EYELET"
           ]
         }
       ]
