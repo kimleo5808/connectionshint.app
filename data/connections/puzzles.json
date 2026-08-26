@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-25T06:25:10.577Z",
+  "lastUpdated": "2026-08-26T06:27:01.072Z",
   "puzzles": [
     {
       "id": 1,
@@ -53633,6 +53633,52 @@
             "INSIDE SCOOP",
             "LICKETY-SPLIT",
             "TRAFFIC CONE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1167,
+      "date": "2026-08-26",
+      "answers": [
+        {
+          "level": 0,
+          "group": "\"THERE YOU HAVE IT!\"",
+          "members": [
+            "BEHOLD",
+            "PRESTO",
+            "SHAZAM",
+            "VOILÀ"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "KNACK",
+          "members": [
+            "FORTE",
+            "GIFT",
+            "STRENGTH",
+            "TALENT"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "WHAT \"P\" MIGHT STAND FOR",
+          "members": [
+            "PAGE",
+            "PARK",
+            "PHOSPHORUS",
+            "PIANO"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "KEY ___",
+          "members": [
+            "CHAIN",
+            "LARGO",
+            "LIME",
+            "SIGNATURE"
           ]
         }
       ]
