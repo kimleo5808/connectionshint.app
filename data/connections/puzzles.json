@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-26T06:27:01.072Z",
+  "lastUpdated": "2026-08-27T17:00:01.395Z",
   "puzzles": [
     {
       "id": 1,
@@ -53679,6 +53679,52 @@
             "LARGO",
             "LIME",
             "SIGNATURE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1168,
+      "date": "2026-08-27",
+      "answers": [
+        {
+          "level": 0,
+          "group": "ELECTRIC THINGS",
+          "members": [
+            "ELECTRIC EEL",
+            "LIGHTNING",
+            "LIVE WIRE",
+            "PIKACHU"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "MOVED TO TEARS",
+          "members": [
+            "CHOKED UP",
+            "EMOTIONAL",
+            "MISTY",
+            "OVERCOME"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "SHADES OF GRAY",
+          "members": [
+            "ASH",
+            "DOVE",
+            "PEWTER",
+            "SLATE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "MUSIC GENRE PLUS STARTING LETTER",
+          "members": [
+            "BROCK",
+            "NEMO",
+            "SPUNK",
+            "WRAP"
           ]
         }
       ]
