@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-30T10:51:11.798Z",
+  "lastUpdated": "2026-08-31T12:01:30.120Z",
   "puzzles": [
     {
       "id": 1,
@@ -53863,6 +53863,52 @@
             "OUTLAW",
             "REWARD",
             "WANTED"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1172,
+      "date": "2026-08-31",
+      "answers": [
+        {
+          "level": 0,
+          "group": "THINGS THAT COME IN TUBES",
+          "members": [
+            "LIPSTICK",
+            "POSTER",
+            "TENNIS BALLS",
+            "TOOTHPASTE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "WARNINGS ON A SHIPPING BOX",
+          "members": [
+            "FRAGILE",
+            "HEAVY",
+            "PERISHABLE",
+            "THIS SIDE UP"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "HISTORICAL SOVEREIGN TITLES",
+          "members": [
+            "CALIPH",
+            "KHAN",
+            "PHARAOH",
+            "SHOGUN"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "___ BOWL",
+          "members": [
+            "DUST",
+            "POKE",
+            "SALAD",
+            "SUPER"
           ]
         }
       ]
