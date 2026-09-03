@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-02T10:06:15.350Z",
+  "lastUpdated": "2026-09-03T10:16:51.883Z",
   "puzzles": [
     {
       "id": 1,
@@ -54001,6 +54001,52 @@
             "PRAIRIE",
             "SALTY",
             "TOP"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1175,
+      "date": "2026-09-03",
+      "answers": [
+        {
+          "level": 0,
+          "group": "TWO SHAKES OF A LAMB'S TAIL",
+          "members": [
+            "BLINK",
+            "FLASH",
+            "HEARTBEAT",
+            "TRICE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "SHADES OF RED",
+          "members": [
+            "CARMINE",
+            "CINNABAR",
+            "MAROON",
+            "VERMILLION"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "TOY CAR BRANDS",
+          "members": [
+            "HOT WHEELS",
+            "MATCHBOX",
+            "MICRO MACHINES",
+            "TONKA"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "SPREADSHEET FUNCTIONS",
+          "members": [
+            "AVERAGE",
+            "COUNT",
+            "MAX",
+            "SUM"
           ]
         }
       ]
