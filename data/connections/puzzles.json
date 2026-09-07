@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-06T09:49:53.795Z",
+  "lastUpdated": "2026-09-07T10:55:38.162Z",
   "puzzles": [
     {
       "id": 1,
@@ -54185,6 +54185,52 @@
             "DIRECTOR'S CUT",
             "PIZZA SLICE",
             "SAT SCORE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1179,
+      "date": "2026-09-07",
+      "answers": [
+        {
+          "level": 0,
+          "group": "QUITE THE SAGA",
+          "members": [
+            "FABRICATION",
+            "FISH STORY",
+            "TALL TALE",
+            "YARN"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "PARTS OF A BRA",
+          "members": [
+            "CUP",
+            "HOOK",
+            "STRAP",
+            "UNDERWIRE"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "ASSOCIATED WITH PINE TREES",
+          "members": [
+            "CAR AIR FRESHENER",
+            "CHRISTMAS",
+            "NEEDLES",
+            "TURPENTINE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "STARTING WITH DISNEY CHARACTERS",
+          "members": [
+            "PLUTONIUM",
+            "SCAR TISSUE",
+            "STITCH MARKER",
+            "TRAMPOLINE"
           ]
         }
       ]
