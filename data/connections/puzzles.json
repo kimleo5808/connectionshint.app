@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-08T10:13:04.867Z",
+  "lastUpdated": "2026-09-09T10:17:03.826Z",
   "puzzles": [
     {
       "id": 1,
@@ -54277,6 +54277,52 @@
             "MARSH",
             "SKORT",
             "TWIXT"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1181,
+      "date": "2026-09-09",
+      "answers": [
+        {
+          "level": 0,
+          "group": "HARD TO UNDERSTAND",
+          "members": [
+            "BEWILDERING",
+            "ESOTERIC",
+            "INCOMPREHENSIBLE",
+            "OPAQUE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "WORDS WITH \"SMALL\" PREFIXES",
+          "members": [
+            "MICROBREWERY",
+            "MINIVAN",
+            "NANOTECHNOLOGY",
+            "PICOSECOND"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "HORROR MOVIES",
+          "members": [
+            "ARACHNOPHOBIA",
+            "HALLOWEEN",
+            "IT",
+            "SAW"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "WORDS BEFORE \"FORCE\"",
+          "members": [
+            "BRUTE",
+            "ELECTROMAGNETIC",
+            "G",
+            "TASK"
           ]
         }
       ]
