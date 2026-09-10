@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-09T10:17:03.826Z",
+  "lastUpdated": "2026-09-10T10:11:12.388Z",
   "puzzles": [
     {
       "id": 1,
@@ -54323,6 +54323,52 @@
             "ELECTROMAGNETIC",
             "G",
             "TASK"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1182,
+      "date": "2026-09-10",
+      "answers": [
+        {
+          "level": 0,
+          "group": "CHEMICAL ELEMENTS",
+          "members": [
+            "ACTINIUM",
+            "KRYPTON",
+            "LEAD",
+            "SULFUR"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "WHAT YOU MIGHT SEE STICKING OUT OF A WINDOW",
+          "members": [
+            "AIR CONDITIONER",
+            "CATIO",
+            "CLOTHESLINE",
+            "FLOWER BOX"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "BRUCE SPRINGSTEEN CLASSICS",
+          "members": [
+            "ATLANTIC CITY",
+            "BADLANDS",
+            "BORN TO RUN",
+            "THUNDER ROAD"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "ENDING IN SYNONYMS FOR \"HAPPENING NOW\"",
+          "members": [
+            "ADULT CONTEMPORARY",
+            "ALTERNATING CURRENT",
+            "REPRESENT",
+            "SEXTANT"
           ]
         }
       ]
