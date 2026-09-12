@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-11T10:08:03.358Z",
+  "lastUpdated": "2026-09-12T09:43:08.495Z",
   "puzzles": [
     {
       "id": 1,
@@ -54415,6 +54415,52 @@
             "ENVELOPE",
             "LIMITS",
             "LUCK"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1184,
+      "date": "2026-09-12",
+      "answers": [
+        {
+          "level": 0,
+          "group": "WAYS TO PERSONALIZE A CAR",
+          "members": [
+            "BUMPER STICKER",
+            "FUZZY DICE",
+            "HOOD ORNAMENT",
+            "VANITY PLATE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "PEOPLE IN AN ONLINE FORUM",
+          "members": [
+            "LURKER",
+            "POSTER",
+            "SPAMMER",
+            "TROLL"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "THINGS THAT BLINK",
+          "members": [
+            "CURSOR",
+            "EYELIDS",
+            "SMOKE DETECTOR",
+            "TURN SIGNAL"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "___ ALERT",
+          "members": [
+            "NERD",
+            "RED",
+            "SPOILER",
+            "WEATHER"
           ]
         }
       ]
