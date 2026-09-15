@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-14T11:08:00.986Z",
+  "lastUpdated": "2026-09-15T10:36:57.949Z",
   "puzzles": [
     {
       "id": 1,
@@ -54553,6 +54553,52 @@
             "CRAB",
             "LEMON",
             "WHEAT"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1187,
+      "date": "2026-09-15",
+      "answers": [
+        {
+          "level": 0,
+          "group": "INSTRUCT",
+          "members": [
+            "COACH",
+            "DIRECT",
+            "GUIDE",
+            "TRAIN"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "PARTS OF A WHISTLING KETTLE",
+          "members": [
+            "HANDLE",
+            "LID",
+            "SPOUT",
+            "WHISTLE"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "UNDERCOVER OPERATIVE",
+          "members": [
+            "ASSET",
+            "MOLE",
+            "PLANT",
+            "SLEEPER"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "THINGS THAT APPEAR AT THE END",
+          "members": [
+            "CABOOSE",
+            "DECEMBER",
+            "DESSERT",
+            "EPILOGUE"
           ]
         }
       ]
