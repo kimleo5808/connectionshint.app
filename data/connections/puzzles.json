@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-16T10:25:25.325Z",
+  "lastUpdated": "2026-09-17T10:34:27.337Z",
   "puzzles": [
     {
       "id": 1,
@@ -54645,6 +54645,52 @@
             "CLINK",
             "FRANK-N-FURTER",
             "WIDENER"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1189,
+      "date": "2026-09-17",
+      "answers": [
+        {
+          "level": 0,
+          "group": "ELASTICITY",
+          "members": [
+            "BOUNCE",
+            "FLEXIBILITY",
+            "GIVE",
+            "SPRING"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "THINGS THAT ARE UNDERGROUND",
+          "members": [
+            "MINE SHAFT",
+            "SEWER LINE",
+            "SUBWAY STATION",
+            "WELL"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "HUGH JACKMAN MOVIES, WITH \"THE\"",
+          "members": [
+            "FOUNTAIN",
+            "PRESTIGE",
+            "SHEEP DETECTIVES",
+            "WOLVERINE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "LOVE ___",
+          "members": [
+            "HANDLES",
+            "LANGUAGE",
+            "TAP",
+            "TRIANGLE"
           ]
         }
       ]
