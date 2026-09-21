@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-20T10:13:47.750Z",
+  "lastUpdated": "2026-09-21T11:18:24.107Z",
   "puzzles": [
     {
       "id": 1,
@@ -54829,6 +54829,52 @@
             "SKATE",
             "SNOW",
             "SURF"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1193,
+      "date": "2026-09-21",
+      "answers": [
+        {
+          "level": 0,
+          "group": "EMAIL BUTTONS",
+          "members": [
+            "COMPOSE",
+            "DRAFTS",
+            "SENT",
+            "SPAM"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "WAYS TO ATTRACT FISH",
+          "members": [
+            "CHUM",
+            "FLY",
+            "SPINNER",
+            "WORM"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "CHESS VERBS",
+          "members": [
+            "CAPTURE",
+            "CASTLE",
+            "CHECK",
+            "MATE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "STARTS OF COMPOSERS' NAMES",
+          "members": [
+            "BEET",
+            "BRAH",
+            "CHOP",
+            "VIVA"
           ]
         }
       ]
