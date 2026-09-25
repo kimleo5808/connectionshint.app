@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-24T10:40:28.779Z",
+  "lastUpdated": "2026-09-25T10:44:12.418Z",
   "puzzles": [
     {
       "id": 1,
@@ -55013,6 +55013,52 @@
             "BREATHE",
             "HERB TEA",
             "THE BEAR"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1197,
+      "date": "2026-09-25",
+      "answers": [
+        {
+          "level": 0,
+          "group": "LUXE",
+          "members": [
+            "BOUGIE",
+            "FANCY",
+            "POSH",
+            "SWANK"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "PARTS OF A MECHANICAL CLOCK",
+          "members": [
+            "ESCAPEMENT",
+            "PENDULUM",
+            "RATCHET",
+            "SPRING"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "FAMOUS DANS",
+          "members": [
+            "AYKROYD",
+            "LEVY",
+            "RATHER",
+            "SAVAGE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "TAXONOMIC RANKS PLUS A LETTER",
+          "members": [
+            "BORDER",
+            "CLASSY",
+            "FOAMILY",
+            "GENIUS"
           ]
         }
       ]
