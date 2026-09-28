@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-27T10:57:36.122Z",
+  "lastUpdated": "2026-09-28T12:13:41.675Z",
   "puzzles": [
     {
       "id": 1,
@@ -55151,6 +55151,52 @@
             "HOMING",
             "LOHAN",
             "WU-TANG"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1200,
+      "date": "2026-09-28",
+      "answers": [
+        {
+          "level": 0,
+          "group": "THINGS WITH STALKS",
+          "members": [
+            "BAMBOO",
+            "CELERY",
+            "CORN",
+            "WHEAT"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "OYSTER CONDIMENTS",
+          "members": [
+            "HORSERADISH",
+            "LEMON",
+            "MIGNONETTE",
+            "TABASCO"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "DODGE MODELS",
+          "members": [
+            "CHALLENGER",
+            "CHARGER",
+            "DURANGO",
+            "VIPER"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "THREE LETTERS PLUS REPEATED TRIGRAMS",
+          "members": [
+            "ARKANSANS",
+            "CHIHUAHUA",
+            "POSSESSES",
+            "SPRINGING"
           ]
         }
       ]
