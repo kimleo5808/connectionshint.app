@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-29T11:43:44.956Z",
+  "lastUpdated": "2026-09-30T11:30:09.765Z",
   "puzzles": [
     {
       "id": 1,
@@ -55243,6 +55243,52 @@
             "HOME GAME",
             "MODEL TANK",
             "ORAL PHASE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1202,
+      "date": "2026-09-30",
+      "answers": [
+        {
+          "level": 0,
+          "group": "SECURITIES",
+          "members": [
+            "BOND",
+            "FUTURE",
+            "OPTION",
+            "STOCK"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "THINGS THAT ARE SHAKEN (NOT STIRRED)",
+          "members": [
+            "ETCH A SKETCH",
+            "MARTINI",
+            "SPRAY PAINT",
+            "TAMBOURINE"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "GANGSTER MOVIES",
+          "members": [
+            "BUGSY",
+            "CASINO",
+            "DONNIE BRASCO",
+            "SCARFACE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "STARTING WITH MONTH ABBREVIATIONS",
+          "members": [
+            "DECENT",
+            "NOVELTY",
+            "OCTOPUSSY",
+            "SEPTUM"
           ]
         }
       ]
