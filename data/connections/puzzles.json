@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-01T11:58:47.337Z",
+  "lastUpdated": "2026-10-02T11:30:06.243Z",
   "puzzles": [
     {
       "id": 1,
@@ -55335,6 +55335,52 @@
             "CROSS",
             "KEN",
             "SUD"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1204,
+      "date": "2026-10-02",
+      "answers": [
+        {
+          "level": 0,
+          "group": "FINANCE",
+          "members": [
+            "BACK",
+            "BANKROLL",
+            "FUND",
+            "SUPPORT"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "FINGERS",
+          "members": [
+            "INDEX",
+            "LITTLE",
+            "MIDDLE",
+            "RING"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "CUSTOMARY",
+          "members": [
+            "COMMON",
+            "ROUTINE",
+            "STANDARD",
+            "STOCK"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "PRIME ___",
+          "members": [
+            "NUMBER",
+            "REAL ESTATE",
+            "RIB",
+            "TIME"
           ]
         }
       ]
