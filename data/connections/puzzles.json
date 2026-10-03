@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-02T11:30:06.243Z",
+  "lastUpdated": "2026-10-03T10:47:25.160Z",
   "puzzles": [
     {
       "id": 1,
@@ -55381,6 +55381,52 @@
             "REAL ESTATE",
             "RIB",
             "TIME"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1205,
+      "date": "2026-10-03",
+      "answers": [
+        {
+          "level": 0,
+          "group": "STARTING WITH TERMS FOR \"TOILET\"",
+          "members": [
+            "CAN OPENER",
+            "HEAD WAITER",
+            "JOHN DENVER",
+            "W.C. FIELDS"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "ENDING IN MUSICALS",
+          "members": [
+            "ELBOW GREASE",
+            "FAT CATS",
+            "LINDA HAMILTON",
+            "SOMETHING WICKED"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "STARTING WITH U.S. MUSEUMS",
+          "members": [
+            "BROAD BEAN",
+            "GETTY IMAGES",
+            "MET HALFWAY",
+            "WHITNEY HOUSTON"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "ENDING IN FANTASY CREATURES",
+          "members": [
+            "DIET SPRITE",
+            "MERV GRIFFIN",
+            "NY GIANT",
+            "RIVER PHOENIX"
           ]
         }
       ]
