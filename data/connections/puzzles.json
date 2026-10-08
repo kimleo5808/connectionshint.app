@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-07T12:14:26.574Z",
+  "lastUpdated": "2026-10-08T12:24:50.665Z",
   "puzzles": [
     {
       "id": 1,
@@ -55611,6 +55611,52 @@
             "MUSICAL",
             "ORCHESTRATIONS",
             "PLAY"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1210,
+      "date": "2026-10-08",
+      "answers": [
+        {
+          "level": 0,
+          "group": "FOLLOWS, AS RULES",
+          "members": [
+            "HEEDS",
+            "MINDS",
+            "REGARDS",
+            "RESPECTS"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "OUTDO",
+          "members": [
+            "BEST",
+            "ECLIPSE",
+            "SURPASS",
+            "TOP"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "THINGS THAT COME IN THREES",
+          "members": [
+            "CHEERS",
+            "STOOGES",
+            "STRIKES",
+            "WISHES"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "ENDING IN ACTORS NAMED TOM",
+          "members": [
+            "AUTOCRUISE",
+            "FOOLHARDY",
+            "MULHOLLAND",
+            "THANKS"
           ]
         }
       ]
