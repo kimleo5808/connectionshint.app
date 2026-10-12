@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-11T11:45:11.664Z",
+  "lastUpdated": "2026-10-12T13:45:53.623Z",
   "puzzles": [
     {
       "id": 1,
@@ -55795,6 +55795,52 @@
             "PATRICK",
             "PERUSE",
             "SYNTACTIC"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1214,
+      "date": "2026-10-12",
+      "answers": [
+        {
+          "level": 0,
+          "group": "STATUS",
+          "members": [
+            "CONDITION",
+            "SHAPE",
+            "SITUATION",
+            "STATE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "TOLERATE",
+          "members": [
+            "BEAR",
+            "HANDLE",
+            "STAND",
+            "WEATHER"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "WORD SHORTENINGS, OFTEN",
+          "members": [
+            "ABBREVIATION",
+            "CONTRACTION",
+            "ELISION",
+            "NICKNAME"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "WORDS MADE USING U.S. POSTAL ABBREVIATIONS",
+          "members": [
+            "ALKYLAMIDE",
+            "CALAMARI",
+            "MANDARIN",
+            "MELAMINE"
           ]
         }
       ]
