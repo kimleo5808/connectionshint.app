@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-17T09:52:13.253Z",
+  "lastUpdated": "2026-10-18T10:03:10.284Z",
   "puzzles": [
     {
       "id": 1,
@@ -56071,6 +56071,52 @@
             "BREA",
             "PAZ",
             "SCALA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1220,
+      "date": "2026-10-18",
+      "answers": [
+        {
+          "level": 0,
+          "group": "PLACES TO STORE CLOTHES",
+          "members": [
+            "BUREAU",
+            "CHEST",
+            "TRUNK",
+            "WARDROBE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "THINGS THAT COME IN STICKS",
+          "members": [
+            "BUTTER",
+            "DEODORANT",
+            "DYNAMITE",
+            "INCENSE"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "FAMOUS PERFUMES",
+          "members": [
+            "ANGEL",
+            "COCO",
+            "OBSESSION",
+            "OPIUM"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "STARTING WITH THINGS THAT CLOUD THE AIR",
+          "members": [
+            "FOGERTY",
+            "HAZEL",
+            "MISTER",
+            "VAPORETTO"
           ]
         }
       ]
