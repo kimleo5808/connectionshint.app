@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-20T10:34:25.606Z",
+  "lastUpdated": "2026-10-21T10:46:46.759Z",
   "puzzles": [
     {
       "id": 1,
@@ -56209,6 +56209,52 @@
             "BELL",
             "DOCK",
             "MINI"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1223,
+      "date": "2026-10-21",
+      "answers": [
+        {
+          "level": 0,
+          "group": "CLASSIC CHILDREN'S GAMES",
+          "members": [
+            "DUCK DUCK GOOSE",
+            "HOT POTATO",
+            "LEAPFROG",
+            "MUSICAL CHAIRS"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "IMPORTANT PERSON",
+          "members": [
+            "ALPHA DOG",
+            "BIG CHEESE",
+            "HEAVYWEIGHT",
+            "TOP BANANA"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "FAMOUS PAINTINGS",
+          "members": [
+            "AMERICAN GOTHIC",
+            "CAMPBELL'S SOUP CAN",
+            "SUNFLOWERS",
+            "THE SCREAM"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "DOUBLE MISNOMERS (NEITHER WORD IS AN ACCURATE DESCRIPTION)",
+          "members": [
+            "ENGLISH HORN",
+            "GRAPE-NUTS",
+            "MANTIS SHRIMP",
+            "SWEETBREAD"
           ]
         }
       ]
