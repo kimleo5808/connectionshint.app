@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Background music for solving NYT Connections">
+  <defs>
+    <linearGradient id="bg6" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4c1d95"/>
+      <stop offset="1" stop-color="#be185d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg6)"/>
+  <g opacity="0.12" fill="#ffffff">
+    <circle cx="140" cy="520" r="110"/>
+    <circle cx="1080" cy="110" r="90"/>
+  </g>
+  <!-- Headphones -->
+  <g transform="translate(110,150)" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round">
+    <path d="M20 190 v-60 a150 150 0 0 1 300 0 v60"/>
+  </g>
+  <g transform="translate(110,150)" fill="#ffffff">
+    <rect x="0"   y="170" width="70" height="130" rx="22"/>
+    <rect x="270" y="170" width="70" height="130" rx="22"/>
+  </g>
+  <!-- Music notes -->
+  <g fill="#fbcfe8">
+    <ellipse cx="245" cy="300" rx="22" ry="16" transform="rotate(-20 245 300)"/>
+    <rect x="262" y="210" width="7" height="88"/>
+    <path d="M269 210 q30 10 34 40 q-10 -18 -34 -20 z"/>
+    <ellipse cx="315" cy="360" rx="18" ry="13" transform="rotate(-20 315 360)"/>
+    <rect x="329" y="290" width="6" height="68"/>
+  </g>
+  <!-- 4x4 tile hint -->
+  <g transform="translate(520,450)">
+    <rect x="0"   y="0" width="58" height="40" rx="6" fill="#facc15"/>
+    <rect x="68"  y="0" width="58" height="40" rx="6" fill="#4ade80"/>
+    <rect x="136" y="0" width="58" height="40" rx="6" fill="#60a5fa"/>
+    <rect x="204" y="0" width="58" height="40" rx="6" fill="#c084fc"/>
+  </g>
+  <g fill="#ffffff" font-family="Georgia, 'Times New Roman', serif">
+    <text x="520" y="250" font-size="60" font-weight="700">The Right Soundtrack</text>
+    <text x="520" y="322" font-size="60" font-weight="700">for Connections</text>
+    <text x="520" y="392" font-size="30" fill="#fce7f3" font-family="Arial, sans-serif">What to play (and skip) while you solve</text>
+  </g>
+</svg>

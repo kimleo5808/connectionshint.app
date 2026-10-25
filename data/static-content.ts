@@ -184,6 +184,99 @@ Questions about these terms: \`hello@connectionshint.app\``,
 export const STATIC_BLOG_POSTS: BlogPost[] = [
   {
     locale: "en",
+    title: "The Best Background Music for Solving NYT Connections",
+    description:
+      "Should you play music while solving NYT Connections? Why lyrics hurt word puzzles, what to listen to instead, and how to make your own focus soundtrack.",
+    image: "/images/connections-background-music-cover.svg",
+    slug: "/connections-background-music-guide",
+    tags: "connections,nyt connections,music,focus,lo-fi,instrumental,tips",
+    date: new Date("2026-10-25"),
+    visible: "published",
+    pin: false,
+    content: `## Should You Play Music While You Solve?
+
+Plenty of people have something playing while they work through the daily NYT Connections grid. Whether that helps or hurts depends on what's playing. Connections is a puzzle made entirely of words - you're holding 16 of them in your head and testing their meanings, sounds, and hidden spellings - so the wrong soundtrack competes directly with the thing you're trying to do.
+
+The good news is that the right background music can make your daily solve calmer and more enjoyable, and it's easy to choose once you know what to avoid.
+
+## Why Lyrics Get in the Way
+
+Psychologists have studied this for decades under the name **irrelevant speech effect**. The finding is consistent: hearing speech in the background, including sung lyrics, makes it harder to hold words and sequences in short-term memory - even when you're actively trying to ignore it. Instrumental music causes much less of this interference.
+
+That matters more for Connections than for most games. When you're deciding whether BASS is a fish, an instrument, or a voice part, your brain is already doing a lot of verbal work. A singer in your ears adds a second stream of words on top. If you've ever caught yourself humming a chorus while staring at the same four tiles, that's what's going on.
+
+A practical rule: if you can understand the lyrics, save the song for after the puzzle.
+
+![What to listen to while solving Connections: good choices, use with care, and what to skip](/images/connections-background-music-guide.svg)
+
+## What to Listen To
+
+### Good Choices
+
+- **Lo-fi beats** - steady tempo, soft drums, no vocals. The loop fades into the background after a minute or two.
+- **Ambient and drone music** - long, slow textures with almost nothing for your attention to latch onto.
+- **Solo piano or acoustic guitar** - warm and predictable without being dull.
+- **Video game soundtracks** - many are composed specifically to sit underneath concentration without demanding it.
+
+### Use With Care
+
+- **Classical music** - great in general, but pieces with big dynamic swings (a quiet passage followed by a sudden crash) can yank your focus away.
+- **Vocals in a language you don't speak** - less disruptive than lyrics you understand, but a voice still pulls some attention.
+- **Upbeat electronic music** - fine at low volume, distracting when it builds to a drop.
+
+### Skip While Solving
+
+- **Lyrics in your own language** - the biggest offender for word puzzles.
+- **Podcasts and talk radio** - spoken words are even harder to tune out than sung ones.
+- **Shuffle-everything playlists** - one surprise vocal track or ad can break your train of thought right before your fourth guess.
+
+### Volume and Tempo
+
+Keep it quiet: loud enough to cover background noise, not loud enough to notice. A moderate, steady tempo usually works better than very fast tracks. Familiar instrumentals are also easier to ignore than new ones, so it's worth settling on a short rotation you reuse every day.
+
+## Make Your Own Puzzle Soundtrack
+
+Ready-made focus playlists are convenient, but they have a habit of slipping in a vocal track, changing mood halfway through, or cutting to an ad. If you want a soundtrack that does exactly one job, you can make it yourself.
+
+[Tunora](https://tunora.io/) is an AI music generator that turns a short text description into finished songs. Switch it to instrumental mode, describe the mood you want, and it creates two original tracks per prompt that you can download as MP3s and loop while you solve. A few prompts that work well for puzzle time:
+
+- "Mellow lo-fi hip hop, soft piano chords, vinyl crackle, slow tempo, instrumental"
+- "Calm ambient synth pads for deep focus, no drums, no vocals"
+- "Gentle acoustic guitar, warm and steady, background music for reading"
+
+Because you write the prompt, you control the things that usually cause trouble - no surprise vocals, no sudden drops, no tempo change in the middle of a hard board. You can start for free, so it's easy to try a few prompts and keep the tracks that suit you.
+
+Lyrics are fine when nobody is solving. If you're [hosting a Connections game night](/blog/connections-game-night-guide), you can use Tunora to write and sing a short theme song for the event - play it between rounds and during answer reveals, then switch back to instrumentals while teams work on a grid.
+
+## Music Is Also a Connections Category
+
+There's a second reason music fans have an edge: music shows up in the puzzle itself, a lot. Looking at the first 1,124 puzzles in our archive (June 2023 through mid-July 2026), we counted more than 110 groups built around music - instruments, genres, bands, rappers, song titles, and music theory. That's roughly one puzzle in ten.
+
+More interesting is where those groups land. About three out of four music categories were blue or purple, the two hardest tiers. Music vocabulary is perfect raw material for misdirection because so many of its words have everyday meanings:
+
+- [Puzzle #724](/connections-number/724) opened gently with PARTS OF A SONG: BRIDGE, CHORUS, HOOK, REFRAIN (yellow).
+- [Puzzle #1009](/connections-number/1009) hid genres at the end of everyday phrases: BABY BLUES, PET ROCK, SCRAP METAL, SODA POP (purple).
+- [Puzzle #1089](/connections-number/1089) used SLANG FOR MUSICAL INSTRUMENTS: AXE, BONE, KEYS, SKINS (purple).
+- [Puzzle #645](/connections-number/645) asked for BANDS MINUS THE NUMBER FIVE: BEN FOLDS, JACKSON, MAROON, MC (purple).
+
+When you see words like KEY, NOTE, BAR, REST, or PITCH on a board, consider the music reading before you lock anything in. Our [music categories page](/connections-categories/music) collects more of these traps.
+
+## A Simple Music-Assisted Routine
+
+1. **Start the track first.** Press play before you open the puzzle so the music is already in the background when you see the grid.
+2. **Scan all 16 words.** Look for the obvious group and the red herrings around it.
+3. **Pause when you're stuck.** If you're down to your last mistake, turn the music off and [read the words aloud](/blog/connections-audio-practice-guide) - silence plus your own voice is the best tool for a stubborn purple group.
+4. **Lock in the safest group first,** then work toward the trickiest. Our [strategy guide](/blog/connections-strategies-guide) covers this in detail.
+
+## Silence Is a Valid Choice
+
+Not everyone focuses better with sound. If music of any kind pulls your attention, solve in silence - there's no wrong answer, only what keeps you sharp. The point is to choose your soundtrack on purpose instead of letting whatever happens to be playing decide for you.
+
+Put on something calm and try it on [today's Connections hints](/connections-hint-today), or warm up with a few rounds in [practice mode](/connections-practice).`,
+    metadata: {},
+  },
+  {
+    locale: "en",
     title: "Create Printable NYT Connections Puzzle Packs",
     description:
       "Print, save, and share NYT Connections puzzles as neat PDF packs for classrooms, travel, and parties. A simple guide to building offline puzzle collections.",

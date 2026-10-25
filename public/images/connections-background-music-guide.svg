@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" width="960" height="340" role="img" aria-label="What to listen to while solving Connections: good choices, use with care, and what to skip">
+  <rect width="960" height="340" rx="18" fill="#fdf4ff"/>
+  <text x="40" y="56" font-size="28" font-weight="700" fill="#701a75" font-family="Arial, sans-serif">What to Play While You Solve</text>
+  <g font-family="Arial, sans-serif">
+    <!-- card 1 -->
+    <rect x="40"  y="90" width="270" height="210" rx="14" fill="#ffffff" stroke="#bbf7d0" stroke-width="2"/>
+    <rect x="40"  y="90" width="270" height="10" rx="5" fill="#22c55e"/>
+    <text x="60" y="140" font-size="22" font-weight="700" fill="#15803d">Good choices</text>
+    <text x="60" y="182" font-size="17" fill="#475569">Lo-fi beats</text>
+    <text x="60" y="210" font-size="17" fill="#475569">Ambient and drone</text>
+    <text x="60" y="238" font-size="17" fill="#475569">Solo piano or guitar</text>
+    <text x="60" y="266" font-size="17" fill="#475569">Game soundtracks</text>
+    <!-- card 2 -->
+    <rect x="345" y="90" width="270" height="210" rx="14" fill="#ffffff" stroke="#fde68a" stroke-width="2"/>
+    <rect x="345" y="90" width="270" height="10" rx="5" fill="#f59e0b"/>
+    <text x="365" y="140" font-size="22" font-weight="700" fill="#b45309">Use with care</text>
+    <text x="365" y="182" font-size="17" fill="#475569">Dramatic classical</text>
+    <text x="365" y="210" font-size="17" fill="#475569">Vocals in another</text>
+    <text x="365" y="232" font-size="17" fill="#475569">language</text>
+    <text x="365" y="260" font-size="17" fill="#475569">Loud electronic drops</text>
+    <!-- card 3 -->
+    <rect x="650" y="90" width="270" height="210" rx="14" fill="#ffffff" stroke="#fecaca" stroke-width="2"/>
+    <rect x="650" y="90" width="270" height="10" rx="5" fill="#ef4444"/>
+    <text x="670" y="140" font-size="22" font-weight="700" fill="#b91c1c">Skip while solving</text>
+    <text x="670" y="182" font-size="17" fill="#475569">Lyrics you understand</text>
+    <text x="670" y="210" font-size="17" fill="#475569">Podcasts and talk radio</text>
+    <text x="670" y="238" font-size="17" fill="#475569">Shuffle-everything</text>
+    <text x="670" y="260" font-size="17" fill="#475569">playlists</text>
+  </g>
+</svg>
