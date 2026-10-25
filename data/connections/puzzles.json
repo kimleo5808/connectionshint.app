@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-24T09:56:32.393Z",
+  "lastUpdated": "2026-10-25T10:18:45.211Z",
   "puzzles": [
     {
       "id": 1,
@@ -56393,6 +56393,52 @@
             "SALAD",
             "SPACE",
             "SPORTS"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1227,
+      "date": "2026-10-25",
+      "answers": [
+        {
+          "level": 0,
+          "group": "STEAL",
+          "members": [
+            "BOOST",
+            "PALM",
+            "POCKET",
+            "SWIPE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "PASTA SHAPES",
+          "members": [
+            "BOW TIE",
+            "ELBOW",
+            "SHELL",
+            "WAGON WHEEL"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "FICTIONAL TOMS",
+          "members": [
+            "RIPLEY",
+            "SAWYER",
+            "SWIFT",
+            "THUMB"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "THINGS THAT CAN BE SNAPPED",
+          "members": [
+            "FINGERS",
+            "FOOTBALL",
+            "GLOW STICK",
+            "RUBBER BAND"
           ]
         }
       ]
