@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-29T11:54:09.621Z",
+  "lastUpdated": "2026-10-30T11:48:05.899Z",
   "puzzles": [
     {
       "id": 1,
@@ -56623,6 +56623,52 @@
             "CANDY CORN",
             "NEAPOLITAN",
             "TRAFFIC LIGHT"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1232,
+      "date": "2026-10-30",
+      "answers": [
+        {
+          "level": 0,
+          "group": "PARTS OF A CAMERA",
+          "members": [
+            "FLASH",
+            "LENS",
+            "SHUTTER",
+            "VIEWFINDER"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "AROUND A THEATER STAGE",
+          "members": [
+            "BACKDROP",
+            "CURTAIN",
+            "PIT",
+            "WINGS"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "THROW ___",
+          "members": [
+            "HANDS",
+            "PILLOW",
+            "RUG",
+            "SHADE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "FRUIT WITH FIRST LETTER CHANGED",
+          "members": [
+            "DEMON",
+            "DRAPE",
+            "GLUM",
+            "GRANGE"
           ]
         }
       ]
