@@ -22,17 +22,8 @@
 			"id": "489eb2b783064bfba7b4fae18309fc9d"
 		}
 	],
-	"r2_buckets": [
-		// Use R2 incremental cache
-		// See https://opennext.js.org/cloudflare/caching
-		{
-			"binding": "NEXT_INC_CACHE_R2_BUCKET",
-			// Create the bucket before deploying
-			// You can change the bucket name if you want
-			// See https://developers.cloudflare.com/workers/wrangler/commands/#r2-bucket-create
-			"bucket_name": "connectionshint"
-		}
-	],
+	// No R2 binding: the incremental cache lives in static assets (see
+	// open-next.config.ts), read through the ASSETS binding above.
 	"vars": {
 		"NEXTJS_ENV": "production"
 	},

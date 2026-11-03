@@ -60,13 +60,15 @@ jobs:
       - name: Build site
         run: npx opennextjs-cloudflare build
 
-      - name: Deploy site (retry on transient R2 errors)
+      # Pages ship as Workers static assets (open-next.config.ts); the upload
+      # resumes where it left off, so a retry covers transient API errors.
+      - name: Deploy site (retry on transient API errors)
         run: |
           n=0
           until [ "$n" -ge 3 ]; do
             npx opennextjs-cloudflare deploy && exit 0
             n=$((n + 1))
-            echo "::warning::Deploy attempt $n failed (likely a transient R2 429/500). Retrying in 30s..."
+            echo "::warning::Deploy attempt $n failed (likely a transient Cloudflare API error). Retrying in 30s..."
             sleep 30
           done
           echo "::error::Deploy failed after 3 attempts."
