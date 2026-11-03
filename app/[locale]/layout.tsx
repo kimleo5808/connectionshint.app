@@ -11,28 +11,7 @@ import { JsonLd, websiteSchema } from "@/lib/jsonld";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import "@/styles/loading.css";
-import { Outfit, DM_Sans, JetBrains_Mono } from "next/font/google";
-
-const outfit = Outfit({
-  weight: ["400", "500", "600", "700", "800"],
-  subsets: ["latin"],
-  variable: "--font-heading",
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  weight: ["300", "400", "500", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  weight: ["400", "500", "600"],
-  subsets: ["latin"],
-  variable: "--font-mono-code",
-  display: "swap",
-});
+import { dmSans, jetbrainsMono, outfit } from "@/app/fonts/site";
 
 import { Analytics } from "@vercel/analytics/react";
 import { Metadata, Viewport } from "next";
