@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-04T13:24:56.498Z",
+  "lastUpdated": "2026-11-05T13:39:33.265Z",
   "puzzles": [
     {
       "id": 1,
@@ -56899,6 +56899,52 @@
             "FLY",
             "WOOD",
             "WORKS"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1238,
+      "date": "2026-11-05",
+      "answers": [
+        {
+          "level": 0,
+          "group": "KINDS OF HEELS",
+          "members": [
+            "KITTEN",
+            "PLATFORM",
+            "SPIKE",
+            "WEDGE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "FLOWERS",
+          "members": [
+            "ANEMONE",
+            "LOTUS",
+            "NARCISSUS",
+            "ROSE"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "TEARDROP-SHAPED THINGS",
+          "members": [
+            "PEAR",
+            "RAINDROP",
+            "SPEEDBAG",
+            "UVULA"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "LIQUORS WITH LAST LETTERS CHANGED",
+          "members": [
+            "BRANDO",
+            "GIG",
+            "RUN",
+            "WHISKER"
           ]
         }
       ]
