@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-06T13:22:40.042Z",
+  "lastUpdated": "2026-11-07T12:00:53.445Z",
   "puzzles": [
     {
       "id": 1,
@@ -56991,6 +56991,52 @@
             "OSIRIS",
             "TRAFFIC CONE",
             "WOOLENS"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1240,
+      "date": "2026-11-07",
+      "answers": [
+        {
+          "level": 0,
+          "group": "PIRATE'S PLUNDER",
+          "members": [
+            "BOOTY",
+            "BOUNTY",
+            "SPOILS",
+            "TREASURE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "KINDS OF SHIRTS",
+          "members": [
+            "HENLEY",
+            "POLO",
+            "RAGLAN",
+            "RINGER"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "FIRST WORDS OF U.S. STATE NAMES",
+          "members": [
+            "NEW",
+            "NORTH",
+            "RHODE",
+            "SOUTH"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "ENDS OF STORM TYPES",
+          "members": [
+            "CANE",
+            "CLONE",
+            "EASTER",
+            "SOON"
           ]
         }
       ]
