@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-10T13:53:36.681Z",
+  "lastUpdated": "2026-11-11T13:06:09.980Z",
   "puzzles": [
     {
       "id": 1,
@@ -57175,6 +57175,52 @@
             "BEEKEEPER",
             "INVISIBILITY",
             "PROTOZOOLOGY"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1244,
+      "date": "2026-11-11",
+      "answers": [
+        {
+          "level": 0,
+          "group": "KINDS OF MEDICINE",
+          "members": [
+            "FOLK",
+            "HERBAL",
+            "HOLISTIC",
+            "TRADITIONAL"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "PARTS OF A GOLF COURSE",
+          "members": [
+            "GREEN",
+            "ROUGH",
+            "SAND TRAP",
+            "TEE BOX"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "THINGS FILLED WITH AIR",
+          "members": [
+            "AIR MATTRESS",
+            "BUBBLE",
+            "TIRE",
+            "WHOOPIE CUSHION"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "ENDING IN PALINDROMES",
+          "members": [
+            "AFTERNOON",
+            "PATOOT",
+            "RHEOSTATS",
+            "SHREDDER"
           ]
         }
       ]
