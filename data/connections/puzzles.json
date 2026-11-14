@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-13T13:33:27.052Z",
+  "lastUpdated": "2026-11-14T12:38:45.019Z",
   "puzzles": [
     {
       "id": 1,
@@ -57313,6 +57313,52 @@
             "TEASER",
             "TRUST",
             "WAVES"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1247,
+      "date": "2026-11-14",
+      "answers": [
+        {
+          "level": 0,
+          "group": "CUTTING-EDGE",
+          "members": [
+            "ADVANCED",
+            "FOREMOST",
+            "MODERN",
+            "PROGRESSIVE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "LOCATIONS FOR AN INSTITUTION",
+          "members": [
+            "CAMPUS",
+            "CENTER",
+            "COMPLEX",
+            "FACILITY"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "STRATEGY BOARD GAMES",
+          "members": [
+            "CHESS",
+            "GO",
+            "OTHELLO",
+            "STRATEGO"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "BABY GEAR WITH FIRST LETTER CHANGED",
+          "members": [
+            "BATTLE",
+            "MARRIAGE",
+            "MOTTLE",
+            "TRIB"
           ]
         }
       ]
