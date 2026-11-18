@@ -109,5 +109,6 @@ export default function RainbowGuide() {
     ]}/>
     <p>After the game, open Read my result grid to see the guesses in chronological order. A single-color row records a solved group. A mixed row records a mistake. If you have a result copied from another classic game, paste it into the <Link href="/connections-results">result grid reader</Link> and read the solid rows from top to bottom. For a clean reverse rainbow you should see just four rows.</p>
     <p>For an untimed planning exercise, copy a board into the <Link href="/connections-scratchpad">Connections scratchpad</Link>. Give the promising groups working names and arrange the tiles until every word has a place. Return to this challenge to make your four submissions. Practice here is independent of your NYT Games account. Use a different numbered board when you want to test a new prediction without remembering the answer from the last run.</p>
+    <p>To see how long each group takes when you can choose the order, open <Link href="/timed-connections">Timed Connections</Link>. The stopwatch records a split for each group you solve.</p>
   </article>;
 }

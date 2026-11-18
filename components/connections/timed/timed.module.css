@@ -1,0 +1,52 @@
+.panel { --navy: #162e42; --cream: #fff7e5; --amber: #ffd28b; border: 1px solid #acb4b7; border-radius: .75rem; overflow: hidden; background: hsl(var(--card)); scroll-margin-top: 4.8rem; }
+.strip { display: flex; justify-content: space-between; align-items: center; gap: .65rem; padding: .75rem clamp(.8rem,3vw,1.6rem); background: var(--navy); color: var(--cream); border-bottom: 4px solid #d59441; }
+.strip h2 { font: 750 clamp(1.25rem,3vw,1.75rem)/1.1 var(--font-heading),sans-serif; }
+.strip time, .clock span { font-size: .85rem; }
+.clock { display: grid; text-align: right; }
+.clock strong { color: var(--amber); font: 600 clamp(1.75rem,5vw,2.65rem)/1 var(--font-mono-code),monospace; font-variant-numeric: tabular-nums; }
+.layout { padding: clamp(.7rem,2.5vw,1.4rem); display: grid; grid-template-columns: minmax(0,1.45fr) minmax(13rem,1fr); gap: clamp(.8rem,3vw,2rem); align-items: start; }
+.launch { padding: clamp(1rem,4vw,2rem); border: 1px solid hsl(var(--border)); background: hsl(var(--muted) / .4); border-radius: .4rem; }
+.launch h3 { font: 700 clamp(1.2rem,2.4vw,1.65rem)/1.2 var(--font-heading),sans-serif; }
+.launch p { max-width: 38ch; margin-block: .5rem .95rem; line-height: 1.5; }
+.launch button, .sheet form button { min-height: 2.75rem; background: var(--navy); color: white; font-weight: 650; border-radius: .35rem; padding: .45rem .9rem; }
+.launch button { background: var(--amber); color: var(--navy); border: 1px solid #a06a1d; padding-inline: 1.3rem; }
+.launch button:hover { filter: brightness(.95); }
+.launch button:disabled { opacity: .65; }
+.sheet { background: var(--cream); color: #283340; padding: .85rem 1rem; border-top: 2px solid #d3a257; border-radius: .25rem; }
+.sheet label, .sheetTitle h3 { font-weight: 700; }
+.sheet form { border-bottom: 1px solid #cebf9f; padding-bottom: .8rem; margin-bottom: .65rem; }
+.sheet form div, .sheetTitle, .best { display: flex; gap: .6rem; align-items: baseline; justify-content: space-between; }
+.sheet form div { margin-top: .4rem; align-items: stretch; }
+.sheet select { flex: 1; min-width: 0; border: 1px solid #a79a81; background: white; padding: .35rem; border-radius: .35rem; }
+.sheetTitle h3 { font-size: 1.1rem; }
+.sheetTitle span, .sheet p { font-size: .88rem; }
+.sheet p { margin-top: .4rem; }
+.sheet .best { border-top: 1px solid #cebf9f; margin-top: .7rem; padding-top: .5rem; }
+.sheet :is(table,.best span) { font-variant-numeric: tabular-nums; }
+.sheet table { width: 100%; font-size: .88rem; margin-block: .65rem; }
+.sheet table :is(th,td) { text-align: right; padding: .25rem .1rem; border-bottom: 1px solid #ddd0b4; }
+.sheet table th:first-child { text-align: left; text-transform: capitalize; }
+.sheet th i { display: inline-block; width: .6rem; height: .6rem; margin-right: .32rem; border-radius: 50%; }
+.sheet i[data-color="yellow"] { background: #b98911; }
+.sheet i[data-color="green"] { background: #4c8852; }
+.sheet i[data-color="blue"] { background: #467ea5; }
+.sheet i[data-color="purple"] { background: #8660aa; }
+.sheet a { text-decoration: underline; text-underline-offset: .18em; }
+.stop { min-height: 2.75rem; text-decoration: underline; text-underline-offset: .18em; font-weight: 600; }
+.board button[aria-pressed] { min-height: 2.75rem; overflow-wrap: anywhere; }
+.figure { margin: 1rem 0; border-block: 2px solid var(--rule); padding: 1rem; background: var(--wash); }
+.figure figcaption { font-weight: 700; margin-bottom: .65rem; }
+.figure ol { list-style: none; display: grid; gap: .45rem; }
+.figure li { display: grid; gap: .7rem; grid-template-columns: 4.2rem 1fr 3rem; align-items: center; }
+.figure li span { background: hsl(var(--foreground) / .1); }
+.figure li i { display: block; height: .75rem; background: var(--ink); }
+.figure li b { font-variant-numeric: tabular-nums; }
+@media (max-width: 760px) {
+  .layout { grid-template-columns: minmax(0,1fr); }
+  .board button:not([aria-pressed]) { padding-inline: .78rem; min-height: 2.75rem; }
+  .board button[aria-pressed] { padding: .3rem .12rem; }
+  .board div:has(> button[aria-pressed]) { gap: .3rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .board *, .board *::before { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

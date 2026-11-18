@@ -56,9 +56,11 @@ interface ConnectionsGameProps {
   completionNote?: string;
   renderTile?: (word: string) => ReactNode;
   renderProgress?: (rows: string[], restart: () => void) => ReactNode;
+  onGuess?: (group: ConnectionsGroup | null, status: GameStatus) => void;
+  onReplay?: () => void;
 }
 
-export default function ConnectionsGame({ groups, customPuzzle = false, mini = false, learningMode = false, completionNote, renderTile, renderProgress }: ConnectionsGameProps) {
+export default function ConnectionsGame({ groups, customPuzzle = false, mini = false, learningMode = false, completionNote, renderTile, renderProgress, onGuess, onReplay }: ConnectionsGameProps) {
   const groupSize = mini ? 3 : 4;
   const mistakeLimit = mini ? 3 : 4;
   // Build flat tile list once
@@ -165,6 +167,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false, mini = f
       if (newSolved.length === groups.length) {
         setStatus("won");
       }
+      onGuess?.(matchedGroup, newSolved.length === groups.length ? "won" : "playing");
     } else {
       // Wrong — check "one away"
       const oneAway = groups.some((g) => {
@@ -184,7 +187,10 @@ export default function ConnectionsGame({ groups, customPuzzle = false, mini = f
         setMessage({ text: learningMode ? "Try another group. Tap any selected word to change it." : "Incorrect", type: "wrong" });
       }
 
-      if (learningMode) return;
+      if (learningMode) {
+        onGuess?.(null, "playing");
+        return;
+      }
       const newMistakes = mistakes - 1;
       setMistakes(newMistakes);
       setSelected(new Set());
@@ -193,8 +199,9 @@ export default function ConnectionsGame({ groups, customPuzzle = false, mini = f
         setSolvedLevels(groups.map(group => group.level));
         setStatus("lost");
       }
+      onGuess?.(null, newMistakes <= 0 ? "lost" : "playing");
     }
-  }, [selected, status, groups, solvedLevels, mistakes, guessHistory, groupSize, learningMode, hintGroup]);
+  }, [selected, status, groups, solvedLevels, mistakes, guessHistory, groupSize, learningMode, hintGroup, onGuess]);
 
   const handlePlayAgain = useCallback(() => {
     setTiles(shuffleArray(allTiles));
@@ -356,7 +363,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false, mini = f
           )}
           {completionNote && <p className="mx-auto mt-2 max-w-prose text-sm leading-relaxed">{completionNote}</p>}
           <button
-            onClick={handlePlayAgain}
+            onClick={onReplay ?? handlePlayAgain}
             className="mt-4 rounded-full bg-blue-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-500/20 transition-all hover:bg-blue-700"
           >
             Play Again
