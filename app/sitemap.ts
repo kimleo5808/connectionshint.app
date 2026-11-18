@@ -31,6 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/guides/connections-one-away',
     '/connections-word-finder',
     '/connections-maker',
+    '/connections-results',
     '/connections-categories',
     '/connections-stats',
     '/connections-streak',

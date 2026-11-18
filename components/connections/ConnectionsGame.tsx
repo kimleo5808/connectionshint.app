@@ -2,6 +2,7 @@
 
 import type { ConnectionsGroup, ConnectionsLevel } from "@/types/connections";
 import Link from "next/link";
+import { colorCodes } from "@/lib/result-grid.mjs";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 /* ------------------------------------------------------------------ */
@@ -74,7 +75,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false }: Connec
     type: "correct" | "oneaway" | "wrong";
   } | null>(null);
   const [shaking, setShaking] = useState(false);
-  const [guessHistory, setGuessHistory] = useState<string[]>([]);
+  const [guessHistory, setGuessHistory] = useState<{ key: string; row: string }[]>([]);
   const [seenOneAway, setSeenOneAway] = useState(false);
 
   // Sorted solved groups for display
@@ -132,11 +133,12 @@ export default function ConnectionsGame({ groups, customPuzzle = false }: Connec
 
     // Prevent duplicate guess
     const sortedGuess = JSON.stringify([...selectedWords].sort());
-    if (guessHistory.includes(sortedGuess)) {
+    if (guessHistory.some(guess => guess.key === sortedGuess)) {
       setMessage({ text: "Already guessed!", type: "wrong" });
       return;
     }
-    setGuessHistory((prev) => [...prev, sortedGuess]);
+    const row = selectedWords.map(word => colorCodes[groups.find(g => g.members.includes(word))!.level]).join("");
+    setGuessHistory((prev) => [...prev, { key: sortedGuess, row }]);
 
     // Check if all 4 words belong to same group
     const matchedGroup = groups.find((g) =>
@@ -337,6 +339,10 @@ export default function ConnectionsGame({ groups, customPuzzle = false }: Connec
           >
             Play Again
           </button>
+          <Link className="ml-3 inline-block py-2 text-sm text-primary underline underline-offset-4"
+            href={"/connections-results#grid=" + guessHistory.map(guess => guess.row).join(".")}>
+            Read my result grid
+          </Link>
         </div>
       )}
 

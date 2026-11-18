@@ -90,6 +90,7 @@ export default async function HomeComponent() {
             {[
               ["/connections-word-finder", "Word finder"],
               ["/connections-maker", "Create a puzzle"],
+              ["/connections-results", "Read a result grid"],
               ["/guides/connections-one-away", "One-away guide"],
               ["/connections-practice/purple-groups", "Purple group practice"],
               ["/connections-sports-edition/archive", "Sports Edition archive"],
