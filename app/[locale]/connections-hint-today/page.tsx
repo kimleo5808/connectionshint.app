@@ -1,3 +1,4 @@
+import { reviewedTrap } from "@/data/connections/editorial";
 ﻿import { AnswerReveal } from "@/components/connections/AnswerReveal";
 import ConnectionsGame from "@/components/connections/ConnectionsGame";
 import { CountdownTimer } from "@/components/connections/CountdownTimer";
@@ -8,13 +9,12 @@ import { GUIDES } from "@/data/guides";
 import { Locale, LOCALES } from "@/i18n/routing";
 import { Link as I18nLink } from "@/i18n/routing";
 import {
-  getLatestPuzzle,
+  getTodayPuzzle,
   getRecentPuzzles,
   getYesterdayPuzzle,
 } from "@/lib/connections-data";
 import {
   getPuzzleDifficultyTier,
-  getRedHerrings,
 } from "@/lib/connections-insights";
 import {
   breadcrumbSchema,
@@ -108,7 +108,7 @@ export async function generateMetadata({
     locale,
     namespace: "ConnectionsHintToday",
   });
-  const puzzle = await getLatestPuzzle();
+  const puzzle = await getTodayPuzzle();
   const dateStr = puzzle
     ? dayjs(puzzle.date).format("MMMM D, YYYY")
     : "Today";
@@ -137,7 +137,7 @@ export default async function ConnectionsHintTodayPage({
   params: Params;
 }) {
   await params;
-  const puzzle = await getLatestPuzzle();
+  const puzzle = await getTodayPuzzle();
   const yesterdayPuzzle = await getYesterdayPuzzle();
   const recentPuzzles = await getRecentPuzzles(7);
 
@@ -158,10 +158,8 @@ export default async function ConnectionsHintTodayPage({
 
   const guides = GUIDES.slice(0, 6);
   const difficulty = getPuzzleDifficultyTier(puzzle);
-  const redHerrings = getRedHerrings(puzzle);
-  const allWords = [...puzzle.answers.flatMap((g) => g.members)].sort(
-    () => 0.5 - Math.random()
-  );
+  const trap = reviewedTrap(puzzle);
+  const allWords = [...puzzle.answers.flatMap((g) => g.members)].sort();
   const shareUrl = `${BASE_URL}/connections-hint-today`;
 
   const DIFFICULTY_STYLES: Record<string, string> = {
@@ -246,6 +244,21 @@ export default async function ConnectionsHintTodayPage({
         </div>
       </header>
 
+      {/* Hints section */}
+      <section className="rounded-2xl border border-border bg-card p-5 sm:p-6 mb-8 shadow-sm">
+        <div className="flex items-center gap-2 mb-5">
+          <Lightbulb className="h-5 w-5 text-amber-500" />
+          <h2 className="font-heading text-xl font-bold text-foreground">
+            Progressive Hints
+          </h2>
+        </div>
+        <p className="mb-5 text-sm text-muted-foreground">
+          Click each group to reveal hints one at a time. Try to solve with
+          as few hints as possible!
+        </p>
+        <HintCardList date={puzzle.date} groups={puzzle.answers} />
+      </section>
+
       {/* Today's words preview + countdown */}
       <section className="rounded-2xl border border-border bg-card p-5 sm:p-6 mb-8 shadow-sm">
         <div className="text-center">
@@ -280,7 +293,7 @@ export default async function ConnectionsHintTodayPage({
           Play Today&apos;s Puzzle
         </h2>
         <p className="text-center text-xs text-muted-foreground mb-5">
-          Sort the 16 words into four groups before you check the hints below
+          Sort the 16 words into four groups. Return to the clues above whenever you need a nudge.
         </p>
         <ConnectionsGame groups={puzzle.answers} />
       </section>
@@ -288,21 +301,6 @@ export default async function ConnectionsHintTodayPage({
       <div className="flex flex-col gap-8 lg:flex-row">
         {/* Main content */}
         <div className="flex-1 space-y-6">
-          {/* Hints section */}
-          <section className="rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-sm">
-            <div className="flex items-center gap-2 mb-5">
-              <Lightbulb className="h-5 w-5 text-amber-500" />
-              <h2 className="font-heading text-xl font-bold text-foreground">
-                Progressive Hints
-              </h2>
-            </div>
-            <p className="mb-5 text-sm text-muted-foreground">
-              Click each group to reveal hints one at a time. Try to solve with
-              as few hints as possible!
-            </p>
-            <HintCardList groups={puzzle.answers} />
-          </section>
-
           {/* Full answers */}
           <section className="rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-sm">
             <AnswerReveal puzzle={puzzle} />
@@ -355,13 +353,13 @@ export default async function ConnectionsHintTodayPage({
       {/* 鈹€鈹€鈹€ SEO Content Sections 鈹€鈹€鈹€ */}
 
       {/* Today's Trap / Red Herrings */}
-      {redHerrings && (
+      {trap && (
         <section className="mt-12">
           <details className="group rounded-2xl border border-rose-200 bg-rose-50/40 p-5 dark:border-rose-900/40 dark:bg-rose-950/10">
             <summary className="flex cursor-pointer items-center justify-between gap-3 font-heading text-lg font-bold text-foreground [&::-webkit-details-marker]:hidden">
               <span className="flex items-center gap-2">
                 <span className="text-xl">&#9888;&#65039;</span>
-                Today&apos;s Trickiest Trap
+                A tempting wrong group
                 <span className="text-xs font-normal text-muted-foreground">
                   (tap to reveal &mdash; spoiler)
                 </span>
@@ -369,7 +367,7 @@ export default async function ConnectionsHintTodayPage({
               <ChevronRight className="h-5 w-5 shrink-0 text-rose-400 transition-transform group-open:rotate-90" />
             </summary>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              {redHerrings.note}
+              {trap}
             </p>
           </details>
         </section>

@@ -1,3 +1,4 @@
+import { editionDate } from "@/lib/puzzle-archive.mjs";
 import { BASE_URL } from "@/config/site";
 import { Locale, LOCALES } from "@/i18n/routing";
 import { getAllPuzzles } from "@/lib/connections-data";
@@ -25,6 +26,8 @@ import {
 import { Metadata } from "next";
 import Link from "next/link";
 import ConnectionsSolver from "@/components/connections/ConnectionsSolver";
+
+export const dynamic = "force-dynamic";
 
 type Params = Promise<{ locale: string }>;
 
@@ -76,7 +79,7 @@ const HOW_IT_WORKS = [
     step: "3",
     title: "Reveal Hints Progressively",
     description:
-      "Once matched, each of the four groups has three hint levels. Start with a vague clue, then reveal the category name, and finally see the full answer. Stop at whatever level you need.",
+      "Once matched, each of the four groups has three hint levels. Open a clue, one example word, then the category name. The four-word answer has its own reveal. Stop at whatever level you need.",
   },
 ];
 
@@ -254,7 +257,7 @@ export default async function ConnectionsSolverPage({
           Type the 16 words from your Connections board, then click &ldquo;Find
           My Puzzle&rdquo; for progressive hints
         </p>
-        <ConnectionsSolver puzzles={allPuzzles} />
+        <ConnectionsSolver today={editionDate()} puzzles={allPuzzles} />
       </section>
 
       {/* ── SEO Content ── */}

@@ -29,6 +29,8 @@ export interface ConnectionsGroup {
 
 /** A complete Connections puzzle for a single day */
 export interface ConnectionsPuzzle {
+  /** Image cards are displayed using the original puzzle's text labels. */
+  imageTiles?: boolean;
   /** Puzzle number (sequential since first puzzle) */
   id: number;
   /** Date string in YYYY-MM-DD format */

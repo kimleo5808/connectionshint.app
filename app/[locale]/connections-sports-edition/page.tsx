@@ -1,11 +1,12 @@
+import { notFound } from "next/navigation";
 import SportsConnectionsGame from "@/components/connections/SportsConnectionsGame";
 import { BASE_URL } from "@/config/site";
 import { Locale, LOCALES } from "@/i18n/routing";
-import { getLatestPuzzle } from "@/lib/connections-data";
+import { editionDate } from "@/lib/puzzle-archive.mjs";
 import {
   getLatestSportsPuzzle,
   getRecentSportsPuzzles,
-  getSportsPuzzleCount,
+  getSportsPuzzleByDate,
 } from "@/lib/sports-data";
 import {
   breadcrumbSchema,
@@ -27,6 +28,8 @@ import {
 } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
+
+export const dynamic = "force-dynamic";
 
 type Params = Promise<{ locale: string }>;
 
@@ -102,7 +105,7 @@ const FAQ_ITEMS = [
   {
     question: "When does the Sports Edition puzzle come out?",
     answer:
-      "NYT Connections Sports Edition is released daily alongside the regular Connections puzzle, typically available at midnight Eastern Time. Our hints and answers are updated automatically when new puzzles become available.",
+      "Check the date above the board for the latest available sports puzzle. An earlier board is labeled as an archive puzzle.",
   },
   {
     question: "Do I need sports knowledge to play?",
@@ -112,7 +115,7 @@ const FAQ_ITEMS = [
   {
     question: "Where can I play Sports Edition?",
     answer:
-      "NYT Connections Sports Edition is available on the New York Times Games website and app. Our site provides hints, answers, and strategy guides to help you solve each day's sports puzzle. When we have the puzzle data, you can also play it directly on this page.",
+      "NYT Connections Sports Edition is available on the New York Times Games website and app. This guide explains the sports variant and its category patterns. When we have the puzzle data, you can also play it directly on this page.",
   },
 ];
 
@@ -129,9 +132,9 @@ export async function generateMetadata({
 
   return constructMetadata({
     page: "SportsEdition",
-    title: "NYT Connections Sports Edition — Today's Hints & Answers",
+    title: "Connections Sports Edition | Puzzles and Strategy Guide",
     description:
-      "Get hints and answers for today's NYT Connections Sports Edition puzzle. Progressive clues for all four sports-themed groups plus strategies for cross-sport vocabulary traps.",
+      "Learn how to group sports terms, recognize cross-sport traps, and practice on the latest available Sports Edition board.",
     keywords: [
       "connections sports edition",
       "nyt connections sports",
@@ -151,19 +154,17 @@ export async function generateMetadata({
 /* ------------------------------------------------------------------ */
 
 export default async function ConnectionsSportsEditionPage({
-  params,
+  searchParams,
 }: {
-  params: Params;
+  searchParams: Promise<{ date?: string }>;
 }) {
-  await params;
-
-  const sportsPuzzle = await getLatestSportsPuzzle();
-  const recentSports = await getRecentSportsPuzzles(8);
-  const sportsCount = await getSportsPuzzleCount();
-
-  // Use regular puzzle as playable demo when no sports data is available
-  const regularPuzzle = await getLatestPuzzle();
-  const displayPuzzle = sportsPuzzle || regularPuzzle || null;
+  const { date } = await searchParams;
+  const [sportsPuzzle, recentSports] = await Promise.all([
+    date ? getSportsPuzzleByDate(date) : getLatestSportsPuzzle(),
+    getRecentSportsPuzzles(8),
+  ]);
+  if (date && !sportsPuzzle) notFound();
+  const isToday = sportsPuzzle?.date === editionDate();
 
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8 grid-bg">
@@ -193,7 +194,7 @@ export default async function ConnectionsSportsEditionPage({
           )}
         </div>
         <h1 className="font-heading text-3xl font-bold text-foreground sm:text-4xl">
-          Connections Sports Edition — Today&apos;s Hints & Answers
+          Connections Sports Edition
         </h1>
         <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
           The sports variant of NYT Connections. Sort 16 sports-related words
@@ -223,32 +224,27 @@ export default async function ConnectionsSportsEditionPage({
       </header>
 
       {/* Game Area — dark themed like NYT Athletic */}
-      {displayPuzzle ? (
+      {sportsPuzzle ? (
         <section className="rounded-2xl border border-slate-700 bg-slate-900 p-5 sm:p-8 mb-8 shadow-sm">
           <h2 className="text-center font-heading text-lg font-bold text-white mb-1">
-            {sportsPuzzle
-              ? "Play Today's Sports Edition"
-              : "Try the Sports Edition Format"}
+            {isToday ? "Play today's Sports Edition" : "Play an archived Sports Edition board"}
           </h2>
           <p className="text-center text-xs text-slate-400 mb-1">
             Create four groups of four!
           </p>
           <p className="text-center text-[10px] text-slate-500 mb-5">
-            {sportsPuzzle
-              ? `Sports Edition Puzzle #${displayPuzzle.id} — ${dayjs(displayPuzzle.date).format("MMMM D, YYYY")}`
-              : `Demo using Puzzle #${displayPuzzle.id} — Sports data loading daily`}
+            {dayjs(sportsPuzzle.date).format("MMMM D, YYYY")}
           </p>
-          <SportsConnectionsGame groups={displayPuzzle.answers} />
+          <SportsConnectionsGame key={sportsPuzzle.date} groups={sportsPuzzle.answers} />
         </section>
       ) : (
         <section className="rounded-2xl border border-slate-700 bg-slate-900 p-8 mb-8 shadow-sm text-center">
           <span className="text-4xl mb-4 block">🏟️</span>
           <h2 className="font-heading text-lg font-bold text-white mb-2">
-            Sports Edition Loading
+            Sports Edition guide
           </h2>
           <p className="text-sm text-slate-400 max-w-md mx-auto">
-            Today&apos;s Sports Edition puzzle will appear here when available.
-            In the meantime, try the classic version.
+            A verified sports board is currently unavailable. Explore the sports strategy guide below or play classic Connections.
           </p>
           <Link
             href="/connections-hint-today"
@@ -267,17 +263,13 @@ export default async function ConnectionsSportsEditionPage({
           </h2>
           <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-4">
             {recentSports.map((p) => (
-              <div
+              <Link
                 key={p.date}
-                className="rounded-lg border border-border p-3 text-center"
+                href={`/connections-sports-edition?date=${p.date}`}
+                className="rounded-lg border border-border p-3 text-center text-sm font-medium text-blue-600 hover:underline"
               >
-                <p className="text-sm font-bold text-foreground">
-                  #{p.id}
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  {dayjs(p.date).format("MMM D, YYYY")}
-                </p>
-              </div>
+                {dayjs(p.date).format("MMM D, YYYY")}
+              </Link>
             ))}
           </div>
         </section>

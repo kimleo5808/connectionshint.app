@@ -257,31 +257,6 @@ export function getPuzzleDifficultyTier(puzzle: ConnectionsPuzzle): {
   return { tier, score, reason };
 }
 
-/**
- * Surface the words most likely to mislead solvers. The purple group is built
- * to deceive in NYT Connections, so its members are the safest, non-fabricated
- * "red herring" candidates. Phrased qualitatively to avoid fake precision.
- */
-export function getRedHerrings(puzzle: ConnectionsPuzzle): {
-  words: string[];
-  note: string;
-} | null {
-  const purple = puzzle.answers.find((group) => group.level === 3);
-  if (!purple) return null;
-
-  const words = purple.members.slice(0, 2);
-  const pattern = getGroupPattern(purple);
-
-  const note =
-    pattern === "fill-in-the-blank"
-      ? `Words like ${words.join(" and ")} read like an everyday topic, but they actually belong to the phrase-based purple group "${purple.group}". That mismatch is exactly what makes them easy to slot into the wrong category early.`
-      : pattern === "wordplay"
-        ? `Words like ${words.join(" and ")} look like ordinary vocabulary, yet the purple group "${purple.group}" connects them through spelling or structure, not meaning — so trust the pattern over the obvious definition.`
-        : `Words like ${words.join(" and ")} can feel like they belong with a more obvious group, but they anchor the purple set "${purple.group}". When a word seems to fit two places, it is usually the purple trap pulling it away.`;
-
-  return { words, note };
-}
-
 export function getPuzzlesByPrimaryPattern(puzzles: ConnectionsPuzzle[]) {
   return puzzles.reduce(
     (acc, puzzle) => {

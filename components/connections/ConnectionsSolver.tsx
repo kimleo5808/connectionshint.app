@@ -1,20 +1,9 @@
 "use client";
 
-import type { ConnectionsGroup, ConnectionsPuzzle } from "@/types/connections";
-import { useCallback, useMemo, useState } from "react";
-import {
-  AlertCircle,
-  CheckCircle2,
-  ChevronDown,
-  ChevronRight,
-  Eye,
-  EyeOff,
-  Lightbulb,
-  RotateCcw,
-  Search,
-  Sparkles,
-  X,
-} from "lucide-react";
+import { HintCardList } from "./HintCard";
+import type { ConnectionsPuzzle } from "@/types/connections";
+import { useCallback, useState } from "react";
+import { AlertCircle, CheckCircle2, RotateCcw, Search } from "lucide-react";
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -22,20 +11,8 @@ import {
 
 interface SolverProps {
   puzzles: ConnectionsPuzzle[];
+  today: string;
 }
-
-type HintLevel = 0 | 1 | 2 | 3; // 0=none, 1=vague, 2=category, 3=full
-
-const LEVEL_COLORS = [
-  { bg: "bg-yellow-100 dark:bg-yellow-900/30", text: "text-yellow-700 dark:text-yellow-300", border: "border-yellow-300 dark:border-yellow-800", label: "Yellow (Easy)" },
-  { bg: "bg-emerald-100 dark:bg-emerald-900/30", text: "text-emerald-700 dark:text-emerald-300", border: "border-emerald-300 dark:border-emerald-800", label: "Green (Moderate)" },
-  { bg: "bg-blue-100 dark:bg-blue-900/30", text: "text-blue-700 dark:text-blue-300", border: "border-blue-300 dark:border-blue-800", label: "Blue (Tricky)" },
-  { bg: "bg-purple-100 dark:bg-purple-900/30", text: "text-purple-700 dark:text-purple-300", border: "border-purple-300 dark:border-purple-800", label: "Purple (Hard)" },
-];
-
-/* ------------------------------------------------------------------ */
-/*  Matching logic                                                     */
-/* ------------------------------------------------------------------ */
 
 function findMatchingPuzzle(
   words: string[],
@@ -62,33 +39,13 @@ function findMatchingPuzzle(
   return null;
 }
 
-function generateVagueHint(group: ConnectionsGroup): string {
-  const members = group.members;
-  // Give a vague hint using first letters
-  const firstLetters = members
-    .map((m) => m[0])
-    .sort()
-    .join(", ");
-  return `This group's words start with the letters: ${firstLetters}`;
-}
-
-function generateMediumHint(group: ConnectionsGroup): string {
-  const members = group.members;
-  return `Two of the words in this group are: ${members[0]} and ${members[1]}`;
-}
-
-/* ------------------------------------------------------------------ */
-/*  Component                                                          */
-/* ------------------------------------------------------------------ */
-
-export default function ConnectionsSolver({ puzzles }: SolverProps) {
+export default function ConnectionsSolver({ puzzles, today }: SolverProps) {
   const [inputWords, setInputWords] = useState<string[]>(
     Array(16).fill("")
   );
   const [matchedPuzzle, setMatchedPuzzle] = useState<ConnectionsPuzzle | null>(
     null
   );
-  const [hintLevels, setHintLevels] = useState<HintLevel[]>([0, 0, 0, 0]);
   const [error, setError] = useState<string | null>(null);
   const [hasSearched, setHasSearched] = useState(false);
 
@@ -101,7 +58,6 @@ export default function ConnectionsSolver({ puzzles }: SolverProps) {
     setError(null);
     setHasSearched(false);
     setMatchedPuzzle(null);
-    setHintLevels([0, 0, 0, 0]);
   }, []);
 
   const handlePaste = useCallback((e: React.ClipboardEvent, index: number) => {
@@ -114,6 +70,9 @@ export default function ConnectionsSolver({ puzzles }: SolverProps) {
 
     if (words.length > 1) {
       e.preventDefault();
+      setError(null);
+      setHasSearched(false);
+      setMatchedPuzzle(null);
       setInputWords((prev) => {
         const next = [...prev];
         for (let i = 0; i < words.length && index + i < 16; i++) {
@@ -135,7 +94,6 @@ export default function ConnectionsSolver({ puzzles }: SolverProps) {
     const match = findMatchingPuzzle(filledWords, puzzles);
     setHasSearched(true);
     setMatchedPuzzle(match);
-    setHintLevels([0, 0, 0, 0]);
 
     if (!match) {
       setError(
@@ -146,38 +104,24 @@ export default function ConnectionsSolver({ puzzles }: SolverProps) {
     }
   }, [inputWords, puzzles]);
 
-  const handleRevealHint = useCallback((groupIndex: number) => {
-    setHintLevels((prev) => {
-      const next = [...prev] as HintLevel[];
-      next[groupIndex] = Math.min(next[groupIndex] + 1, 3) as HintLevel;
-      return next;
-    });
-  }, []);
-
   const handleReset = useCallback(() => {
     setInputWords(Array(16).fill(""));
     setMatchedPuzzle(null);
-    setHintLevels([0, 0, 0, 0]);
     setError(null);
     setHasSearched(false);
   }, []);
 
+  const current = puzzles.find(puzzle => puzzle.date === today);
   const handleFillToday = useCallback(() => {
-    if (puzzles.length === 0) return;
-    const latest = puzzles[0];
-    const words = latest.answers.flatMap((g) => g.members);
+    if (!current) return;
+    const words = current.answers.flatMap((g) => g.members);
     // Shuffle
     const shuffled = [...words].sort(() => Math.random() - 0.5);
     setInputWords(shuffled.map((w) => w.toUpperCase()));
     setError(null);
     setHasSearched(false);
     setMatchedPuzzle(null);
-    setHintLevels([0, 0, 0, 0]);
-  }, [puzzles]);
-
-  const sortedGroups = matchedPuzzle
-    ? [...matchedPuzzle.answers].sort((a, b) => a.level - b.level)
-    : [];
+  }, [current]);
 
   return (
     <div className="w-full space-y-6">
@@ -188,10 +132,11 @@ export default function ConnectionsSolver({ puzzles }: SolverProps) {
             Enter the 16 words from your puzzle
           </p>
           <button
+            disabled={!current}
             onClick={handleFillToday}
             className="text-xs text-blue-600 hover:text-blue-700 dark:text-blue-400 transition-colors"
           >
-            Fill today&apos;s words →
+            {current ? "Fill today's words →" : "Today's board is pending"}
           </button>
         </div>
         <div className="grid grid-cols-4 gap-2">
@@ -202,6 +147,7 @@ export default function ConnectionsSolver({ puzzles }: SolverProps) {
               value={word}
               onChange={(e) => handleWordChange(i, e.target.value)}
               onPaste={(e) => handlePaste(e, i)}
+              aria-label={`Word ${i + 1}`}
               placeholder={`Word ${i + 1}`}
               className="rounded-lg border border-border bg-card px-3 py-2.5 text-center text-xs font-bold uppercase tracking-wide text-foreground placeholder:text-muted-foreground/40 placeholder:font-normal placeholder:normal-case focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400/30 transition-colors"
             />
@@ -250,92 +196,7 @@ export default function ConnectionsSolver({ puzzles }: SolverProps) {
             </p>
           </div>
 
-          {/* Progressive Hints */}
-          <div className="space-y-3">
-            {sortedGroups.map((group, groupIdx) => {
-              const level = hintLevels[groupIdx];
-              const colors = LEVEL_COLORS[group.level];
-
-              return (
-                <div
-                  key={group.level}
-                  className={`rounded-xl border ${colors.border} overflow-hidden`}
-                >
-                  {/* Group header */}
-                  <div
-                    className={`flex items-center justify-between p-4 ${colors.bg}`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <span
-                        className={`rounded-full px-2.5 py-0.5 text-xs font-bold ${colors.text} ${colors.bg}`}
-                      >
-                        {colors.label}
-                      </span>
-                      {level >= 3 && (
-                        <span className={`text-sm font-bold ${colors.text}`}>
-                          {group.group}
-                        </span>
-                      )}
-                    </div>
-                    {level < 3 ? (
-                      <button
-                        onClick={() => handleRevealHint(groupIdx)}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-current/20 px-3 py-1.5 text-xs font-medium transition-colors hover:bg-white/50 dark:hover:bg-black/20"
-                      >
-                        <Lightbulb className="h-3 w-3" />
-                        {level === 0
-                          ? "Show Hint"
-                          : level === 1
-                            ? "More Help"
-                            : "Reveal Answer"}
-                      </button>
-                    ) : (
-                      <Eye className={`h-4 w-4 ${colors.text}`} />
-                    )}
-                  </div>
-
-                  {/* Hint content */}
-                  {level >= 1 && (
-                    <div className="p-4 bg-card space-y-2">
-                      {/* Level 1: Vague hint */}
-                      <div className="flex items-start gap-2">
-                        <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-bold text-muted-foreground shrink-0">
-                          Hint 1
-                        </span>
-                        <p className="text-sm text-muted-foreground">
-                          {generateVagueHint(group)}
-                        </p>
-                      </div>
-
-                      {/* Level 2: Category name */}
-                      {level >= 2 && (
-                        <div className="flex items-start gap-2">
-                          <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-bold text-muted-foreground shrink-0">
-                            Hint 2
-                          </span>
-                          <p className="text-sm text-foreground font-medium">
-                            Category: &ldquo;{group.group}&rdquo;
-                          </p>
-                        </div>
-                      )}
-
-                      {/* Level 3: Full answer */}
-                      {level >= 3 && (
-                        <div className="flex items-start gap-2">
-                          <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-bold text-muted-foreground shrink-0">
-                            Answer
-                          </span>
-                          <p className="text-sm text-foreground">
-                            {group.members.join(", ")}
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+          <HintCardList date={matchedPuzzle.date} groups={matchedPuzzle.answers} />
         </div>
       )}
 

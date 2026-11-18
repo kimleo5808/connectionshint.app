@@ -197,7 +197,7 @@ export default async function ConnectionsHintYesterdayPage({
               second gets more specific, and the third nearly confirms the
               group.
             </p>
-            <HintCardList groups={puzzle.answers} />
+            <HintCardList date={puzzle.date} groups={puzzle.answers} />
           </section>
 
           <section className="rounded-2xl border border-border bg-card p-5 shadow-sm sm:p-6">

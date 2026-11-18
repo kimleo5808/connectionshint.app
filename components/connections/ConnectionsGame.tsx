@@ -60,7 +60,7 @@ export default function ConnectionsGame({ groups }: ConnectionsGameProps) {
     );
   }, [groups]);
 
-  const [tiles, setTiles] = useState<WordTile[]>(() => shuffleArray(allTiles));
+  const [tiles, setTiles] = useState<WordTile[]>(() => [...allTiles].sort((a, b) => a.word < b.word ? -1 : a.word > b.word ? 1 : 0));
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [solvedLevels, setSolvedLevels] = useState<ConnectionsLevel[]>([]);
   const [mistakes, setMistakes] = useState(MAX_MISTAKES);

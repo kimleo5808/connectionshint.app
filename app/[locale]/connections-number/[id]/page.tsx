@@ -250,7 +250,7 @@ export default async function ConnectionsNumberPage({
           The 16 Words in Puzzle #{puzzle.id}
         </h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          Listed alphabetically so the original board layout stays unspoiled.
+          Listed alphabetically. {puzzle.imageTiles && "This picture edition uses the original text labels for image tiles."}
         </p>
         <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
           {wordFacts.words.map((word) => (
@@ -281,7 +281,7 @@ export default async function ConnectionsNumberPage({
               This keeps the number page useful as both a lookup page and a
               spoiler-controlled review page.
             </p>
-            <HintCardList groups={puzzle.answers} />
+            <HintCardList date={puzzle.date} groups={puzzle.answers} />
           </section>
 
           <section className="rounded-2xl border border-border bg-card p-5 shadow-sm sm:p-6">

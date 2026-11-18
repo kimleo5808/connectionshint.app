@@ -1,13 +1,15 @@
 import HomeComponent from "@/components/home";
 import { Locale, LOCALES } from "@/i18n/routing";
-import { getLatestPuzzle } from "@/lib/connections-data";
+import { getTodayPuzzle } from "@/lib/connections-data";
 import { constructMetadata } from "@/lib/metadata";
 import { Metadata } from "next";
+
+export const dynamic = "force-dynamic";
 
 type Params = Promise<{ locale: string }>;
 
 function generateHomeTitle() {
-  return "Connections Hint Today, Archive, and Puzzle Guides";
+  return "ConnectionsHint | Puzzle Archive and Solving Guides";
 }
 
 function generateHomeDescription(latestDate?: string) {
@@ -24,7 +26,7 @@ export async function generateMetadata({
   params: Params;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const latestPuzzle = await getLatestPuzzle();
+  const latestPuzzle = await getTodayPuzzle();
 
   return constructMetadata({
     page: "Home",

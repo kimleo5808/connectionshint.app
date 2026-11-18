@@ -14,7 +14,8 @@
  * It never blocks the build: on any failure it leaves the existing JSON intact
  * and exits 0, so a transient KV/API issue can't break a deploy.
  */
-import { writeFile } from "node:fs/promises";
+import { mergePuzzles } from "../lib/puzzle-archive.mjs";
+import { readFile, writeFile } from "node:fs/promises";
 
 const ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID;
 const API_TOKEN = process.env.CLOUDFLARE_API_TOKEN;
@@ -89,15 +90,10 @@ async function main() {
     bail("KV payload contained no valid puzzles");
   }
 
-  // Deduplicate by date (KV is the source of truth; keep the last occurrence)
-  const byDate = new Map();
-  for (const p of valid) byDate.set(p.date, p);
-
-  // Oldest-first matches the puzzles.json convention (latest = last element)
-  const oldestFirst = [...byDate.values()].sort((a, b) =>
-    a.date.localeCompare(b.date)
-  );
-  const now = new Date().toISOString();
+  const local = JSON.parse(await readFile(PUZZLES_PATH, "utf8"));
+  const oldestFirst = mergePuzzles(valid, local.puzzles);
+  const now = JSON.stringify(local.puzzles) === JSON.stringify(oldestFirst)
+    ? local.lastUpdated : new Date().toISOString();
 
   const puzzlesJson = { lastUpdated: now, puzzles: oldestFirst };
   const indexJson = {

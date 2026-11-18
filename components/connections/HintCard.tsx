@@ -1,9 +1,11 @@
 "use client";
 
+import { firstClue } from "@/data/connections/editorial";
 import type { ConnectionsGroup } from "@/types/connections";
-import { LEVEL_LABELS } from "@/types/connections";
+import { LEVEL_COLORS, LEVEL_LABELS } from "@/types/connections";
 import { ChevronDown, Eye, EyeOff, Lightbulb } from "lucide-react";
-import { useState } from "react";
+import { event } from "@/gtag";
+import { useRef, useState } from "react";
 
 const COLOR_STYLES: Record<
   number,
@@ -35,70 +37,44 @@ const COLOR_STYLES: Record<
   },
 };
 
-/** Difficulty-based framing that nudges toward the theme without naming it */
-const LEVEL_DIRECTION: Record<number, string> = {
-  0: "the most direct group on the board, with a clear and literal theme",
-  1: "a fairly direct group, though a word or two may look like it belongs elsewhere",
-  2: "a trickier group where the real link is easy to confuse with a decoy",
-  3: "the hardest group, so expect a less literal or more lateral connection",
-};
-
-/**
- * Generate progressive hints that reveal in true layers:
- *  1. Direction only — frame the theme without naming it or any word
- *  2. The category name
- *  3. A single example word
- * The full answer is revealed separately after these three layers.
- */
-function generateHints(group: ConnectionsGroup): string[] {
-  const { members, group: categoryName } = group;
-  const label = categoryName.toUpperCase();
-
-  const isBlank = label.includes("___") || label.includes("...");
-  const isWordplay =
-    /PALINDROME|ANAGRAM|HOMOPHONE|RHYME|PREFIX|SUFFIX|STARTS WITH|ENDS WITH|BEGINNING WITH|ENDING WITH|HIDDEN|SPELL|LETTER|INITIAL|ABBREVIATION/.test(
-      label
-    );
-
-  const direction = LEVEL_DIRECTION[group.level] ?? LEVEL_DIRECTION[0];
-  const hint1 = isBlank
-    ? `These four words all complete the same common phrase. This is ${direction}.`
-    : isWordplay
-      ? `Focus on how these words are built or spelled, not just what they mean. This is ${direction}.`
-      : `This is ${direction}. Try to name the theme yourself before revealing it.`;
-
-  const hint2 = `The connection is "${categoryName}". Now work out which four words fit.`;
-  const hint3 = `One of the words in this group is "${members[0]}". Can you find the other three?`;
-
-  return [hint1, hint2, hint3];
-}
-
 interface HintCardProps {
+  date: string;
   group: ConnectionsGroup;
-  defaultExpanded?: boolean;
+  onFirstClue: () => void;
 }
 
-export function HintCard({ group, defaultExpanded = false }: HintCardProps) {
-  const [expanded, setExpanded] = useState(defaultExpanded);
+export function HintCard({ date, group, onFirstClue }: HintCardProps) {
+  const [expanded, setExpanded] = useState(false);
   const [revealLevel, setRevealLevel] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
 
   const style = COLOR_STYLES[group.level] || COLOR_STYLES[0];
-  const hints = generateHints(group);
+  const hints = [
+    firstClue(date, group),
+    `One word in this group is ${group.members[0]}.`,
+    `The category is "${group.group}".`,
+  ];
   const levelLabel = LEVEL_LABELS[group.level] || "Unknown";
 
   return (
     <div className={`rounded-xl border ${style.border} bg-card overflow-hidden transition-shadow hover:shadow-md`}>
       {/* Header */}
       <button
-        onClick={() => setExpanded(!expanded)}
+        aria-expanded={expanded}
+        onClick={() => {
+          if (!expanded && revealLevel === 0) {
+            setRevealLevel(1);
+            onFirstClue();
+          }
+          setExpanded(!expanded);
+        }}
         className={`flex w-full items-center justify-between gap-3 px-5 py-4 text-left transition-colors ${style.hoverBg}`}
       >
         <div className="flex items-center gap-3">
           <span className={`h-3 w-3 rounded-full ${style.dot}`} />
           <div>
             <span className={`inline-block rounded-md px-2 py-0.5 text-xs font-bold ${style.badge}`}>
-              {levelLabel}
+              <span className="capitalize">{LEVEL_COLORS[group.level]}</span> · {levelLabel}
             </span>
           </div>
         </div>
@@ -125,7 +101,7 @@ export function HintCard({ group, defaultExpanded = false }: HintCardProps) {
                   className="flex w-full items-center gap-2 rounded-lg border border-dashed border-muted-foreground/30 px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:border-blue-400 hover:text-blue-600 dark:hover:border-blue-500 dark:hover:text-blue-400"
                 >
                   <Eye className="h-4 w-4" />
-                  Reveal Hint {i + 1} of 3
+                  {i === 1 ? "Reveal one word" : "Reveal the category"}
                 </button>
               ) : null}
             </div>
@@ -171,15 +147,22 @@ export function HintCard({ group, defaultExpanded = false }: HintCardProps) {
 }
 
 interface HintCardListProps {
+  date: string;
   groups: ConnectionsGroup[];
 }
 
-export function HintCardList({ groups }: HintCardListProps) {
+export function HintCardList({ groups, date }: HintCardListProps) {
+  const trackedDate = useRef<string | null>(null);
+  function trackFirstClue() {
+    if (trackedDate.current === date) return;
+    trackedDate.current = date;
+    event({ action: "first_hint_reveal", category: "connections", label: date, value: 1 });
+  }
   const sorted = [...groups].sort((a, b) => a.level - b.level);
   return (
     <div className="space-y-3">
       {sorted.map((group) => (
-        <HintCard key={group.level} group={group} />
+        <HintCard key={`${date}-${group.level}`} date={date} group={group} onFirstClue={trackFirstClue} />
       ))}
     </div>
   );

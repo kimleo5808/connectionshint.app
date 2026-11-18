@@ -214,7 +214,7 @@
   "HomePage": {
     "hero": {
       "badge": "Puzzle #{id}",
-      "title": "Connections Hint Today",
+      "title": "ConnectionsHint Puzzle Archive & Guides",
       "subtitle": "Get progressive hints for today's NYT Connections puzzle without spoiling the answer.",
       "ctaHints": "Get Today's Hints",
       "ctaArchive": "Browse Archive",
@@ -257,7 +257,7 @@
       },
       {
         "question": "How do the progressive hints work?",
-        "answer": "Each group has three hint levels. Level 1 gives a vague thematic clue. Level 2 narrows it down with a more specific hint. Level 3 reveals the category name. You choose how much help you want."
+        "answer": "Each group has three hint levels. Level 1 gives a puzzle clue or the initials of the entries. Level 2 gives one example word. Level 3 reveals the category name. You choose how much help you want."
       },
       {
         "question": "When does the daily Connections puzzle reset?",

@@ -39,7 +39,6 @@ export function MonthSection({ month, puzzles, latestId }: MonthSectionProps) {
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {displayed.map((puzzle) => {
-          const sorted = [...puzzle.answers].sort((a, b) => a.level - b.level);
           const isLatest = puzzle.id === latestId;
 
           return (
@@ -60,16 +59,8 @@ export function MonthSection({ month, puzzles, latestId }: MonthSectionProps) {
               </div>
 
               <h3 className="mt-3 text-sm font-bold text-foreground">
-                Connections #{puzzle.id} — {sorted.map((g) => g.members[0]).join(", ")}...
+                Hints and answers for {dayjs(puzzle.date).format("MMMM D")}
               </h3>
-
-              <div className="mt-2 space-y-1">
-                {sorted.slice(0, 2).map((g) => (
-                  <p key={g.level} className="truncate text-xs text-muted-foreground">
-                    {g.members.join(", ")}
-                  </p>
-                ))}
-              </div>
 
               <div className="mt-3 flex items-center justify-between">
                 <span className="text-xs text-muted-foreground">

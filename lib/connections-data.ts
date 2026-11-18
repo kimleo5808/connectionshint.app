@@ -1,224 +1,93 @@
-import type { ConnectionsPuzzle } from "@/types/connections";
+import puzzlesData from "@/data/connections/puzzles.json";
 import { getKV } from "@/lib/kv";
+import { dateForPuzzleNumber, editionDate, publicPuzzleNumber } from "@/lib/puzzle-archive.mjs";
+import type { ConnectionsDataFile, ConnectionsPuzzle } from "@/types/connections";
 import { cache } from "react";
 
-/**
- * Lightweight index stored in KV under "meta:index"
- */
+const snapshot = puzzlesData as ConnectionsDataFile;
+const local = new Map(snapshot.puzzles.map(p => [p.date, p]));
+
 interface PuzzleIndex {
   lastUpdated: string;
-  count: number;
-  latestDate: string;
-  dates: string[]; // newest-first
-  months: string[]; // newest-first
+  dates: string[];
 }
 
-// ── Static JSON fallback for build time ──────────────────────────────
-
-import puzzlesData from "@/data/connections/puzzles.json";
-import type { ConnectionsDataFile } from "@/types/connections";
-
-const staticData = puzzlesData as ConnectionsDataFile;
-
-// ── Data access functions ────────────────────────────────────────────
-
-/** Fetch the lightweight index from KV */
-const getIndex = cache(async (): Promise<PuzzleIndex | null> => {
+const getIndex = cache(async () => {
   const kv = await getKV();
-  if (!kv) return null;
-  return kv.get<PuzzleIndex>("meta:index", "json");
+  return kv?.get<PuzzleIndex>("meta:index", "json");
 });
 
-/** Get a puzzle by its date string (YYYY-MM-DD) */
-export const getPuzzleByDate = cache(
-  async (date: string): Promise<ConnectionsPuzzle | undefined> => {
-    const kv = await getKV();
-    if (!kv) {
-      return staticData.puzzles.find((p) => p.date === date);
-    }
-    const puzzle = await kv.get<ConnectionsPuzzle>(
-      `puzzle:date:${date}`,
-      "json"
-    );
-    return puzzle ?? undefined;
-  }
-);
+const getRecentUpdates = cache(async () => {
+  const kv = await getKV();
+  const boards = await kv?.get<ConnectionsPuzzle[]>("classic:recent", "json");
+  return new Map((boards ?? []).map(p => [p.date, p]));
+});
 
-/** Get a puzzle by its numeric id */
-export const getPuzzleById = cache(
-  async (id: number): Promise<ConnectionsPuzzle | undefined> => {
-    const kv = await getKV();
-    if (!kv) {
-      return staticData.puzzles.find((p) => p.id === id);
-    }
-    const puzzle = await kv.get<ConnectionsPuzzle>(
-      `puzzle:id:${id}`,
-      "json"
-    );
-    return puzzle ?? undefined;
-  }
-);
+const getDates = cache(async () => {
+  const [index, updates] = await Promise.all([getIndex(), getRecentUpdates()]);
+  const today = editionDate();
+  return [...new Set([...local.keys(), ...(index?.dates ?? []), ...updates.keys()])]
+    .filter(date => date <= today).sort().reverse();
+});
 
-/** Get the latest/today's puzzle */
-export const getLatestPuzzle = cache(
-  async (): Promise<ConnectionsPuzzle | undefined> => {
-    const kv = await getKV();
-    if (!kv) {
-      if (staticData.puzzles.length === 0) return undefined;
-      return staticData.puzzles[staticData.puzzles.length - 1];
-    }
-    const index = await getIndex();
-    if (!index || index.dates.length === 0) return undefined;
-    return getPuzzleByDate(index.latestDate);
-  }
-);
+function withPublicNumber(puzzle: ConnectionsPuzzle) {
+  const id = publicPuzzleNumber(puzzle.date);
+  return puzzle.id === id ? puzzle : { ...puzzle, id };
+}
 
-/** Get the puzzle immediately before the latest board */
-export const getYesterdayPuzzle = cache(
-  async (): Promise<ConnectionsPuzzle | undefined> => {
-    const kv = await getKV();
-    if (!kv) {
-      if (staticData.puzzles.length < 2) return undefined;
-      return staticData.puzzles[staticData.puzzles.length - 2];
-    }
-    const index = await getIndex();
-    if (!index || index.dates.length < 2) return undefined;
-    return getPuzzleByDate(index.dates[1]);
-  }
-);
+export const getPuzzleByDate = cache(async (date: string): Promise<ConnectionsPuzzle | undefined> => {
+  if (!publicPuzzleNumber(date) || date > editionDate()) return undefined;
+  const updates = await getRecentUpdates();
+  const verified = local.get(date);
+  if (verified?.imageTiles) return verified;
+  const kv = await getKV();
+  const puzzle = updates.get(date) ?? await kv?.get<ConnectionsPuzzle>(`puzzle:date:${date}`, "json") ?? verified;
+  return puzzle && withPublicNumber(puzzle);
+});
 
-/** Get all puzzles, newest first */
-export const getAllPuzzles = cache(
-  async (): Promise<ConnectionsPuzzle[]> => {
-    const kv = await getKV();
-    if (!kv) {
-      return [...staticData.puzzles].reverse();
-    }
-    const puzzles = await kv.get<ConnectionsPuzzle[]>(
-      "meta:all-puzzles",
-      "json"
-    );
-    if (!puzzles) return [];
-    return [...puzzles].reverse();
-  }
-);
+export const getPuzzleById = cache(async (id: number) => {
+  const date = dateForPuzzleNumber(id);
+  return date ? getPuzzleByDate(date) : undefined;
+});
 
-/** Get recent N puzzles, newest first */
-export const getRecentPuzzles = cache(
-  async (count: number = 7): Promise<ConnectionsPuzzle[]> => {
-    const kv = await getKV();
-    if (!kv) {
-      return [...staticData.puzzles].reverse().slice(0, count);
-    }
-    const index = await getIndex();
-    if (!index) return [];
-    const recentDates = index.dates.slice(0, count);
-    const puzzles = await Promise.all(
-      recentDates.map((date) => getPuzzleByDate(date))
-    );
-    return puzzles.filter((p): p is ConnectionsPuzzle => p !== undefined);
-  }
-);
+export const getTodayPuzzle = cache(() => getPuzzleByDate(editionDate()));
+export const getYesterdayPuzzle = cache(() => getPuzzleById(publicPuzzleNumber(editionDate()) - 1));
+export const getLatestPuzzle = cache(async () => {
+  const [latest] = await getDates();
+  return latest ? getPuzzleByDate(latest) : undefined;
+});
 
-/** Get puzzles for a specific month (YYYY-MM) */
-export const getPuzzlesByMonth = cache(
-  async (yearMonth: string): Promise<ConnectionsPuzzle[]> => {
-    const kv = await getKV();
-    if (!kv) {
-      return staticData.puzzles
-        .filter((p) => p.date.startsWith(yearMonth))
-        .reverse();
-    }
-    const index = await getIndex();
-    if (!index) return [];
-    const monthDates = index.dates.filter((d) => d.startsWith(yearMonth));
-    const puzzles = await Promise.all(
-      monthDates.map((date) => getPuzzleByDate(date))
-    );
-    return puzzles.filter((p): p is ConnectionsPuzzle => p !== undefined);
+export const getAllPuzzles = cache(async (): Promise<ConnectionsPuzzle[]> => {
+  const kv = await getKV();
+  const [stored, updates] = await Promise.all([
+    kv?.get<ConnectionsPuzzle[]>("meta:all-puzzles", "json"),
+    getRecentUpdates(),
+  ]);
+  const boards = new Map(local);
+  for (const puzzle of [...(stored ?? []), ...updates.values()]) {
+    if (!boards.get(puzzle.date)?.imageTiles) boards.set(puzzle.date, withPublicNumber(puzzle));
   }
-);
+  const today = editionDate();
+  return [...boards.values()].filter(p => p.date <= today).sort((a, b) => b.id - a.id);
+});
 
-/** Get all unique year-month strings available */
-export const getAvailableMonths = cache(
-  async (): Promise<string[]> => {
-    const kv = await getKV();
-    if (!kv) {
-      const months = new Set(staticData.puzzles.map((p) => p.date.slice(0, 7)));
-      return Array.from(months).sort().reverse();
-    }
-    const index = await getIndex();
-    if (!index) return [];
-    return index.months;
-  }
-);
+async function puzzlesForDates(dates: string[]) {
+  const boards = await Promise.all(dates.map(date => getPuzzleByDate(date)));
+  return boards.filter((p): p is ConnectionsPuzzle => p !== undefined);
+}
 
-/** Get total puzzle count */
-export const getPuzzleCount = cache(
-  async (): Promise<number> => {
-    const kv = await getKV();
-    if (!kv) return staticData.puzzles.length;
-    const index = await getIndex();
-    return index?.count ?? 0;
-  }
-);
+export const getRecentPuzzles = cache(async (count = 7) => puzzlesForDates((await getDates()).slice(0, count)));
+export const getPuzzlesByMonth = cache(async (month: string) => puzzlesForDates((await getDates()).filter(d => d.startsWith(month))));
+export const getAvailableMonths = cache(async () => [...new Set((await getDates()).map(d => d.slice(0, 7)))]);
+export const getPuzzleCount = cache(async () => (await getDates()).length);
+export const getLastUpdated = cache(async () => (await getIndex())?.lastUpdated ?? snapshot.lastUpdated);
 
-/** Get the last updated timestamp */
-export const getLastUpdated = cache(
-  async (): Promise<string> => {
-    const kv = await getKV();
-    if (!kv) return staticData.lastUpdated;
-    const index = await getIndex();
-    return index?.lastUpdated ?? "";
-  }
-);
-
-/** Get the previous chronologically older puzzle for a date */
-export const getPreviousPuzzleByDate = cache(
-  async (date: string): Promise<ConnectionsPuzzle | undefined> => {
-    const kv = await getKV();
-    if (!kv) {
-      const idx = staticData.puzzles.findIndex((p) => p.date === date);
-      if (idx <= 0) return undefined;
-      return staticData.puzzles[idx - 1];
-    }
-    const index = await getIndex();
-    if (!index) return undefined;
-    const idx = index.dates.indexOf(date);
-    // dates are newest-first, so previous (older) is idx + 1
-    if (idx === -1 || idx >= index.dates.length - 1) return undefined;
-    return getPuzzleByDate(index.dates[idx + 1]);
-  }
-);
-
-/** Get the next chronologically newer puzzle for a date */
-export const getNextPuzzleByDate = cache(
-  async (date: string): Promise<ConnectionsPuzzle | undefined> => {
-    const kv = await getKV();
-    if (!kv) {
-      const idx = staticData.puzzles.findIndex((p) => p.date === date);
-      if (idx === -1 || idx >= staticData.puzzles.length - 1) return undefined;
-      return staticData.puzzles[idx + 1];
-    }
-    const index = await getIndex();
-    if (!index) return undefined;
-    const idx = index.dates.indexOf(date);
-    // dates are newest-first, so next (newer) is idx - 1
-    if (idx <= 0) return undefined;
-    return getPuzzleByDate(index.dates[idx - 1]);
-  }
-);
-
-/** Get the previous puzzle by numeric id */
-export const getPreviousPuzzleById = cache(
-  async (id: number): Promise<ConnectionsPuzzle | undefined> => {
-    return getPuzzleById(id - 1);
-  }
-);
-
-/** Get the next puzzle by numeric id */
-export const getNextPuzzleById = cache(
-  async (id: number): Promise<ConnectionsPuzzle | undefined> => {
-    return getPuzzleById(id + 1);
-  }
-);
+async function adjacent(date: string, offset: number) {
+  const dates = await getDates();
+  const i = dates.indexOf(date);
+  return i >= 0 && dates[i + offset] ? getPuzzleByDate(dates[i + offset]) : undefined;
+}
+export const getPreviousPuzzleByDate = cache((date: string) => adjacent(date, 1));
+export const getNextPuzzleByDate = cache((date: string) => adjacent(date, -1));
+export const getPreviousPuzzleById = cache((id: number) => getPuzzleById(id - 1));
+export const getNextPuzzleById = cache((id: number) => getPuzzleById(id + 1));

@@ -1,20 +1,11 @@
 "use client";
 
+import { nextEditionTime } from "@/lib/puzzle-archive.mjs";
 import { useEffect, useState } from "react";
 
 function getTimeUntilMidnightET() {
   const now = new Date();
-  // Create midnight ET (Eastern Time)
-  const etOffset = -5; // EST (adjust for EDT if needed)
-  const utcNow = now.getTime() + now.getTimezoneOffset() * 60000;
-  const etNow = new Date(utcNow + 3600000 * etOffset);
-
-  const tomorrow = new Date(etNow);
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  tomorrow.setHours(0, 0, 0, 0);
-
-  const diff = tomorrow.getTime() - etNow.getTime();
-
+  const diff = nextEditionTime(now) - now.getTime();
   const hours = Math.floor(diff / (1000 * 60 * 60));
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((diff % (1000 * 60)) / 1000);

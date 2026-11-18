@@ -21,6 +21,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import PrintablePuzzle from "@/components/connections/PrintablePuzzle";
 
+export const dynamic = "force-dynamic";
+
 type Params = Promise<{ locale: string }>;
 
 /* ------------------------------------------------------------------ */

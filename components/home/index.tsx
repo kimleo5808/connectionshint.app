@@ -2,7 +2,7 @@
 import { CountdownTimer } from "@/components/connections/CountdownTimer";
 import { GUIDES } from "@/data/guides";
 import { LETTER_GAMES } from "@/data/letter-games";
-import { getLatestPuzzle, getRecentPuzzles } from "@/lib/connections-data";
+import { getTodayPuzzle, getRecentPuzzles } from "@/lib/connections-data";
 import dayjs from "dayjs";
 import {
   ArrowRight,
@@ -47,7 +47,7 @@ function FaqAccordionItem({
 
 export default async function HomeComponent() {
   const t = await getTranslations("HomePage");
-  const latestPuzzle = await getLatestPuzzle();
+  const latestPuzzle = await getTodayPuzzle();
   const recentPuzzles = await getRecentPuzzles(9);
 
   const todayDate = latestPuzzle
@@ -55,9 +55,7 @@ export default async function HomeComponent() {
     : "";
 
   const allWords = latestPuzzle
-    ? [...latestPuzzle.answers.flatMap((g) => g.members)].sort(
-        () => 0.5 - Math.random()
-      )
+    ? [...latestPuzzle.answers.flatMap((g) => g.members)].sort()
     : [];
 
   return (
@@ -157,10 +155,6 @@ export default async function HomeComponent() {
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {recentPuzzles.map((puzzle) => {
-              const sorted = [...puzzle.answers].sort(
-                (a, b) => a.level - b.level
-              );
-
               return (
                 <Link
                   key={puzzle.date}
@@ -178,16 +172,6 @@ export default async function HomeComponent() {
                   <h3 className="mt-3 text-sm font-bold text-foreground">
                     Connections #{puzzle.id} Answer &amp; Hints
                   </h3>
-                  <div className="mt-2 space-y-1">
-                    {sorted.slice(0, 2).map((g) => (
-                      <p
-                        key={g.level}
-                        className="truncate text-xs text-muted-foreground"
-                      >
-                        {g.members.join(", ")}
-                      </p>
-                    ))}
-                  </div>
                   <div className="mt-3 flex items-center gap-1 text-xs font-medium text-blue-600 group-hover:text-blue-700 dark:text-blue-400">
                     Read Analysis
                     <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />

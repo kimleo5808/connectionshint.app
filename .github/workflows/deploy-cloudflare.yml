@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    # Daily at 06:00 UTC, after the puzzle-updater worker (01:00 UTC) refreshes KV
+    # Daily at 06:00 UTC, after the Eastern midnight puzzle release
     - cron: "0 6 * * *"
   workflow_dispatch:
 
@@ -39,7 +39,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Reconcile puzzle data with community source
+      - name: Verify archive dates and fill missing boards
+        run: node scripts/update-connections.mjs
+
+      - name: Publish verified archive
         run: node scripts/reconcile-kv.mjs
 
       - name: Sync puzzle data from KV

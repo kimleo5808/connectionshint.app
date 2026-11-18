@@ -1,3 +1,4 @@
+import { reviewedTrap } from "@/data/connections/editorial";
 ﻿import { AnswerReveal } from "@/components/connections/AnswerReveal";
 import { HintCardList } from "@/components/connections/HintCard";
 import { BASE_URL } from "@/config/site";
@@ -11,7 +12,6 @@ import {
 import { getStaticPuzzles } from "@/lib/connections-static";
 import {
   getPuzzleDifficultyTier,
-  getRedHerrings,
   getSuggestedStudyLinks,
 } from "@/lib/connections-insights";
 import { articleSchema, breadcrumbSchema, faqPageSchema, JsonLd } from "@/lib/jsonld";
@@ -24,7 +24,6 @@ import {
   Calendar,
   BookOpen,
   Lightbulb,
-  Puzzle,
   Target,
   Zap,
 } from "lucide-react";
@@ -304,20 +303,6 @@ function generateFAQ(
 }
 
 /* 鈹€鈹€ metadata 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */
-function getPuzzleStyleSummary(groups: ConnectionsGroup[]) {
-  const patternLabels = new Set(groups.map(getGroupPattern));
-
-  if (patternLabels.has("fill-in-the-blank")) {
-    return "today's board leans on phrase-completion and careful pattern checking";
-  }
-
-  if (patternLabels.has("wordplay")) {
-    return "today's board hides at least one group behind wordplay or language structure";
-  }
-
-  return "today's board is more about separating close thematic matches than decoding wordplay";
-}
-
 function generateMetadataTitle(
   id: number,
   date: string,
@@ -334,15 +319,8 @@ function generateMetadataTitle(
   return `Connections #${id} for ${formattedDate}: ${suffix}`;
 }
 
-function generateMetadataDescription(
-  id: number,
-  date: string,
-  groups: ConnectionsGroup[]
-) {
-  const formattedDate = dayjs(date).format("MMMM D, YYYY");
-  const sorted = [...groups].sort((a, b) => a.level - b.level);
-
-  return `Review Connections #${id} for ${formattedDate}, from "${sorted[0].group}" to "${sorted[3].group}". Includes progressive hints, full answers, and solve notes explaining why ${getPuzzleStyleSummary(groups)}.`;
+function generateMetadataDescription(id: number, date: string) {
+  return `Find a gentle clue for each color in Connections #${id} for ${dayjs(date).format("MMMM D, YYYY")}. Reveal one word, a category, or the full solution when you choose.`;
 }
 
 export async function generateMetadata({
@@ -359,11 +337,7 @@ export async function generateMetadata({
     puzzle.date,
     puzzle.answers
   );
-  const metadataDescription = generateMetadataDescription(
-    puzzle.id,
-    puzzle.date,
-    puzzle.answers
-  );
+  const metadataDescription = generateMetadataDescription(puzzle.id, puzzle.date);
   return constructMetadata({
     page: "Daily",
     title: metadataTitle,
@@ -404,15 +378,13 @@ export default async function DailyPuzzlePage({
   const monthPath = `/connections-hint/${puzzle.date.slice(0, 4)}/${puzzle.date.slice(5, 7)}`;
 
   const sorted = [...puzzle.answers].sort((a, b) => a.level - b.level);
-  const allWords = [...puzzle.answers.flatMap((g) => g.members)].sort(
-    () => 0.5 - Math.random()
-  );
+  const allWords = [...puzzle.answers.flatMap((g) => g.members)].sort();
 
   const faqItems = generateFAQ(puzzle.id, puzzle.date, puzzle.answers);
   const strategyTips = generateEditorialStrategyTips(puzzle.answers);
   const studyLinks = getSuggestedStudyLinks(puzzle.answers);
   const difficulty = getPuzzleDifficultyTier(puzzle);
-  const redHerrings = getRedHerrings(puzzle);
+  const trap = reviewedTrap(puzzle);
 
   const DIFFICULTY_STYLES: Record<string, string> = {
     Easy: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
@@ -429,11 +401,7 @@ export default async function DailyPuzzlePage({
     puzzle.date,
     puzzle.answers
   );
-  const articleDescription = generateMetadataDescription(
-    puzzle.id,
-    puzzle.date,
-    puzzle.answers
-  );
+  const articleDescription = generateMetadataDescription(puzzle.id, puzzle.date);
 
   // Related puzzles (3 closest, excluding current)
   const relatedPuzzles = recentPuzzles
@@ -511,15 +479,8 @@ export default async function DailyPuzzlePage({
         </h1>
         <p className="mt-2 text-muted-foreground">({formattedDate})</p>
         <p className="mt-4 text-sm text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-          What connects{" "}
-          {sorted.map((g, i) => (
-            <span key={g.level}>
-              <strong className="text-foreground">{g.group}</strong>
-              {i < sorted.length - 1 ? ", " : ""}
-            </span>
-          ))}
-          ? Find progressive hints and the complete answer for Connections #
-          {puzzle.id} below.
+          Choose a color for a clue. You can open the full solution and solve notes separately.
+          {puzzle.imageTiles && " This edition used picture tiles. The board below uses their original text labels."}
         </p>
         <div className="mt-4 flex flex-col items-center gap-2">
           <span
@@ -594,7 +555,7 @@ export default async function DailyPuzzlePage({
       {/* 鈹€鈹€ Word chips banner 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */}
       <section className="rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 p-6 sm:p-8 mb-8">
         <h2 className="text-center font-heading text-lg font-bold text-white mb-4">
-          Today&apos;s 16 Words
+          The 16 tiles in this puzzle
         </h2>
         <div className="flex flex-wrap justify-center gap-2">
           {allWords.map((word) => (
@@ -624,7 +585,7 @@ export default async function DailyPuzzlePage({
               Reveal clues one layer at a time. Start with a nudge toward the
               theme and only open the full answer if you are truly stuck.
             </p>
-            <HintCardList groups={puzzle.answers} />
+            <HintCardList date={puzzle.date} groups={puzzle.answers} />
           </section>
 
           {/* Spoiler / answer reveal */}
@@ -633,14 +594,10 @@ export default async function DailyPuzzlePage({
           </section>
 
           {/* 鈹€鈹€ Answer & Full Analysis 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */}
-          <section className="rounded-2xl border border-border bg-card p-5 sm:p-8 shadow-sm">
-            <div className="flex items-center gap-2 mb-5">
-              <Puzzle className="h-5 w-5 text-blue-500" />
-              <h2 className="font-heading text-xl font-bold text-foreground">
-                Connections #{puzzle.id} Answer &amp; Full Analysis
-              </h2>
-            </div>
-
+          <details className="rounded-2xl border border-border bg-card p-5 sm:p-8 shadow-sm">
+            <summary className="cursor-pointer font-heading text-xl font-bold text-foreground">
+              Reveal answers and solve notes for #{puzzle.id}
+            </summary>
             {/* Overview */}
             <p className="text-sm leading-relaxed text-muted-foreground mb-8">
               {overview}
@@ -704,14 +661,14 @@ export default async function DailyPuzzlePage({
             </div>
 
             {/* Red herrings / today's trap */}
-            {redHerrings && (
+            {trap && (
               <div className="mb-8 rounded-xl border border-rose-200 bg-rose-50/40 p-5 dark:border-rose-900/40 dark:bg-rose-950/10">
                 <h3 className="mb-2 flex items-center gap-2 font-heading text-lg font-bold text-foreground">
                   <span className="text-xl">&#9888;&#65039;</span>
-                  Watch Out: Today&apos;s Red Herrings
+                  A tempting wrong group
                 </h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">
-                  {redHerrings.note}
+                  {trap}
                 </p>
               </div>
             )}
@@ -822,7 +779,7 @@ export default async function DailyPuzzlePage({
                 </div>
               ))}
             </div>
-          </section>
+          </details>
 
           {/* 鈹€鈹€ Related Puzzles 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€ */}
           <section className="rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-sm">
@@ -831,9 +788,6 @@ export default async function DailyPuzzlePage({
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {relatedPuzzles.map((p) => {
-                const pSorted = [...p.answers].sort(
-                  (a, b) => a.level - b.level
-                );
                 return (
                   <Link
                     key={p.date}
@@ -845,9 +799,6 @@ export default async function DailyPuzzlePage({
                     </span>
                     <p className="mt-2 text-xs font-medium text-muted-foreground">
                       {dayjs(p.date).format("MMMM D, YYYY")}
-                    </p>
-                    <p className="mt-1 text-xs text-muted-foreground truncate">
-                      {pSorted.map((g) => g.group).join(" / ")}
                     </p>
                     <span className="mt-2 flex items-center gap-1 text-xs font-medium text-blue-600 group-hover:text-blue-700 dark:text-blue-400">
                       View Hints

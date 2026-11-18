@@ -1,3 +1,4 @@
+import ConnectionsGame from "@/components/connections/ConnectionsGame";
 import { PuzzleCardCompact } from "@/components/connections/PuzzleCard";
 import { BASE_URL } from "@/config/site";
 import { getGuideBySlug } from "@/data/guides";
@@ -147,6 +148,8 @@ export default async function ConnectionsPatternDetailPage({
   }
 
   const allPuzzles = await getAllPuzzles();
+  const practiceBoard = page.slug === "fill-in-the-blank"
+    ? allPuzzles.find(puzzle => puzzle.date === "2026-11-16") : undefined;
   const examples = getExamplePuzzles(page.slug, allPuzzles);
   const relatedGuides = page.relatedGuideSlugs
     .map((guideSlug) => getGuideBySlug(guideSlug))
@@ -212,6 +215,25 @@ export default async function ConnectionsPatternDetailPage({
           {getStudySummary(page.slug)}
         </p>
       </section>
+
+      {practiceBoard && (
+        <section className="mb-8 rounded-2xl border border-border bg-card p-5 shadow-sm sm:p-6">
+          <h2 className="font-heading text-xl font-bold text-foreground">Find the missing partner</h2>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            In puzzle #1251, FREEZE, TEASER, TRUST and WAVES all follow BRAIN.
+            WAVES could pull you toward SURF and WATER SKIER. Test all four phrases aloud:
+            brain freeze, brain teaser, brain trust, brain waves. The beach idea explains
+            only part of the board, while the same missing word explains all four tiles.
+          </p>
+          <details className="mt-4">
+            <summary className="cursor-pointer font-semibold">Practice this pattern on puzzle #{practiceBoard.id}</summary>
+            <div className="mt-4"><ConnectionsGame key={practiceBoard.date} groups={practiceBoard.answers} /></div>
+            <Link href={`/connections-hint/${practiceBoard.date}`} className="mt-3 inline-block text-sm text-blue-600">
+              Open a clue for this board
+            </Link>
+          </details>
+        </section>
+      )}
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
         <div className="space-y-8">
