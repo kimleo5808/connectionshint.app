@@ -59,13 +59,13 @@ export default async function PurplePracticePage() {
       <p>Read an odd-looking tile aloud. If its sound suggests a familiar object, try to turn three more tiles into objects of the same kind. Use the sound-alikes set above to isolate that skill.</p>
       <h3>Change one letter consistently</h3>
       <p>Keep the same position in all four words. If your first two candidates need a new initial, try changing the initial of a third before spending a guess. For a whole game across all four colors, open <Link href="/connections-practice">classic practice mode</Link>.</p>
-      <h3>Give the oddest tile a partner</h3>
       <LessonTable caption="Four ways to test an unusual tile" headers={["Technique", "Try this", "Archive example"]} rows={[
         ["Hidden ending", "Read from the right edge.", <span key="end">BEL<strong>FAST</strong></span>],
         ["Shared phrase", "Put one word before each tile.", "Golden rule"],
         ["Sound-alike", "Say it aloud.", "WON → one"],
         ["Letter change", "Remove a letter.", "FAIR → FIR"],
       ]} />
+      <h3>Give the oddest tile a partner</h3>
       <p>On a fresh board, read all sixteen tiles before selecting any. Then pick the one you would have the hardest time explaining to somebody else. A long compound, a short everyday verb or a strangely particular name can all be good starting points. Find a second tile on which you can perform the same operation. That pair gives you a hypothesis you can actually test.</p>
       <p>For instance, suppose the first word ends in a color. Check whether a second one ends in a different color. If your next candidate merely reminds you of a colorful object, put it aside. You have already learned something about the boundary of your proposed group, even if you end up dropping it entirely.</p>
 

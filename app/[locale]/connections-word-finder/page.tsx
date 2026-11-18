@@ -69,7 +69,6 @@ export default async function WordFinder({ searchParams }: {
         illustration={<LessonFigure file={image} alt="A freshwater bass beside a four-string bass guitar" caption="BASS can name the fish or the instrument. The other tiles decide which reading fits." />} />
       <h2 id="bass">How can the same word fit different groups?</h2>
       <p>A tile keeps its spelling from one puzzle to the next. The other three words tell you which meaning to use. BASS makes a good test because it even changes sound.</p>
-      <h3>Five early appearances of BASS</h3>
       <LessonTable caption="BASS across five archive boards" headers={["Puzzle", "Group", "Other tiles"]} rows={[
         [<Link key="171" href="/connections-hint/2023-11-29">#171</Link>, "Instruments", "HARP, HORN, ORGAN"],
         [<Link key="202" href="/connections-hint/2023-12-30">#202</Link>, "Heteronyms", "DOVE, DESERT, WIND"],
@@ -78,7 +77,7 @@ export default async function WordFinder({ searchParams }: {
         [<Link key="812" href="/connections-hint/2025-08-31">#812</Link>, "Heteronyms", "AXES, COORDINATE, DOES"],
       ]} />
       <p>Start with the clue you remember from playing. If somebody read the tile aloud two ways, the heteronym rows narrow your choice to the December 2023 and August 2025 boards. If your strongest memory was the word PERCH, the fish row takes you straight to the puzzle you meant.</p>
-      <h4>When pronunciation changes the answer</h4>
+      <h3>When pronunciation changes the answer</h3>
       <p>Say the fish name so it rhymes with “mass,” then the instrument so it rhymes with “face.” That switch earns BASS a place with DOVE in <Link href="/connections-hint/2023-12-30">#202</Link> and with DOES in <Link href="/connections-hint/2025-08-31">#812</Link>. Both groups are heteronyms.</p>
       <h3>Pick the right BASS board from a single memory</h3>
       <p>Suppose you remember a music puzzle with BASS and HARP. You can find both tiles together in two of these results. Open the groups one at a time. HORN and ORGAN complete the quartet in November 2023. BASSOON and RECORDER complete it in March 2024. Remembering even one of those instruments settles which puzzle you played.</p>
