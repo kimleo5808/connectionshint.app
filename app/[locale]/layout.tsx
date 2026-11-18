@@ -99,7 +99,7 @@ export default async function LocaleLayout({
           <></>
         ) : (
           <>
-            <Analytics />
+            {process.env.VERCEL === "1" && <Analytics />}
             <GoogleAnalytics />
             <GoogleAdsense />
             <PlausibleAnalytics />

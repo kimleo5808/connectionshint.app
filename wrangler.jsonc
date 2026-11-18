@@ -1,6 +1,9 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"main": ".open-next/worker.js",
+	// next-themes serializes its initializer into HTML. Keep that function
+	// self-contained when Wrangler bundles server-rendered pages.
+	"keep_names": false,
 	"name": "connectionshint-app",
 	"compatibility_date": "2026-02-10",
 	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
