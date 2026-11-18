@@ -700,7 +700,8 @@ export default async function DailyPuzzlePage({
                         className="border-b border-border/50 hover:bg-muted/30 transition-colors"
                       >
                         <td className="px-4 py-2.5 font-mono font-bold text-foreground">
-                          {word}
+                            <Link href={"/connections-word-finder?word=" + encodeURIComponent(word)} prefetch={false} rel="nofollow"
+                              className="underline underline-offset-2" aria-label={"Find past appearances of " + word}>{word}</Link>
                         </td>
                         <td className="px-4 py-2.5 text-muted-foreground">
                           {group.group}

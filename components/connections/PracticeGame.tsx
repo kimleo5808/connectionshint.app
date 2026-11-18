@@ -230,7 +230,7 @@ export default function PracticeGame({ puzzles }: PracticeGameProps) {
           </div>
 
           {/* Game */}
-          <ConnectionsGame groups={currentPuzzle.answers} />
+          <ConnectionsGame key={currentPuzzle.date} groups={currentPuzzle.answers} />
 
           {/* Controls below game */}
           <div className="flex items-center justify-center gap-3 pt-2">

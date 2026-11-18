@@ -78,6 +78,9 @@ export default async function GuidesPage({ params }: { params: Params }) {
       </header>
 
       {/* Guide Cards */}
+      <I18nLink href="/guides/connections-one-away" className="mt-6 inline-block font-semibold text-primary underline underline-offset-4">
+        What does “One Away” mean? Try a real guess
+      </I18nLink>
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {GUIDES.map((guide) => (
           <I18nLink

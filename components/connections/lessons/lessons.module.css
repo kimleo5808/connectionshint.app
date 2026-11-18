@@ -1,0 +1,67 @@
+.page { @apply mx-auto w-full max-w-5xl px-4 pb-14 sm:px-8; }
+.intro { @apply pb-4 pt-5 sm:pb-6 sm:pt-8; }
+.intro a, .textLink, .article a, .results a { @apply text-primary underline decoration-current underline-offset-4; }
+.intro a { @apply text-sm; }
+.intro h1 { @apply mt-2 font-heading text-3xl font-bold leading-tight tracking-tight sm:text-5xl; text-wrap: balance; }
+.intro p { @apply mt-2 max-w-3xl leading-relaxed text-muted-foreground; }
+.panel { @apply rounded-2xl border border-border bg-card p-4 sm:p-7; }
+.panel h2 { @apply font-heading text-xl font-semibold; }
+.search { @apply mt-2 flex gap-2; }
+.search input { @apply min-w-0 flex-1 rounded-lg border border-input bg-background px-3 py-2 text-base; }
+.primary, .secondary { @apply inline-flex min-h-11 items-center justify-center rounded-lg px-4 py-2 text-sm font-bold; }
+.primary { @apply bg-primary text-primary-foreground hover:brightness-95 disabled:opacity-50; }
+.secondary { @apply border border-border bg-card text-foreground hover:bg-muted; }
+.examples { @apply mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground; }
+.examples a { @apply py-2 font-semibold text-primary underline underline-offset-4; }
+.results { @apply mt-5 border-t border-border pt-4; }
+.results ul { @apply mt-2; }
+.results li { @apply border-t border-border py-2.5; }
+.results li:first-child { @apply border-t-0; }
+.resultRow { @apply flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1; }
+.resultRow time, .subtle { @apply text-sm text-muted-foreground; }
+.results summary, .article summary { @apply cursor-pointer py-1.5 font-semibold; }
+.results details p { @apply py-1 text-sm leading-relaxed; }
+.article { @apply mt-9 border-t border-border pt-6 sm:mt-12 sm:pt-8; }
+.article h2 { @apply mb-3 font-heading text-2xl font-bold leading-tight sm:text-3xl; text-wrap: balance; }
+.article h3 { @apply mb-1 mt-5 font-heading text-xl font-semibold; }
+.article h4 { @apply mb-1 mt-4 font-heading text-base font-semibold; }
+.article p { @apply mb-2 max-w-prose leading-relaxed; }
+.spread { @apply grid items-start gap-5 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] md:gap-10; }
+.figure { @apply m-0; }
+.figure img { @apply h-auto w-full rounded-xl; }
+.figure figcaption { @apply mt-2 text-sm leading-snug text-muted-foreground; }
+.swap { @apply border-t-4 border-t-amber-400; }
+.swapLayout { @apply mt-4 grid gap-4 md:grid-cols-2 md:gap-8; }
+.swapLayout h3 { @apply mb-2 text-sm font-semibold; }
+.wordRow { @apply grid grid-cols-4 gap-1.5 md:grid-cols-2 md:gap-2; }
+.tile { @apply flex min-h-11 min-w-0 items-center justify-center rounded-md border border-border bg-muted px-1 py-2 text-center text-sm font-bold leading-tight text-foreground; overflow-wrap: anywhere; }
+.tile[aria-pressed="true"] { @apply border-primary bg-primary text-primary-foreground; }
+.tile:enabled:hover { @apply outline outline-1 outline-current; }
+.tile:disabled { @apply cursor-default; }
+.feedback { @apply mt-3 min-h-6 text-sm font-medium; }
+.drill { @apply rounded-2xl p-3 sm:p-6; color: #fff; background: #302343; }
+.drillLayout { @apply grid gap-3 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] md:gap-6; }
+.drill h2 { @apply font-heading text-xl font-semibold; }
+.board { @apply mt-3 grid grid-cols-4 gap-1.5 sm:gap-2; }
+.board .tile { @apply min-h-12 border-transparent sm:min-h-14; background: #f2eff6; color: #292035; font-size: clamp(.7rem, 2.8vw, .9rem); }
+.board .tile[aria-pressed="true"] { background: #926bc7; color: white; box-shadow: inset 0 0 0 2px white; }
+.controls { @apply flex flex-col items-start justify-center gap-2; }
+.controls select { @apply max-w-full rounded-md bg-white px-2 py-2 text-sm text-slate-900; }
+.controls label, .controls p { @apply text-sm leading-snug; }
+.controls label { @apply flex flex-wrap items-center gap-2; }
+.controls button { @apply min-h-10 rounded-md px-3 text-sm font-semibold; }
+.check { background: #faf6ff; color: #312041; }
+.check:disabled { opacity: .65; }
+.quiet { @apply underline underline-offset-4; }
+.actions { @apply flex flex-wrap items-center gap-1; }
+.explanation { @apply mt-4 border-t border-white/30 pt-3; }
+.explanation p { @apply mt-1 max-w-prose; }
+.page :is(button, a, input, summary, select):focus-visible { outline: 3px solid #4583de; outline-offset: 3px; }
+.drill :is(button, select):focus-visible { outline-color: #f7cc65; }
+.page :is(h1, h2, h3, h4) { font-family: var(--font-heading), sans-serif; }
+@media (max-width: 380px) {
+  .page { padding-inline: .75rem; }
+  .drill { padding: .625rem; }
+  .board { gap: .25rem; }
+  .board .tile { padding-inline: 1px; }
+}

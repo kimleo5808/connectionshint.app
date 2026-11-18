@@ -1,6 +1,7 @@
 "use client";
 
 import type { ConnectionsGroup, ConnectionsLevel } from "@/types/connections";
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 /* ------------------------------------------------------------------ */
@@ -71,6 +72,7 @@ export default function ConnectionsGame({ groups }: ConnectionsGameProps) {
   } | null>(null);
   const [shaking, setShaking] = useState(false);
   const [guessHistory, setGuessHistory] = useState<string[]>([]);
+  const [seenOneAway, setSeenOneAway] = useState(false);
 
   // Sorted solved groups for display
   const solvedGroups = useMemo(
@@ -165,6 +167,7 @@ export default function ConnectionsGame({ groups }: ConnectionsGameProps) {
       setSelected(new Set());
 
       if (oneAway) {
+        setSeenOneAway(true);
         setMessage({ text: "One away...", type: "oneaway" });
       } else {
         setMessage({ text: "Incorrect", type: "wrong" });
@@ -188,6 +191,7 @@ export default function ConnectionsGame({ groups }: ConnectionsGameProps) {
     setStatus("playing");
     setMessage(null);
     setGuessHistory([]);
+    setSeenOneAway(false);
   }, [allTiles]);
 
   /* ---- Render ---- */
@@ -282,6 +286,7 @@ export default function ConnectionsGame({ groups }: ConnectionsGameProps) {
       )}
 
       {/* Controls */}
+      {seenOneAway && <p className="mt-2 text-center text-sm"><Link className="text-primary underline underline-offset-4" href="/guides/connections-one-away">How to read a One Away guess</Link></p>}
       {status === "playing" && (
         <div className="mt-4 flex items-center justify-center gap-3">
           <button

@@ -22,6 +22,7 @@ type Params = Promise<{ locale: string }>;
 export const dynamic = "force-dynamic";
 
 const TAG_LINKS = [
+  { label: "Find a puzzle by word", href: "/connections-word-finder" },
   { label: "Today's Hint", href: "/connections-hint-today" },
   { label: "Yesterday", href: "/connections-hint-yesterday" },
   { label: "Difficulty Guide", href: "/connections-difficulty" },

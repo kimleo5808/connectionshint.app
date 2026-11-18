@@ -206,6 +206,9 @@ export default async function ConnectionsPracticePage({
           daily Connections into a reliable win.
         </p>
         <div className="mt-5 flex flex-wrap justify-center gap-2">
+          <Link href="/connections-practice/purple-groups" className="rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-primary">
+            Practice purple groups
+          </Link>
           <Link
             href="/connections-hint-today"
             className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-blue-300 hover:text-blue-600 dark:hover:border-blue-700 dark:hover:text-blue-400"
