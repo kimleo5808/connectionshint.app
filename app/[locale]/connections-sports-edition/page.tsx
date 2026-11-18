@@ -237,9 +237,6 @@ export default async function ConnectionsSportsEditionPage({
             {isToday ? "Play today's Sports Edition" : "Play an archived Sports Edition board"}
           </h2>
           <p className="text-center text-xs text-slate-400 mb-1">
-            Create four groups of four!
-          </p>
-          <p className="text-center text-[10px] text-slate-500 mb-5">
             {dayjs(sportsPuzzle.date).format("MMMM D, YYYY")}
           </p>
           <SportsConnectionsGame key={sportsPuzzle.date} groups={sportsPuzzle.answers} />

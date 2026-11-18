@@ -62,6 +62,7 @@ export default function SportsConnectionsGame({
   }, [groups]);
 
   const [tiles, setTiles] = useState<WordTile[]>(() => [...allTiles].sort((a, b) => a.word < b.word ? -1 : a.word > b.word ? 1 : 0));
+  const [ready, setReady] = useState(false);
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [solvedLevels, setSolvedLevels] = useState<ConnectionsLevel[]>([]);
   const [mistakes, setMistakes] = useState(MAX_MISTAKES);
@@ -72,6 +73,7 @@ export default function SportsConnectionsGame({
   } | null>(null);
   const [shaking, setShaking] = useState(false);
   const [guessHistory, setGuessHistory] = useState<string[]>([]);
+  useEffect(() => { setReady(true); }, []);
 
   const solvedGroups = useMemo(
     () =>
@@ -186,6 +188,9 @@ export default function SportsConnectionsGame({
 
   return (
     <div className="w-full max-w-lg mx-auto">
+      <p role="status" className="mb-3 text-center text-xs text-slate-300">
+        {ready ? "Create four groups of four!" : "Loading the game controls…"}
+      </p>
       {/* Solved categories */}
       {solvedGroups.length > 0 && (
         <div className="space-y-2 mb-3">
@@ -220,7 +225,8 @@ export default function SportsConnectionsGame({
               <button
                 key={tile.word}
                 onClick={() => handleTileClick(tile.word)}
-                disabled={status !== "playing"}
+                disabled={!ready || status !== "playing"}
+                aria-pressed={isSelected}
                 className={`
                   aspect-square rounded-full flex items-center justify-center
                   text-center text-[10px] font-bold uppercase tracking-wide leading-tight
@@ -270,6 +276,7 @@ export default function SportsConnectionsGame({
         <div className="mt-4 flex items-center justify-center gap-3">
           <button
             onClick={handleShuffle}
+            disabled={!ready}
             className="rounded-full border border-slate-600 px-5 py-2 text-sm font-semibold text-slate-200 transition-colors hover:bg-slate-700"
           >
             Shuffle
