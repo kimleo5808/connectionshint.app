@@ -26,6 +26,11 @@
 .article h3 { @apply mb-1 mt-5 font-heading text-xl font-semibold; }
 .article h4 { @apply mb-1 mt-4 font-heading text-base font-semibold; }
 .article p { @apply mb-2 max-w-prose leading-relaxed; }
+.article h2[id] { scroll-margin-top: 5.5rem; }
+.article > h2[id] { @apply mt-9; }
+.contents { @apply mb-7 border-l-2 border-primary pl-4; }
+.contents ul { @apply mt-1 flex flex-wrap gap-x-5 gap-y-1 text-sm; }
+.contents a { @apply inline-block py-1; }
 .spread { @apply grid items-start gap-5 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] md:gap-10; }
 .figure { @apply m-0; }
 .figure img { @apply h-auto w-full rounded-xl; }

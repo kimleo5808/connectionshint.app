@@ -35,3 +35,10 @@ export function LessonFigure({ file, alt, caption }: { file: string; alt: string
     <figcaption>{caption}</figcaption>
   </figure>;
 }
+
+export function LessonContents({ links }: { links: [string, string][] }) {
+  return <nav aria-label="In this guide" className={styles.contents}>
+    <strong>In this guide</strong>
+    <ul>{links.map(([id, label]) => <li key={id}><a href={"#" + id}>{label}</a></li>)}</ul>
+  </nav>;
+}
