@@ -9,9 +9,6 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 /*  Constants                                                          */
 /* ------------------------------------------------------------------ */
 
-const MAX_MISTAKES = 4;
-const MAX_SELECTION = 4;
-
 const CATEGORY_BG: Record<ConnectionsLevel, string> = {
   0: "bg-yellow-400 dark:bg-yellow-500",
   1: "bg-emerald-400 dark:bg-emerald-500",
@@ -53,9 +50,13 @@ function shuffleArray<T>(arr: T[]): T[] {
 interface ConnectionsGameProps {
   groups: ConnectionsGroup[];
   customPuzzle?: boolean;
+  miniExplanation?: string;
 }
 
-export default function ConnectionsGame({ groups, customPuzzle = false }: ConnectionsGameProps) {
+export default function ConnectionsGame({ groups, customPuzzle = false, miniExplanation }: ConnectionsGameProps) {
+  const mini = miniExplanation !== undefined;
+  const groupSize = mini ? 3 : 4;
+  const mistakeLimit = mini ? 3 : 4;
   // Build flat tile list once
   const allTiles = useMemo<WordTile[]>(() => {
     return groups.flatMap((g) =>
@@ -68,7 +69,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false }: Connec
     : [...allTiles].sort((a, b) => a.word < b.word ? -1 : a.word > b.word ? 1 : 0));
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [solvedLevels, setSolvedLevels] = useState<ConnectionsLevel[]>([]);
-  const [mistakes, setMistakes] = useState(MAX_MISTAKES);
+  const [mistakes, setMistakes] = useState(mistakeLimit);
   const [status, setStatus] = useState<GameStatus>("playing");
   const [message, setMessage] = useState<{
     text: string;
@@ -109,13 +110,13 @@ export default function ConnectionsGame({ groups, customPuzzle = false }: Connec
         const next = new Set(prev);
         if (next.has(word)) {
           next.delete(word);
-        } else if (next.size < MAX_SELECTION) {
+        } else if (next.size < groupSize) {
           next.add(word);
         }
         return next;
       });
     },
-    [status]
+    [status, groupSize]
   );
 
   const handleShuffle = useCallback(() => {
@@ -127,7 +128,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false }: Connec
   }, []);
 
   const handleSubmit = useCallback(() => {
-    if (selected.size !== MAX_SELECTION || status !== "playing") return;
+    if (selected.size !== groupSize || status !== "playing") return;
 
     const selectedWords = [...selected];
 
@@ -140,7 +141,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false }: Connec
     const row = selectedWords.map(word => colorCodes[groups.find(g => g.members.includes(word))!.level]).join("");
     setGuessHistory((prev) => [...prev, { key: sortedGuess, row }]);
 
-    // Check if all 4 words belong to same group
+    // Check the submitted set against the board's groups.
     const matchedGroup = groups.find((g) =>
       selectedWords.every((w) => g.members.includes(w))
     );
@@ -152,7 +153,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false }: Connec
       setSelected(new Set());
       setMessage({ text: "Correct!", type: "correct" });
 
-      if (newSolved.length === 4) {
+      if (newSolved.length === groups.length) {
         setStatus("won");
       }
     } else {
@@ -161,7 +162,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false }: Connec
         const matchCount = selectedWords.filter((w) =>
           g.members.includes(w)
         ).length;
-        return matchCount === 3;
+        return matchCount === groupSize - 1;
       });
 
       setShaking(true);
@@ -180,22 +181,22 @@ export default function ConnectionsGame({ groups, customPuzzle = false }: Connec
 
       if (newMistakes <= 0) {
         // Reveal all remaining
-        setSolvedLevels([0, 1, 2, 3]);
+        setSolvedLevels(groups.map(group => group.level));
         setStatus("lost");
       }
     }
-  }, [selected, status, groups, solvedLevels, mistakes, guessHistory]);
+  }, [selected, status, groups, solvedLevels, mistakes, guessHistory, groupSize]);
 
   const handlePlayAgain = useCallback(() => {
     setTiles(shuffleArray(allTiles));
     setSelected(new Set());
     setSolvedLevels([]);
-    setMistakes(MAX_MISTAKES);
+    setMistakes(mistakeLimit);
     setStatus("playing");
     setMessage(null);
     setGuessHistory([]);
     setSeenOneAway(false);
-  }, [allTiles]);
+  }, [allTiles, mistakeLimit]);
 
   /* ---- Render ---- */
 
@@ -234,7 +235,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false }: Connec
       {/* Word grid */}
       {unsolvedTiles.length > 0 && (
         <div
-          className={`grid grid-cols-4 gap-2 ${shaking ? "animate-shake" : ""}`}
+          className={`grid ${mini ? "grid-cols-3" : "grid-cols-4"} gap-2 ${shaking ? "animate-shake" : ""}`}
         >
           {unsolvedTiles.map((tile) => {
             const isSelected = selected.has(tile.word);
@@ -267,8 +268,9 @@ export default function ConnectionsGame({ groups, customPuzzle = false }: Connec
       <div className="mt-4 flex items-center justify-center gap-1.5">
         <span className="text-xs text-muted-foreground mr-1">
           Mistakes remaining:
+          <span className="sr-only"> {mistakes}</span>
         </span>
-        {Array.from({ length: MAX_MISTAKES }).map((_, i) => (
+        {Array.from({ length: mistakeLimit }).map((_, i) => (
           <span
             key={i}
             className={`h-2.5 w-2.5 rounded-full transition-colors ${
@@ -282,7 +284,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false }: Connec
 
       {/* Status message */}
       {message && (
-        <p
+        <p role="status"
           className={`mt-3 text-center text-sm font-bold ${messageColor} animate-in fade-in duration-200`}
         >
           {message.text}
@@ -290,7 +292,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false }: Connec
       )}
 
       {/* Controls */}
-      {seenOneAway && <p className="mt-2 text-center text-sm"><Link className="text-primary underline underline-offset-4" href="/guides/connections-one-away">How to read a One Away guess</Link></p>}
+      {seenOneAway && !mini && <p className="mt-2 text-center text-sm"><Link className="text-primary underline underline-offset-4" href="/guides/connections-one-away">How to read a One Away guess</Link></p>}
       {status === "playing" && (
         <div className="mt-4 flex items-center justify-center gap-3">
           <button
@@ -308,7 +310,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false }: Connec
           </button>
           <button
             onClick={handleSubmit}
-            disabled={selected.size !== MAX_SELECTION}
+            disabled={selected.size !== groupSize}
             className="rounded-full bg-slate-800 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-slate-700 disabled:opacity-40 disabled:cursor-default dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200"
           >
             Submit
@@ -328,21 +330,22 @@ export default function ConnectionsGame({ groups, customPuzzle = false }: Connec
               {mistakes !== 1 ? "s" : ""} remaining!
             </p>
           )}
-          {status === "lost" && (
+          {status === "lost" && !mini && (
             <p className="mt-1 text-sm text-muted-foreground">
               {customPuzzle ? "Read the four groups above, then replay the board to try the connections again." : "Check the hints below for strategy tips!"}
             </p>
           )}
+          {mini && <p className="mx-auto mt-2 max-w-prose text-sm leading-relaxed">{miniExplanation}</p>}
           <button
             onClick={handlePlayAgain}
             className="mt-4 rounded-full bg-blue-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-500/20 transition-all hover:bg-blue-700"
           >
             Play Again
           </button>
-          <Link className="ml-3 inline-block py-2 text-sm text-primary underline underline-offset-4"
+          {!mini && <Link className="ml-3 inline-block py-2 text-sm text-primary underline underline-offset-4"
             href={"/connections-results#grid=" + guessHistory.map(guess => guess.row).join(".")}>
             Read my result grid
-          </Link>
+          </Link>}
         </div>
       )}
 

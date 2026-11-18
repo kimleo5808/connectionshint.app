@@ -93,6 +93,7 @@ export default async function HomeComponent() {
               ["/connections-results", "Read a result grid"],
               ["/guides/connections-one-away", "One-away guide"],
               ["/connections-practice/purple-groups", "Purple group practice"],
+              ["/mini-connections", "Mini Connections"],
               ["/connections-sports-edition/archive", "Sports Edition archive"],
             ].map(([href, label]) => <Link key={href} href={href} className="py-1 underline decoration-slate-500 underline-offset-4 hover:text-white">{label}</Link>)}
           </nav>
