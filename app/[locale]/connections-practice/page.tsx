@@ -209,6 +209,9 @@ export default async function ConnectionsPracticePage({
           <Link href="/mini-connections" className="rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-primary">
             Play Mini Connections
           </Link>
+          <Link href="/emoji-connections" className="rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-primary">
+            Play Emoji Connections
+          </Link>
           <Link href="/connections-practice/purple-groups" className="rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-primary">
             Practice purple groups
           </Link>

@@ -51,12 +51,13 @@ function shuffleArray<T>(arr: T[]): T[] {
 interface ConnectionsGameProps {
   groups: ConnectionsGroup[];
   customPuzzle?: boolean;
-  miniExplanation?: string;
+  mini?: boolean;
+  completionNote?: string;
+  renderTile?: (word: string) => ReactNode;
   renderProgress?: (rows: string[], restart: () => void) => ReactNode;
 }
 
-export default function ConnectionsGame({ groups, customPuzzle = false, miniExplanation, renderProgress }: ConnectionsGameProps) {
-  const mini = miniExplanation !== undefined;
+export default function ConnectionsGame({ groups, customPuzzle = false, mini = false, completionNote, renderTile, renderProgress }: ConnectionsGameProps) {
   const groupSize = mini ? 3 : 4;
   const mistakeLimit = mini ? 3 : 4;
   // Build flat tile list once
@@ -260,7 +261,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false, miniExpl
                   disabled:cursor-default disabled:opacity-60
                 `}
               >
-                {tile.word}
+                {renderTile ? renderTile(tile.word) : tile.word}
               </button>
             );
           })}
@@ -333,12 +334,12 @@ export default function ConnectionsGame({ groups, customPuzzle = false, miniExpl
               {mistakes !== 1 ? "s" : ""} remaining!
             </p>
           )}
-          {status === "lost" && !mini && (
+          {status === "lost" && !completionNote && (
             <p className="mt-1 text-sm text-muted-foreground">
               {customPuzzle ? "Read the four groups above, then replay the board to try the connections again." : "Check the hints below for strategy tips!"}
             </p>
           )}
-          {mini && <p className="mx-auto mt-2 max-w-prose text-sm leading-relaxed">{miniExplanation}</p>}
+          {completionNote && <p className="mx-auto mt-2 max-w-prose text-sm leading-relaxed">{completionNote}</p>}
           <button
             onClick={handlePlayAgain}
             className="mt-4 rounded-full bg-blue-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-500/20 transition-all hover:bg-blue-700"

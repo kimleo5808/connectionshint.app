@@ -19,7 +19,7 @@ export default function MiniRound({ board, number, total }: { board: MiniBoard; 
       <div className={styles.board}>
         <p className={styles.instruction} role="status">{ready ? "Select three related words, then submit." : "Loading the game controls…"}</p>
         <fieldset disabled={!ready} aria-label="Word tiles and game controls">
-          <ConnectionsGame groups={board.groups} miniExplanation={board.explanation}/>
+          <ConnectionsGame groups={board.groups} mini completionNote={board.explanation}/>
         </fieldset>
         <noscript>Enable JavaScript to play this board.</noscript>
       </div>
