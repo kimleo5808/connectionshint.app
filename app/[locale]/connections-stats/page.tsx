@@ -508,8 +508,10 @@ export default async function ConnectionsStatsPage({
               </h2>
             </div>
             <p className="mb-5 text-sm text-muted-foreground">
-              Words that appear in the most puzzles. These versatile words have
-              multiple meanings — which is exactly why editors keep using them.
+              For dates and group colors, explore the{" "}
+              <Link href="/most-common-connections-words" className="font-semibold text-primary underline underline-offset-4">
+                full ranking of the most common Connections words
+              </Link>.
             </p>
             <div className="grid gap-2 sm:grid-cols-2">
               {topWords.map((item, i) => (

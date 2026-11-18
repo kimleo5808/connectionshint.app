@@ -1,0 +1,71 @@
+.index {
+  border: 1px solid var(--rule);
+  border-top: 4px solid var(--ink);
+  border-radius: .55rem;
+  overflow: hidden;
+  scroll-margin-top: 5rem;
+  background: hsl(var(--card));
+}
+.filters {
+  display: grid;
+  grid-template-columns: minmax(9rem, 1.4fr) repeat(2, minmax(7rem, .8fr)) auto;
+  gap: .85rem;
+  align-items: end;
+  padding: 1rem 1.25rem;
+  background: var(--wash);
+}
+.filters label { display: grid; gap: .25rem; font-size: .86rem; font-weight: 650; }
+.filters :is(input,select,button) { min-width: 0; min-height: 2.75rem; border-radius: .35rem; }
+.filters :is(input,select) { width: 100%; border: 1px solid var(--rule); background: hsl(var(--card)); color: hsl(var(--foreground)); padding: .4rem .55rem; font-size: 1rem; font-weight: 400; }
+.filters button { background: var(--ink); color: var(--wash); padding: .4rem .95rem; font-weight: 650; }
+.filters button:hover { filter: brightness(.9); }
+.coverage, .pager { display: flex; justify-content: space-between; gap: .15rem .75rem; align-items: baseline; flex-wrap: wrap; }
+.coverage { padding: .8rem 1.25rem; font-size: .88rem; }
+.coverage span, .rank, .pager > span { color: hsl(var(--muted-foreground)); }
+.columnHeads, .rows summary { display: grid; grid-template-columns: 3.1rem minmax(0,1fr) 4rem; gap: .55rem; align-items: baseline; padding-inline: 1.25rem; }
+.columnHeads { font-size: .8rem; font-weight: 650; color: var(--ink); background: var(--wash); border-block: 1px solid var(--rule); padding-block: .35rem; }
+.columnHeads span:last-child, .total { text-align: right; }
+.rows summary { min-height: 2.8rem; cursor: pointer; padding-block: .55rem; list-style: none; }
+.rows summary::-webkit-details-marker { display: none; }
+.rows summary:hover, .rows details[open] { background: var(--wash); }
+.rows summary:focus-visible { outline-offset: -3px; }
+.rows > li { border-bottom: 1px solid hsl(var(--border)); }
+.word { font: bold 1.15rem/1.3 Georgia, serif; overflow-wrap: anywhere; }
+.word span { display: inline-block; margin-left: .55rem; color: var(--ink); font: .85rem/1 sans-serif; }
+.rows details[open] .word span { transform: rotate(180deg); }
+.total, .rank, .pager, .coverage { font-variant-numeric: tabular-nums; }
+.total { font-weight: 700; }
+.evidence { padding: 0 1.25rem 1rem 4.9rem; font-size: .9rem; }
+.evidence p { color: var(--ink); margin-bottom: .65rem; text-transform: capitalize; }
+.evidence ul { margin-block: .3rem .75rem; }
+.evidence li { display: flex; flex-wrap: wrap; align-items: baseline; gap: .05rem .9rem; padding-block: .25rem; }
+.evidence li span::first-letter { text-transform: uppercase; }
+.index a { color: var(--ink); text-decoration: underline; text-underline-offset: .18em; }
+.pager { padding: .7rem 1.25rem; align-items: center; font-size: .85rem; }
+.pager div { display: flex; gap: .75rem; }
+.pager a { display: inline-flex; align-items: center; min-height: 2.75rem; padding-inline: .5rem; font-weight: 650; }
+.empty { padding: 1.15rem 1.25rem; border-top: 1px solid var(--rule); }
+.empty h2 { font-weight: 700; }
+.empty p { margin-block: .45rem .75rem; }
+.chart { padding: 1rem clamp(.75rem,3vw,1.6rem); background: var(--wash); border-block: 2px solid var(--rule); margin: 1.15rem 0 1.5rem; }
+.chart figcaption { margin-bottom: .65rem; font-weight: 700; font-size: 1.15rem; }
+.chart table { width: 100%; max-width: 39rem; table-layout: fixed; }
+.chart th, .chart td { text-align: left; padding: .36rem .65rem .36rem 0; }
+.chart th { text-transform: capitalize; }
+.chart th:first-child { width: 22%; }
+.chart tbody th { font-weight: 500; }
+.chart td > div { display: flex; align-items: center; gap: .5rem; }
+.chart strong { min-width: 1ch; font-variant-numeric: tabular-nums; }
+.barTrack { display: block; flex: 1; background: hsl(var(--foreground) / .09); }
+.barTrack i { display: block; height: .68rem; }
+.barTrack i[data-color="yellow"] { background: #a57613; }
+.barTrack i[data-color="green"] { background: #428153; }
+.barTrack i[data-color="blue"] { background: #497aa5; }
+.barTrack i[data-color="purple"] { background: #855eaa; }
+@media (max-width: 680px) {
+  .filters { grid-template-columns: 1fr 1fr; gap: .55rem .65rem; padding: .8rem; }
+  .coverage, .pager, .columnHeads, .rows summary { padding-inline: .85rem; }
+  .coverage { padding-block: .55rem; }
+  .columnHeads, .rows summary { grid-template-columns: 2.2rem minmax(0,1fr) 3rem; }
+  .evidence { padding: .1rem .85rem .85rem; }
+}

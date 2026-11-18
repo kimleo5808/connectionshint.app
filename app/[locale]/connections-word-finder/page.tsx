@@ -4,6 +4,7 @@ import { LessonContents, LessonFigure, LessonPage, LessonTable } from "@/compone
 import { FlukeTimeline, NiceMeaningMap } from "@/components/connections/lessons/LessonDiagrams";
 import styles from "@/components/connections/lessons/lessons.module.css";
 import { getAllPuzzles } from "@/lib/connections-data";
+import { normalizeArchiveWord } from "@/lib/connections-word-frequency";
 import { constructMetadata } from "@/lib/metadata";
 import { LEVEL_COLORS } from "@/types/connections";
 
@@ -21,18 +22,14 @@ export async function generateMetadata({ params }: { params: Params }) {
     keywords: ["NYT Connections word finder", "search past Connections puzzles by word"], images: [image] });
 }
 
-function normalize(word: string) {
-  return word.normalize("NFKC").trim().replace(/\s+/g, " ").replace(/[‘’]/g, "'").toUpperCase();
-}
-
 export default async function WordFinder({ searchParams }: {
   searchParams: Promise<{ word?: string | string[] }>;
 }) {
   const { word } = await searchParams;
-  const term = normalize((Array.isArray(word) ? word[0] : word) || "") || "BASS";
+  const term = normalizeArchiveWord((Array.isArray(word) ? word[0] : word) || "") || "BASS";
   const boards = await getAllPuzzles();
   const matches = boards.flatMap(board => board.answers
-    .filter(group => group.members.some(member => normalize(member) === term))
+    .filter(group => group.members.some(member => normalizeArchiveWord(member) === term))
     .map(group => ({ date: board.date, id: board.id, group })));
 
   return <LessonPage parent={{ label: "Puzzle archive", path: "/connections-hint" }}
@@ -135,6 +132,7 @@ export default async function WordFinder({ searchParams }: {
       <LessonTable caption="Choose a lookup from the clue you remember" headers={["You remember", "Use", "Try this"]} rows={[
         ["A tile or a phrase", <a key="finder" href="#word">Word finder</a>, "Enter MASKED BALL in full."],
         ["An approximate date", <Link key="archive" href="/connections-hint">Date archive</Link>, "Browse the month you played."],
+        ["A word you see often", <Link key="rankings" href="/most-common-connections-words">Word frequency rankings</Link>, "Compare repeat counts by year and color."],
         ["The full grid", <Link key="solver" href="/connections-solver">Board solver</Link>, "Enter the sixteen tiles together."],
       ]} />
       <h3>Search a whole tile</h3>

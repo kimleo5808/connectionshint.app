@@ -33,6 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/connections-reverse-rainbow',
     '/guides/connections-one-away',
     '/connections-word-finder',
+    '/most-common-connections-words',
     '/connections-maker',
     '/connections-results',
     '/connections-categories',
