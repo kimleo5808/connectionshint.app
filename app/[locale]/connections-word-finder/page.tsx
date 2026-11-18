@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { WordResultLink } from "@/components/connections/lessons/WordResultLink";
-import { LessonContents, LessonFigure, LessonPage } from "@/components/connections/lessons/LessonPage";
+import { LessonContents, LessonFigure, LessonPage, LessonTable } from "@/components/connections/lessons/LessonPage";
+import { FlukeTimeline, NiceMeaningMap } from "@/components/connections/lessons/LessonDiagrams";
 import styles from "@/components/connections/lessons/lessons.module.css";
 import { getAllPuzzles } from "@/lib/connections-data";
 import { constructMetadata } from "@/lib/metadata";
@@ -35,7 +36,8 @@ export default async function WordFinder({ searchParams }: {
     .map(group => ({ date: board.date, id: board.id, group })));
 
   return <LessonPage parent={{ label: "Puzzle archive", path: "/connections-hint" }}
-    title="NYT Connections word finder" path={path}
+    title="NYT Connections word finder" path={path} tone="archive"
+    guidePreview={{ file: "/images/word-history-spring.webp", label: "The meanings of SPRING", anchor: "spring" }}
     intro="Remember a word but forgot the puzzle? Search for the exact tile to find its past boards and uncover the connection.">
     <section className={styles.panel} aria-label="Search the puzzle archive">
       <form action={path} method="get">
@@ -63,18 +65,21 @@ export default async function WordFinder({ searchParams }: {
       </div>
     </section>
     <article className={styles.article}>
-      <LessonContents links={[["bass", "The five BASS boards"], ["find-a-board", "Find a half-remembered puzzle"], ["nice", "NICE as a name"], ["spring", "The many jobs of SPRING"], ["compare", "Compare two results"], ["search-help", "Search tips"]]} />
-      <div className={styles.spread}>
-        <div>
-          <h2 id="bass">How can the same word fit different groups?</h2>
-          <p>A tile keeps its spelling from one puzzle to the next. The other three words tell you which meaning to use. BASS makes a good test because it even changes sound.</p>
-          <h3>Five early appearances of BASS</h3>
-          <p>In puzzles <Link href="/connections-hint/2023-11-29">#171</Link> and <Link href="/connections-hint/2024-03-26">#289</Link>, BASS is a musical instrument. In <Link href="/connections-hint/2024-07-10">#395</Link>, FLUKE, PERCH and PIKE put it back in the water.</p>
-          <h4>When pronunciation changes the answer</h4>
-          <p>Say the fish name so it rhymes with “mass,” then the instrument so it rhymes with “face.” That switch earns BASS a place with DOVE in <Link href="/connections-hint/2023-12-30">#202</Link> and with DOES in <Link href="/connections-hint/2025-08-31">#812</Link>. Both groups are heteronyms.</p>
-        </div>
-        <LessonFigure file={image} alt="A freshwater bass beside a four-string bass guitar" caption="One spelling can suggest a fish, an instrument or the difference between their pronunciations." />
-      </div>
+      <LessonContents links={[["bass", "The five BASS boards"], ["find-a-board", "Find a half-remembered puzzle"], ["nice", "NICE as a name"], ["spring", "The many jobs of SPRING"], ["compare", "Compare two results"], ["search-help", "Search tips"]]}
+        illustration={<LessonFigure file={image} alt="A freshwater bass beside a four-string bass guitar" caption="BASS can name the fish or the instrument. The other tiles decide which reading fits." />} />
+      <h2 id="bass">How can the same word fit different groups?</h2>
+      <p>A tile keeps its spelling from one puzzle to the next. The other three words tell you which meaning to use. BASS makes a good test because it even changes sound.</p>
+      <h3>Five early appearances of BASS</h3>
+      <LessonTable caption="BASS across five archive boards" headers={["Puzzle", "Group", "Other tiles"]} rows={[
+        [<Link key="171" href="/connections-hint/2023-11-29">#171</Link>, "Instruments", "HARP, HORN, ORGAN"],
+        [<Link key="202" href="/connections-hint/2023-12-30">#202</Link>, "Heteronyms", "DOVE, DESERT, WIND"],
+        [<Link key="289" href="/connections-hint/2024-03-26">#289</Link>, "Instruments", "BASSOON, HARP, RECORDER"],
+        [<Link key="395" href="/connections-hint/2024-07-10">#395</Link>, "Fish", "FLUKE, PERCH, PIKE"],
+        [<Link key="812" href="/connections-hint/2025-08-31">#812</Link>, "Heteronyms", "AXES, COORDINATE, DOES"],
+      ]} />
+      <p>Start with the clue you remember from playing. If somebody read the tile aloud two ways, the heteronym rows narrow your choice to the December 2023 and August 2025 boards. If your strongest memory was the word PERCH, the fish row takes you straight to the puzzle you meant.</p>
+      <h4>When pronunciation changes the answer</h4>
+      <p>Say the fish name so it rhymes with “mass,” then the instrument so it rhymes with “face.” That switch earns BASS a place with DOVE in <Link href="/connections-hint/2023-12-30">#202</Link> and with DOES in <Link href="/connections-hint/2025-08-31">#812</Link>. Both groups are heteronyms.</p>
       <h3>Pick the right BASS board from a single memory</h3>
       <p>Suppose you remember a music puzzle with BASS and HARP. You can find both tiles together in two of these results. Open the groups one at a time. HORN and ORGAN complete the quartet in November 2023. BASSOON and RECORDER complete it in March 2024. Remembering even one of those instruments settles which puzzle you played.</p>
       <p>The two heteronym results reward a different memory. Perhaps someone at the breakfast table read WIND aloud as a breeze and another person heard it as the instruction on an old clock. That conversation points to puzzle #202. If the discussion was about whether DOES meant female deer or what somebody does, open #812.</p>
@@ -89,6 +94,7 @@ export default async function WordFinder({ searchParams }: {
       <p>If the first result feels familiar, take a moment to check a second tile. A category can recur years later. The date beside a result belongs to the edition that contained that exact tile, and the numbered link takes you back to the full set of sixteen. That is where you can check a neighboring group or a memorable red herring.</p>
 
       <h2 id="nice">Reading NICE as praise, a city and a sound</h2>
+      <NiceMeaningMap />
       <h3>What did you hear when you read the tile?</h3>
       <p>Read NICE as a reaction to good news. In <Link href="/connections-hint/2024-06-05">puzzle #360</Link>, COOL, SICK and SWEET can all serve as enthusiastic responses. The tone of voice brings the four together. A later board, <Link href="/connections-hint/2024-09-21">#468</Link>, puts NICE beside IMPRESSIVE, PROPS and WELL DONE. Imagine saying each one to a friend who just finished a difficult job.</p>
       <p>Now open <Link href="/connections-hint/2026-03-08">puzzle #1001</Link>. LIMA, OSAKA and PHOENIX change how you read that same string of letters. Here Nice is the French city, pronounced roughly like “niece” in English. A puzzle board gives every tile capital letters, so the typography offers little help distinguishing an everyday adjective from a place name.</p>
@@ -97,9 +103,14 @@ export default async function WordFinder({ searchParams }: {
       <p>Those three results make a useful listening exercise. Ask a friend to read NICE aloud with its partners hidden. Then read out one partner from a group and let them try again. A change in pronunciation may settle the city example. For the praise examples, the sound stays put and the speaker’s intention does the work.</p>
 
       <h2 id="spring">How SPRING changes jobs across the archive</h2>
-      <h3>Trace a noun from a landscape to a machine</h3>
-      <p>In <Link href="/connections-hint/2023-09-23">puzzle #104</Link>, FOUNTAIN, TAP and WELL are companions for SPRING. Think of places from which water flows. In <Link href="/connections-hint/2024-03-31">#294</Link>, the companions become MINERAL, STILL and TAP. Water still matters, but the question has changed. These are descriptions you might encounter when choosing water to drink. A familiar companion like TAP can survive the change in category.</p>
-      <p>Open <Link href="/connections-hint/2024-05-04">#328</Link> and picture a lock taken apart on a workbench. The other pieces include a CYLINDER, a PIN and a TUMBLER. Here you could pick up the spring with your fingers. In <Link href="/connections-hint/2025-04-21">#680</Link>, a corkscrew and a piece of fusilli invite you to trace that same coil in the air. The physical object is familiar, while the relevant feature has shifted to its shape.</p>
+      <div className={styles.spread}>
+        <LessonFigure file="/images/word-history-spring.webp" alt="Water rises from rocks beside a coiled metal watch spring and gear" caption="A water source in #104 becomes a mechanical part in #931. The spelling of SPRING stays the same." />
+        <div>
+          <h3>Trace a noun from a landscape to a machine</h3>
+          <p>In <Link href="/connections-hint/2023-09-23">puzzle #104</Link>, FOUNTAIN, TAP and WELL are companions for SPRING. Think of places from which water flows. In <Link href="/connections-hint/2024-03-31">#294</Link>, the companions become MINERAL, STILL and TAP. Water still matters, but the question has changed. These are descriptions you might encounter when choosing water to drink. A familiar companion like TAP can survive the change in category.</p>
+          <p>Open <Link href="/connections-hint/2024-05-04">#328</Link> and picture a lock taken apart on a workbench. The other pieces include a CYLINDER, a PIN and a TUMBLER. Here you could pick up the spring with your fingers. In <Link href="/connections-hint/2025-04-21">#680</Link>, a corkscrew and a piece of fusilli invite you to trace that same coil in the air. The physical object is familiar, while the relevant feature has shifted to its shape.</p>
+        </div>
+      </div>
       <h3>Try the tile as a verb</h3>
       <p>Another set places SPRING beside BOUND, LEAP and VAULT. Put “over the puddle” after each word and imagine the motion. You can use that little sentence to find <Link href="/connections-hint/2023-12-10">puzzle #182</Link> again. It also explains why saving a label like “spring means a season” would tell you very little about this board.</p>
       <h4>What a missing partner can supply</h4>
@@ -107,6 +118,7 @@ export default async function WordFinder({ searchParams }: {
 
       <h2 id="compare">How to compare two search results</h2>
       <h3>Follow one companion into another puzzle</h3>
+      <FlukeTimeline />
       <p>Take FLUKE from the fish group in #395 and search for it on its own. In <Link href="/connections-hint/2025-05-19">puzzle #708</Link>, FLIPPER and BLUBBER point to the body of a whale. MELON looks strange until you recognize another anatomical term in that context. A memory of “something in the ocean” could describe both dates, but the companion words separate a list of fish from parts of an animal.</p>
       <p>You can take that comparison one step further in <Link href="/connections-hint/2025-12-17">#920</Link>. Cover the first letter of FLUKE and LUKE remains. LABEL leaves ABEL, MADAM leaves ADAM, and TRUTH leaves RUTH. Someone recalling the Biblical theme might naturally search for LUKE. To recover this particular tile through the finder, the initial F matters. The puzzle number is a handy bookmark once you have found it.</p>
       <h3>Recognize a repeated set even when its title changes</h3>
@@ -121,6 +133,11 @@ export default async function WordFinder({ searchParams }: {
       <p>If you share your finding, include the puzzle number and the partner that changed your mind. “Look at LEAD beside HALTER in #334” gives another player a precise place to start. They can decide how much of the answer to reveal, then return to the finder and investigate a different appearance themselves.</p>
 
       <h2 id="search-help">What can I look up?</h2>
+      <LessonTable caption="Choose a lookup from the clue you remember" headers={["You remember", "Use", "Try this"]} rows={[
+        ["A tile or a phrase", <a key="finder" href="#word">Word finder</a>, "Enter MASKED BALL in full."],
+        ["An approximate date", <Link key="archive" href="/connections-hint">Date archive</Link>, "Browse the month you played."],
+        ["The full grid", <Link key="solver" href="/connections-solver">Board solver</Link>, "Enter the sixteen tiles together."],
+      ]} />
       <h3>Search a whole tile</h3>
       <p>Enter the word or multiword phrase as it appeared on the board. Uppercase and lowercase both work. A result records the group on that date, so keep its name folded if you want to replay the puzzle.</p>
       <p>Typing masked ball with extra spaces between the words still finds MASKED BALL. Typing BALL finds appearances of BALL as a complete tile. If a phrase contained a hyphen, keep it. Curly and straight apostrophes are treated alike, so you can copy a tile from a message without retyping its apostrophe.</p>
