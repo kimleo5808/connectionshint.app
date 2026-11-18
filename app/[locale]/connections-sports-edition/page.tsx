@@ -3,6 +3,7 @@ import SportsConnectionsGame from "@/components/connections/SportsConnectionsGam
 import { BASE_URL } from "@/config/site";
 import { Locale, LOCALES } from "@/i18n/routing";
 import { editionDate } from "@/lib/puzzle-archive.mjs";
+import { sportsNumber } from "@/lib/sports-archive.mjs";
 import {
   getLatestSportsPuzzle,
   getRecentSportsPuzzles,
@@ -165,6 +166,7 @@ export default async function ConnectionsSportsEditionPage({
   ]);
   if (date && !sportsPuzzle) notFound();
   const isToday = sportsPuzzle?.date === editionDate();
+  const number = sportsPuzzle ? sportsNumber(sportsPuzzle.date) : null;
 
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8 grid-bg">
@@ -189,6 +191,7 @@ export default async function ConnectionsSportsEditionPage({
               <span className="mx-1">&middot;</span>
               <span>
                 {dayjs(sportsPuzzle.date).format("MMMM D, YYYY")}
+                {number && ` · #${number}`}
               </span>
             </>
           )}
@@ -202,6 +205,10 @@ export default async function ConnectionsSportsEditionPage({
           the one you expect.
         </p>
         <div className="mt-5 flex flex-wrap justify-center gap-2">
+          <Link href={date && sportsPuzzle ? `/connections-sports-edition/archive?month=${sportsPuzzle.date.slice(0, 7)}` : "/connections-sports-edition/archive"}
+            className="rounded-full bg-blue-700 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800">
+            Browse the sports archive
+          </Link>
           <Link
             href="/connections-hint-today"
             className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-blue-300 hover:text-blue-600 dark:hover:border-blue-700 dark:hover:text-blue-400"

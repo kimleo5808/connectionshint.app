@@ -37,6 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/connections-printable',
     '/connections-solver',
     '/connections-sports-edition',
+    '/connections-sports-edition/archive',
     '/about',
     '/contact',
     '/share',
