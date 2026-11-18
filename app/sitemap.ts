@@ -28,6 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/connections-hint',
     '/connections-practice',
     '/mini-connections',
+    '/connections-for-kids',
     '/emoji-connections',
     '/connections-practice/purple-groups',
     '/connections-reverse-rainbow',

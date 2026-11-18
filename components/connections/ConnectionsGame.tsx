@@ -49,7 +49,8 @@ function shuffleArray<T>(arr: T[]): T[] {
 /* ------------------------------------------------------------------ */
 
 interface ConnectionsGameProps {
-  groups: ConnectionsGroup[];
+  groups: (ConnectionsGroup & { hint?: string; explanation?: string })[];
+  learningMode?: boolean;
   customPuzzle?: boolean;
   mini?: boolean;
   completionNote?: string;
@@ -57,7 +58,7 @@ interface ConnectionsGameProps {
   renderProgress?: (rows: string[], restart: () => void) => ReactNode;
 }
 
-export default function ConnectionsGame({ groups, customPuzzle = false, mini = false, completionNote, renderTile, renderProgress }: ConnectionsGameProps) {
+export default function ConnectionsGame({ groups, customPuzzle = false, mini = false, learningMode = false, completionNote, renderTile, renderProgress }: ConnectionsGameProps) {
   const groupSize = mini ? 3 : 4;
   const mistakeLimit = mini ? 3 : 4;
   // Build flat tile list once
@@ -81,6 +82,8 @@ export default function ConnectionsGame({ groups, customPuzzle = false, mini = f
   const [shaking, setShaking] = useState(false);
   const [guessHistory, setGuessHistory] = useState<{ key: string; row: string }[]>([]);
   const [seenOneAway, setSeenOneAway] = useState(false);
+  const [hintStep, setHintStep] = useState(0);
+  const hintGroup = learningMode ? groups.find(group => !solvedLevels.includes(group.level)) : undefined;
 
   // Sorted solved groups for display
   const solvedGroups = useMemo(
@@ -99,16 +102,17 @@ export default function ConnectionsGame({ groups, customPuzzle = false, mini = f
 
   // Clear message after delay
   useEffect(() => {
-    if (!message) return;
+    if (!message || learningMode) return;
     const timer = setTimeout(() => setMessage(null), 2000);
     return () => clearTimeout(timer);
-  }, [message]);
+  }, [message, learningMode]);
 
   /* ---- Actions ---- */
 
   const handleTileClick = useCallback(
     (word: string) => {
       if (status !== "playing") return;
+      if (learningMode) setMessage(null);
       setSelected((prev) => {
         const next = new Set(prev);
         if (next.has(word)) {
@@ -119,7 +123,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false, mini = f
         return next;
       });
     },
-    [status, groupSize]
+    [status, groupSize, learningMode]
   );
 
   const handleShuffle = useCallback(() => {
@@ -128,7 +132,8 @@ export default function ConnectionsGame({ groups, customPuzzle = false, mini = f
 
   const handleDeselectAll = useCallback(() => {
     setSelected(new Set());
-  }, []);
+    if (learningMode) setMessage(null);
+  }, [learningMode]);
 
   const handleSubmit = useCallback(() => {
     if (selected.size !== groupSize || status !== "playing") return;
@@ -153,6 +158,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false, mini = f
       // Correct!
       const newSolved = [...solvedLevels, matchedGroup.level];
       setSolvedLevels(newSolved);
+      if (matchedGroup === hintGroup) setHintStep(0);
       setSelected(new Set());
       setMessage({ text: "Correct!", type: "correct" });
 
@@ -171,24 +177,24 @@ export default function ConnectionsGame({ groups, customPuzzle = false, mini = f
       setShaking(true);
       setTimeout(() => setShaking(false), 600);
 
+      if (oneAway) {
+        setSeenOneAway(true);
+        setMessage({ text: learningMode ? "Three fit together. Tap one to swap it." : "One away...", type: "oneaway" });
+      } else {
+        setMessage({ text: learningMode ? "Try another group. Tap any selected word to change it." : "Incorrect", type: "wrong" });
+      }
+
+      if (learningMode) return;
       const newMistakes = mistakes - 1;
       setMistakes(newMistakes);
       setSelected(new Set());
-
-      if (oneAway) {
-        setSeenOneAway(true);
-        setMessage({ text: "One away...", type: "oneaway" });
-      } else {
-        setMessage({ text: "Incorrect", type: "wrong" });
-      }
-
       if (newMistakes <= 0) {
         // Reveal all remaining
         setSolvedLevels(groups.map(group => group.level));
         setStatus("lost");
       }
     }
-  }, [selected, status, groups, solvedLevels, mistakes, guessHistory, groupSize]);
+  }, [selected, status, groups, solvedLevels, mistakes, guessHistory, groupSize, learningMode, hintGroup]);
 
   const handlePlayAgain = useCallback(() => {
     setTiles(shuffleArray(allTiles));
@@ -199,6 +205,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false, mini = f
     setMessage(null);
     setGuessHistory([]);
     setSeenOneAway(false);
+    setHintStep(0);
   }, [allTiles, mistakeLimit]);
 
   /* ---- Render ---- */
@@ -231,6 +238,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false, mini = f
               >
                 {g.members.join(", ")}
               </p>
+              {learningMode && <p className={`mt-1 text-sm ${CATEGORY_TEXT[g.level]}`}>{g.explanation}</p>}
             </div>
           ))}
         </div>
@@ -269,7 +277,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false, mini = f
       )}
 
       {/* Mistakes remaining */}
-      <div className="mt-4 flex items-center justify-center gap-1.5">
+      {!learningMode && <div className="mt-4 flex items-center justify-center gap-1.5">
         <span className="text-xs text-muted-foreground mr-1">
           Mistakes remaining:
           <span className="sr-only"> {mistakes}</span>
@@ -284,7 +292,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false, mini = f
             }`}
           />
         ))}
-      </div>
+      </div>}
 
       {/* Status message */}
       {message && (
@@ -296,7 +304,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false, mini = f
       )}
 
       {/* Controls */}
-      {seenOneAway && !mini && <p className="mt-2 text-center text-sm"><Link className="text-primary underline underline-offset-4" href="/guides/connections-one-away">How to read a One Away guess</Link></p>}
+      {seenOneAway && !mini && !learningMode && <p className="mt-2 text-center text-sm"><Link className="text-primary underline underline-offset-4" href="/guides/connections-one-away">How to read a One Away guess</Link></p>}
       {status === "playing" && (
         <div className="mt-4 flex items-center justify-center gap-3">
           <button
@@ -310,17 +318,24 @@ export default function ConnectionsGame({ groups, customPuzzle = false, mini = f
             disabled={selected.size === 0}
             className="rounded-full border border-border px-5 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted disabled:opacity-40 disabled:cursor-default"
           >
-            Deselect All
+            {learningMode ? "Clear" : "Deselect All"}
           </button>
           <button
             onClick={handleSubmit}
             disabled={selected.size !== groupSize}
             className="rounded-full bg-slate-800 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-slate-700 disabled:opacity-40 disabled:cursor-default dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200"
           >
-            Submit
+            {learningMode ? "Check group" : "Submit"}
           </button>
         </div>
       )}
+      {hintGroup && <div className="mt-3 border-t border-border pt-2 text-sm">
+        {hintStep < 2 && <button type="button" className="min-h-11 font-semibold text-primary underline underline-offset-4"
+          onClick={() => setHintStep(step => Math.min(2, step + 1))}>{hintStep ? "Show two starter words" : "Give me a hint"}</button>}
+        <div aria-live="polite">{hintStep >= 1 && <p>{hintGroup.hint}</p>}
+          {hintStep === 2 && <p className="mt-1">Start with <strong>{hintGroup.members[0]}</strong> and <strong>{hintGroup.members[1]}</strong>.</p>}
+        </div>
+      </div>}
 
       {/* Win / Loss overlay */}
       {(status === "won" || status === "lost") && (
@@ -328,7 +343,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false, mini = f
           <h3 className="font-heading text-lg font-bold text-foreground">
             {status === "won" ? "Congratulations!" : "Better Luck Next Time!"}
           </h3>
-          {status === "won" && (
+          {status === "won" && !learningMode && (
             <p className="mt-1 text-sm text-muted-foreground">
               You solved it with {mistakes} mistake
               {mistakes !== 1 ? "s" : ""} remaining!
@@ -346,7 +361,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false, mini = f
           >
             Play Again
           </button>
-          {!mini && <Link className="ml-3 inline-block py-2 text-sm text-primary underline underline-offset-4"
+          {!mini && !learningMode && <Link className="ml-3 inline-block py-2 text-sm text-primary underline underline-offset-4"
             href={"/connections-results#grid=" + guessHistory.map(guess => guess.row).join(".")}>
             Read my result grid
           </Link>}

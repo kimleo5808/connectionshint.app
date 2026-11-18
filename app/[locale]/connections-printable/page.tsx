@@ -251,8 +251,9 @@ export default async function ConnectionsPrintablePage({
           Choosing the Right Print Format
         </h2>
         <p className="mt-2 text-muted-foreground">
-          Each format serves a different purpose. Pick the one that matches
-          your use case.
+          Choose how much help to include on your printout. For an online class
+          activity with everyday vocabulary, try{" "}
+          <a href="/connections-for-kids" className="text-primary underline underline-offset-4">Connections for Kids</a>.
         </p>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           <div className="rounded-xl border border-border bg-card p-5">
