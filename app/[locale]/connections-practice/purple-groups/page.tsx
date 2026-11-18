@@ -59,6 +59,7 @@ export default async function PurplePracticePage() {
       <p>Read an odd-looking tile aloud. If its sound suggests a familiar object, try to turn three more tiles into objects of the same kind. Use the sound-alikes set above to isolate that skill.</p>
       <h3>Change one letter consistently</h3>
       <p>Keep the same position in all four words. If your first two candidates need a new initial, try changing the initial of a third before spending a guess. For a whole game across all four colors, open <Link href="/connections-practice">classic practice mode</Link>.</p>
+      <p>Once you can find purple first, try the <Link href="/connections-reverse-rainbow">reverse rainbow challenge</Link> and see if you can call the other three colors in order.</p>
       <LessonTable caption="Four ways to test an unusual tile" headers={["Technique", "Try this", "Archive example"]} rows={[
         ["Hidden ending", "Read from the right edge.", <span key="end">BEL<strong>FAST</strong></span>],
         ["Shared phrase", "Put one word before each tile.", "Golden rule"],

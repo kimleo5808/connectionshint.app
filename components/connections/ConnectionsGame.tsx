@@ -2,6 +2,7 @@
 
 import type { ConnectionsGroup, ConnectionsLevel } from "@/types/connections";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { colorCodes } from "@/lib/result-grid.mjs";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
@@ -51,9 +52,10 @@ interface ConnectionsGameProps {
   groups: ConnectionsGroup[];
   customPuzzle?: boolean;
   miniExplanation?: string;
+  renderProgress?: (rows: string[], restart: () => void) => ReactNode;
 }
 
-export default function ConnectionsGame({ groups, customPuzzle = false, miniExplanation }: ConnectionsGameProps) {
+export default function ConnectionsGame({ groups, customPuzzle = false, miniExplanation, renderProgress }: ConnectionsGameProps) {
   const mini = miniExplanation !== undefined;
   const groupSize = mini ? 3 : 4;
   const mistakeLimit = mini ? 3 : 4;
@@ -209,6 +211,7 @@ export default function ConnectionsGame({ groups, customPuzzle = false, miniExpl
 
   return (
     <div className="w-full max-w-lg mx-auto">
+      {renderProgress?.(guessHistory.map(guess => guess.row), handlePlayAgain)}
       {/* Solved categories */}
       {solvedGroups.length > 0 && (
         <div className="space-y-2 mb-3">
