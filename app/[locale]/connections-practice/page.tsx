@@ -545,6 +545,12 @@ export default async function ConnectionsPracticePage({
         <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
+              href: "/connections-maker",
+              title: "Connections Puzzle Maker",
+              desc: "Write a board for a friend",
+              icon: Sparkles,
+            },
+            {
               href: "/connections-difficulty",
               title: "Difficulty Guide",
               desc: "See what makes puzzles hard",

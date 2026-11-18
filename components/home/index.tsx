@@ -89,6 +89,7 @@ export default async function HomeComponent() {
           <nav aria-label="Puzzle tools and practice" className="mx-auto mt-6 flex max-w-2xl flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-slate-200">
             {[
               ["/connections-word-finder", "Word finder"],
+              ["/connections-maker", "Create a puzzle"],
               ["/guides/connections-one-away", "One-away guide"],
               ["/connections-practice/purple-groups", "Purple group practice"],
               ["/connections-sports-edition/archive", "Sports Edition archive"],

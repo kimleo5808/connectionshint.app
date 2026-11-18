@@ -51,9 +51,10 @@ function shuffleArray<T>(arr: T[]): T[] {
 
 interface ConnectionsGameProps {
   groups: ConnectionsGroup[];
+  customPuzzle?: boolean;
 }
 
-export default function ConnectionsGame({ groups }: ConnectionsGameProps) {
+export default function ConnectionsGame({ groups, customPuzzle = false }: ConnectionsGameProps) {
   // Build flat tile list once
   const allTiles = useMemo<WordTile[]>(() => {
     return groups.flatMap((g) =>
@@ -61,7 +62,9 @@ export default function ConnectionsGame({ groups }: ConnectionsGameProps) {
     );
   }, [groups]);
 
-  const [tiles, setTiles] = useState<WordTile[]>(() => [...allTiles].sort((a, b) => a.word < b.word ? -1 : a.word > b.word ? 1 : 0));
+  const [tiles, setTiles] = useState<WordTile[]>(() => customPuzzle
+    ? shuffleArray(allTiles)
+    : [...allTiles].sort((a, b) => a.word < b.word ? -1 : a.word > b.word ? 1 : 0));
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [solvedLevels, setSolvedLevels] = useState<ConnectionsLevel[]>([]);
   const [mistakes, setMistakes] = useState(MAX_MISTAKES);
@@ -128,7 +131,7 @@ export default function ConnectionsGame({ groups }: ConnectionsGameProps) {
     const selectedWords = [...selected];
 
     // Prevent duplicate guess
-    const sortedGuess = [...selectedWords].sort().join(",");
+    const sortedGuess = JSON.stringify([...selectedWords].sort());
     if (guessHistory.includes(sortedGuess)) {
       setMessage({ text: "Already guessed!", type: "wrong" });
       return;
@@ -175,10 +178,8 @@ export default function ConnectionsGame({ groups }: ConnectionsGameProps) {
 
       if (newMistakes <= 0) {
         // Reveal all remaining
-        setTimeout(() => {
-          setSolvedLevels([0, 1, 2, 3]);
-          setStatus("lost");
-        }, 800);
+        setSolvedLevels([0, 1, 2, 3]);
+        setStatus("lost");
       }
     }
   }, [selected, status, groups, solvedLevels, mistakes, guessHistory]);
@@ -239,6 +240,7 @@ export default function ConnectionsGame({ groups }: ConnectionsGameProps) {
               <button
                 key={tile.word}
                 onClick={() => handleTileClick(tile.word)}
+                aria-pressed={isSelected}
                 disabled={status !== "playing"}
                 className={`
                   rounded-lg px-1 py-3 text-center text-xs font-bold uppercase tracking-wide
@@ -326,7 +328,7 @@ export default function ConnectionsGame({ groups }: ConnectionsGameProps) {
           )}
           {status === "lost" && (
             <p className="mt-1 text-sm text-muted-foreground">
-              Don&apos;t worry — check the hints below for strategy tips!
+              {customPuzzle ? "Read the four groups above, then replay the board to try the connections again." : "Check the hints below for strategy tips!"}
             </p>
           )}
           <button
