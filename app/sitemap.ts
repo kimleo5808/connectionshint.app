@@ -39,6 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/connections-vs-wordle',
     '/connections-printable',
     '/connections-solver',
+    '/connections-scratchpad',
     '/connections-sports-edition',
     '/connections-sports-edition/archive',
     '/about',

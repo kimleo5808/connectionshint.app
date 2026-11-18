@@ -1,0 +1,81 @@
+.workspace {
+  --mat: #17454c;
+  --tray: #edf5f4;
+  --paper: #fffcf1;
+  --pencil: #223e41;
+  --edge: #9db9b8;
+  --mark: #f4c877;
+  border: 1px solid var(--edge);
+  border-radius: .8rem;
+  overflow: hidden;
+  background: var(--tray);
+  color: var(--pencil);
+  scroll-margin-top: 5rem;
+}
+.workspace fieldset { min-width: 0; border: 0; padding: 0; margin: 0; }
+.toolbar {
+  display: flex; align-items: center; gap: .55rem; flex-wrap: wrap;
+  padding: .55rem clamp(.55rem,2vw,1.25rem);
+  background: var(--mat); color: #fff;
+}
+.toolbar label { font-weight: 700; }
+.toolbar select {
+  flex: 1; min-width: 0; max-width: 24rem; min-height: 2.75rem;
+  padding: .4rem .3rem; border-radius: .3rem; color: var(--pencil); background: #fff;
+}
+.toolbar button {
+  margin-left: auto; min-height: 2.75rem; padding: .35rem .6rem;
+  border: 1px solid #b7d0d0; border-radius: .35rem; color: white;
+}
+.toolbar button:disabled { opacity: .58; }
+.desk { display: grid; grid-template-columns: minmax(0,1.7fr) minmax(11rem,1fr); }
+.board, .notes { padding: clamp(.7rem,2vw,1.4rem); min-width: 0; }
+.board { background: var(--tray); }
+.direction { margin-bottom: .65rem; font-size: .9rem; line-height: 1.4; }
+.row {
+  display: grid; grid-template-columns: 1rem repeat(4,minmax(0,1fr));
+  align-items: stretch; gap: clamp(.18rem,1vw,.45rem); margin-bottom: .4rem;
+}
+.row span { align-self: center; font-weight: 700; font-size: .85rem; color: var(--mat); }
+.row button {
+  min-height: 3.1rem; border: 1px solid #a3b4ae; border-bottom: 3px solid #93a59f;
+  border-radius: .45rem; background: var(--paper); color: #243b3c; padding: .35rem .2rem;
+  font-weight: 700; line-height: 1.15; font-size: clamp(.72rem,1.6vw,.97rem);
+  text-transform: uppercase; overflow-wrap: anywhere; cursor: grab;
+}
+.row button[aria-pressed="true"] { border-color: #5e4317; background: var(--mark); box-shadow: inset 0 0 0 1px #5e4317; }
+.row button:active { cursor: grabbing; }
+.status { min-height: 1.4rem; margin-top: .65rem; font-size: .83rem; }
+.notes { border-left: 1px dashed var(--edge); background: #fcfaf2; }
+.notes h2 { font: 700 1.3rem/1.2 var(--font-heading),sans-serif; }
+.notes p, .import label { font-size: .88rem; line-height: 1.4; }
+.notes p { margin: .2rem 0 .45rem; }
+.notes label { display: flex; align-items: baseline; gap: .6rem; margin-top: .3rem; }
+.notes input {
+  background: transparent; color: var(--pencil); border-bottom: 1px solid #8da4a0;
+  min-height: 2.35rem; min-width: 0; width: 100%; padding: .3rem;
+}
+.notes input::placeholder { color: #596c69; }
+.import { border-bottom: 1px solid var(--edge); background: #fff; }
+.import summary { cursor: pointer; font-weight: 600; padding: .65rem clamp(.7rem,2vw,1.4rem); }
+.import form { display: grid; gap: .55rem; padding: 0 clamp(.7rem,2vw,1.4rem) 1rem; }
+.import textarea { background: #fff; color: var(--pencil); border: 1px solid #809c9a; border-radius: .35rem; padding: .5rem; }
+.import button { width: fit-content; color: #fff; background: var(--mat); border-radius: .4rem; padding: .55rem .85rem; font-weight: 650; }
+.import [role="alert"] { color: #9a251f; }
+.storage { padding: .5rem 1rem; }
+.workspace :is(button,select,textarea,input,summary):focus-visible { outline: 3px solid #b96b0f; outline-offset: 1px; }
+.flow { display: grid; gap: .65rem; }
+.flow > div { display: grid; grid-template-columns: 7.5rem minmax(0,1fr); gap: .5rem; align-items: center; }
+.flow span { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: .25rem; }
+.flow b { text-align: center; padding: .4rem .1rem; background: hsl(var(--card)); border: 1px solid var(--rule); border-radius: .3rem; font-size: clamp(.68rem,2vw,.92rem); }
+.flow b:last-child { border: 2px dashed var(--ink); color: var(--ink); }
+@media (max-width:700px) {
+  .desk { grid-template-columns: minmax(0,1fr); }
+  .notes { border-left: 0; border-top: 1px dashed var(--edge); }
+  .flow > div { grid-template-columns: minmax(0,1fr); gap: .2rem; }
+}
+@media (max-width:380px) {
+  .toolbar { gap: .3rem; font-size: .84rem; }
+  .board { padding-inline: .5rem; }
+  .row { grid-template-columns: .8rem repeat(4,minmax(0,1fr)); }
+}

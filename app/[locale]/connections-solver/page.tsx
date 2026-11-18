@@ -258,6 +258,7 @@ export default async function ConnectionsSolverPage({
           My Puzzle&rdquo; for progressive hints
         </p>
         <ConnectionsSolver today={editionDate()} puzzles={allPuzzles} />
+        <p className="mt-4 text-sm"><Link href="/connections-scratchpad" className="font-semibold text-primary underline underline-offset-4">Arrange the tiles on a Connections scratchpad</Link> to test your own groups before opening any hints.</p>
       </section>
 
       {/* ── SEO Content ── */}
