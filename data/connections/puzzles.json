@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-18T08:37:04.734Z",
+  "lastUpdated": "2026-11-19T14:50:27.720Z",
   "puzzles": [
     {
       "id": 1,
@@ -57779,6 +57779,52 @@
             "FRENCH",
             "SMALL",
             "VOCAL"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1257,
+      "date": "2026-11-19",
+      "answers": [
+        {
+          "level": 0,
+          "group": "MAKE A HOLE IN THE GROUND",
+          "members": [
+            "BORE",
+            "BURROW",
+            "DIG",
+            "TUNNEL"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "MATERIALS OBTAINED FROM TREES",
+          "members": [
+            "CORK",
+            "RESIN",
+            "SAP",
+            "WOOD"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "PARTS OF AN ELECTRICAL APPLIANCE",
+          "members": [
+            "CORD",
+            "HOUSING",
+            "PLUG",
+            "SWITCH"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "START AND END WITH THE SAME THREE LETTERS",
+          "members": [
+            "EINSTEIN",
+            "GALANGAL",
+            "HOTSHOT",
+            "UNDERGROUND"
           ]
         }
       ]

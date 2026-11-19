@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-18T11:00:45.784Z",
+  "lastUpdated": "2026-11-19T14:50:30.910Z",
   "puzzles": [
     {
       "id": 111,
@@ -35785,6 +35785,52 @@
             "SUZUKI",
             "CELEBRINI",
             "BENN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1196,
+      "date": "2026-11-19",
+      "answers": [
+        {
+          "level": 0,
+          "group": "NFC EAST TEAMS",
+          "members": [
+            "PHILADELPHIA",
+            "NEW YORK",
+            "DALLAS",
+            "WASHINGTON"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "HALL OF FAME CATCHERS",
+          "members": [
+            "PIAZZA",
+            "FISK",
+            "BERRA",
+            "MAUER"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "ASSOCIATED WITH INDIANA",
+          "members": [
+            "ASSEMBLY HALL",
+            "CIGNETTI",
+            "BLOOMINGTON",
+            "MENDOZA"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "PIRATES",
+          "members": [
+            "PITTSBURGH",
+            "EAST CAROLINA",
+            "HAMPTON",
+            "SETON HALL"
           ]
         }
       ]
