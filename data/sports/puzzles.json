@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-19T14:50:30.910Z",
+  "lastUpdated": "2026-11-20T14:31:26.750Z",
   "puzzles": [
     {
       "id": 111,
@@ -35831,6 +35831,52 @@
             "EAST CAROLINA",
             "HAMPTON",
             "SETON HALL"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1201,
+      "date": "2026-11-20",
+      "answers": [
+        {
+          "level": 0,
+          "group": "HEADGEAR",
+          "members": [
+            "HAT",
+            "VISOR",
+            "MASK",
+            "CAP"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "PARTS OF A SOCCER GOAL",
+          "members": [
+            "NET",
+            "CROSSBAR",
+            "POST",
+            "STANCHION"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "RAY _____",
+          "members": [
+            "GUY",
+            "ALLEN",
+            "BOURQUE",
+            "KINSELLA"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "ORLANDO _____",
+          "members": [
+            "CITY",
+            "MAGIC",
+            "PACE",
+            "PRIDE"
           ]
         }
       ]
