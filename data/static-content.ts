@@ -184,6 +184,51 @@ Questions about these terms: \`hello@connectionshint.app\``,
 export const STATIC_BLOG_POSTS: BlogPost[] = [
   {
     locale: "en",
+    title: "A Paper Connections Puzzle for Your Group Chat",
+    description:
+      "Send your friends an original 16-word Connections puzzle, keep the answers out of the chat preview, and learn how to photograph a board of your own.",
+    image: "/images/paper-connections-cover.webp",
+    slug: "/paper-connections-puzzle",
+    tags: "Connections,homemade puzzles,group games",
+    date: new Date("2026-11-21"),
+    visible: "published",
+    pin: false,
+    content: `Save the picture below and ask a friend, “Can you sort these 16 words into four groups of four?” Each word gets one spot. Ask your friend to send back the four words they feel surest about before either of you gives away a category.
+
+## The puzzle to send
+
+![Sixteen shuffled word cards on a teal table, ready to share as a single picture.](/images/paper-connections-word-grid.webp)
+
+**Words to copy into a message**
+
+BARK, HEART, COMB, YIP, GEAR, TRUNK, SPADE, HOWL, WHINE, SAW, ROOT, CLUB, DIAMOND, GROWL, ZIPPER, BRANCH.
+
+If everyone wants to guess privately, [play this same puzzle online](/connections-maker/play#p1.WyJUaGUgUGFwZXIgUHV6emxlIixbIlBsYXlpbmcgY2FyZCBzdWl0cyIsIkNMVUIiLCJESUFNT05EIiwiSEVBUlQiLCJTUEFERSJdLFsiVGhpbmdzIHdpdGggdGVldGgiLCJDT01CIiwiR0VBUiIsIlNBVyIsIlpJUFBFUiJdLFsiU291bmRzIGEgZG9nIG1ha2VzIiwiR1JPV0wiLCJIT1dMIiwiV0hJTkUiLCJZSVAiXSxbIlBhcnRzIG9mIGEgdHJlZSIsIkJBUksiLCJCUkFOQ0giLCJST09UIiwiVFJVTksiXV0). Save the answer key at the bottom of this page for the reveal.
+
+## Photograph a board of your own
+
+Write one word on each of 16 matching cards. While the cards are still sorted, take a photo for your answer key. Then shuffle them and lay them out in four rows. If you use a different ink color for each group, your friends can solve the puzzle by sorting colors, so use the same pen throughout. You can also start with a [printable puzzle sheet](/connections-printable).
+
+Hold your phone parallel to the table and leave a narrow margin around the outer cards. Open the photo at the size it will appear in a chat. Can you read the longest word? If the far row looks tiny or the last letter is cropped, that is easier to fix while the cards are still on the table.
+
+If your iPhone photo has a .heic extension and a friend's device can't open it, use [HEICHub's HEIC to PNG converter](https://heichub.com/). Choose the photo of the shuffled board, convert it in your browser, and download the PNG. Give the two pictures distinct names, such as **puzzle.png** and **answer-key.heic**, so you can spot the right attachment at a glance.
+
+## When someone gets stuck
+
+If a friend says, “I've got five that fit,” ask them to set those five aside and look at the other eleven. Is there a set of three that needs one of the five to finish it? Give them a minute to try that move before offering a category name. When you [make your next Connections puzzle](/connections-maker), a word that can rescue a stranded trio makes a good starting point.
+
+## Answer key for the host
+
+- **Playing card suits** — CLUB, DIAMOND, HEART, SPADE.
+- **Things with teeth** — COMB, GEAR, SAW, ZIPPER.
+- **Sounds a dog makes** — GROWL, HOWL, WHINE, YIP.
+- **Parts of a tree** — BARK, BRANCH, ROOT, TRUNK.
+
+BARK is the tempting fifth dog sound. Try spending it there and you'll leave ROOT, TRUNK and BRANCH waiting for a fourth tree word. Move BARK back to the tree and the dog still has four ways to make itself heard.`,
+    metadata: {},
+  },
+  {
+    locale: "en",
     title: "The Best Background Music for Solving NYT Connections",
     description:
       "Should you play music while solving NYT Connections? Why lyrics hurt word puzzles, what to listen to instead, and how to make your own focus soundtrack.",
