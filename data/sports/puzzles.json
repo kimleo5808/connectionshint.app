@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-20T14:31:26.750Z",
+  "lastUpdated": "2026-11-21T05:16:01.120Z",
   "puzzles": [
     {
       "id": 111,
@@ -35877,6 +35877,52 @@
             "MAGIC",
             "PACE",
             "PRIDE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1202,
+      "date": "2026-11-21",
+      "answers": [
+        {
+          "level": 0,
+          "group": "SETTINGS FOR RACES",
+          "members": [
+            "SWIMMING POOL",
+            "TRACK",
+            "VELODROME",
+            "SPEEDWAY"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "A VIRGINIA COLLEGE ATHLETE",
+          "members": [
+            "CAVALIER",
+            "HOKIE",
+            "MONARCH",
+            "DUKE"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "FORMER MLB STADIUMS",
+          "members": [
+            "THREE RIVERS",
+            "MILWAUKEE COUNTY",
+            "ASTRODOME",
+            "EBBETS"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "ENDS WITH AN NWSL TEAM",
+          "members": [
+            "TEAM SPIRIT",
+            "RIP CURRENT",
+            "GREEN WAVE",
+            "100-METER DASH"
           ]
         }
       ]
