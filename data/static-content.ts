@@ -184,6 +184,53 @@ Questions about these terms: \`hello@connectionshint.app\``,
 export const STATIC_BLOG_POSTS: BlogPost[] = [
   {
     locale: "en",
+    title: "How to Read a Partial Match in Narutodle",
+    description:
+      "Use the Sand siblings to decode a yellow Nature clue in Narutodle, then try an eight-word Connections puzzle built around the same kind of overlap.",
+    image: "/images/narutodle-sand-siblings-cover.webp",
+    slug: "/narutodle-partial-match-guide",
+    tags: "Narutodle,Naruto,Connections,puzzle strategy",
+    date: new Date("2026-11-21"),
+    visible: "published",
+    pin: false,
+    content: `Suppose you guess Gaara in [Narutodle](https://narutodle.app/) and the Nature column turns yellow. Gaara has Wind and Earth. Which one did you hit? Both readings are still in play. If you've ever stared at five Connections tiles that all seem to fit one group, you already know the hard part of this guess.
+
+## What the colors tell you
+
+In Classic mode, you enter a Naruto character's name and get a row comparing nine traits with the mystery character. A green tile means the values match. A yellow tile on a trait with several values means the two characters share something in that column. A red tile means they share none of its values. The Debut Arc column also uses arrows to tell you whether to look earlier or later in the story.
+
+A partial match records an overlap between two sets. On a Gaara guess, that could mean Wind alone, Earth alone, or both plus another nature. The next step is to find a clue that separates the characters you have in mind.
+
+## Three siblings, two ways to match
+
+Imagine that Gaara's **Village** and **Debut Arc** cells are green. Temari and Kankurō both come from the Hidden Sand and debut in the Chūnin Exams arc, so either sibling fits those two clues. Now look at their Nature entries in the game.
+
+![Gaara has Wind and Earth. Temari shares Wind with him, while Kankurō shares Earth and also has Fire.](/images/narutodle-nature-clues.webp)
+
+If Temari were the answer, Gaara's Nature tile would be yellow because they share Wind. If Kankurō were the answer, you'd see the very same yellow because they share Earth. Even their rank offers little help in choosing between them. The game lists both Temari and Kankurō as jōnin.
+
+Before spending another guess, go back to **Gender** on Gaara's row. An exact match keeps Kankurō in contention and rules out Temari. A mismatch does the reverse for these two candidates. Other Hidden Sand characters may still fit, but now you can name the clue that distinguishes the siblings.
+
+## Try the same deduction with eight words
+
+Split these tiles into two groups of four. One group draws on Naruto and the other on how the words sound.
+
+> MIST · BAND · STONE · HAND · SAND · CLOUD · LAND · LEAF
+
+If you recognize the Hidden Sand Village, SAND looks like an easy pick for the Naruto group. Leave it on the board for a moment. Say BAND, HAND and LAND aloud. Which remaining word gives all three a partner?
+
+**The two groups**
+
+- **Hidden villages in Naruto, in English** — LEAF, MIST, STONE, CLOUD.
+- **Rhymes with GRAND** — BAND, HAND, LAND, SAND.
+
+SAND belongs to either category in isolation. Put it with the rhymes and every tile finds a home. That is the move to take back to Narutodle when two names fit a yellow cell. Look across the rest of the row for a clue that only one of them can satisfy.
+
+For another short word board, try [Mini Connections](/mini-connections). For a full-size example, the [scratchpad's puzzle 5 walkthrough](/connections-scratchpad#mustard) shows what happens when five condiment candidates turn up on the same board. The [one-away guide](/guides/connections-one-away) helps you decide which tile to swap first.`,
+    metadata: {},
+  },
+  {
+    locale: "en",
     title: "A Paper Connections Puzzle for Your Group Chat",
     description:
       "Send your friends an original 16-word Connections puzzle, keep the answers out of the chat preview, and learn how to photograph a board of your own.",
