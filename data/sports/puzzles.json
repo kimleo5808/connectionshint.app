@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-21T05:16:01.120Z",
+  "lastUpdated": "2026-11-22T13:43:08.172Z",
   "puzzles": [
     {
       "id": 111,
@@ -35923,6 +35923,52 @@
             "RIP CURRENT",
             "GREEN WAVE",
             "100-METER DASH"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1203,
+      "date": "2026-11-22",
+      "answers": [
+        {
+          "level": 0,
+          "group": "OFF THE MARK",
+          "members": [
+            "ERRANT",
+            "WILD",
+            "INACCURATE",
+            "WIDE"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "FOUND ON AN NFL SIDELINE",
+          "members": [
+            "TABLET",
+            "BENCH",
+            "MEDICAL TENT",
+            "HEAD COACH"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "_____ 10",
+          "members": [
+            "BIG",
+            "PERFECT",
+            "ATLANTIC",
+            "HANG"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "NFL PUNTERS",
+          "members": [
+            "STOUT",
+            "WAY",
+            "ANGER",
+            "MANN"
           ]
         }
       ]

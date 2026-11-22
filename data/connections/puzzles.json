@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-21T05:15:58.339Z",
+  "lastUpdated": "2026-11-22T13:43:05.541Z",
   "puzzles": [
     {
       "id": 1,
@@ -57917,6 +57917,52 @@
             "HORSES",
             "OWN",
             "TONGUE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1260,
+      "date": "2026-11-22",
+      "answers": [
+        {
+          "level": 0,
+          "group": "MULTITUDE",
+          "members": [
+            "HOST",
+            "MASS",
+            "SEA",
+            "SLEW"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "INTERJECTIONS BEFORE A REACTION",
+          "members": [
+            "GEE",
+            "SAY",
+            "WELL",
+            "WHY"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "BUBBLE ___",
+          "members": [
+            "BATH",
+            "GUM",
+            "TEA",
+            "WRAP"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "HOMOPHONES OF PRONOUNS",
+          "members": [
+            "EWE",
+            "EYE",
+            "HEE",
+            "WEE"
           ]
         }
       ]
