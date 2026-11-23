@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-22T13:43:08.172Z",
+  "lastUpdated": "2026-11-23T16:43:13.478Z",
   "puzzles": [
     {
       "id": 111,
@@ -35969,6 +35969,52 @@
             "WAY",
             "ANGER",
             "MANN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1204,
+      "date": "2026-11-23",
+      "answers": [
+        {
+          "level": 0,
+          "group": "WILDCATS",
+          "members": [
+            "NORTHWESTERN",
+            "VILLANOVA",
+            "KENTUCKY",
+            "ARIZONA"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "SPORTS \"CUPS\"",
+          "members": [
+            "STANLEY",
+            "FA",
+            "RYDER",
+            "GREY"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "ACTIVE USWNT PLAYERS",
+          "members": [
+            "SWANSON",
+            "HEAPS",
+            "RODMAN",
+            "DAVIDSON"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "_____ REPORT",
+          "members": [
+            "BLEACHER",
+            "INJURY",
+            "SCOUTING",
+            "LAST TWO MINUTE"
           ]
         }
       ]
