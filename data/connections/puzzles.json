@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-23T16:43:09.962Z",
+  "lastUpdated": "2026-11-24T16:39:00.966Z",
   "puzzles": [
     {
       "id": 1,
@@ -58009,6 +58009,52 @@
             "CUBISM",
             "LAMBDA",
             "PUPIL"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1262,
+      "date": "2026-11-24",
+      "answers": [
+        {
+          "level": 0,
+          "group": "DROP DRAMATICALLY",
+          "members": [
+            "BOTTOM OUT",
+            "CRATER",
+            "NOSEDIVE",
+            "TANK"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "THINGS WITH PLEATED FOLDS",
+          "members": [
+            "ACCORDION",
+            "CUPCAKE LINER",
+            "FIREPLACE BELLOWS",
+            "PAPER FAN"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "THINGS WITH SLIDES",
+          "members": [
+            "MICROSCOPE",
+            "PLAYGROUND",
+            "POWERPOINT DECK",
+            "TROMBONE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "THINGS THAT FORM CHAINS",
+          "members": [
+            "AMINO ACID",
+            "BIG BOX STORE",
+            "LINK",
+            "MOUNTAIN"
           ]
         }
       ]

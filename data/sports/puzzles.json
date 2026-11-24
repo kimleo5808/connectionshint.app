@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-23T16:43:13.478Z",
+  "lastUpdated": "2026-11-24T16:39:03.873Z",
   "puzzles": [
     {
       "id": 111,
@@ -36015,6 +36015,52 @@
             "INJURY",
             "SCOUTING",
             "LAST TWO MINUTE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1205,
+      "date": "2026-11-24",
+      "answers": [
+        {
+          "level": 0,
+          "group": "LONDON SOCCER TEAMS",
+          "members": [
+            "CHELSEA",
+            "ARSENAL",
+            "CRYSTAL PALACE",
+            "WEST HAM"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "SAILING TERMS",
+          "members": [
+            "HULL",
+            "RUDDER",
+            "MAST",
+            "KEEL"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "ALEX _____",
+          "members": [
+            "ENGLISH",
+            "MORGAN",
+            "RODRIGUEZ",
+            "OVECHKIN"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "ENDS IN AN SEC TEAM, IN SINGULAR FORM",
+          "members": [
+            "ALLIGATOR",
+            "FRENCH BULLDOG",
+            "EYE OF THE TIGER",
+            "MAGGIE"
           ]
         }
       ]
