@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-24T16:39:03.873Z",
+  "lastUpdated": "2026-11-25T16:21:47.053Z",
   "puzzles": [
     {
       "id": 111,
@@ -36061,6 +36061,52 @@
             "FRENCH BULLDOG",
             "EYE OF THE TIGER",
             "MAGGIE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1206,
+      "date": "2026-11-25",
+      "answers": [
+        {
+          "level": 0,
+          "group": "BASKETBALL VIOLATIONS",
+          "members": [
+            "TRAVELING",
+            "DOUBLE DRIBBLE",
+            "BACKCOURT",
+            "SHOT CLOCK"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "BIO INFO FOR A COLLEGE ATHLETE",
+          "members": [
+            "HOMETOWN",
+            "HIGH SCHOOL",
+            "CLASS",
+            "POSITION"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "AIR _____",
+          "members": [
+            "BUD",
+            "JORDAN",
+            "FORCE",
+            "HOCKEY"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "FRONT _____",
+          "members": [
+            "OFFICE",
+            "ROW",
+            "RUNNER",
+            "SEVEN"
           ]
         }
       ]
