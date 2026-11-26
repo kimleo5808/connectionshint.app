@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T16:21:47.053Z",
+  "lastUpdated": "2026-11-26T15:56:35.009Z",
   "puzzles": [
     {
       "id": 111,
@@ -36107,6 +36107,52 @@
             "ROW",
             "RUNNER",
             "SEVEN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1208,
+      "date": "2026-11-26",
+      "answers": [
+        {
+          "level": 0,
+          "group": "NON-SPHERE SPORTS OBJECTS",
+          "members": [
+            "FOOTBALL",
+            "PUCK",
+            "SHUTTLECOCK",
+            "DISC"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "WNBA NO. 1 PICKS",
+          "members": [
+            "BIRD",
+            "AUGUSTUS",
+            "HOLDSCLAW",
+            "PLUM"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "CONSECUTIVE STRIKES IN BOWLING",
+          "members": [
+            "DOUBLE",
+            "TURKEY",
+            "HAMBONE",
+            "SIX-PACK"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "FORMER MLB TEAM NAMES, IN SINGULAR FORM",
+          "members": [
+            "NAP",
+            "SENATOR",
+            "HIGHLANDER",
+            "AMERICAN"
           ]
         }
       ]

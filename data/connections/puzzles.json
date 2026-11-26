@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T16:21:43.400Z",
+  "lastUpdated": "2026-11-26T15:56:32.536Z",
   "puzzles": [
     {
       "id": 1,
@@ -58101,6 +58101,52 @@
             "OBERMAN",
             "OLLIE",
             "OODLE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1264,
+      "date": "2026-11-26",
+      "answers": [
+        {
+          "level": 0,
+          "group": "SHADES OF PINK",
+          "members": [
+            "BLUSH",
+            "BUBBLEGUM",
+            "CARNATION",
+            "CORAL"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "KINDS OF CARS",
+          "members": [
+            "COMPACT",
+            "CONVERTIBLE",
+            "HYBRID",
+            "MANUAL"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "THINGS HOMER SIMPSON LIKES",
+          "members": [
+            "BEER",
+            "BOWLING",
+            "DONUTS",
+            "TELEVISION"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "THINGS THAT ARE POPPED",
+          "members": [
+            "BOTTLE OF CHAMPAGNE",
+            "POPCORN",
+            "THE QUESTION",
+            "WHEELIE"
           ]
         }
       ]
