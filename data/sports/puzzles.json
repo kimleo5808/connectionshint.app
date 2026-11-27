@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-26T15:56:35.009Z",
+  "lastUpdated": "2026-11-27T15:45:12.890Z",
   "puzzles": [
     {
       "id": 111,
@@ -36153,6 +36153,52 @@
             "SENATOR",
             "HIGHLANDER",
             "AMERICAN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1210,
+      "date": "2026-11-27",
+      "answers": [
+        {
+          "level": 0,
+          "group": "GOLF CLUBS",
+          "members": [
+            "IRON",
+            "WEDGE",
+            "DRIVER",
+            "PUTTER"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "_____ JONES",
+          "members": [
+            "CHIPPER",
+            "K.C.",
+            "LOLO",
+            "COBI"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "PATRIOTS QBS, HISTORICALLY",
+          "members": [
+            "BRADY",
+            "MAYE",
+            "NEWTON",
+            "BLEDSOE"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "ENDS IN A KITCHEN ITEM",
+          "members": [
+            "EGG BOWL",
+            "WILFORK",
+            "WEATHERSPOON",
+            "HOME PLATE"
           ]
         }
       ]
