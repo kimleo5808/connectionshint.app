@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-27T15:45:12.890Z",
+  "lastUpdated": "2026-11-28T14:41:04.201Z",
   "puzzles": [
     {
       "id": 111,
@@ -36199,6 +36199,52 @@
             "WILFORK",
             "WEATHERSPOON",
             "HOME PLATE"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1216,
+      "date": "2026-11-28",
+      "answers": [
+        {
+          "level": 0,
+          "group": "NFL BROADCASTERS",
+          "members": [
+            "FOX",
+            "ESPN",
+            "CBS",
+            "PRIME"
+          ]
+        },
+        {
+          "level": 1,
+          "group": "WRS TO WIN SUPER BOWL MVP",
+          "members": [
+            "KUPP",
+            "RICE",
+            "WARD",
+            "BRANCH"
+          ]
+        },
+        {
+          "level": 2,
+          "group": "F1 CHAMPIONS, FAMILIARLY",
+          "members": [
+            "KIMI",
+            "MAX",
+            "LANDO",
+            "LEWIS"
+          ]
+        },
+        {
+          "level": 3,
+          "group": "_____ NUMBER",
+          "members": [
+            "MAGIC",
+            "JERSEY",
+            "BIB",
+            "RETIRED"
           ]
         }
       ]
